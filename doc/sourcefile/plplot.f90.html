@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="<p>PlPlot wrapper module</p>">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>plplot.f90 &ndash; PlPlot Wrapper</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">PlPlot Wrapper </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+				
+            <li><a href="../program/main_prg.html">Program</a></li>
+				
+          </ul>
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>plplot.f90
+    <small>Source File</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/plplot.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li class="active">plplot.f90</li>
+  </ol>
+  </div>
+</div>
+    
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+    
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Modules</h3></div>
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../sourcefile/plplot.f90.html#mod-plplot_mod">plplot_mod</a>
+      
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title">All Source Files</h3></div>
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../sourcefile/kinds.f90.html">kinds.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/main.f90.html">main.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/plplot.f90.html">plplot.f90</a>
+      
+    </div>
+  </div>
+  
+  
+    </div>
+    <div class="col-lg-9" id='text'>
+    
+    
+    <div class="highlight"><pre><span class="k">module </span><span class="n">plplot_mod</span>
+	<span class="c">!! Wrapper module for plplot to give it a more matplotlib like personality</span>
+	<span class="k">use </span><span class="n">kinds_mod</span>
+	<span class="k">use </span><span class="n">plplot</span>
+	<span class="k">implicit none</span>
+<span class="k">	public</span>
+<span class="k">	</span>
+<span class="k">	</span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">parameter</span><span class="kd">::</span><span class="n">default_dev</span> <span class="o">=</span> <span class="s1">&#39;qtwidget&#39;</span>
+		<span class="c">!! Default output device</span>
+	
+	<span class="c">!=================!</span>
+	<span class="c">!= Library State =!</span>
+	<span class="c">!=================!</span>
+	
+	<span class="kt">logical</span><span class="kd">::</span><span class="n">isSetup</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+		<span class="c">!! Flag for library setup status</span>
+	<span class="kt">logical</span><span class="kd">::</span><span class="n">didShow</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+		<span class="c">!! Flag for library display status</span>
+	<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">fontScale</span> <span class="o">=</span> <span class="mf">1.0_plflt</span>
+		<span class="c">!! Font scale factor to resetPen</span>
+	
+<span class="k">contains</span>
+
+	<span class="c">!===================!</span>
+	<span class="c">!= Helper Routines =!</span>
+	<span class="c">!===================!</span>
+
+	<span class="k">function </span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="kd">::</span><span class="n">b</span>
+		
+		<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="nb">minval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="nb">maxval</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+	<span class="k">end function </span><span class="n">mixval</span>
+
+	<span class="k">function </span><span class="n">startsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">str</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">text</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">str</span>
+		<span class="kt">logical</span><span class="kd">::</span><span class="n">o</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+		<span class="n">o</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">k</span><span class="p">)</span><span class="o">==</span><span class="n">str</span>
+	<span class="k">end function </span><span class="n">startsWith</span>
+
+	<span class="k">function </span><span class="n">endsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">str</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">text</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">str</span>
+		<span class="kt">logical</span><span class="kd">::</span><span class="n">o</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+		<span class="n">o</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">k</span><span class="p">)</span><span class="o">==</span><span class="n">str</span>
+	<span class="k">end function </span><span class="n">endsWith</span>
+
+	<span class="c">!============================!</span>
+	<span class="c">!= Axes and Figure Routines =!</span>
+	<span class="c">!============================!</span>
+
+	<span class="k">subroutine </span><span class="n">figure</span>
+		<span class="c">!! Create a new figure</span>
+		<span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">isSetup</span><span class="p">)</span> <span class="k">call </span><span class="n">setup</span><span class="p">()</span>
+		
+		<span class="k">call </span><span class="n">pladv</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">figure</span>
+
+	<span class="k">subroutine </span><span class="n">subplot</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">aspect</span><span class="p">)</span>
+		<span class="c">!! Create a set of axes on a figure</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">nx</span>
+			<span class="c">!! Number of subplot columns</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">ny</span>
+			<span class="c">!! Number of subplot rows</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">i</span>
+			<span class="c">!! Subplot to use</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">aspect</span>
+			<span class="c">!! Aspect ratio of the axes</span>
+		
+		<span class="k">call </span><span class="n">plssub</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">pladv</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">resetPen</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">aspect</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">plvasp</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">aspect</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		<span class="k">else</span>
+<span class="k">			call </span><span class="n">plvsta</span><span class="p">()</span>
+		<span class="k">end if</span>
+<span class="k">	end subroutine </span><span class="n">subplot</span>
+
+	<span class="k">subroutine </span><span class="n">xylim</span><span class="p">(</span><span class="n">xb</span><span class="p">,</span><span class="n">yb</span><span class="p">)</span>
+		<span class="c">!! Set the x and y ranges of the plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">xb</span>
+			<span class="c">!! x-range of plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">yb</span>
+			<span class="c">!! y-range of plot</span>
+		
+		<span class="k">call </span><span class="n">plwind</span><span class="p">(</span><span class="n">xb</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">xb</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">yb</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">yb</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+		<span class="k">call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">xylim</span>
+
+	<span class="k">subroutine </span><span class="n">ticks</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">logx</span><span class="p">,</span><span class="n">logy</span><span class="p">,</span><span class="n">color</span><span class="p">,</span><span class="n">linewidth</span><span class="p">)</span>
+		<span class="c">!! Set the ticks for the axes</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">dx</span>
+			<span class="c">!! Spacing between ticks on x-axis</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">dy</span>
+			<span class="c">!! Spacing between ticks on y-axis</span>
+		<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">logx</span>
+			<span class="c">!! Flag for log-ticks and labels on x-axis</span>
+		<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">logy</span>
+			<span class="c">!! Flag for log-ticks and labels on y-axis</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">color</span>
+			<span class="c">!! Color code for ticks, box, and labels</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">linewidth</span>
+			<span class="c">!! Line width for ticks and box</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">dxl</span><span class="p">,</span><span class="n">dyl</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="kd">::</span><span class="n">xopts</span><span class="p">,</span><span class="n">yopts</span>
+		
+		<span class="n">dxl</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dx</span><span class="p">))</span> <span class="n">dxl</span> <span class="o">=</span> <span class="n">dx</span>
+		
+		<span class="n">dyl</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dy</span><span class="p">))</span> <span class="n">dyl</span> <span class="o">=</span> <span class="n">dy</span>
+		
+		<span class="n">xopts</span> <span class="o">=</span> <span class="s1">&#39;bcnst&#39;</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">logx</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			if</span><span class="p">(</span><span class="n">logx</span><span class="p">)</span> <span class="n">xopts</span> <span class="o">=</span> <span class="s1">&#39;bcnstl&#39;</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		</span><span class="n">yopts</span> <span class="o">=</span> <span class="s1">&#39;bcnstv&#39;</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">logy</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			if</span><span class="p">(</span><span class="n">logy</span><span class="p">)</span> <span class="n">yopts</span> <span class="o">=</span> <span class="s1">&#39;bcnstvl&#39;</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">linewidth</span><span class="p">))</span> <span class="k">call </span><span class="n">plwidth</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		
+		<span class="k">call </span><span class="n">plbox</span><span class="p">(</span><span class="n">xopts</span><span class="p">,</span><span class="n">dxl</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">yopts</span><span class="p">,</span><span class="n">dyl</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">ticks</span>
+
+	<span class="k">subroutine </span><span class="n">labels</span><span class="p">(</span><span class="n">xLabel</span><span class="p">,</span><span class="n">yLabel</span><span class="p">,</span><span class="n">plotLabel</span><span class="p">)</span>
+		<span class="c">!! Set x,y and plot labels</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">xLabel</span>
+			<span class="c">!! Label for x-axis</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">yLabel</span>
+			<span class="c">!! Label for x-axis</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">plotLabel</span>
+			<span class="c">!! Label entire plot</span>
+		
+		<span class="k">call </span><span class="n">pllab</span><span class="p">(</span><span class="n">xLabel</span><span class="p">,</span><span class="n">yLabel</span><span class="p">,</span><span class="n">plotLabel</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">labels</span>
+
+	<span class="k">subroutine </span><span class="n">colorbar</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">leftLabel</span><span class="p">,</span><span class="n">rightLabel</span><span class="p">)</span>
+		<span class="c">!! Add a colorbar to the top of the plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">z</span>
+			<span class="c">!! Data used for levels computation</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">N</span>
+			<span class="c">!! Number of levels to compute</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">leftLabel</span>
+			<span class="c">!! Label for left side of colorbar</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">rightLabel</span>
+			<span class="c">!! Label for right side of colorbar</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">values</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="kd">::</span><span class="n">labels</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">fill_width</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">cont_width</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">cont_color</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">colorbar_width</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">colorbar_height</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">values</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">(</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="p">[(</span> <span class="kt">real</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">maxval</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">-</span><span class="nb">minval</span><span class="p">(</span><span class="n">z</span><span class="p">))</span><span class="o">+</span><span class="nb">minval</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)],</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+		
+		<span class="n">fill_width</span> <span class="o">=</span> <span class="mf">2.0_plflt</span>
+		<span class="n">cont_width</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="n">cont_color</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">leftLabel</span> <span class="p">))</span> <span class="n">labels</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">leftLabel</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">rightLabel</span><span class="p">))</span> <span class="n">labels</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">rightLabel</span>
+		
+		<span class="k">call </span><span class="n">plcolorbar</span><span class="p">(</span><span class="n">colorbar_width</span><span class="p">,</span><span class="n">colorbar_height</span><span class="p">,&amp;</span>
+			<span class="p">&amp;</span> <span class="nb">ior</span><span class="p">(</span><span class="n">PL_COLORBAR_SHADE</span><span class="p">,</span><span class="n">PL_COLORBAR_SHADE_LABEL</span><span class="p">),</span><span class="n">PL_POSITION_TOP</span><span class="p">,&amp;</span>
+			<span class="p">&amp;</span> <span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.01_plflt</span><span class="p">,</span><span class="mf">0.75_plflt</span><span class="p">,</span><span class="mf">0.05_plflt</span><span class="p">,&amp;</span>
+			<span class="p">&amp;</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.0_plflt</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">cont_color</span><span class="p">,</span><span class="n">cont_width</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="p">[</span><span class="n">PL_COLORBAR_LABEL_LEFT</span><span class="p">,</span><span class="n">PL_COLORBAR_LABEL_RIGHT</span><span class="p">],</span><span class="n">labels</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="p">[</span><span class="s1">&#39;bcvmt&#39;</span><span class="p">],[</span><span class="mf">0.0_plflt</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="n">size</span><span class="p">(</span><span class="n">values</span><span class="p">)],</span><span class="n">values</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">colorbar</span>
+
+	<span class="k">subroutine </span><span class="n">legend</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span><span class="n">series</span><span class="p">,</span><span class="n">lineWidths</span><span class="p">,</span><span class="n">markScales</span><span class="p">,</span><span class="n">markCounts</span><span class="p">,</span><span class="n">ncol</span><span class="p">)</span>
+		<span class="c">!! Create legend for plot data</span>
+		<span class="c">!! FIXME: Text sizing should be modifiable</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">corner</span>
+			<span class="c">!! Corner for legend</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">series</span>
+			<span class="c">!! Data series in rows</span>
+			<span class="c">!! [name,textColor,lineStyle,lineColor,markStyle,markColor]</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineWidths</span>
+			<span class="c">!! Line widths for the plots</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markScales</span>
+			<span class="c">!! Marker sizes for the plots</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markCounts</span>
+			<span class="c">!! Marker counts for the plots</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">ncol</span>
+			<span class="c">!! Number of columns</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">,</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">plotWidth</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">opt</span><span class="p">,</span><span class="n">cornerl</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">bg_color</span><span class="p">,</span><span class="n">bb_color</span><span class="p">,</span><span class="n">bb_style</span><span class="p">,</span><span class="n">lncol</span><span class="p">,</span><span class="n">lnrow</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">opts</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">lwidths</span><span class="p">,</span><span class="n">mscales</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">mcounts</span><span class="p">,</span><span class="n">text_colors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">text_offset</span><span class="p">,</span><span class="n">text_scale</span><span class="p">,</span><span class="n">text_spacing</span><span class="p">,</span><span class="n">text_justification</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">box_colors</span><span class="p">,</span><span class="n">box_patterns</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">box_scales</span><span class="p">,</span><span class="n">box_line_widths</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">line_colors</span><span class="p">,</span><span class="n">line_styles</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">mark_colors</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="kd">::</span><span class="n">mark_styles</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">opt</span> <span class="o">=</span> <span class="n">PL_LEGEND_BACKGROUND</span><span class="o">+</span><span class="n">PL_LEGEND_BOUNDING_BOX</span>
+		<span class="n">cornerl</span> <span class="o">=</span> <span class="n">getCorner</span><span class="p">(</span><span class="n">corner</span><span class="p">)</span>
+		<span class="n">xoff</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="n">yoff</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="n">plotWidth</span> <span class="o">=</span> <span class="mf">0.05_wp</span>
+		<span class="n">bg_color</span> <span class="o">=</span> <span class="n">getColorCode</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+		<span class="n">bb_color</span> <span class="o">=</span> <span class="n">getColorCode</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+		<span class="n">bb_style</span> <span class="o">=</span> <span class="n">getLineStyleCode</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+		
+		<span class="n">lncol</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ncol</span><span class="p">))</span> <span class="n">lncol</span> <span class="o">=</span> <span class="n">ncol</span>
+		<span class="n">lnrow</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">lncol</span>
+		
+		<span class="n">opts</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">opts</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="nb">ior</span><span class="p">(</span><span class="n">opts</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">PL_LEGEND_LINE</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">/=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">opts</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="nb">ior</span><span class="p">(</span><span class="n">opts</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">PL_LEGEND_SYMBOL</span><span class="p">)</span>
+		<span class="k">end do</span>
+<span class="k">		</span>
+<span class="k">		</span><span class="n">lwidths</span> <span class="o">=</span> <span class="mf">1.0_plflt</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineWidths</span><span class="p">))</span> <span class="n">lwidths</span> <span class="o">=</span> <span class="n">lineWidths</span>
+		<span class="n">mcounts</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markCounts</span><span class="p">))</span> <span class="n">mcounts</span> <span class="o">=</span> <span class="n">markCounts</span>
+		<span class="n">mscales</span> <span class="o">=</span> <span class="mf">1.0_plflt</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markScales</span><span class="p">))</span> <span class="n">mscales</span> <span class="o">=</span> <span class="n">markScales</span>
+		
+		<span class="n">text_offset</span>  <span class="o">=</span> <span class="mf">0.3_plflt</span>
+		<span class="n">text_scale</span>   <span class="o">=</span> <span class="n">fontScale</span>
+		<span class="n">text_spacing</span> <span class="o">=</span> <span class="mf">3.0_plflt</span>
+		<span class="n">text_justification</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		
+		<span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">text_colors</span> <span class="o">=</span> <span class="n">getColorCode</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+		<span class="k">end do</span>
+<span class="k">		</span>
+<span class="k">		</span><span class="n">box_colors</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="n">box_patterns</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">box_scales</span> <span class="o">=</span> <span class="mf">1.0_plflt</span>
+		<span class="n">box_line_widths</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		
+		<span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">line_colors</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">getColorCode</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+			<span class="n">line_styles</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">getLineStyleCode</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+		<span class="k">end do</span>
+<span class="k">		</span>
+<span class="k">		do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">mark_colors</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">getColorCode</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+			<span class="n">mark_styles</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">getSymbolCode</span><span class="p">(</span><span class="n">series</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+		<span class="k">end do</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">pllegend</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">,</span><span class="n">opt</span><span class="p">,</span><span class="n">cornerl</span><span class="p">,</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="p">,</span><span class="n">plotWidth</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">bg_color</span><span class="p">,</span><span class="n">bb_color</span><span class="p">,</span><span class="n">bb_style</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">lnrow</span><span class="p">,</span><span class="n">lncol</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">opts</span><span class="p">,</span><span class="n">text_offset</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">text_scale</span><span class="p">,</span><span class="n">text_spacing</span><span class="p">,</span><span class="n">text_justification</span><span class="p">,</span><span class="n">text_colors</span><span class="p">,</span><span class="n">series</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">box_colors</span><span class="p">,</span><span class="n">box_patterns</span><span class="p">,</span><span class="n">box_scales</span><span class="p">,</span><span class="n">box_line_widths</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">line_colors</span><span class="p">,</span><span class="n">line_styles</span><span class="p">,</span><span class="n">lwidths</span><span class="p">,</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">mark_colors</span><span class="p">,</span><span class="n">mscales</span><span class="p">,</span><span class="n">mcounts</span><span class="p">,</span><span class="n">mark_styles</span><span class="p">)</span>
+		
+	<span class="k">contains</span>
+<span class="k">	</span>
+<span class="k">		function </span><span class="n">getCorner</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+			<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">text</span>
+			<span class="kt">integer</span><span class="kd">::</span><span class="n">code</span>
+			
+			<span class="n">code</span> <span class="o">=</span> <span class="n">PL_POSITION_INSIDE</span>
+			<span class="k">if</span><span class="p">(</span> <span class="n">startsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">+</span><span class="n">PL_POSITION_TOP</span>
+			<span class="k">if</span><span class="p">(</span> <span class="n">startsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">+</span><span class="n">PL_POSITION_BOTTOM</span>
+			<span class="k">if</span><span class="p">(</span>   <span class="n">endsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;right&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">+</span><span class="n">PL_POSITION_RIGHT</span>
+			<span class="k">if</span><span class="p">(</span>   <span class="n">endsWith</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;left&#39;</span> <span class="p">)</span> <span class="p">)</span> <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">+</span><span class="n">PL_POSITION_LEFT</span>
+		<span class="k">end function </span><span class="n">getCorner</span>
+	
+	<span class="k">end subroutine </span><span class="n">legend</span>
+
+	<span class="c">!=====================!</span>
+	<span class="c">!= Plotting Routines =!</span>
+	<span class="c">!=====================!</span>
+
+	<span class="k">subroutine </span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">markColor</span><span class="p">,</span><span class="n">markStyle</span><span class="p">,</span><span class="n">markSize</span><span class="p">)</span>
+		<span class="c">!! Create scatter plot of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">c</span>
+			<span class="c">!! Data for smooth coloring</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">s</span>
+			<span class="c">!! Data for marker scaling</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markColor</span>
+			<span class="c">!! Color of markers; overridden by z</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markStyle</span>
+			<span class="c">!! Style of markers</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markSize</span>
+			<span class="c">!! Size of markers</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">cb</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="kd">::</span><span class="n">code</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">x</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">y</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">markColor</span><span class="p">)</span>
+		<span class="n">code</span> <span class="o">=</span> <span class="n">getSymbolCode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markStyle</span><span class="p">))</span> <span class="n">code</span> <span class="o">=</span> <span class="n">getSymbolCode</span><span class="p">(</span><span class="n">markStyle</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markSize</span><span class="p">))</span> <span class="k">call </span><span class="n">plssym</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="kt">real</span><span class="p">(</span><span class="n">markSize</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">mixval</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+		<span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">call </span><span class="n">plcol1</span><span class="p">(</span> <span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="n">cb</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">cb</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">cb</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">call </span><span class="n">plschr</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="n">s</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+			<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">call </span><span class="n">plssym</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="n">s</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+			<span class="k">call </span><span class="n">plptex</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.5_plflt</span><span class="p">,</span><span class="n">code</span><span class="p">)</span>
+		<span class="k">end do</span>
+<span class="k">		call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">scatter</span>
+
+	<span class="k">subroutine </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">,</span><span class="n">markColor</span><span class="p">,</span><span class="n">markStyle</span><span class="p">,</span><span class="n">markSize</span><span class="p">)</span>
+		<span class="c">!! Plot data using lines and or markers</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-data for plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-data for plot</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineColor</span>
+			<span class="c">!! Color of line</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineStyle</span>
+			<span class="c">!! Style of line; &#39;&#39; for no line</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineWidth</span>
+			<span class="c">!! Width of line</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markColor</span>
+			<span class="c">!! Color of markers, if any</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markStyle</span>
+			<span class="c">!! Style of markers; &#39;&#39; or absent for none</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">markSize</span>
+			<span class="c">!! Size of markers, if any</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="kd">::</span><span class="n">code</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">x</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">y</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">lineColor</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">))</span> <span class="k">call </span><span class="n">plwidth</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">setLineStyle</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">lineStyle</span><span class="o">/=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">call </span><span class="n">plline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+		<span class="k">else</span>
+<span class="k">			call </span><span class="n">plline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		call </span><span class="n">resetPen</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">markColor</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markSize</span><span class="p">))</span> <span class="k">call </span><span class="n">plssym</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="kt">real</span><span class="p">(</span><span class="n">markSize</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">markStyle</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			</span><span class="n">code</span> <span class="o">=</span> <span class="n">getSymbolCode</span><span class="p">(</span><span class="n">markStyle</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">markStyle</span><span class="o">/=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">				do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+					<span class="k">call </span><span class="n">plptex</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="mf">0.5_plflt</span><span class="p">,</span><span class="n">code</span><span class="p">)</span>
+				<span class="k">end do</span>
+<span class="k">			end if</span>
+<span class="k">		end if</span>
+<span class="k">		call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">plot</span>
+
+	<span class="k">subroutine </span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
+		<span class="c">!! Plot contour lines</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">z</span>
+			<span class="c">!! Data for contouring</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">N</span>
+			<span class="c">!! Number of levels to use in contour</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineColor</span>
+			<span class="c">!! Color of contour lines</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineStyle</span>
+			<span class="c">!! Style of contour lines</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineWidth</span>
+			<span class="c">!! Width of contour lines</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">zl</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">edge</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">Nl</span><span class="p">,</span><span class="n">k</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">x</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">y</span>
+		<span class="n">zl</span> <span class="o">=</span> <span class="n">z</span>
+		<span class="n">Nl</span> <span class="o">=</span> <span class="mi">20</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="n">Nl</span> <span class="o">=</span> <span class="n">N</span>
+		<span class="n">edge</span> <span class="o">=</span> <span class="p">[(</span> <span class="kt">real</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">Nl</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">maxval</span><span class="p">(</span><span class="n">zl</span><span class="p">)</span><span class="o">-</span><span class="nb">minval</span><span class="p">(</span><span class="n">zl</span><span class="p">))</span><span class="o">+</span><span class="nb">minval</span><span class="p">(</span><span class="n">zl</span><span class="p">)</span> <span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">Nl</span><span class="p">)]</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">lineColor</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">))</span> <span class="k">call </span><span class="n">setLineStyle</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">))</span> <span class="k">call </span><span class="n">plwidth</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		
+		<span class="k">call </span><span class="n">plcont</span><span class="p">(</span><span class="n">zl</span><span class="p">,</span><span class="n">edge</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">contour</span>
+
+	<span class="k">subroutine </span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="c">!! Plot filled contours</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-coordinates of data</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">z</span>
+			<span class="c">!! Data for contouring</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">N</span>
+			<span class="c">!! Number of levels to use in contour</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">zl</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">edge</span>
+		
+		<span class="kt">character</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="kd">::</span><span class="n">defined</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">fill_width</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">cont_width</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">cont_color</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">Nl</span><span class="p">,</span><span class="n">k</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">x</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">y</span>
+		<span class="n">zl</span> <span class="o">=</span> <span class="n">z</span>
+		<span class="n">Nl</span> <span class="o">=</span> <span class="mi">20</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="n">Nl</span> <span class="o">=</span> <span class="n">N</span>
+		
+		<span class="n">edge</span> <span class="o">=</span> <span class="p">[(</span> <span class="kt">real</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">Nl</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">plflt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">maxval</span><span class="p">(</span><span class="n">zl</span><span class="p">)</span><span class="o">-</span><span class="nb">minval</span><span class="p">(</span><span class="n">zl</span><span class="p">))</span><span class="o">+</span><span class="nb">minval</span><span class="p">(</span><span class="n">zl</span><span class="p">)</span> <span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">Nl</span><span class="p">)]</span>
+		
+		<span class="n">fill_width</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0_plflt</span>
+		<span class="n">cont_width</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0_plflt</span>
+		<span class="n">cont_color</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+		
+		<span class="k">call </span><span class="n">plshades</span><span class="p">(</span><span class="n">zl</span><span class="p">,</span><span class="n">defined</span><span class="p">,</span><span class="nb">minval</span><span class="p">(</span><span class="n">xl</span><span class="p">),</span><span class="nb">maxval</span><span class="p">(</span><span class="n">xl</span><span class="p">),</span><span class="nb">minval</span><span class="p">(</span><span class="n">yl</span><span class="p">),</span><span class="nb">maxval</span><span class="p">(</span><span class="n">yl</span><span class="p">),</span> <span class="p">&amp;</span>
+			<span class="p">&amp;</span> <span class="n">edge</span><span class="p">,</span><span class="n">fill_width</span><span class="p">,</span><span class="n">cont_color</span><span class="p">,</span><span class="n">cont_width</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">contourf</span>
+
+	<span class="k">subroutine </span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">scaling</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
+		<span class="c">!! Plot vectors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-positions of vectors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-positions of vectors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">u</span>
+			<span class="c">!! u-components of vectors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">v</span>
+			<span class="c">!! v-components of vectors</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">scaling</span>
+			<span class="c">!! Scaling of vectors</span>
+			<span class="c">!! &lt; 0 = Automatic, then scaled</span>
+			<span class="c">!!   0 = Automatic</span>
+			<span class="c">!! &gt; 0 = Directly scaled</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineColor</span>
+			<span class="c">!! Color of vectors</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineStyle</span>
+			<span class="c">!! Style of vectors&#39; lines</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineWidth</span>
+			<span class="c">!! Width of vectors&#39; lines</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">ul</span><span class="p">,</span><span class="n">vl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">)</span><span class="kd">::</span><span class="n">scalingl</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">x</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">y</span>
+		<span class="n">ul</span> <span class="o">=</span> <span class="n">u</span>
+		<span class="n">vl</span> <span class="o">=</span> <span class="n">v</span>
+		<span class="n">scalingl</span> <span class="o">=</span> <span class="mf">0.0_plflt</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">scaling</span><span class="p">))</span> <span class="n">scalingl</span> <span class="o">=</span> <span class="n">scaling</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">lineColor</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">))</span> <span class="k">call </span><span class="n">setLineStyle</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">))</span> <span class="k">call </span><span class="n">plwidth</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		
+		<span class="k">call </span><span class="n">plvect</span><span class="p">(</span><span class="n">ul</span><span class="p">,</span><span class="n">vl</span><span class="p">,</span><span class="n">scalingl</span><span class="p">,</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">quiver</span>
+
+	<span class="c">!========================!</span>
+	<span class="c">!= Drawing Pen Routines =!</span>
+	<span class="c">!========================!</span>
+
+	<span class="k">subroutine </span><span class="n">resetPen</span>
+		<span class="c">!! Reset pen to default state</span>
+		
+		<span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">setLineStyle</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">plwidth</span><span class="p">(</span><span class="mf">0.5_plflt</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">plschr</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="kt">real</span><span class="p">(</span><span class="n">fontScale</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+		<span class="k">call </span><span class="n">plssym</span><span class="p">(</span><span class="mf">0.0_plflt</span><span class="p">,</span><span class="kt">real</span><span class="p">(</span><span class="n">fontScale</span><span class="p">,</span><span class="n">plflt</span><span class="p">))</span>
+	<span class="k">end subroutine </span><span class="n">resetPen</span>
+
+	<span class="k">subroutine </span><span class="n">setLineStyle</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+		<span class="c">!! Set the current pen line style</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">style</span>
+			<span class="c">!! Style to set</span>
+		
+		<span class="k">call </span><span class="n">pllsty</span><span class="p">(</span><span class="n">getLineStyleCode</span><span class="p">(</span><span class="n">style</span><span class="p">))</span>
+	<span class="k">end subroutine </span><span class="n">setLineStyle</span>
+
+	<span class="k">function </span><span class="n">getLineStyleCode</span><span class="p">(</span><span class="n">style</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">style</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">code</span>
+		
+		<span class="k">select case</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">3</span>
+		<span class="k">case </span><span class="n">default</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">end select</span>
+<span class="k">	end function </span><span class="n">getLineStyleCode</span>
+
+	<span class="k">function </span><span class="n">getSymbolCode</span><span class="p">(</span><span class="n">style</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+		<span class="c">!! Return the code for a symbol style</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">style</span>
+			<span class="c">!! Style desired</span>
+		<span class="kt">character</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="kd">::</span><span class="n">code</span>
+		
+		<span class="k">select case</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(140)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(141)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(142)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(143)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(144)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(850)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(852)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(853)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(854)&#39;</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(855)&#39;</span>
+		<span class="k">case </span><span class="n">default</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;#(143)&#39;</span>
+		<span class="k">end select</span>
+<span class="k">	end function </span><span class="n">getSymbolCode</span>
+
+	<span class="k">subroutine </span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+		<span class="c">!! Set the current pen color</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">color</span>
+			<span class="c">!! Name of color to set</span>
+		
+		<span class="k">call </span><span class="n">plcol0</span><span class="p">(</span><span class="n">getColorCode</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>
+	<span class="k">end subroutine </span><span class="n">setColor</span>
+
+	<span class="k">function </span><span class="n">getColorCode</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">color</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">code</span>
+		
+		<span class="k">select case</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">3</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">4</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+			<span class="n">code</span><span class="o">=</span> <span class="mi">5</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">6</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+			<span class="n">code</span><span class="o">=</span> <span class="mi">7</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">8</span>
+		<span class="k">case </span><span class="n">default</span>
+			<span class="n">code</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="k">end select</span>
+<span class="k">		</span>
+<span class="k">		</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">-</span><span class="mi">1</span>
+	<span class="k">end function </span><span class="n">getColorCode</span>
+
+	<span class="c">!===========================!</span>
+	<span class="c">!= Library Status Routines =!</span>
+	<span class="c">!===========================!</span>
+
+	<span class="k">subroutine </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">fileName</span><span class="p">,</span><span class="n">fontScaling</span><span class="p">,</span><span class="n">colormap</span><span class="p">)</span>
+		<span class="c">!! Setup PlPlot library, optionally overriding defaults</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">device</span>
+			<span class="c">!! Output device to use</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">fileName</span>
+			<span class="c">!! Name of file(s) to write to</span>
+			<span class="c">!! %n will be replaced with the figure number</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">fontScaling</span>
+			<span class="c">!! Font scaling relative to default value</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">colormap</span>
+			<span class="c">!! Colormap to use</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="n">isSetup</span><span class="p">)</span> <span class="k">return</span>
+<span class="k">		</span><span class="n">isSetup</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">plsdev</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+		<span class="k">else</span>
+<span class="k">			call </span><span class="n">plsdev</span><span class="p">(</span><span class="n">default_dev</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">plsfam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">fileName</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">plsfnam</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+		<span class="k">else</span>
+<span class="k">			call </span><span class="n">plsfnam</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">setIndexedColors</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">colormap</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">setColormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+		<span class="k">else</span>
+<span class="k">			call </span><span class="n">setColormap</span><span class="p">(</span><span class="s1">&#39;CoolWarm&#39;</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">fontScaling</span><span class="p">))</span> <span class="n">fontScale</span> <span class="o">=</span> <span class="n">fontScaling</span>
+
+		<span class="k">call </span><span class="n">plinit</span>
+		
+		<span class="k">call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine </span><span class="n">setup</span>
+
+	<span class="k">subroutine </span><span class="n">show</span>
+		<span class="c">!! Show the plots end finialize the PlPlot library</span>
+		<span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">didShow</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">			call </span><span class="n">plend</span>
+			<span class="n">didShow</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+		<span class="k">end if</span>
+<span class="k">	end subroutine </span><span class="n">show</span>
+
+	<span class="c">!======================!</span>
+	<span class="c">!= Color Map Routines =!</span>
+	<span class="c">!======================!</span>
+
+	<span class="k">subroutine </span><span class="n">setIndexedColors</span>
+		<span class="c">!! Setup the indexed colors</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="kd">::</span><span class="n">rgb</span>
+		
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="c">! White</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]</span> <span class="c">! Black</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]</span> <span class="c">! Red</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">4</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]</span> <span class="c">! Green</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">5</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="c">! Blue</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">6</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="c">! Cyan</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">7</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="c">! Magenta</span>
+		<span class="n">rgb</span><span class="p">(</span><span class="mi">8</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="c">! Yellow</span>
+		
+		<span class="k">call </span><span class="n">plscmap0</span><span class="p">(</span><span class="n">rgb</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">rgb</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">rgb</span><span class="p">(:,</span><span class="mi">3</span><span class="p">))</span>
+	<span class="k">end subroutine </span><span class="n">setIndexedColors</span>
+
+	<span class="k">subroutine </span><span class="n">setColormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+		<span class="c">!! Set the continuous colormap</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">colormap</span>
+			<span class="c">!! Name of colormap to use</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">plflt</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">i</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">v</span>
+		
+		<span class="k">select case</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;CoolWarm&#39;</span><span class="p">)</span>
+			<span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="mi">24</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">19</span><span class="mf">5.0</span><span class="p">,</span><span class="mi">4</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span>
+			
+			<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">]</span>
+			<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">]</span>
+			<span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]</span>
+			
+			<span class="k">call </span><span class="n">plscmap1n</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plscmap1l</span><span class="p">(.</span><span class="n">false</span><span class="p">.,</span><span class="n">i</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;Gray&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_gray.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;BlueYellow&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_blue_yellow.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;BlueRed&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_blue_red.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;Radar&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_radar.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;HighFreq&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_highfreq.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">case</span><span class="p">(</span><span class="s1">&#39;LowFreq&#39;</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plspal1</span><span class="p">(</span><span class="s1">&#39;cmap1_lowfreq.pal&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">end select</span>
+<span class="k">	end subroutine </span><span class="n">setColormap</span>
+
+<span class="k">end module </span><span class="n">plplot_mod</span>
+</pre></div>
+
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-6">&copy; 2015 PlPlot Wrapper was written by Dr. Kyle Horne. </div>
+        <div class="col-md-6"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a>.</span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
