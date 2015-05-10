@@ -3,11 +3,12 @@ program main_prg
 	use plplot_mod
 	implicit none
 	
-	call setup(colormap='BlueRed')
+	call setup(colormap='BlueRed',whiteOnBlack=.true.)
 	call testPlot
 	call testScatter
 	call testContour
 	call testLegend
+	call testQuiver
 	call show
 	
 contains
@@ -87,6 +88,7 @@ contains
 		call xylim(mixval(x),mixval(y))
 		call contourf(x,y,z,50)
 		call contour(x,y,z,10)
+		call colorbar(z,5)
 		call ticks()
 		call labels('x','y','')
 	end subroutine testContour
@@ -111,12 +113,36 @@ contains
 			& markStyle='+',markColor='green',markSize=1.0_wp)
 		
 		! [name,textColor,lineStyle,lineColor,markStyle,markColor]
-		series(1,:) = [character(32)::'f(x)=x#u2#d-1','k','-','r','.','c']
-		series(2,:) = [character(32)::'g(x)=-x#u2#d','k',':','b','+','g']
+		series(1,:) = [character(32)::'f(x)=x#u2#d-1','','-','r','.','c']
+		series(2,:) = [character(32)::'g(x)=-x#u2#d','',':','b','+','g']
 		
 		call legend('center left',series)
 		call ticks()
 		call labels('x','y','')
 	end subroutine testLegend
+
+	subroutine testQuiver
+		integer,parameter::N = 20
+		real(wp),dimension(N)::x,y
+		real(wp),dimension(N,N)::u,v,m
+		integer::i,j
+		
+		x = 20.0_wp*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-10.0_wp
+		y = 20.0_wp*[( real(j-1,wp)/real(N-1,wp) , j=1,N )]-10.0_wp
+		forall(i=1:N,j=1:N)
+			u(i,j) = -y(j)
+			v(i,j) =  x(i)
+			m(i,j) = sqrt(u(i,j)**2+v(i,j)**2)
+		end forall
+		
+		call figure()
+		
+		call subplot(1,1,1,aspect=1.0_wp)
+		call xylim(mixval(x),mixval(y))
+		call quiver(x,y,u,v,c=m,s=m,scaling=2.0_wp,lineWidth=2.0_wp)
+		call colorbar(m,10)
+		call ticks()
+		call labels('x','y','')
+	end subroutine testQuiver
 
 end program main_prg
