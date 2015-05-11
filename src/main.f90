@@ -3,7 +3,7 @@ program main_prg
 	use plplot_mod
 	implicit none
 	
-	call setup(colormap='CoolWarm',whiteOnBlack=.true.)
+	call setup(colormap='CoolWarm',whiteOnBlack=.false.)
 !~ 	call testPlot
 !~ 	call testScatter
 !~ 	call testContour
@@ -97,7 +97,7 @@ contains
 	subroutine testLegend
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
-		character(32),dimension(2,6)::series
+		character(32),dimension(3,7)::series
 		integer::k
 		
 		x = [( real(k-1,wp)/real(N-1,wp) , k=1,N )]
@@ -114,8 +114,9 @@ contains
 			& markStyle='+',markColor='green',markSize=1.0_wp)
 		
 		! [name,textColor,lineStyle,lineColor,markStyle,markColor]
-		series(1,:) = [character(32)::'f(x)=x#u2#d-1','','-','r','.','c']
-		series(2,:) = [character(32)::'g(x)=-x#u2#d','',':','b','+','g']
+		series(1,:) = [character(32)::'f(x)=x#u2#d-1','','-','r','.','c','']
+		series(2,:) = [character(32)::'g(x)=-x#u2#d','',':','b','+','g','']
+		series(3,:) = [character(32)::'Box','','','','','','r']
 		
 		call legend('center left',series)
 		call ticks()
@@ -156,9 +157,15 @@ contains
 		
 		call figure()
 		
-		call subplot(1,1,1)
-		call xylim(mixval(x)+[-0.1_wp,0.1_wp],mixval(y)+[0.0_wp,0.1_wp])
+		call subplot(1,2,1)
+		call xylim(mixval(x)+[-0.1_wp,0.1_wp],mixval(y)+[ 0.0_wp,0.1_wp])
 		call bar(x,y,c=y,relWidth=1.0_wp)
+		call ticks()
+		call labels('x','y','')
+		
+		call subplot(1,2,2)
+		call xylim(mixval(y)+[ 0.0_wp,0.1_wp],mixval(x)+[-0.1_wp,0.1_wp])
+		call barh(x,y,c=y,relWidth=1.0_wp)
 		call ticks()
 		call labels('x','y','')
 	end subroutine testBar

@@ -206,7 +206,7 @@ contains
 			!! Corner for legend
 		character(*),dimension(:,:),intent(in)::series
 			!! Data series in rows
-			!! [name,textColor,lineStyle,lineColor,markStyle,markColor]
+			!! [name,textColor,lineStyle,lineColor,markStyle,markColor,boxColor]
 		real(wp),dimension(:),intent(in),optional::lineWidths
 			!! Line widths for the plots
 		real(wp),dimension(:),intent(in),optional::markScales
@@ -237,6 +237,7 @@ contains
 		do k=1,size(series,1)
 			if(series(k,3)/='') opts(k) = ior(opts(k),PL_LEGEND_LINE)
 			if(series(k,5)/='') opts(k) = ior(opts(k),PL_LEGEND_SYMBOL)
+			if(series(k,7)/='') opts(k) = ior(opts(k),PL_LEGEND_COLOR_BOX)
 		end do
 		
 		call doText
@@ -281,9 +282,11 @@ contains
 		end subroutine doText
 	
 		subroutine doBoxes
-			box_colors = 1
+			do k=1,size(series,1)
+				box_colors = getColorCode(series(k,7))
+			end do
 			box_patterns = 0
-			box_scales = 1.0_plflt
+			box_scales = 0.5_plflt
 			box_line_widths = 0.0_plflt
 		end subroutine doBoxes
 	
@@ -564,13 +567,21 @@ contains
 	end subroutine quiver
 
 	subroutine bar(x,y,c,relWidth,barColor,lineColor,lineWidth)
+		!! Create a bar graph
 		real(wp),dimension(:),intent(in)::x
+			!! x-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::y
+			!! y-positions of the bars' tops
 		real(wp),dimension(:),intent(in),optional::c
+			!! Color scale for bars
 		real(wp),intent(in),optional::relWidth
+			!! Relative width of bars
 		character(*),intent(in),optional::barColor
+			!! Color of bar fills
 		character(*),intent(in),optional::lineColor
+			!! Color of lines around bars
 		real(wp),optional::lineWidth
+			!! Width of lines around bars
 		
 		real(plflt),dimension(4)::xl,yl
 		real(plflt),dimension(2)::cb
@@ -598,7 +609,49 @@ contains
 		call resetPen
 	end subroutine bar
 
-	! barh
+	subroutine barh(y,x,c,relWidth,barColor,lineColor,lineWidth)
+		!! Create a bar graph
+		real(wp),dimension(:),intent(in)::y
+			!! y-positions of the bars' centers
+		real(wp),dimension(:),intent(in)::x
+			!! x-positions of the bars' tops
+		real(wp),dimension(:),intent(in),optional::c
+			!! Color scale for bars
+		real(wp),intent(in),optional::relWidth
+			!! Relative width of bars
+		character(*),intent(in),optional::barColor
+			!! Color of bar fills
+		character(*),intent(in),optional::lineColor
+			!! Color of lines around bars
+		real(wp),optional::lineWidth
+			!! Width of lines around bars
+		
+		real(plflt),dimension(4)::xl,yl
+		real(plflt),dimension(2)::cb
+		real(plflt)::dy,dys
+		integer::k
+		
+		if(present(c)) cb = mixval(c)
+		dys = 0.8_wp
+		if(present(relWidth)) dys = relWidth
+		dy = dys*(y(2)-y(1))/2.0_wp
+		
+		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		
+		do k=1,size(x)
+			yl = [y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy]
+			xl = [0.0_wp,x(k),x(k),0.0_wp]
+			
+			if(present(barColor)) call setColor(barColor)
+			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			call plfill(xl,yl)
+			
+			if(present(lineColor)) call setColor(lineColor)
+			call plline(xl,yl)
+		end do
+		call resetPen
+	end subroutine barh
+
 	! fill_between
 	! fill_betweenx
 	! hist
