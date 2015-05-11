@@ -205,7 +205,7 @@ contains
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
 		!! Create legend for plot data.  
-		!! ![Example-1](../../examples/example-4.svg)
+		!! ![Example-1](../media/example-4.svg)
 		!!
 		!! FIXME: Text sizing should be modifiable
 		character(*),intent(in)::corner
@@ -337,7 +337,7 @@ contains
 
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
 		!! Create scatter plot of data.  
-		!! ![Example-1](../../examples/example-2.svg)
+		!! ![Example-1](../media/example-2.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -378,7 +378,7 @@ contains
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
 		!! Plot data using lines and or markers.  
-		!! ![Example-1](../../examples/example-1.svg)
+		!! ![Example-1](../media/example-1.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-data for plot
 		real(wp),dimension(:),intent(in)::y
@@ -428,7 +428,7 @@ contains
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
 		!! Plot contour lines.  
-		!! ![Example-1](../../examples/example-3.svg)
+		!! ![Example-1](../media/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -467,7 +467,7 @@ contains
 
 	subroutine contourf(x,y,z,N)
 		!! Plot filled contours.  
-		!! ![Example-1](../../examples/example-3.svg)
+		!! ![Example-1](../media/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -507,7 +507,7 @@ contains
 
 	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
 		!! Plot vectors.  
-		!! ![Example-1](../../examples/example-5.svg)
+		!! ![Example-1](../media/example-5.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of vectors
 		real(wp),dimension(:),intent(in)::y
@@ -579,7 +579,7 @@ contains
 
 	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph.  
-		!! ![Example-1](../../examples/example-6.svg)
+		!! ![Example-1](../media/example-6.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::y
@@ -626,7 +626,7 @@ contains
 
 	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph.  
-		!! ![Example-1](../../examples/example-6.svg)
+		!! ![Example-1](../media/example-6.svg)
 		real(wp),dimension(:),intent(in)::y
 			!! y-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::x
@@ -673,7 +673,7 @@ contains
 
 	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
 		!! Fill space between two lines
-		!! ![Example-1](../../examples/example-7.svg)
+		!! ![Example-1](../media/example-7.svg)
 		real(wp),dimension(:),intent(in)::x
 		real(wp),dimension(:),intent(in)::y1
 		real(wp),dimension(:),intent(in),optional::y0

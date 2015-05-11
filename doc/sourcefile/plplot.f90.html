@@ -360,7 +360,7 @@
 
 	<span class="k">subroutine </span><span class="n">legend</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span><span class="n">series</span><span class="p">,</span><span class="n">lineWidths</span><span class="p">,</span><span class="n">markScales</span><span class="p">,</span><span class="n">markCounts</span><span class="p">,</span><span class="n">ncol</span><span class="p">)</span>
 		<span class="c">!! Create legend for plot data.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-4.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-4.svg)</span>
 		<span class="c">!!</span>
 		<span class="c">!! FIXME: Text sizing should be modifiable</span>
 		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">corner</span>
@@ -492,7 +492,7 @@
 
 	<span class="k">subroutine </span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">markColor</span><span class="p">,</span><span class="n">markStyle</span><span class="p">,</span><span class="n">markSize</span><span class="p">)</span>
 		<span class="c">!! Create scatter plot of data.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-2.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-2.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-coordinates of data</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -533,7 +533,7 @@
 
 	<span class="k">subroutine </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">,</span><span class="n">markColor</span><span class="p">,</span><span class="n">markStyle</span><span class="p">,</span><span class="n">markSize</span><span class="p">)</span>
 		<span class="c">!! Plot data using lines and or markers.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-1.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-1.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-data for plot</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -583,7 +583,7 @@
 
 	<span class="k">subroutine </span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
 		<span class="c">!! Plot contour lines.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-3.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-3.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-coordinates of data</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -622,7 +622,7 @@
 
 	<span class="k">subroutine </span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
 		<span class="c">!! Plot filled contours.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-3.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-3.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-coordinates of data</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -662,7 +662,7 @@
 
 	<span class="k">subroutine </span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">scaling</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
 		<span class="c">!! Plot vectors.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-5.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-5.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-positions of vectors</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -734,7 +734,7 @@
 
 	<span class="k">subroutine </span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">relWidth</span><span class="p">,</span><span class="n">fillColor</span><span class="p">,</span><span class="n">fillPattern</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
 		<span class="c">!! Create a bar graph.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-6.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-6.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 			<span class="c">!! x-positions of the bars&#39; centers</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
@@ -781,7 +781,7 @@
 
 	<span class="k">subroutine </span><span class="n">barh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">relWidth</span><span class="p">,</span><span class="n">fillColor</span><span class="p">,</span><span class="n">fillPattern</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
 		<span class="c">!! Create a bar graph.  </span>
-		<span class="c">!! ![Example-1](../../examples/example-6.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-6.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
 			<span class="c">!! y-positions of the bars&#39; centers</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
@@ -828,7 +828,7 @@
 
 	<span class="k">subroutine </span><span class="n">fillBetween</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">fillColor</span><span class="p">,</span><span class="n">fillPattern</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
 		<span class="c">!! Fill space between two lines</span>
-		<span class="c">!! ![Example-1](../../examples/example-7.svg)</span>
+		<span class="c">!! ![Example-1](../media/example-7.svg)</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y1</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">y0</span>
