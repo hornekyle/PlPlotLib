@@ -37,8 +37,11 @@ contains
 	end function mixval
 
 	function startsWith(text,str) result(o)
+		!! Test if text starts with str
 		character(*),intent(in)::text
+			!! Text to search
 		character(*),intent(in)::str
+			!! String to look for
 		logical::o
 		integer::k
 		
@@ -47,8 +50,11 @@ contains
 	end function startsWith
 
 	function endsWith(text,str) result(o)
+		!! Test if text ends with str
 		character(*),intent(in)::text
+			!! Text to search
 		character(*),intent(in)::str
+			!! String to look for
 		logical::o
 		integer::k
 		
@@ -545,7 +551,6 @@ contains
 		if(present(lineStyle)) call setLineStyle(lineStyle)
 		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
 		
-!~ 		call plvect(ul,vl,scalingl,xl,yl)
 		do j=1,size(u,2)
 			do i=1,size(u,1)
 				mag = norm2([ul(i,j),vl(i,j)])
@@ -557,6 +562,58 @@ contains
 		
 		call resetPen
 	end subroutine quiver
+
+	subroutine bar(x,y,c,relWidth,barColor,lineColor,lineWidth)
+		real(wp),dimension(:),intent(in)::x
+		real(wp),dimension(:),intent(in)::y
+		real(wp),dimension(:),intent(in),optional::c
+		real(wp),intent(in),optional::relWidth
+		character(*),intent(in),optional::barColor
+		character(*),intent(in),optional::lineColor
+		real(wp),optional::lineWidth
+		
+		real(plflt),dimension(4)::xl,yl
+		real(plflt),dimension(2)::cb
+		real(plflt)::dx,dxs
+		integer::k
+		
+		if(present(c)) cb = mixval(c)
+		dxs = 0.8_wp
+		if(present(relWidth)) dxs = relWidth
+		dx = dxs*(x(2)-x(1))/2.0_wp
+		
+		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		
+		do k=1,size(x)
+			xl = [x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx]
+			yl = [0.0_wp,y(k),y(k),0.0_wp]
+			
+			if(present(barColor)) call setColor(barColor)
+			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			call plfill(xl,yl)
+			
+			if(present(lineColor)) call setColor(lineColor)
+			call plline(xl,yl)
+		end do
+		call resetPen
+	end subroutine bar
+
+	! barh
+	! fill_between
+	! fill_betweenx
+	! hist
+	! hist2d
+	! hexbin
+	! streamplot
+	
+	! triplot
+	! tricolor
+	! tricontour
+	! tricontourf
+	
+	! xyzlim
+	! surface
+	! plot3d
 
 	!========================!
 	!= Drawing Pen Routines =!
@@ -581,7 +638,9 @@ contains
 	end subroutine setLineStyle
 
 	function getLineStyleCode(style) result(code)
+		!! Return the code for a line style
 		character(*),intent(in)::style
+			!! Style desired
 		integer::code
 		
 		select case(style)
@@ -665,6 +724,10 @@ contains
 			code= 7
 		case('y','yellow')
 			code = 8
+		case('fg')
+			code = 2
+		case('bg')
+			code = 1
 		case default
 			code = 2
 		end select
@@ -715,8 +778,9 @@ contains
 			call setColormap('CoolWarm')
 		end if
 		
+		call plfontld(0)
 		if(present(fontScaling)) fontScale = fontScaling
-
+		
 		call plinit
 		
 		call resetPen

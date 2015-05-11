@@ -3,12 +3,13 @@ program main_prg
 	use plplot_mod
 	implicit none
 	
-	call setup(colormap='BlueRed',whiteOnBlack=.true.)
-	call testPlot
-	call testScatter
-	call testContour
-	call testLegend
-	call testQuiver
+	call setup(colormap='CoolWarm',whiteOnBlack=.true.)
+!~ 	call testPlot
+!~ 	call testScatter
+!~ 	call testContour
+!~ 	call testLegend
+!~ 	call testQuiver
+	call testBar
 	call show
 	
 contains
@@ -144,5 +145,22 @@ contains
 		call ticks()
 		call labels('x','y','')
 	end subroutine testQuiver
+
+	subroutine testBar
+		integer,parameter::N = 21
+		real(wp),dimension(N)::x,y
+		integer::i
+		
+		x = 2.0_wp*PI*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-PI
+		y = exp(-x**2)
+		
+		call figure()
+		
+		call subplot(1,1,1)
+		call xylim(mixval(x)+[-0.1_wp,0.1_wp],mixval(y)+[0.0_wp,0.1_wp])
+		call bar(x,y,c=y,relWidth=1.0_wp)
+		call ticks()
+		call labels('x','y','')
+	end subroutine testBar
 
 end program main_prg
