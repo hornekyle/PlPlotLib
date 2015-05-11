@@ -9,7 +9,8 @@ program main_prg
 !~ 	call testContour
 !~ 	call testLegend
 !~ 	call testQuiver
-	call testBar
+!~ 	call testBar
+	call testFillBetween
 	call show
 	
 contains
@@ -165,9 +166,28 @@ contains
 		
 		call subplot(1,2,2)
 		call xylim(mixval(y)+[ 0.0_wp,0.1_wp],mixval(x)+[-0.1_wp,0.1_wp])
-		call barh(x,y,c=y,relWidth=1.0_wp)
+		call barh(x,y,fillColor='r',relWidth=1.0_wp)
 		call ticks()
 		call labels('x','y','')
 	end subroutine testBar
+
+	subroutine testFillBetween
+		integer,parameter::N = 51
+		real(wp),dimension(N)::x,y1,y2
+		integer::k
+		
+		x = 6.0_wp*[( real(k-1,wp)/real(N-1,wp) , k=1,N )]-3.0_wp
+		y1 = x**2-1.0_wp
+		y2 = x**3-1.0_wp
+		
+		call figure()
+		call subplot(1,1,1)
+		call xylim(mixval(x),mixval([y1,y2]))
+		call fillBetween(x,y1,y2,fillColor='c',fillPattern='\',lineWidth=2.0_wp)
+		call plot(x,y1,lineColor='k',lineWidth=3.0_wp)
+		call plot(x,y2,lineColor='k',lineWidth=3.0_wp)
+		call ticks(color='b',lineWidth=3.0_wp)
+		call labels('x','y','f(x)=x#u2#d-1',color='r')
+	end subroutine testFillBetween
 
 end program main_prg

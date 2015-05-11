@@ -141,12 +141,13 @@ contains
 		end if
 		
 		if(present(color)) call setColor(color)
-		if(present(linewidth)) call plwidth(real(linewidth,plflt))
+		if(present(linewidth)) call setLineWidth(lineWidth)
 		
 		call plbox(xopts,dxl,0,yopts,dyl,0)
+		call resetPen
 	end subroutine ticks
 
-	subroutine labels(xLabel,yLabel,plotLabel)
+	subroutine labels(xLabel,yLabel,plotLabel,color)
 		!! Set x,y and plot labels
 		character(*),intent(in)::xLabel
 			!! Label for x-axis
@@ -154,8 +155,11 @@ contains
 			!! Label for x-axis
 		character(*),intent(in)::plotLabel
 			!! Label entire plot
+		character(*),intent(in),optional::color
 		
+		if(present(color)) call setColor(color)
 		call pllab(xLabel,yLabel,plotLabel)
+		call resetPen
 	end subroutine labels
 
 	subroutine colorbar(z,N,leftLabel,rightLabel)
@@ -396,7 +400,7 @@ contains
 		yl = y
 		
 		if(present(lineColor)) call setColor(lineColor)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		if(present(lineStyle)) then
 			call setLineStyle(lineStyle)
 			if(lineStyle/='') call plline(x,y)
@@ -450,7 +454,7 @@ contains
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		call plcont(zl,edge,x,y)
 		call resetPen
@@ -552,7 +556,7 @@ contains
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do j=1,size(u,2)
 			do i=1,size(u,1)
@@ -566,7 +570,7 @@ contains
 		call resetPen
 	end subroutine quiver
 
-	subroutine bar(x,y,c,relWidth,barColor,lineColor,lineWidth)
+	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of the bars' centers
@@ -576,8 +580,10 @@ contains
 			!! Color scale for bars
 		real(wp),intent(in),optional::relWidth
 			!! Relative width of bars
-		character(*),intent(in),optional::barColor
+		character(*),intent(in),optional::fillColor
 			!! Color of bar fills
+		character(*),intent(in),optional::fillPattern
+			!! Pattern of bar fills
 		character(*),intent(in),optional::lineColor
 			!! Color of lines around bars
 		real(wp),optional::lineWidth
@@ -593,13 +599,14 @@ contains
 		if(present(relWidth)) dxs = relWidth
 		dx = dxs*(x(2)-x(1))/2.0_wp
 		
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
 			xl = [x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx]
 			yl = [0.0_wp,y(k),y(k),0.0_wp]
 			
-			if(present(barColor)) call setColor(barColor)
+			if(present(fillColor)) call setColor(fillColor)
+			if(present(fillPattern)) call setFillPattern(fillPattern)
 			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
 			call plfill(xl,yl)
 			
@@ -609,7 +616,7 @@ contains
 		call resetPen
 	end subroutine bar
 
-	subroutine barh(y,x,c,relWidth,barColor,lineColor,lineWidth)
+	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph
 		real(wp),dimension(:),intent(in)::y
 			!! y-positions of the bars' centers
@@ -619,8 +626,10 @@ contains
 			!! Color scale for bars
 		real(wp),intent(in),optional::relWidth
 			!! Relative width of bars
-		character(*),intent(in),optional::barColor
+		character(*),intent(in),optional::fillColor
 			!! Color of bar fills
+		character(*),intent(in),optional::fillPattern
+			!! Pattern of bar fills
 		character(*),intent(in),optional::lineColor
 			!! Color of lines around bars
 		real(wp),optional::lineWidth
@@ -636,13 +645,14 @@ contains
 		if(present(relWidth)) dys = relWidth
 		dy = dys*(y(2)-y(1))/2.0_wp
 		
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
 			yl = [y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy]
 			xl = [0.0_wp,x(k),x(k),0.0_wp]
 			
-			if(present(barColor)) call setColor(barColor)
+			if(present(fillColor)) call setColor(fillColor)
+			if(present(fillPattern)) call setFillPattern(fillPattern)
 			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
 			call plfill(xl,yl)
 			
@@ -652,7 +662,35 @@ contains
 		call resetPen
 	end subroutine barh
 
-	! fill_between
+	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
+		real(wp),dimension(:),intent(in)::x
+		real(wp),dimension(:),intent(in)::y1
+		real(wp),dimension(:),intent(in),optional::y0
+		character(*),intent(in),optional::fillColor
+		character(*),intent(in),optional::fillPattern
+		real(wp),intent(in),optional::lineWidth
+		
+		real(plflt),dimension(:),allocatable::xl,y1l,y0l
+		integer::N
+		
+		N = size(x)
+		
+		xl  = x
+		y1l = y1
+		if(present(y0)) then
+			y0l = y0
+		else
+			allocate(y0l(N))
+			y0l = 0.0_plflt
+		end if
+		
+		if(present(fillColor)) call setColor(fillColor)
+		if(present(fillPattern)) call setFillPattern(fillPattern)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		call plfill([xl(1:N:1),xl(N:1:-1)],[y1l(1:N:1),y0l(N:1:-1)])
+		call resetPen
+	end subroutine fillBetween
+
 	! fill_betweenx
 	! hist
 	! hist2d
@@ -677,10 +715,16 @@ contains
 		
 		call setColor('')
 		call setLineStyle('')
-		call plwidth(0.5_plflt)
+		call setLineWidth(0.5_wp)
 		call plschr(0.0_plflt,real(fontScale,plflt))
 		call plssym(0.0_plflt,real(fontScale,plflt))
 	end subroutine resetPen
+
+	subroutine setLineWidth(lineWidth)
+		real(wp),intent(in)::lineWidth
+		
+		call plwidth(real(lineWidth,plflt))
+	end subroutine setLineWidth
 
 	subroutine setLineStyle(style)
 		!! Set the current pen line style
@@ -739,6 +783,34 @@ contains
 			code = '#(143)'
 		end select
 	end function getSymbolCode
+
+	subroutine setFillPattern(style)
+		character(*),intent(in)::style
+		
+		call plpsty(getFillCode(style))
+	end subroutine setFillPattern
+
+	function getFillCode(style) result(code)
+		character(*),intent(in)::style
+		integer::code
+		
+		select case(style)
+		case('-')
+			code = 1
+		case('/')
+			code = 3
+		case('|')
+			code = 2
+		case('\')
+			code = 4
+		case('#')
+			code = 7
+		case('x')
+			code = 8
+		case default
+			code = 0
+		end select
+	end function getFillCode
 
 	subroutine setColor(color)
 		!! Set the current pen color
