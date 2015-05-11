@@ -204,7 +204,9 @@ contains
 	end subroutine colorbar
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
-		!! Create legend for plot data
+		!! Create legend for plot data.  
+		!! ![Example-1](../../examples/example-4.svg)
+		!!
 		!! FIXME: Text sizing should be modifiable
 		character(*),intent(in)::corner
 			!! Corner for legend
@@ -334,7 +336,8 @@ contains
 	!=====================!
 
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
-		!! Create scatter plot of data
+		!! Create scatter plot of data.  
+		!! ![Example-1](../../examples/example-2.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -374,7 +377,8 @@ contains
 	end subroutine scatter
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
-		!! Plot data using lines and or markers
+		!! Plot data using lines and or markers.  
+		!! ![Example-1](../../examples/example-1.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-data for plot
 		real(wp),dimension(:),intent(in)::y
@@ -423,7 +427,8 @@ contains
 	end subroutine plot
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
-		!! Plot contour lines
+		!! Plot contour lines.  
+		!! ![Example-1](../../examples/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -461,7 +466,8 @@ contains
 	end subroutine contour
 
 	subroutine contourf(x,y,z,N)
-		!! Plot filled contours
+		!! Plot filled contours.  
+		!! ![Example-1](../../examples/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -500,7 +506,8 @@ contains
 	end subroutine contourf
 
 	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
-		!! Plot vectors
+		!! Plot vectors.  
+		!! ![Example-1](../../examples/example-5.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of vectors
 		real(wp),dimension(:),intent(in)::y
@@ -571,7 +578,8 @@ contains
 	end subroutine quiver
 
 	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
-		!! Create a bar graph
+		!! Create a bar graph.  
+		!! ![Example-1](../../examples/example-6.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::y
@@ -617,7 +625,8 @@ contains
 	end subroutine bar
 
 	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
-		!! Create a bar graph
+		!! Create a bar graph.  
+		!! ![Example-1](../../examples/example-6.svg)
 		real(wp),dimension(:),intent(in)::y
 			!! y-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::x
@@ -663,6 +672,8 @@ contains
 	end subroutine barh
 
 	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
+		!! Fill space between two lines
+		!! ![Example-1](../../examples/example-7.svg)
 		real(wp),dimension(:),intent(in)::x
 		real(wp),dimension(:),intent(in)::y1
 		real(wp),dimension(:),intent(in),optional::y0
@@ -905,6 +916,9 @@ contains
 		
 		call plfontld(0)
 		if(present(fontScaling)) fontScale = fontScaling
+		
+		!! FIXME
+		call plsetopt('geometry','400x300')
 		
 		call plinit
 		

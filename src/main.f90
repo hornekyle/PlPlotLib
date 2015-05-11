@@ -3,13 +3,13 @@ program main_prg
 	use plplot_mod
 	implicit none
 	
-	call setup(colormap='CoolWarm',whiteOnBlack=.false.)
-!~ 	call testPlot
-!~ 	call testScatter
-!~ 	call testContour
-!~ 	call testLegend
-!~ 	call testQuiver
-!~ 	call testBar
+	call setup(device='svgqt',fileName='examples/example-%n.svg',colormap='CoolWarm',whiteOnBlack=.false.)
+	call testPlot
+	call testScatter
+	call testContour
+	call testLegend
+	call testQuiver
+	call testBar
 	call testFillBetween
 	call show
 	

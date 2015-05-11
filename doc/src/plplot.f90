@@ -18,6 +18,7 @@ module plplot_mod
 		!! Flag for library display status
 	real(plflt)::fontScale = 1.0_plflt
 		!! Font scale factor to resetPen
+	logical::blackOnWhite = .true.
 	
 contains
 
@@ -26,15 +27,21 @@ contains
 	!===================!
 
 	function mixval(x) result(b)
+		!! Return [hi,low] for an array
+		!! FIXME: Implement as generic function for arrays 1d,2d,3d
 		real(wp),dimension(:),intent(in)::x
+			!! Array to find extrema in
 		real(wp),dimension(2)::b
 		
 		b = [minval(x),maxval(x)]
 	end function mixval
 
 	function startsWith(text,str) result(o)
+		!! Test if text starts with str
 		character(*),intent(in)::text
+			!! Text to search
 		character(*),intent(in)::str
+			!! String to look for
 		logical::o
 		integer::k
 		
@@ -43,8 +50,11 @@ contains
 	end function startsWith
 
 	function endsWith(text,str) result(o)
+		!! Test if text ends with str
 		character(*),intent(in)::text
+			!! Text to search
 		character(*),intent(in)::str
+			!! String to look for
 		logical::o
 		integer::k
 		
@@ -131,12 +141,13 @@ contains
 		end if
 		
 		if(present(color)) call setColor(color)
-		if(present(linewidth)) call plwidth(real(linewidth,plflt))
+		if(present(linewidth)) call setLineWidth(lineWidth)
 		
 		call plbox(xopts,dxl,0,yopts,dyl,0)
+		call resetPen
 	end subroutine ticks
 
-	subroutine labels(xLabel,yLabel,plotLabel)
+	subroutine labels(xLabel,yLabel,plotLabel,color)
 		!! Set x,y and plot labels
 		character(*),intent(in)::xLabel
 			!! Label for x-axis
@@ -144,8 +155,11 @@ contains
 			!! Label for x-axis
 		character(*),intent(in)::plotLabel
 			!! Label entire plot
+		character(*),intent(in),optional::color
 		
+		if(present(color)) call setColor(color)
 		call pllab(xLabel,yLabel,plotLabel)
+		call resetPen
 	end subroutine labels
 
 	subroutine colorbar(z,N,leftLabel,rightLabel)
@@ -176,11 +190,12 @@ contains
 		fill_width = 2.0_plflt
 		cont_width = 0.0_plflt
 		cont_color = 1
+		labels = ''
 		if(present(leftLabel )) labels(1) = leftLabel
 		if(present(rightLabel)) labels(2) = rightLabel
 		
 		call plcolorbar(colorbar_width,colorbar_height,&
-			& ior(PL_COLORBAR_SHADE,PL_COLORBAR_SHADE_LABEL),PL_POSITION_TOP,&
+			& ior(PL_COLORBAR_GRADIENT,PL_COLORBAR_SHADE_LABEL),PL_POSITION_TOP,&
 			& 0.0_plflt,0.01_plflt,0.75_plflt,0.05_plflt,&
 			& 0,1,1,0.0_plflt,0.0_plflt, &
 			& cont_color,cont_width, &
@@ -189,13 +204,15 @@ contains
 	end subroutine colorbar
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
-		!! Create legend for plot data
+		!! Create legend for plot data.  
+		!! ![Example-1](../../examples/example-4.svg)
+		!!
 		!! FIXME: Text sizing should be modifiable
 		character(*),intent(in)::corner
 			!! Corner for legend
 		character(*),dimension(:,:),intent(in)::series
 			!! Data series in rows
-			!! [name,textColor,lineStyle,lineColor,markStyle,markColor]
+			!! [name,textColor,lineStyle,lineColor,markStyle,markColor,boxColor]
 		real(wp),dimension(:),intent(in),optional::lineWidths
 			!! Line widths for the plots
 		real(wp),dimension(:),intent(in),optional::markScales
@@ -220,55 +237,19 @@ contains
 		character(64),dimension(size(series,1))::mark_styles
 		integer::k
 		
-		opt = PL_LEGEND_BACKGROUND+PL_LEGEND_BOUNDING_BOX
-		cornerl = getCorner(corner)
-		xoff = 0.0_plflt
-		yoff = 0.0_plflt
-		plotWidth = 0.05_wp
-		bg_color = getColorCode('w')
-		bb_color = getColorCode('k')
-		bb_style = getLineStyleCode('-')
-		
-		lncol = 1
-		if(present(ncol)) lncol = ncol
-		lnrow = size(series,1)/lncol
+		call doLegendBox
 		
 		opts = 0
 		do k=1,size(series,1)
-			if(series(k,2)/='') opts(k) = ior(opts(k),PL_LEGEND_LINE)
+			if(series(k,3)/='') opts(k) = ior(opts(k),PL_LEGEND_LINE)
 			if(series(k,5)/='') opts(k) = ior(opts(k),PL_LEGEND_SYMBOL)
+			if(series(k,7)/='') opts(k) = ior(opts(k),PL_LEGEND_COLOR_BOX)
 		end do
 		
-		lwidths = 1.0_plflt
-		if(present(lineWidths)) lwidths = lineWidths
-		mcounts = 2
-		if(present(markCounts)) mcounts = markCounts
-		mscales = 1.0_plflt
-		if(present(markScales)) mscales = markScales
-		
-		text_offset  = 0.3_plflt
-		text_scale   = fontScale
-		text_spacing = 3.0_plflt
-		text_justification = 0.0_plflt
-		
-		do k=1,size(series,1)
-			text_colors = getColorCode(series(k,2))
-		end do
-		
-		box_colors = 1
-		box_patterns = 0
-		box_scales = 1.0_plflt
-		box_line_widths = 0.0_plflt
-		
-		do k=1,size(series,1)
-			line_colors(k) = getColorCode(series(k,4))
-			line_styles(k) = getLineStyleCode(series(k,3))
-		end do
-		
-		do k=1,size(series,1)
-			mark_colors(k) = getColorCode(series(k,6))
-			mark_styles(k) = getSymbolCode(series(k,5))
-		end do
+		call doText
+		call doBoxes
+		call doLines
+		call doMarkers
 		
 		call pllegend(width,height,opt,cornerl,xoff,yoff,plotWidth, &
 			& bg_color,bb_color,bb_style, &
@@ -279,6 +260,63 @@ contains
 			& mark_colors,mscales,mcounts,mark_styles)
 		
 	contains
+	
+		subroutine doLegendBox
+			opt = PL_LEGEND_BACKGROUND+PL_LEGEND_BOUNDING_BOX
+			cornerl = getCorner(corner)
+			xoff = 0.0_plflt
+			yoff = 0.0_plflt
+			plotWidth = 0.05_wp
+			bg_color = 0
+			bb_color = 1
+			bb_style = getLineStyleCode('-')
+			
+			lncol = 1
+			if(present(ncol)) lncol = ncol
+			lnrow = size(series,1)/lncol
+		end subroutine doLegendBox
+	
+		subroutine doText
+			text_offset  = 0.3_plflt
+			text_scale   = fontScale
+			text_spacing = 3.0_plflt
+			text_justification = 0.0_plflt
+			
+			do k=1,size(series,1)
+				text_colors = getColorCode(series(k,2))
+			end do
+		end subroutine doText
+	
+		subroutine doBoxes
+			do k=1,size(series,1)
+				box_colors = getColorCode(series(k,7))
+			end do
+			box_patterns = 0
+			box_scales = 0.5_plflt
+			box_line_widths = 0.0_plflt
+		end subroutine doBoxes
+	
+		subroutine doLines
+			lwidths = 1.0_plflt
+			if(present(lineWidths)) lwidths = lineWidths
+			
+			do k=1,size(series,1)
+				line_colors(k) = getColorCode(series(k,4))
+				line_styles(k) = getLineStyleCode(series(k,3))
+			end do
+		end subroutine doLines
+	
+		subroutine doMarkers
+			mcounts = 2
+			if(present(markCounts)) mcounts = markCounts
+			mscales = 1.0_plflt
+			if(present(markScales)) mscales = markScales
+			
+			do k=1,size(series,1)
+				mark_colors(k) = getColorCode(series(k,6))
+				mark_styles(k) = getSymbolCode(series(k,5))
+			end do
+		end subroutine doMarkers
 	
 		function getCorner(text) result(code)
 			character(*),intent(in)::text
@@ -298,7 +336,8 @@ contains
 	!=====================!
 
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
-		!! Create scatter plot of data
+		!! Create scatter plot of data.  
+		!! ![Example-1](../../examples/example-2.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -338,7 +377,8 @@ contains
 	end subroutine scatter
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
-		!! Plot data using lines and or markers
+		!! Plot data using lines and or markers.  
+		!! ![Example-1](../../examples/example-1.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-data for plot
 		real(wp),dimension(:),intent(in)::y
@@ -364,7 +404,7 @@ contains
 		yl = y
 		
 		if(present(lineColor)) call setColor(lineColor)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		if(present(lineStyle)) then
 			call setLineStyle(lineStyle)
 			if(lineStyle/='') call plline(x,y)
@@ -387,7 +427,8 @@ contains
 	end subroutine plot
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
-		!! Plot contour lines
+		!! Plot contour lines.  
+		!! ![Example-1](../../examples/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -418,14 +459,15 @@ contains
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		call plcont(zl,edge,x,y)
 		call resetPen
 	end subroutine contour
 
 	subroutine contourf(x,y,z,N)
-		!! Plot filled contours
+		!! Plot filled contours.  
+		!! ![Example-1](../../examples/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -463,8 +505,9 @@ contains
 		call resetPen
 	end subroutine contourf
 
-	subroutine quiver(x,y,u,v,scaling,lineColor,lineStyle,lineWidth)
-		!! Plot vectors
+	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
+		!! Plot vectors.  
+		!! ![Example-1](../../examples/example-5.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of vectors
 		real(wp),dimension(:),intent(in)::y
@@ -473,6 +516,10 @@ contains
 			!! u-components of vectors
 		real(wp),dimension(:,:),intent(in)::v
 			!! v-components of vectors
+		real(wp),dimension(:,:),intent(in),optional::s
+			!! Scale of vectors
+		real(wp),dimension(:,:),intent(in),optional::c
+			!! Color values for vectors
 		real(wp),intent(in),optional::scaling
 			!! Scaling of vectors
 			!! < 0 = Automatic, then scaled
@@ -486,23 +533,189 @@ contains
 			!! Width of vectors' lines
 		
 		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::ul,vl
-		real(plflt)::scalingl
+		real(plflt),dimension(:,:),allocatable::ul,vl,sl
+		real(plflt),dimension(2)::xb,yb,sb,cb,d
+		real(plflt)::scalingl,scl,mag
+		integer::i,j
 		
 		xl = x
 		yl = y
 		ul = u
 		vl = v
-		scalingl = 0.0_plflt
+		
+		d = [x(2)-x(1),y(2)-y(1)]
+		
+		xb = mixval(x)
+		yb = mixval(y)
+		if(present(s)) then
+			sl = s
+			sl = sl/maxval(sl)
+		else
+			sl = u**2+v**2
+			sl = sqrt(sl)
+			sl = sl/maxval(sl)
+		end if
+		sb = [minval(sl),maxval(sl)]
+		if(present(c)) cb = [minval(c),maxval(c)]
+		
+		scalingl = 1.0_plflt
 		if(present(scaling)) scalingl = scaling
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
-		if(present(lineWidth)) call plwidth(real(lineWidth,plflt))
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
-		call plvect(ul,vl,scalingl,xl,yl)
+		do j=1,size(u,2)
+			do i=1,size(u,1)
+				mag = norm2([ul(i,j),vl(i,j)])
+				scl = scalingl*norm2(d)*sl(i,j)
+				if(present(c)) call plcol1( (c(i,j)-cb(1))/(cb(2)-cb(1)) )
+				call plvect(ul(i:i,j:j)/mag,vl(i:i,j:j)/mag,scl,xl(i:i),yl(j:j))
+			end do
+		end do
+		
 		call resetPen
 	end subroutine quiver
+
+	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
+		!! Create a bar graph.  
+		!! ![Example-1](../../examples/example-6.svg)
+		real(wp),dimension(:),intent(in)::x
+			!! x-positions of the bars' centers
+		real(wp),dimension(:),intent(in)::y
+			!! y-positions of the bars' tops
+		real(wp),dimension(:),intent(in),optional::c
+			!! Color scale for bars
+		real(wp),intent(in),optional::relWidth
+			!! Relative width of bars
+		character(*),intent(in),optional::fillColor
+			!! Color of bar fills
+		character(*),intent(in),optional::fillPattern
+			!! Pattern of bar fills
+		character(*),intent(in),optional::lineColor
+			!! Color of lines around bars
+		real(wp),optional::lineWidth
+			!! Width of lines around bars
+		
+		real(plflt),dimension(4)::xl,yl
+		real(plflt),dimension(2)::cb
+		real(plflt)::dx,dxs
+		integer::k
+		
+		if(present(c)) cb = mixval(c)
+		dxs = 0.8_wp
+		if(present(relWidth)) dxs = relWidth
+		dx = dxs*(x(2)-x(1))/2.0_wp
+		
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		
+		do k=1,size(x)
+			xl = [x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx]
+			yl = [0.0_wp,y(k),y(k),0.0_wp]
+			
+			if(present(fillColor)) call setColor(fillColor)
+			if(present(fillPattern)) call setFillPattern(fillPattern)
+			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			call plfill(xl,yl)
+			
+			if(present(lineColor)) call setColor(lineColor)
+			call plline(xl,yl)
+		end do
+		call resetPen
+	end subroutine bar
+
+	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
+		!! Create a bar graph.  
+		!! ![Example-1](../../examples/example-6.svg)
+		real(wp),dimension(:),intent(in)::y
+			!! y-positions of the bars' centers
+		real(wp),dimension(:),intent(in)::x
+			!! x-positions of the bars' tops
+		real(wp),dimension(:),intent(in),optional::c
+			!! Color scale for bars
+		real(wp),intent(in),optional::relWidth
+			!! Relative width of bars
+		character(*),intent(in),optional::fillColor
+			!! Color of bar fills
+		character(*),intent(in),optional::fillPattern
+			!! Pattern of bar fills
+		character(*),intent(in),optional::lineColor
+			!! Color of lines around bars
+		real(wp),optional::lineWidth
+			!! Width of lines around bars
+		
+		real(plflt),dimension(4)::xl,yl
+		real(plflt),dimension(2)::cb
+		real(plflt)::dy,dys
+		integer::k
+		
+		if(present(c)) cb = mixval(c)
+		dys = 0.8_wp
+		if(present(relWidth)) dys = relWidth
+		dy = dys*(y(2)-y(1))/2.0_wp
+		
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		
+		do k=1,size(x)
+			yl = [y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy]
+			xl = [0.0_wp,x(k),x(k),0.0_wp]
+			
+			if(present(fillColor)) call setColor(fillColor)
+			if(present(fillPattern)) call setFillPattern(fillPattern)
+			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			call plfill(xl,yl)
+			
+			if(present(lineColor)) call setColor(lineColor)
+			call plline(xl,yl)
+		end do
+		call resetPen
+	end subroutine barh
+
+	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
+		!! Fill space between two lines
+		!! ![Example-1](../../examples/example-7.svg)
+		real(wp),dimension(:),intent(in)::x
+		real(wp),dimension(:),intent(in)::y1
+		real(wp),dimension(:),intent(in),optional::y0
+		character(*),intent(in),optional::fillColor
+		character(*),intent(in),optional::fillPattern
+		real(wp),intent(in),optional::lineWidth
+		
+		real(plflt),dimension(:),allocatable::xl,y1l,y0l
+		integer::N
+		
+		N = size(x)
+		
+		xl  = x
+		y1l = y1
+		if(present(y0)) then
+			y0l = y0
+		else
+			allocate(y0l(N))
+			y0l = 0.0_plflt
+		end if
+		
+		if(present(fillColor)) call setColor(fillColor)
+		if(present(fillPattern)) call setFillPattern(fillPattern)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		call plfill([xl(1:N:1),xl(N:1:-1)],[y1l(1:N:1),y0l(N:1:-1)])
+		call resetPen
+	end subroutine fillBetween
+
+	! fill_betweenx
+	! hist
+	! hist2d
+	! hexbin
+	! streamplot
+	
+	! triplot
+	! tricolor
+	! tricontour
+	! tricontourf
+	
+	! xyzlim
+	! surface
+	! plot3d
 
 	!========================!
 	!= Drawing Pen Routines =!
@@ -513,10 +726,16 @@ contains
 		
 		call setColor('')
 		call setLineStyle('')
-		call plwidth(0.5_plflt)
+		call setLineWidth(0.5_wp)
 		call plschr(0.0_plflt,real(fontScale,plflt))
 		call plssym(0.0_plflt,real(fontScale,plflt))
 	end subroutine resetPen
+
+	subroutine setLineWidth(lineWidth)
+		real(wp),intent(in)::lineWidth
+		
+		call plwidth(real(lineWidth,plflt))
+	end subroutine setLineWidth
 
 	subroutine setLineStyle(style)
 		!! Set the current pen line style
@@ -527,7 +746,9 @@ contains
 	end subroutine setLineStyle
 
 	function getLineStyleCode(style) result(code)
+		!! Return the code for a line style
 		character(*),intent(in)::style
+			!! Style desired
 		integer::code
 		
 		select case(style)
@@ -574,6 +795,34 @@ contains
 		end select
 	end function getSymbolCode
 
+	subroutine setFillPattern(style)
+		character(*),intent(in)::style
+		
+		call plpsty(getFillCode(style))
+	end subroutine setFillPattern
+
+	function getFillCode(style) result(code)
+		character(*),intent(in)::style
+		integer::code
+		
+		select case(style)
+		case('-')
+			code = 1
+		case('/')
+			code = 3
+		case('|')
+			code = 2
+		case('\')
+			code = 4
+		case('#')
+			code = 7
+		case('x')
+			code = 8
+		case default
+			code = 0
+		end select
+	end function getFillCode
+
 	subroutine setColor(color)
 		!! Set the current pen color
 		character(*),intent(in)::color
@@ -588,9 +837,17 @@ contains
 		
 		select case(color)
 		case('w','white')
-			code = 1
+			if(blackOnWhite) then
+				code = 1
+			else
+				code = 2
+			end if
 		case('k','black')
-			code = 2
+			if(blackOnWhite) then
+				code = 2
+			else
+				code = 1
+			end if
 		case('r','red')
 			code = 3
 		case('g','green')
@@ -603,6 +860,10 @@ contains
 			code= 7
 		case('y','yellow')
 			code = 8
+		case('fg')
+			code = 2
+		case('bg')
+			code = 1
 		case default
 			code = 2
 		end select
@@ -614,7 +875,7 @@ contains
 	!= Library Status Routines =!
 	!===========================!
 
-	subroutine setup(device,fileName,fontScaling,colormap)
+	subroutine setup(device,fileName,fontScaling,whiteOnBlack,colormap)
 		!! Setup PlPlot library, optionally overriding defaults
 		character(*),intent(in),optional::device
 			!! Output device to use
@@ -623,6 +884,7 @@ contains
 			!! %n will be replaced with the figure number
 		real(wp),intent(in),optional::fontScaling
 			!! Font scaling relative to default value
+		logical,intent(in),optional::whiteOnBlack
 		character(*),intent(in),optional::colormap
 			!! Colormap to use
 		
@@ -642,6 +904,8 @@ contains
 			call plsfnam('out')
 		end if
 		
+		if(present(whiteOnBlack)) blackOnWhite = .not. whiteOnBlack
+		
 		call setIndexedColors
 		
 		if(present(colormap)) then
@@ -650,8 +914,12 @@ contains
 			call setColormap('CoolWarm')
 		end if
 		
+		call plfontld(0)
 		if(present(fontScaling)) fontScale = fontScaling
-
+		
+		!! FIXME
+		call plsetopt('geometry','400x300')
+		
 		call plinit
 		
 		call resetPen
@@ -673,14 +941,14 @@ contains
 		!! Setup the indexed colors
 		integer,dimension(8,3)::rgb
 		
-		rgb(1,:) = [255,255,255] ! White
-		rgb(2,:) = [  0,  0,  0] ! Black
-		rgb(3,:) = [255,  0,  0] ! Red
-		rgb(4,:) = [  0,255,  0] ! Green
-		rgb(5,:) = [  0,  0,255] ! Blue
-		rgb(6,:) = [  0,255,255] ! Cyan
-		rgb(7,:) = [255,  0,255] ! Magenta
-		rgb(8,:) = [255,255,255] ! Yellow
+		rgb(getColorCode('w')+1,:) = [255,255,255] ! White
+		rgb(getColorCode('k')+1,:) = [  0,  0,  0] ! Black
+		rgb(getColorCode('r')+1,:) = [255,  0,  0] ! Red
+		rgb(getColorCode('g')+1,:) = [  0,255,  0] ! Green
+		rgb(getColorCode('b')+1,:) = [  0,  0,255] ! Blue
+		rgb(getColorCode('c')+1,:) = [  0,255,255] ! Cyan
+		rgb(getColorCode('m')+1,:) = [255,  0,255] ! Magenta
+		rgb(getColorCode('y')+1,:) = [255,255,255] ! Yellow
 		
 		call plscmap0(rgb(:,1),rgb(:,2),rgb(:,3))
 	end subroutine setIndexedColors

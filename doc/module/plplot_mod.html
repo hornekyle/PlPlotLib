@@ -10,7 +10,7 @@
     <meta name="author" content="Chris MacMackin" >
     <link rel="icon" href="../favicon.png">
 
-    <title>plplot_mod &ndash; PlPlot Wrapper</title>
+    <title>plplot_mod &ndash; PlPlotLib</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -44,10 +44,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">PlPlot Wrapper </a>
+          <a class="navbar-brand" href="../index.html">PlPlotLib </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+				
+            <li><a href='../page/index.html'>README</a></li>
 				
                 
             <li><a href="../lists/files.html">Source Files</a></li>
@@ -126,6 +128,8 @@
       
       <a class="list-group-item" href="../module/plplot_mod.html#var-fontScale">fontScale</a>
       
+      <a class="list-group-item" href="../module/plplot_mod.html#var-blackOnWhite">blackOnWhite</a>
+      
     </div>
   </div>
   
@@ -150,6 +154,8 @@
       <a class="list-group-item" href="../module/plplot_mod.html#proc-getLineStyleCode">getLineStyleCode</a>
       
       <a class="list-group-item" href="../module/plplot_mod.html#proc-getSymbolCode">getSymbolCode</a>
+      
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-getFillCode">getFillCode</a>
       
       <a class="list-group-item" href="../module/plplot_mod.html#proc-getColorCode">getColorCode</a>
       
@@ -186,9 +192,19 @@
       
       <a class="list-group-item" href="../module/plplot_mod.html#proc-quiver">quiver</a>
       
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-bar">bar</a>
+      
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-barh">barh</a>
+      
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-fillBetween">fillBetween</a>
+      
       <a class="list-group-item" href="../module/plplot_mod.html#proc-resetPen">resetPen</a>
       
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-setLineWidth">setLineWidth</a>
+      
       <a class="list-group-item" href="../module/plplot_mod.html#proc-setLineStyle">setLineStyle</a>
+      
+      <a class="list-group-item" href="../module/plplot_mod.html#proc-setFillPattern">setFillPattern</a>
       
       <a class="list-group-item" href="../module/plplot_mod.html#proc-setColor">setColor</a>
       
@@ -307,6 +323,20 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-blackOnWhite"></a>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>blackOnWhite</strong></td><td> =</td><td>.true.</td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -356,7 +386,7 @@ public  function <a href='../proc/mixval.html'>mixval</a>(x)
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>x</strong></td><td></td>
+  <td><strong>x</strong></td><td><p>Array to find extrema in</p></td>
   
 </tr>
 
@@ -375,6 +405,13 @@ public  function <a href='../proc/mixval.html'>mixval</a>(x)
   dimension(2)</small></h4>
   
     
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Return [hi,low] for an array
+ FIXME: Implement as generic function for arrays 1d,2d,3d</p>
         
 
   </div>
@@ -413,7 +450,7 @@ public  function <a href='../proc/startswith.html'>startsWith</a>(text, str)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>text</strong></td><td></td>
+  <td><strong>text</strong></td><td><p>Text to search</p></td>
   
 </tr>
 
@@ -428,7 +465,7 @@ public  function <a href='../proc/startswith.html'>startsWith</a>(text, str)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>str</strong></td><td></td>
+  <td><strong>str</strong></td><td><p>String to look for</p></td>
   
 </tr>
 
@@ -447,6 +484,12 @@ public  function <a href='../proc/startswith.html'>startsWith</a>(text, str)
   </small></h4>
   
     
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Test if text starts with str</p>
         
 
   </div>
@@ -485,7 +528,7 @@ public  function <a href='../proc/endswith.html'>endsWith</a>(text, str)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>text</strong></td><td></td>
+  <td><strong>text</strong></td><td><p>Text to search</p></td>
   
 </tr>
 
@@ -500,7 +543,7 @@ public  function <a href='../proc/endswith.html'>endsWith</a>(text, str)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>str</strong></td><td></td>
+  <td><strong>str</strong></td><td><p>String to look for</p></td>
   
 </tr>
 
@@ -519,6 +562,12 @@ public  function <a href='../proc/endswith.html'>endsWith</a>(text, str)
   </small></h4>
   
     
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Test if text ends with str</p>
         
 
   </div>
@@ -557,7 +606,7 @@ public  function <a href='../proc/getlinestylecode.html'>getLineStyleCode</a>(st
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>style</strong></td><td></td>
+  <td><strong>style</strong></td><td><p>Style desired</p></td>
   
 </tr>
 
@@ -576,6 +625,12 @@ public  function <a href='../proc/getlinestylecode.html'>getLineStyleCode</a>(st
   </small></h4>
   
     
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Return the code for a line style</p>
         
 
   </div>
@@ -639,6 +694,63 @@ public  function <a href='../proc/getsymbolcode.html'>getSymbolCode</a>(style)
 
 
        <p>Return the code for a symbol style</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-getFillCode"></a><h3>
+public  function <a href='../proc/getfillcode.html'>getFillCode</a>(style)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-style"></a>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>style</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-code"></a>integer
+  </small></h4>
+  
+    
         
 
   </div>
@@ -1036,7 +1148,7 @@ public  subroutine <a href='../proc/ticks.html'>ticks</a>(dx, dy, logx, logy, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-labels"></a><h3>
-public  subroutine <a href='../proc/labels.html'>labels</a>(xLabel, yLabel, plotLabel)
+public  subroutine <a href='../proc/labels.html'>labels</a>(xLabel, yLabel, plotLabel, color)
 </h3></div>
   <div class="panel-body">
        
@@ -1096,6 +1208,21 @@ public  subroutine <a href='../proc/labels.html'>labels</a>(xLabel, yLabel, plot
   
   <td></td><td>::</td>
   <td><strong>plotLabel</strong></td><td><p>Label entire plot</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-color"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>color</strong></td><td></td>
   
 </tr>
 
@@ -1264,7 +1391,7 @@ public  subroutine <a href='../proc/legend.html'>legend</a>(corner, series, line
   
   <td>dimension(:,:)</td><td>::</td>
   <td><strong>series</strong></td><td><p>Data series in rows
- [name,textColor,lineStyle,lineColor,markStyle,markColor]</p></td>
+ [name,textColor,lineStyle,lineColor,markStyle,markColor,boxColor]</p></td>
   
 </tr>
 
@@ -1339,8 +1466,8 @@ public  subroutine <a href='../proc/legend.html'>legend</a>(corner, series, line
        
 
 
-       <p>Create legend for plot data
- FIXME: Text sizing should be modifiable</p>
+       <p>Create legend for plot data.<br>
+<img alt="Example-1" src="../../examples/example-4.svg"></p>
         
 
   </div>
@@ -1484,7 +1611,8 @@ public  subroutine <a href='../proc/scatter.html'>scatter</a>(x, y, c, s, markCo
        
 
 
-       <p>Create scatter plot of data</p>
+       <p>Create scatter plot of data.<br>
+<img alt="Example-1" src="../../examples/example-2.svg"></p>
         
 
   </div>
@@ -1643,7 +1771,8 @@ public  subroutine <a href='../proc/plot.html'>plot</a>(x, y, lineColor, lineSty
        
 
 
-       <p>Plot data using lines and or markers</p>
+       <p>Plot data using lines and or markers.<br>
+<img alt="Example-1" src="../../examples/example-1.svg"></p>
         
 
   </div>
@@ -1787,7 +1916,8 @@ public  subroutine <a href='../proc/contour.html'>contour</a>(x, y, z, N, lineCo
        
 
 
-       <p>Plot contour lines</p>
+       <p>Plot contour lines.<br>
+<img alt="Example-1" src="../../examples/example-3.svg"></p>
         
 
   </div>
@@ -1886,7 +2016,8 @@ public  subroutine <a href='../proc/contourf.html'>contourf</a>(x, y, z, N)
        
 
 
-       <p>Plot filled contours</p>
+       <p>Plot filled contours.<br>
+<img alt="Example-1" src="../../examples/example-3.svg"></p>
         
 
   </div>
@@ -1896,7 +2027,7 @@ public  subroutine <a href='../proc/contourf.html'>contourf</a>(x, y, z, N)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-quiver"></a><h3>
-public  subroutine <a href='../proc/quiver.html'>quiver</a>(x, y, u, v, scaling, lineColor, lineStyle, lineWidth)
+public  subroutine <a href='../proc/quiver.html'>quiver</a>(x, y, u, v, s, c, scaling, lineColor, lineStyle, lineWidth)
 </h3></div>
   <div class="panel-body">
        
@@ -1980,6 +2111,36 @@ public  subroutine <a href='../proc/quiver.html'>quiver</a>(x, y, u, v, scaling,
   
 <tr>
   
+  <td><a class="anchor" name="var-s"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>s</strong></td><td><p>Scale of vectors</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-c"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>c</strong></td><td><p>Color values for vectors</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><a class="anchor" name="var-scaling"></a>real(kind=wp),</td>
   <td>intent(in),</td>
   <td>optional</td>
@@ -2047,7 +2208,458 @@ public  subroutine <a href='../proc/quiver.html'>quiver</a>(x, y, u, v, scaling,
        
 
 
-       <p>Plot vectors</p>
+       <p>Plot vectors.<br>
+<img alt="Example-1" src="../../examples/example-5.svg"></p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-bar"></a><h3>
+public  subroutine <a href='../proc/bar.html'>bar</a>(x, y, c, relWidth, fillColor, fillPattern, lineColor, lineWidth)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-x"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x-positions of the bars' centers</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-y"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y-positions of the bars' tops</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-c"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>c</strong></td><td><p>Color scale for bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-relWidth"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>relWidth</strong></td><td><p>Relative width of bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillColor"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillColor</strong></td><td><p>Color of bar fills</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillPattern"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillPattern</strong></td><td><p>Pattern of bar fills</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineColor"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineColor</strong></td><td><p>Color of lines around bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineWidth"></a>real(kind=wp),</td>
+  <td>intent(inout),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineWidth</strong></td><td><p>Width of lines around bars</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Create a bar graph.<br>
+<img alt="Example-1" src="../../examples/example-6.svg"></p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-barh"></a><h3>
+public  subroutine <a href='../proc/barh.html'>barh</a>(y, x, c, relWidth, fillColor, fillPattern, lineColor, lineWidth)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-y"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y-positions of the bars' centers</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-x"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x-positions of the bars' tops</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-c"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>c</strong></td><td><p>Color scale for bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-relWidth"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>relWidth</strong></td><td><p>Relative width of bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillColor"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillColor</strong></td><td><p>Color of bar fills</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillPattern"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillPattern</strong></td><td><p>Pattern of bar fills</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineColor"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineColor</strong></td><td><p>Color of lines around bars</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineWidth"></a>real(kind=wp),</td>
+  <td>intent(inout),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineWidth</strong></td><td><p>Width of lines around bars</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Create a bar graph.<br>
+<img alt="Example-1" src="../../examples/example-6.svg"></p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-fillBetween"></a><h3>
+public  subroutine <a href='../proc/fillbetween.html'>fillBetween</a>(x, y1, y0, fillColor, fillPattern, lineWidth)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-x"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-y1"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y1</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-y0"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y0</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillColor"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillColor</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-fillPattern"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>fillPattern</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineWidth"></a>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineWidth</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Fill space between two lines
+ <img alt="Example-1" src="../../examples/example-7.svg"></p>
         
 
   </div>
@@ -2073,6 +2685,54 @@ public  subroutine <a href='../proc/resetpen.html'>resetPen</a>()
 
 
        <p>Reset pen to default state</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-setLineWidth"></a><h3>
+public  subroutine <a href='../proc/setlinewidth.html'>setLineWidth</a>(lineWidth)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-lineWidth"></a>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>lineWidth</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
         
 
   </div>
@@ -2127,6 +2787,54 @@ public  subroutine <a href='../proc/setlinestyle.html'>setLineStyle</a>(style)
 
 
        <p>Set the current pen line style</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-setFillPattern"></a><h3>
+public  subroutine <a href='../proc/setfillpattern.html'>setFillPattern</a>(style)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-style"></a>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>style</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
         
 
   </div>
@@ -2190,7 +2898,7 @@ public  subroutine <a href='../proc/setcolor.html'>setColor</a>(color)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-setup"></a><h3>
-public  subroutine <a href='../proc/setup.html'>setup</a>(device, fileName, fontScaling, colormap)
+public  subroutine <a href='../proc/setup.html'>setup</a>(device, fileName, fontScaling, whiteOnBlack, colormap)
 </h3></div>
   <div class="panel-body">
        
@@ -2260,6 +2968,21 @@ public  subroutine <a href='../proc/setup.html'>setup</a>(device, fileName, font
   
 <tr>
   
+  <td><a class="anchor" name="var-whiteOnBlack"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>whiteOnBlack</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><a class="anchor" name="var-colormap"></a>character(len=*),</td>
   <td>intent(in),</td>
   <td>optional</td>
@@ -2280,7 +3003,8 @@ public  subroutine <a href='../proc/setup.html'>setup</a>(device, fileName, font
        
 
 
-       <p>Setup PlPlot library, optionally overriding defaults</p>
+       <p>Setup PlPlot library, optionally overriding defaults
+ FIXME</p>
         
 
   </div>
@@ -2400,7 +3124,7 @@ public  subroutine <a href='../proc/setcolormap.html'>setColormap</a>(colormap)
     <hr>
     <footer>
         <div class="row">
-        <div class="col-md-6">&copy; 2015 PlPlot Wrapper was written by Dr. Kyle Horne. </div>
+        <div class="col-md-6">&copy; 2015 PlPlotLib was written by Dr. Kyle Horne. </div>
         <div class="col-md-6"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a>.</span></div>
         </div>
         <br>
