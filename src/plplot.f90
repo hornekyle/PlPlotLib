@@ -142,25 +142,30 @@ contains
 		real(wp),dimension(2),intent(in)::yb
 			!! y-range of plot
 		
-		call plwind(xb(1),xb(2),yb(1),yb(2))
+		real(plflt),dimension(2)::xbl,ybl
+		
+		xbl = xb
+		ybl = yb
+		
+		call plwind(xbl(1),xbl(2),ybl(1),ybl(2))
 	end subroutine xylim
 
 	subroutine xlim(xl,xh)
 		real(wp),intent(in)::xl,xh
 		
-		real(wp)::x1,x2,y1,y2
+		real(plflt)::x1,x2,y1,y2
 		
 		call plgvpw(x1,x2,y1,y2)
-		call plwind(xl,xh,y1,y2)
+		call plwind(real(xl,plflt),real(xh,plflt),y1,y2)
 	end subroutine xlim
 
 	subroutine ylim(yl,yh)
 		real(wp),intent(in)::yl,yh
 		
-		real(wp)::x1,x2,y1,y2
+		real(plflt)::x1,x2,y1,y2
 		
 		call plgvpw(x1,x2,y1,y2)
-		call plwind(x1,x2,yl,yh)
+		call plwind(x1,x2,real(yl,plflt),real(yh,plflt))
 	end subroutine ylim
 
 	subroutine ticks(dx,dy,logx,logy,color,lineWidth)
@@ -182,10 +187,10 @@ contains
 		character(10)::xopts,yopts
 		
 		dxl = 0.0_plflt
-		if(present(dx)) dxl = dx
+		if(present(dx)) dxl = real(dx,plflt)
 		
 		dyl = 0.0_plflt
-		if(present(dy)) dyl = dy
+		if(present(dy)) dyl = real(dy,plflt)
 		
 		xopts = 'bcnst'
 		if(present(logx)) then
@@ -223,7 +228,7 @@ contains
 		
 		dxl = 0.0_plflt
 		dyl = 0.0_plflt
-		if(present(d)) dxl = d
+		if(present(d)) dxl = real(d,plflt)
 		
 		xopts = 'nst'
 		
@@ -269,7 +274,7 @@ contains
 		
 		dxl = 0.0_plflt
 		dyl = 0.0_plflt
-		if(present(d)) dyl = d
+		if(present(d)) dyl = real(d,plflt)
 		
 		yopts = 'nst'
 		
@@ -370,7 +375,7 @@ contains
 		integer::k
 		
 		values = reshape( &
-			& [( real(k-1,plflt)/real(N-1,plflt)*(maxval(z)-minval(z))+minval(z) ,k=1,N)], &
+			& real([( real(k-1,wp)/real(N-1,wp)*(maxval(z)-minval(z))+minval(z) ,k=1,N)],plflt), &
 			& [N,1])
 		
 		fill_width = 2.0_plflt
@@ -451,7 +456,7 @@ contains
 			cornerl = getCorner(corner)
 			xoff = 0.0_plflt
 			yoff = 0.0_plflt
-			plotWidth = 0.05_wp
+			plotWidth = 0.05_plflt
 			bg_color = 0
 			bb_color = 1
 			bb_style = getLineStyleCode('-')
@@ -483,7 +488,7 @@ contains
 	
 		subroutine doLines
 			lwidths = 1.0_plflt
-			if(present(lineWidths)) lwidths = lineWidths
+			if(present(lineWidths)) lwidths = real(lineWidths,plflt)
 			
 			do k=1,size(series,1)
 				line_colors(k) = getColorCode(series(k,4))
@@ -495,7 +500,7 @@ contains
 			mcounts = 2
 			if(present(markCounts)) mcounts = markCounts
 			mscales = 1.0_plflt
-			if(present(markScales)) mscales = markScales
+			if(present(markScales)) mscales = real(markScales,plflt)
 			
 			do k=1,size(series,1)
 				mark_colors(k) = getColorCode(series(k,6))
@@ -529,13 +534,15 @@ contains
 		real(plflt),dimension(2)::xbl
 		integer::binsl
 		
+		xl = x
+		
 		binsl = size(x)/10
 		if(present(bins)) binsl = bins
 		
-		xbl = mixval(x)
-		if(present(xb)) xbl = xb
+		xbl = real(mixval(x),plflt)
+		if(present(xb)) xbl = real(xb,plflt)
 		
-		call plhist(x,xbl(1),xbl(2),binsl,ior(PL_HIST_NOSCALING,PL_HIST_NOEXPAND))
+		call plhist(xl,xbl(1),xbl(2),binsl,ior(PL_HIST_NOSCALING,PL_HIST_NOEXPAND))
 		call resetPen
 	end subroutine hist
 
@@ -570,12 +577,12 @@ contains
 		if(present(markSize)) call plschr(0.0_plflt,real(markSize,plflt))
 		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
 		
-		if(present(c)) cb = mixval(c)
+		if(present(c)) cb = real(mixval(c),plflt)
 		do k=1,size(x)
-			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
-			if(present(s)) call plschr(0.0_plflt,s(k))
-			if(present(s)) call plssym(0.0_plflt,s(k))
-			call plptex(x(k),y(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
+			if(present(s)) call plschr(0.0_plflt,real(s(k),plflt))
+			if(present(s)) call plssym(0.0_plflt,real(s(k),plflt))
+			call plptex(xl(k),yl(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
 		end do
 		call resetPen
 	end subroutine scatter
@@ -610,9 +617,9 @@ contains
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		if(present(lineStyle)) then
 			call setLineStyle(lineStyle)
-			if(lineStyle/='') call plline(x,y)
+			if(lineStyle/='') call plline(xl,yl)
 		else
-			call plline(x,y)
+			call plline(xl,yl)
 		end if
 		call resetPen
 		
@@ -622,7 +629,7 @@ contains
 			code = getSymbolCode(markStyle)
 			if(markStyle/='') then
 				do k=1,size(x)
-					call plptex(x(k),y(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
+					call plptex(xl(k),yl(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
 				end do
 			end if
 		end if
@@ -663,7 +670,7 @@ contains
 		if(present(lineStyle)) call setLineStyle(lineStyle)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
-		call plcont(zl,edge,x,y)
+		call plcont(zl,edge,xl,yl)
 		call resetPen
 	end subroutine contour
 
@@ -743,10 +750,10 @@ contains
 		ul = u
 		vl = v
 		
-		d = [x(2)-x(1),y(2)-y(1)]
+		d = real([x(2)-x(1),y(2)-y(1)],plflt)
 		
-		xb = mixval(x)
-		yb = mixval(y)
+		xb = real(mixval(x),plflt)
+		yb = real(mixval(y),plflt)
 		if(present(s)) then
 			sl = s
 			sl = sl/maxval(sl)
@@ -756,10 +763,10 @@ contains
 			sl = sl/maxval(sl)
 		end if
 		sb = [minval(sl),maxval(sl)]
-		if(present(c)) cb = [minval(c),maxval(c)]
+		if(present(c)) cb = real([minval(c),maxval(c)],plflt)
 		
 		scalingl = 1.0_plflt
-		if(present(scaling)) scalingl = scaling
+		if(present(scaling)) scalingl = real(scaling,plflt)
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
@@ -769,7 +776,7 @@ contains
 			do i=1,size(u,1)
 				mag = norm2([ul(i,j),vl(i,j)])
 				scl = scalingl*norm2(d)*sl(i,j)
-				if(present(c)) call plcol1( (c(i,j)-cb(1))/(cb(2)-cb(1)) )
+				if(present(c)) call plcol1( real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,plflt) )
 				call plvect(ul(i:i,j:j)/mag,vl(i:i,j:j)/mag,scl,xl(i:i),yl(j:j))
 			end do
 		end do
@@ -801,11 +808,11 @@ contains
 		real(plflt)::dx,dxs
 		integer::k
 		
-		if(present(c)) cb = mixval(c)
-		dxs = 0.8_wp
-		if(present(relWidth)) dxs = relWidth
+		if(present(c)) cb = real(mixval(c),plflt)
+		dxs = 0.8_plflt
+		if(present(relWidth)) dxs = real(relWidth,plflt)
 		if(size(x)>1) then
-			dx = dxs*(x(2)-x(1))/2.0_wp
+			dx = dxs*real(x(2)-x(1),plflt)/2.0_plflt
 		else
 			dx = dxs
 		end if
@@ -813,12 +820,12 @@ contains
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
-			xl = [x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx]
-			yl = [0.0_wp,y(k),y(k),0.0_wp]
+			xl = real([x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx],plflt)
+			yl = real([0.0_wp,y(k),y(k),0.0_wp],plflt)
 			
 			if(present(fillColor)) call setColor(fillColor)
 			if(present(fillPattern)) call setFillPattern(fillPattern)
-			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
 			call plfill(xl,yl)
 			
 			if(present(lineColor)) call setColor(lineColor)
@@ -851,20 +858,20 @@ contains
 		real(plflt)::dy,dys
 		integer::k
 		
-		if(present(c)) cb = mixval(c)
-		dys = 0.8_wp
-		if(present(relWidth)) dys = relWidth
-		dy = dys*(y(2)-y(1))/2.0_wp
+		if(present(c)) cb = real(mixval(c),plflt)
+		dys = 0.8_plflt
+		if(present(relWidth)) dys = real(relWidth,plflt)
+		dy = dys*real(y(2)-y(1),plflt)/2.0_plflt
 		
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
-			yl = [y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy]
-			xl = [0.0_wp,x(k),x(k),0.0_wp]
+			yl = real([y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy],plflt)
+			xl = real([0.0_wp,x(k),x(k),0.0_wp],plflt)
 			
 			if(present(fillColor)) call setColor(fillColor)
 			if(present(fillPattern)) call setFillPattern(fillPattern)
-			if(present(c)) call plcol1( (c(k)-cb(1))/(cb(2)-cb(1)) )
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
 			call plfill(xl,yl)
 			
 			if(present(lineColor)) call setColor(lineColor)
@@ -1131,7 +1138,7 @@ contains
 		end if
 		
 		call plfontld(0)
-		if(present(fontScaling)) fontScale = fontScaling
+		if(present(fontScaling)) fontScale = real(fontScaling,plflt)
 		
 		!! FIXME
 		call plsetopt('geometry','800x600')
