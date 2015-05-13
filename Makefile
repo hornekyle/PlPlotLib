@@ -29,6 +29,7 @@ $(EXE): $(OBJS) Makefile
 
 clean:
 	@-rm $(BPATH)/* $(EXE)
+	@-touch $(BPATH)/empty
 
 ford: project.md
 	ford project.md
