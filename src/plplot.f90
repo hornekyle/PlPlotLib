@@ -2,9 +2,6 @@ module plplot_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
 	!!
 	!! TODO: replace plhist with new binning and a call to bar
-	!!
-	!! TODO: implement routines
-	!! streamplot
 
 	use kinds_mod
 	use plplot
