@@ -289,7 +289,7 @@ contains
 	
 		subroutine doBoxes
 			do k=1,size(series,1)
-				box_colors = getColorCode(series(k,7))
+				box_colors(k) = getColorCode(series(k,7))
 			end do
 			box_patterns = 0
 			box_scales = 0.5_plflt
@@ -364,6 +364,7 @@ contains
 		if(present(markColor)) call setColor(markColor)
 		code = getSymbolCode('')
 		if(present(markStyle)) code = getSymbolCode(markStyle)
+		if(present(markSize)) call plschr(0.0_plflt,real(markSize,plflt))
 		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
 		
 		if(present(c)) cb = mixval(c)
@@ -605,7 +606,11 @@ contains
 		if(present(c)) cb = mixval(c)
 		dxs = 0.8_wp
 		if(present(relWidth)) dxs = relWidth
-		dx = dxs*(x(2)-x(1))/2.0_wp
+		if(size(x)>1) then
+			dx = dxs*(x(2)-x(1))/2.0_wp
+		else
+			dx = dxs
+		end if
 		
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
@@ -918,7 +923,7 @@ contains
 		if(present(fontScaling)) fontScale = fontScaling
 		
 		!! FIXME
-		call plsetopt('geometry','400x300')
+		call plsetopt('geometry','800x600')
 		
 		call plinit
 		

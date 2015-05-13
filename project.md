@@ -1,6 +1,7 @@
 project: PlPlotLib
 project_dir: ./src
-project_github: https://github.com/hornekyle/PlPlotLib
+project_github: http://github.com/hornekyle/PlPlotLib
+project_website: http://hornekyle.github.io/PlPlotLib/
 media_dir: /home/kyle/Development/Fortran/PlPlotLib/examples
 page_dir: ./pages
 output_dir: ./doc
