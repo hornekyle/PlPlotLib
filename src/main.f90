@@ -3,14 +3,16 @@ program main_prg
 	use plplot_mod
 	implicit none
 	
-	call setup(device='svgqt',fileName='examples/example-%n.svg',colormap='CoolWarm',whiteOnBlack=.false.)
-	call testPlot
-	call testScatter
-	call testContour
-	call testLegend
-	call testQuiver
-	call testBar
-	call testFillBetween
+!~ 	call setup(device='svgqt',fileName='examples/example-%n.svg',colormap='CoolWarm',whiteOnBlack=.false.)
+	call setup(colormap='CoolWarm',whiteOnBlack=.false.)
+!~ 	call testPlot
+!~ 	call testScatter
+!~ 	call testContour
+!~ 	call testLegend
+!~ 	call testQuiver
+!~ 	call testBar
+!~ 	call testFillBetween
+	call testHist
 	call show
 	
 contains
@@ -33,8 +35,13 @@ contains
 		call plot(x,-1.0_wp-y,lineColor='blue',lineStyle=':',lineWidth=2.0_wp, &
 			& markStyle='+',markColor='green',markSize=1.0_wp)
 		
-		call ticks()
-		call labels('x','y','f(x)=x#u2#d-1; g(x)=-x#u2#d')
+!~ 		call ticks()
+		call xticks(primary=.true.,secondary=.false.)
+		call yticks(primary=.true.,secondary=.false.)
+!~ 		call labels('x','y','f(x)=x#u2#d-1; g(x)=-x#u2#d')
+		call xlabel('x')
+		call ylabel('y')
+		call title('f(x)=x#u2#d-1; g(x)=-x#u2#d')
 	end subroutine testPlot
 
 	subroutine testScatter
@@ -189,5 +196,21 @@ contains
 		call ticks(color='b',lineWidth=3.0_wp)
 		call labels('x','y','f(x)=x#u2#d-1',color='r')
 	end subroutine testFillBetween
+
+	subroutine testHist
+		integer,parameter::N = 1000
+		real(wp),dimension(N,12)::r
+		real(wp),dimension(N)::x
+		
+		call random_number(r)
+		x = sum(r,2)-6.0_wp
+		
+		call figure()
+		call subplot(1,1,1)
+		call xylim(6.0_wp*[-1.0_wp,1.0_wp],[0.0_wp,real(N/20,wp)])
+		call hist(x)
+		call ticks()
+!~ 		call labels('x','y','f(x)=x#u2#d-1',color='r')
+	end subroutine testHist
 
 end program main_prg

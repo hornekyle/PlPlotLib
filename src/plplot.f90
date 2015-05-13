@@ -1,5 +1,11 @@
 module plplot_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
+	!!
+	!! TODO: replace plhist with new binning and a call to bar
+	!!
+	!! TODO: implement routines
+	!! streamplot
+
 	use kinds_mod
 	use plplot
 	implicit none
@@ -20,21 +26,48 @@ module plplot_mod
 		!! Font scale factor to resetPen
 	logical::blackOnWhite = .true.
 	
+	!==============!
+	!= Interfaces =!
+	!==============!
+	
+	interface mixval
+		module procedure mixval_1
+		module procedure mixval_2
+		module procedure mixval_3
+	end interface
+	
 contains
 
 	!===================!
 	!= Helper Routines =!
 	!===================!
 
-	function mixval(x) result(b)
+	function mixval_1(x) result(b)
 		!! Return [hi,low] for an array
-		!! FIXME: Implement as generic function for arrays 1d,2d,3d
 		real(wp),dimension(:),intent(in)::x
 			!! Array to find extrema in
 		real(wp),dimension(2)::b
 		
 		b = [minval(x),maxval(x)]
-	end function mixval
+	end function mixval_1
+
+	function mixval_2(x) result(b)
+		!! Return [hi,low] for an array
+		real(wp),dimension(:,:),intent(in)::x
+			!! Array to find extrema in
+		real(wp),dimension(2)::b
+		
+		b = [minval(x),maxval(x)]
+	end function mixval_2
+
+	function mixval_3(x) result(b)
+		!! Return [hi,low] for an array
+		real(wp),dimension(:,:,:),intent(in)::x
+			!! Array to find extrema in
+		real(wp),dimension(2)::b
+		
+		b = [minval(x),maxval(x)]
+	end function mixval_3
 
 	function startsWith(text,str) result(o)
 		!! Test if text starts with str
@@ -93,7 +126,14 @@ contains
 		else
 			call plvsta()
 		end if
+		
+		call defaultLim
 	end subroutine subplot
+
+	subroutine defaultLim
+		real(plflt),parameter::eps = epsilon(1.0_plflt)
+		call plwind(-eps,eps,-eps,eps)
+	end subroutine defaultLim
 
 	subroutine xylim(xb,yb)
 		!! Set the x and y ranges of the plot
@@ -103,10 +143,27 @@ contains
 			!! y-range of plot
 		
 		call plwind(xb(1),xb(2),yb(1),yb(2))
-		call resetPen
 	end subroutine xylim
 
-	subroutine ticks(dx,dy,logx,logy,color,linewidth)
+	subroutine xlim(xl,xh)
+		real(wp),intent(in)::xl,xh
+		
+		real(wp)::x1,x2,y1,y2
+		
+		call plgvpw(x1,x2,y1,y2)
+		call plwind(xl,xh,y1,y2)
+	end subroutine xlim
+
+	subroutine ylim(yl,yh)
+		real(wp),intent(in)::yl,yh
+		
+		real(wp)::x1,x2,y1,y2
+		
+		call plgvpw(x1,x2,y1,y2)
+		call plwind(x1,x2,yl,yh)
+	end subroutine ylim
+
+	subroutine ticks(dx,dy,logx,logy,color,lineWidth)
 		!! Set the ticks for the axes
 		real(wp),intent(in),optional::dx
 			!! Spacing between ticks on x-axis
@@ -141,11 +198,103 @@ contains
 		end if
 		
 		if(present(color)) call setColor(color)
-		if(present(linewidth)) call setLineWidth(lineWidth)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		call plbox(xopts,dxl,0,yopts,dyl,0)
 		call resetPen
 	end subroutine ticks
+
+	subroutine xticks(d,logScale,primary,secondary,color,lineWidth)
+		!! Set the ticks for the x-axis
+		real(wp),intent(in),optional::d
+			!! Spacing between ticks
+		logical,intent(in),optional::logScale
+			!! Flag for log-ticks and labels
+		logical,intent(in),optional::primary
+			!! Draw primary axis
+		logical,intent(in),optional::secondary
+			!! Draw secondary axis
+		character(*),intent(in),optional::color
+			!! Color code for ticks, box, and labels
+		real(wp),optional::linewidth
+			!! Line width for ticks and box
+		real(plflt)::dxl,dyl
+		character(10)::xopts,yopts
+		
+		dxl = 0.0_plflt
+		dyl = 0.0_plflt
+		if(present(d)) dxl = d
+		
+		xopts = 'nst'
+		
+		if(present(primary)) then
+			if(primary) xopts = trim(xopts)//'b'
+		else
+			xopts = trim(xopts)//'b'
+		end if
+		
+		if(present(secondary)) then
+			if(secondary) xopts = trim(xopts)//'c'
+		else
+			xopts = trim(xopts)//'c'
+		end if
+		
+		if(present(logScale)) then
+			if(logScale) xopts = trim(xopts)//'l'
+		end if
+		yopts = ''
+		
+		if(present(color)) call setColor(color)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		call plbox(xopts,dxl,0,yopts,dyl,0)
+		call resetPen
+	end subroutine xticks
+
+	subroutine yticks(d,logScale,primary,secondary,color,lineWidth)
+		!! Set the ticks for the y-axis
+		real(wp),intent(in),optional::d
+			!! Spacing between ticks
+		logical,intent(in),optional::logScale
+			!! Flag for log-ticks and labels
+		logical,intent(in),optional::primary
+			!! Draw primary axis
+		logical,intent(in),optional::secondary
+			!! Draw secondary axis
+		character(*),intent(in),optional::color
+			!! Color code for ticks, box, and labels
+		real(wp),optional::linewidth
+			!! Line width for ticks and box
+		real(plflt)::dxl,dyl
+		character(10)::xopts,yopts
+		
+		dxl = 0.0_plflt
+		dyl = 0.0_plflt
+		if(present(d)) dyl = d
+		
+		yopts = 'nst'
+		
+		if(present(primary)) then
+			if(primary) yopts = trim(xopts)//'b'
+		else
+			yopts = trim(yopts)//'b'
+		end if
+		
+		if(present(secondary)) then
+			if(secondary) yopts = trim(yopts)//'c'
+		else
+			yopts = trim(yopts)//'c'
+		end if
+		
+		if(present(logScale)) then
+			if(logScale) yopts = trim(yopts)//'l'
+		end if
+		xopts = ''
+		
+		if(present(color)) call setColor(color)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		call plbox(xopts,dxl,0,yopts,dyl,0)
+		call resetPen
+	end subroutine yticks
 
 	subroutine labels(xLabel,yLabel,plotLabel,color)
 		!! Set x,y and plot labels
@@ -156,11 +305,48 @@ contains
 		character(*),intent(in)::plotLabel
 			!! Label entire plot
 		character(*),intent(in),optional::color
+			!! Color of labels
 		
 		if(present(color)) call setColor(color)
 		call pllab(xLabel,yLabel,plotLabel)
 		call resetPen
 	end subroutine labels
+
+	subroutine xlabel(label,color)
+		!! Set x-label
+		character(*),intent(in)::label
+			!! Label for axis
+		character(*),intent(in),optional::color
+			!! Color of labels
+		
+		if(present(color)) call setColor(color)
+		call plmtex('b',3.0_plflt,0.5_plflt,0.5_plflt,label)
+		call resetPen
+	end subroutine xlabel
+
+	subroutine ylabel(label,color)
+		!! Set y-label
+		character(*),intent(in)::label
+			!! Label for axis
+		character(*),intent(in),optional::color
+			!! Color of labels
+		
+		if(present(color)) call setColor(color)
+		call plmtex('l',5.0_plflt,0.5_plflt,0.5_plflt,label)
+		call resetPen
+	end subroutine ylabel
+
+	subroutine title(label,color)
+		!! Set plot title
+		character(*),intent(in)::label
+			!! Label for plot
+		character(*),intent(in),optional::color
+			!! Color of labels
+		
+		if(present(color)) call setColor(color)
+		call plmtex('t',1.5_plflt,0.5_plflt,0.5_plflt,label)
+		call resetPen
+	end subroutine title
 
 	subroutine colorbar(z,N,leftLabel,rightLabel)
 		!! Add a colorbar to the top of the plot
@@ -205,7 +391,6 @@ contains
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
 		!! Create legend for plot data.  
-		!! ![Example-1](../media/example-4.svg)
 		!!
 		!! FIXME: Text sizing should be modifiable
 		character(*),intent(in)::corner
@@ -335,9 +520,27 @@ contains
 	!= Plotting Routines =!
 	!=====================!
 
+	subroutine hist(x,bins,xb)
+		real(wp),dimension(:),intent(in)::x
+		integer,intent(in),optional::bins
+		real(wp),dimension(2),intent(in),optional::xb
+		
+		real(plflt),dimension(:),allocatable::xl
+		real(plflt),dimension(2)::xbl
+		integer::binsl
+		
+		binsl = size(x)/10
+		if(present(bins)) binsl = bins
+		
+		xbl = mixval(x)
+		if(present(xb)) xbl = xb
+		
+		call plhist(x,xbl(1),xbl(2),binsl,ior(PL_HIST_NOSCALING,PL_HIST_NOEXPAND))
+		call resetPen
+	end subroutine hist
+
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
 		!! Create scatter plot of data.  
-		!! ![Example-1](../media/example-2.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -379,7 +582,6 @@ contains
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
 		!! Plot data using lines and or markers.  
-		!! ![Example-1](../media/example-1.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-data for plot
 		real(wp),dimension(:),intent(in)::y
@@ -429,7 +631,6 @@ contains
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
 		!! Plot contour lines.  
-		!! ![Example-1](../media/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -468,7 +669,6 @@ contains
 
 	subroutine contourf(x,y,z,N)
 		!! Plot filled contours.  
-		!! ![Example-1](../media/example-3.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -508,7 +708,6 @@ contains
 
 	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
 		!! Plot vectors.  
-		!! ![Example-1](../media/example-5.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of vectors
 		real(wp),dimension(:),intent(in)::y
@@ -580,7 +779,6 @@ contains
 
 	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph.  
-		!! ![Example-1](../media/example-6.svg)
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::y
@@ -631,7 +829,6 @@ contains
 
 	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
 		!! Create a bar graph.  
-		!! ![Example-1](../media/example-6.svg)
 		real(wp),dimension(:),intent(in)::y
 			!! y-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::x
@@ -678,7 +875,6 @@ contains
 
 	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
 		!! Fill space between two lines
-		!! ![Example-1](../media/example-7.svg)
 		real(wp),dimension(:),intent(in)::x
 		real(wp),dimension(:),intent(in)::y1
 		real(wp),dimension(:),intent(in),optional::y0
@@ -707,32 +903,35 @@ contains
 		call resetPen
 	end subroutine fillBetween
 
-	! fill_betweenx
-	
-	! TODO: Implement autoscaling on the axis
-	! subplot will set a default of 0 0 0 0
-	! each plot command will get the current limits and expand them as needed
-	
-	! TODO: Use world coordinates query to replace xylim
-	! xylim can be replaced with xlim and ylim to match matplotlib
-	
-	! TODO: Replace ticks with xticks and yticks
-	
-	! TODO: Replace labels with xlabel, ylabel, and title
-	
-	! hist
-	! hist2d
-	! hexbin
-	! streamplot
-	
-	! triplot
-	! tricolor
-	! tricontour
-	! tricontourf
-	
-	! xyzlim
-	! surface
-	! plot3d
+	subroutine fillBetweenx(y,x1,x0,fillColor,fillPattern,lineWidth)
+		!! Fill space between two lines
+		real(wp),dimension(:),intent(in)::y
+		real(wp),dimension(:),intent(in)::x1
+		real(wp),dimension(:),intent(in),optional::x0
+		character(*),intent(in),optional::fillColor
+		character(*),intent(in),optional::fillPattern
+		real(wp),intent(in),optional::lineWidth
+		
+		real(plflt),dimension(:),allocatable::yl,x1l,x0l
+		integer::N
+		
+		N = size(y)
+		
+		yl  = y
+		x1l = x1
+		if(present(x0)) then
+			x0l = x0
+		else
+			allocate(x0l(N))
+			x0l = 0.0_plflt
+		end if
+		
+		if(present(fillColor)) call setColor(fillColor)
+		if(present(fillPattern)) call setFillPattern(fillPattern)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		call plfill([x1l(1:N:1),x0l(N:1:-1)],[yl(1:N:1),yl(N:1:-1)])
+		call resetPen
+	end subroutine fillBetweenx
 
 	!========================!
 	!= Drawing Pen Routines =!
