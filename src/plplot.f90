@@ -708,6 +708,18 @@ contains
 	end subroutine fillBetween
 
 	! fill_betweenx
+	
+	! TODO: Implement autoscaling on the axis
+	! subplot will set a default of 0 0 0 0
+	! each plot command will get the current limits and expand them as needed
+	
+	! TODO: Use world coordinates query to replace xylim
+	! xylim can be replaced with xlim and ylim to match matplotlib
+	
+	! TODO: Replace ticks with xticks and yticks
+	
+	! TODO: Replace labels with xlabel, ylabel, and title
+	
 	! hist
 	! hist2d
 	! hexbin
