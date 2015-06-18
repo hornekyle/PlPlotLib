@@ -1,4 +1,4 @@
-module plplot_mod
+module plplotlib_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
 	!!
 	!! TODO: replace plhist with new binning and a call to bar
@@ -97,10 +97,21 @@ contains
 	!============================!
 
 	subroutine figure
+		logical,save::isFirst = .true.
+		
 		!! Create a new figure
 		if(.not.isSetup) call setup()
 		
-		call pladv(0)
+		if(.not.isFirst) then
+			call pleop()
+		else
+			isFirst = .false.
+		end if
+		
+		call plbop()
+		call plssub(1,1)
+		call pladv(1)
+		call resetPen
 	end subroutine figure
 
 	subroutine subplot(ny,nx,i,aspect)
@@ -198,6 +209,8 @@ contains
 		if(present(logy)) then
 			if(logy) yopts = 'bcnstvl'
 		end if
+		
+		call resetPen
 		
 		if(present(color)) call setColor(color)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
@@ -769,10 +782,11 @@ contains
 		if(present(lineStyle)) call setLineStyle(lineStyle)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
-		do j=1,size(u,2)
-			do i=1,size(u,1)
+		do i=1,size(u,1)
+			do j=1,size(u,2)
 				mag = norm2([ul(i,j),vl(i,j)])
 				scl = scalingl*norm2(d)*sl(i,j)
+				if(abs(scl)<1.0E-5_wp) cycle
 				if(present(c)) call plcol1( real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,plflt) )
 				call plvect(ul(i:i,j:j)/mag,vl(i:i,j:j)/mag,scl,xl(i:i),yl(j:j))
 			end do
@@ -1095,7 +1109,7 @@ contains
 	!= Library Status Routines =!
 	!===========================!
 
-	subroutine setup(device,fileName,fontScaling,whiteOnBlack,colormap)
+	subroutine setup(device,fileName,fontScaling,whiteOnBlack,colormap,figSize)
 		!! Setup PlPlot library, optionally overriding defaults
 		character(*),intent(in),optional::device
 			!! Output device to use
@@ -1105,8 +1119,13 @@ contains
 		real(wp),intent(in),optional::fontScaling
 			!! Font scaling relative to default value
 		logical,intent(in),optional::whiteOnBlack
+			!! Default foreground and background colors
 		character(*),intent(in),optional::colormap
 			!! Colormap to use
+		integer,dimension(2),intent(in),optional::figSize
+			!! Size of figures to produce in pixels
+		
+		character(64)::bufx,bufy
 		
 		if(isSetup) return
 		isSetup = .true.
@@ -1137,8 +1156,13 @@ contains
 		call plfontld(0)
 		if(present(fontScaling)) fontScale = real(fontScaling,plflt)
 		
-		!! FIXME
-		call plsetopt('geometry','800x600')
+		if(present(figSize)) then
+			write(bufx,*) figSize(1)
+			write(bufy,*) figSize(2)
+			call plsetopt('geometry',trim(adjustl(bufx))//'x'//trim(adjustl(bufy)))
+		else
+			call plsetopt('geometry','640x480')
+		end if
 		
 		call plinit
 		
@@ -1205,4 +1229,4 @@ contains
 		end select
 	end subroutine setColormap
 
-end module plplot_mod
+end module plplotlib_mod

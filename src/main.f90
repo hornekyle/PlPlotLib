@@ -1,18 +1,18 @@
 program main_prg
 	use kinds_mod
-	use plplot_mod
+	use plplotlib_mod
 	implicit none
 	
 !~ 	call setup(device='svgqt',fileName='examples/example-%n.svg',colormap='CoolWarm',whiteOnBlack=.false.)
 	call setup(colormap='CoolWarm',whiteOnBlack=.false.)
-!~ 	call testPlot
-!~ 	call testScatter
-!~ 	call testContour
-!~ 	call testLegend
-!~ 	call testQuiver
-!~ 	call testBar
-!~ 	call testFillBetween
-	call testHist
+	call testPlot
+	call testScatter
+	call testContour
+	call testLegend
+	call testQuiver
+	call testBar
+	call testFillBetween
+!~ 	call testHist
 	call show
 	
 contains
