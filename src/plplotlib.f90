@@ -6,7 +6,7 @@ module plplotlib_mod
 	use kinds_mod
 	use plplot
 	implicit none
-	public
+	private
 	
 	character(*),parameter::default_dev = 'qtwidget'
 		!! Default output device
@@ -28,10 +28,29 @@ module plplotlib_mod
 	!==============!
 	
 	interface mixval
+		!! Return a 2-vector comprising the minimum and maximum values of an array
 		module procedure mixval_1
 		module procedure mixval_2
 		module procedure mixval_3
 	end interface
+	
+	public::setup,show
+	public::figure
+	public::subplot
+	public::xylim,xlim,ylim
+	public::labels,xlabel,ylabel,title
+	public::ticks,xticks,yticks
+	public::legend
+	
+	public::mixval,linspace
+	
+	public::plot
+	public::scatter
+	public::contour,contourf,colorbar
+	public::bar,barh
+	public::hist
+	public::fillBetween,fillBetweenx
+	public::quiver
 	
 contains
 
@@ -66,6 +85,19 @@ contains
 		b = [minval(x),maxval(x)]
 	end function mixval_3
 
+	function linspace(l,h,N) result(o)
+		real(wp),intent(in)::l,h
+		integer,intent(in),optional::N
+		real(wp),dimension(:),allocatable::o
+		
+		integer::Nl,i
+		
+		Nl = 20
+		if(present(N)) Nl = N
+		
+		o = [( (h-l)*real(i-1,wp)/real(Nl-1,wp)+l , i=1 , Nl )]
+	end function linspace
+
 	function startsWith(text,str) result(o)
 		!! Test if text starts with str
 		character(*),intent(in)::text
@@ -97,9 +129,9 @@ contains
 	!============================!
 
 	subroutine figure
+		!! Create a new figure
 		logical,save::isFirst = .true.
 		
-		!! Create a new figure
 		if(.not.isSetup) call setup()
 		
 		if(.not.isFirst) then
@@ -140,6 +172,7 @@ contains
 
 	subroutine defaultLim
 		real(plflt),parameter::eps = epsilon(1.0_plflt)
+		
 		call plwind(-eps,eps,-eps,eps)
 	end subroutine defaultLim
 
@@ -159,6 +192,7 @@ contains
 	end subroutine xylim
 
 	subroutine xlim(xl,xh)
+		!! Set the limits of the x-axis
 		real(wp),intent(in)::xl,xh
 		
 		real(plflt)::x1,x2,y1,y2
@@ -168,6 +202,7 @@ contains
 	end subroutine xlim
 
 	subroutine ylim(yl,yh)
+		!! Set the limits of the y-axis
 		real(wp),intent(in)::yl,yh
 		
 		real(plflt)::x1,x2,y1,y2
@@ -536,6 +571,8 @@ contains
 	!=====================!
 
 	subroutine hist(x,bins,xb)
+		!! Create a histogram of data in a vector
+		!! TODO: replace with new implementation
 		real(wp),dimension(:),intent(in)::x
 		integer,intent(in),optional::bins
 		real(wp),dimension(2),intent(in),optional::xb

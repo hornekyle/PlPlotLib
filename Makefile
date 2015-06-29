@@ -4,7 +4,7 @@ LN=ln
 INCLUDE=$(shell pkg-config --cflags plplotd-f95)
 LIBS=$(shell pkg-config --libs plplotd-f95)
 #FLAGS=-O3 -march=native -mfpmath=sse
-FLAGS=-g3 -Wall -Wtabs -fcheck=all -ffpe-trap=invalid,zero,overflow -fbacktrace -fdiagnostics-color=always
+FLAGS=-g -Wall -Wtabs -fcheck=all -ffpe-trap=invalid,zero,overflow -fbacktrace -fdiagnostics-color=always
 VPATH=src:bin
 BPATH=bin
 SPATH=src
@@ -12,8 +12,9 @@ EXE=main
 
 all: $(EXE)
 
-OBJS=main.o plplotlib.o kinds.o
-main.o: plplotlib.o kinds.o Makefile
+OBJS=main.o test.o plplotlib.o kinds.o
+main.o: test.o plplotlib.o kinds.o Makefile
+test.o: plplotlib.o kinds.o Makefile
 plplotlib.o: kinds.o Makefile
 kinds.o: Makefile
 

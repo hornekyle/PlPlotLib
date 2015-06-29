@@ -3,6 +3,7 @@ project_dir: ./src
 project_github: http://github.com/hornekyle/PlPlotLib
 project_website: http://hornekyle.github.io/PlPlotLib/
 media_dir: /home/kyle/Development/Fortran/PlPlotLib/examples
+display: public
 page_dir: ./pages
 output_dir: ./doc
 author: Dr. Kyle Horne

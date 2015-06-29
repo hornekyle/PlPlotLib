@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="176.389mm" height="176.389mm"
+ viewBox="0 0 500 500"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>Qt Svg Document</title>
+<desc>Generated with Qt</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,0 L500,0 L500,500 L0,500 L0,0"/>
+</g>
+
+<g fill="#0000ff" fill-opacity="1" stroke="#0000ff" stroke-opacity="1" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,431.803 83.7402,431.803 87.4634,431.742 91.2069,431.641 94.9504,431.519 98.6735,431.356 102.417,431.152 106.16,430.908 109.884,430.623 113.627,430.318 117.371,429.952 121.114,429.565 124.837,429.138 128.581,428.67 132.324,428.182 136.047,427.633 139.791,427.063 143.534,426.453 147.257,425.802 151.001,425.11 154.744,424.398 158.468,423.625 162.211,422.831 165.955,421.997 169.698,421.122 173.421,420.227 177.165,419.271 180.908,418.294 184.631,417.277 188.375,416.219 192.118,415.12 195.841,413.981 199.585,412.821 203.328,411.621 207.052,410.36 210.795,409.098 214.539,407.776 218.282,406.413 222.005,405.029 225.749,403.605 229.492,402.14 233.215,400.635 236.959,399.089 240.702,397.522 244.425,395.894 248.169,394.246 251.912,392.558 255.656,390.828 259.379,389.079 263.123,387.268 266.866,385.437 270.589,383.565 274.333,381.653 278.076,379.7 281.799,377.726 285.543,375.692 289.286,373.637 293.009,371.541 296.753,369.405 300.496,367.249 304.24,365.031 307.963,362.793 311.707,360.514 315.45,358.195 319.173,355.835 322.917,353.434 326.66,351.013 330.383,348.551 334.127,346.029 337.87,343.506 341.593,340.922 345.337,338.298 349.08,335.653 352.824,332.967 356.547,330.241 360.291,327.474 364.034,324.666 367.757,321.838 371.501,318.949 375.244,316.04 378.967,313.09 382.711,310.099 386.454,307.088 390.177,304.016 393.921,300.924 397.664,297.791 401.408,294.617 405.131,291.402 408.875,288.167 412.618,284.871 416.341,281.555 420.085,278.198 423.828,274.801 427.551,271.383 431.295,267.904 435.038,264.404 438.761,260.864 442.505,257.284 446.248,253.662 449.992,250 " />
+</g>
+
+<g fill="#ff0000" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,431.803 83.7402,428.141 87.4634,424.459 91.2069,420.797 94.9504,417.114 98.6735,413.452 102.417,409.77 106.16,406.108 109.884,402.425 113.627,398.763 117.371,395.081 121.114,391.418 124.837,387.736 128.581,384.074 132.324,380.391 136.047,376.709 139.791,373.047 143.534,369.364 147.257,365.702 151.001,362.02 154.744,358.358 158.468,354.675 162.211,351.013 165.955,347.331 169.698,343.669 173.421,339.986 177.165,336.324 180.908,332.642 184.631,328.979 188.375,325.297 192.118,321.635 195.841,317.952 199.585,314.29 203.328,310.608 207.052,306.925 210.795,303.263 214.539,299.581 218.282,295.919 222.005,292.236 225.749,288.574 229.492,284.892 233.215,281.23 236.959,277.547 240.702,273.885 244.425,270.203 248.169,266.541 251.912,262.858 255.656,259.196 259.379,255.514 263.123,251.851 266.866,248.169 270.589,244.486 274.333,240.824 278.076,237.142 281.799,233.48 285.543,229.797 289.286,226.135 293.009,222.453 296.753,218.791 300.496,215.108 304.24,211.446 307.963,207.764 311.707,204.102 315.45,200.419 319.173,196.757 322.917,193.075 326.66,189.412 330.383,185.73 334.127,182.048 337.87,178.385 341.593,174.703 345.337,171.041 349.08,167.358 352.824,163.696 356.547,160.014 360.291,156.352 364.034,152.669 367.757,149.007 371.501,145.325 375.244,141.663 378.967,137.98 382.711,134.318 386.454,130.636 390.177,126.973 393.921,123.291 397.664,119.609 401.408,115.946 405.131,112.264 408.875,108.602 412.618,104.919 416.341,101.257 420.085,97.5749 423.828,93.9128 427.551,90.2303 431.295,86.5682 435.038,82.8857 438.761,79.2236 442.505,75.5412 446.248,71.8791 449.992,68.1966 " />
+</g>
+
+<g fill="#00ffff" fill-opacity="1" stroke="#00ffff" stroke-opacity="1" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,68.1966 83.7402,68.5628 87.4634,69.6615 91.2069,71.4925 94.9504,74.0153 98.6735,77.2705 102.417,81.2174 106.16,85.8561 109.884,91.1255 113.627,97.0662 117.371,103.597 121.114,110.738 124.837,118.429 128.581,126.648 132.324,135.376 136.047,144.552 139.791,154.154 143.534,164.144 147.257,174.479 151.001,185.12 154.744,196.025 158.468,207.133 162.211,218.424 165.955,229.858 169.698,241.353 173.421,252.889 177.165,264.404 180.908,275.879 184.631,287.231 188.375,298.462 192.118,309.469 195.841,320.251 199.585,330.75 203.328,340.902 207.052,350.708 210.795,360.107 214.539,369.059 218.282,377.543 222.005,385.498 225.749,392.924 229.492,399.76 233.215,405.986 236.959,411.601 240.702,416.565 244.425,420.858 248.169,424.438 251.912,427.348 255.656,429.525 259.379,430.99 263.123,431.722 266.866,431.722 270.589,430.99 274.333,429.525 278.076,427.348 281.799,424.438 285.543,420.858 289.286,416.565 293.009,411.601 296.753,405.986 300.496,399.76 304.24,392.924 307.963,385.498 311.707,377.543 315.45,369.059 319.173,360.107 322.917,350.708 326.66,340.902 330.383,330.75 334.127,320.251 337.87,309.469 341.593,298.462 345.337,287.231 349.08,275.879 352.824,264.404 356.547,252.889 360.291,241.353 364.034,229.858 367.757,218.424 371.501,207.133 375.244,196.025 378.967,185.12 382.711,174.479 386.454,164.144 390.177,154.154 393.921,144.552 397.664,135.376 401.408,126.648 405.131,118.429 408.875,110.738 412.618,103.597 416.341,97.0662 420.085,91.1255 423.828,85.8561 427.551,81.2174 431.295,77.2705 435.038,74.0153 438.761,71.4925 442.505,69.6615 446.248,68.5628 449.992,68.1966 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,449.992 449.992,449.992 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,449.992 79.9967,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="98.4904,449.992 98.4904,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="116.984,449.992 116.984,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="135.498,449.992 135.498,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="153.992,449.992 153.992,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="172.485,449.992 172.485,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="190.999,449.992 190.999,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="209.493,449.992 209.493,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="227.987,449.992 227.987,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="246.48,449.992 246.48,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="264.994,449.992 264.994,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="283.488,449.992 283.488,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="301.982,449.992 301.982,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="320.496,449.992 320.496,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="338.989,449.992 338.989,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="357.483,449.992 357.483,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="375.977,449.992 375.977,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="394.491,449.992 394.491,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="412.984,449.992 412.984,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="431.478,449.992 431.478,446.248 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="449.992,449.992 449.992,442.485 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="449.992,449.992 449.992,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,449.992 449.992,449.992 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="442.485,431.803 449.992,431.803 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,413.635 449.992,413.635 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,395.447 449.992,395.447 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,377.279 449.992,377.279 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,359.09 449.992,359.09 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="442.485,340.902 449.992,340.902 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,322.734 449.992,322.734 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,304.545 449.992,304.545 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,286.357 449.992,286.357 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,268.188 449.992,268.188 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="442.485,250 449.992,250 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,231.832 449.992,231.832 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,213.643 449.992,213.643 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,195.455 449.992,195.455 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,177.287 449.992,177.287 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="442.485,159.098 449.992,159.098 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,140.93 449.992,140.93 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,122.742 449.992,122.742 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,104.553 449.992,104.553 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,86.3851 449.992,86.3851 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="442.485,68.1966 449.992,68.1966 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="446.248,50.0081 449.992,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="449.992,50.0081 79.9967,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="449.992,57.5155 449.992,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="431.478,53.7516 431.478,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="412.984,53.7516 412.984,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="394.491,53.7516 394.491,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="375.977,57.5155 375.977,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="357.483,53.7516 357.483,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="338.989,53.7516 338.989,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="320.496,53.7516 320.496,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="301.982,57.5155 301.982,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="283.488,53.7516 283.488,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="264.994,53.7516 264.994,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="246.48,53.7516 246.48,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="227.987,57.5155 227.987,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="209.493,53.7516 209.493,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="190.999,53.7516 190.999,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="172.485,53.7516 172.485,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="153.992,57.5155 153.992,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="135.498,53.7516 135.498,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="116.984,53.7516 116.984,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="98.4904,53.7516 98.4904,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,57.5155 79.9967,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,50.0081 79.9967,449.992 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,50.0081 83.7402,50.0081 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,68.1966 87.5041,68.1966 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,86.3851 83.7402,86.3851 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,104.553 83.7402,104.553 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,122.742 83.7402,122.742 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,140.93 83.7402,140.93 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,159.098 87.5041,159.098 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,177.287 83.7402,177.287 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,195.455 83.7402,195.455 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,213.643 83.7402,213.643 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,231.832 83.7402,231.832 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,250 87.5041,250 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,268.188 83.7402,268.188 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,286.357 83.7402,286.357 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,304.545 83.7402,304.545 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,322.734 83.7402,322.734 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,340.902 87.5041,340.902 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,359.09 83.7402,359.09 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,377.279 83.7402,377.279 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,395.447 83.7402,395.447 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,413.635 83.7402,413.635 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,431.803 87.5041,431.803 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="79.9967,449.992 83.7402,449.992 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,68.5074,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,79.9967,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.01562,-5.57812 C8.05729,-5.57812 7.33594,-5.10417 6.85156,-4.15625 C6.36719,-3.20833 6.125,-1.78646 6.125,0.109375 C6.125,2.00521 6.36719,3.42448 6.85156,4.36719 C7.33594,5.3099 8.05729,5.78125 9.01562,5.78125 C9.98438,5.78125 10.7109,5.3099 11.1953,4.36719 C11.6797,3.42448 11.9219,2.00521 11.9219,0.109375 C11.9219,-1.78646 11.6797,-3.20833 11.1953,-4.15625 C10.7109,-5.10417 9.98438,-5.57812 9.01562,-5.57812 M9.01562,-7.0625 C10.5677,-7.0625 11.7526,-6.45052 12.5703,-5.22656 C13.388,-4.0026 13.7969,-2.22396 13.7969,0.109375 C13.7969,2.43229 13.388,4.20573 12.5703,5.42969 C11.7526,6.65365 10.5677,7.26562 9.01562,7.26562 C7.47396,7.26562 6.29427,6.65365 5.47656,5.42969 C4.65885,4.20573 4.25,2.43229 4.25,0.109375 C4.25,-2.22396 4.65885,-4.0026 5.47656,-5.22656 C6.29427,-6.45052 7.47396,-7.0625 9.01562,-7.0625 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,68.5074,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,142.523,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,154.012,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M6.64062,5.42188 L13.1562,5.42188 L13.1562,7 L4.39062,7 L4.39062,5.42188 C5.09896,4.69271 6.0651,3.71094 7.28906,2.47656 C8.51302,1.24219 9.28125,0.442708 9.59375,0.078125 C10.1875,-0.588542 10.6042,-1.15625 10.8438,-1.625 C11.0833,-2.09375 11.2031,-2.55208 11.2031,-3 C11.2031,-3.72917 10.9453,-4.32552 10.4297,-4.78906 C9.91406,-5.2526 9.24479,-5.48438 8.42188,-5.48438 C7.83854,-5.48438 7.22135,-5.38281 6.57031,-5.17969 C5.91927,-4.97656 5.22396,-4.66667 4.48438,-4.25 L4.48438,-6.14062 C5.23438,-6.44271 5.9349,-6.67188 6.58594,-6.82812 C7.23698,-6.98438 7.83333,-7.0625 8.375,-7.0625 C9.8125,-7.0625 10.9557,-6.70312 11.8047,-5.98438 C12.6536,-5.26562 13.0781,-4.30729 13.0781,-3.10938 C13.0781,-2.54688 12.9714,-2.01042 12.7578,-1.5 C12.5443,-0.989583 12.1562,-0.390625 11.5938,0.296875 C11.4479,0.473958 10.9609,0.989583 10.1328,1.84375 C9.30469,2.69792 8.14062,3.89062 6.64062,5.42188 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,142.523,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,216.518,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,228.007,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M10.1562,-5.17188 L5.4375,2.1875 L10.1562,2.1875 L10.1562,-5.17188 M9.67188,-6.8125 L12.0156,-6.8125 L12.0156,2.1875 L13.9844,2.1875 L13.9844,3.75 L12.0156,3.75 L12.0156,7 L10.1562,7 L10.1562,3.75 L3.92188,3.75 L3.92188,1.9375 L9.67188,-6.8125"/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,216.518,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,290.513,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,302.002,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.25,-0.640625 C8.41667,-0.640625 7.7526,-0.354167 7.25781,0.21875 C6.76302,0.791667 6.51562,1.57812 6.51562,2.57812 C6.51562,3.56771 6.76302,4.34896 7.25781,4.92188 C7.7526,5.49479 8.41667,5.78125 9.25,5.78125 C10.0938,5.78125 10.7604,5.49479 11.25,4.92188 C11.7396,4.34896 11.9844,3.56771 11.9844,2.57812 C11.9844,1.57812 11.7396,0.791667 11.25,0.21875 C10.7604,-0.354167 10.0938,-0.640625 9.25,-0.640625 M12.9531,-6.5 L12.9531,-4.79688 C12.4844,-5.01562 12.013,-5.1849 11.5391,-5.30469 C11.0651,-5.42448 10.5938,-5.48438 10.125,-5.48438 C8.88542,-5.48438 7.9401,-5.06771 7.28906,-4.23438 C6.63802,-3.40104 6.27083,-2.14583 6.1875,-0.46875 C6.54167,-1 6.99479,-1.40885 7.54688,-1.69531 C8.09896,-1.98177 8.70312,-2.125 9.35938,-2.125 C10.7448,-2.125 11.8411,-1.70573 12.6484,-0.867188 C13.4557,-0.0286458 13.8594,1.11979 13.8594,2.57812 C13.8594,3.99479 13.4401,5.13021 12.6016,5.98438 C11.763,6.83854 10.6458,7.26562 9.25,7.26562 C7.65625,7.26562 6.4375,6.65365 5.59375,5.42969 C4.75,4.20573 4.32812,2.43229 4.32812,0.109375 C4.32812,-2.06771 4.84375,-3.80729 5.875,-5.10938 C6.90625,-6.41146 8.29688,-7.0625 10.0469,-7.0625 C10.5156,-7.0625 10.9896,-7.01562 11.4688,-6.92188 C11.9479,-6.82812 12.4427,-6.6875 12.9531,-6.5 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,290.513,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,364.508,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,375.997,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.01562,0.4375 C8.13021,0.4375 7.43229,0.677083 6.92188,1.15625 C6.41146,1.63542 6.15625,2.28646 6.15625,3.10938 C6.15625,3.94271 6.41146,4.59635 6.92188,5.07031 C7.43229,5.54427 8.13021,5.78125 9.01562,5.78125 C9.90104,5.78125 10.6016,5.54427 11.1172,5.07031 C11.6328,4.59635 11.8906,3.94271 11.8906,3.10938 C11.8906,2.28646 11.6354,1.63542 11.125,1.15625 C10.6146,0.677083 9.91146,0.4375 9.01562,0.4375 M7.15625,-0.34375 C6.35417,-0.541667 5.72917,-0.916667 5.28125,-1.46875 C4.83333,-2.02083 4.60938,-2.69271 4.60938,-3.48438 C4.60938,-4.57812 5.0026,-5.44792 5.78906,-6.09375 C6.57552,-6.73958 7.65104,-7.0625 9.01562,-7.0625 C10.3906,-7.0625 11.4714,-6.73958 12.2578,-6.09375 C13.0443,-5.44792 13.4375,-4.57812 13.4375,-3.48438 C13.4375,-2.69271 13.2135,-2.02083 12.7656,-1.46875 C12.3177,-0.916667 11.6927,-0.541667 10.8906,-0.34375 C11.7969,-0.135417 12.5,0.273438 13,0.882812 C13.5,1.49219 13.75,2.23438 13.75,3.10938 C13.75,4.45312 13.3411,5.48177 12.5234,6.19531 C11.7057,6.90885 10.5365,7.26562 9.01562,7.26562 C7.49479,7.26562 6.32552,6.90885 5.50781,6.19531 C4.6901,5.48177 4.28125,4.45312 4.28125,3.10938 C4.28125,2.23438 4.53385,1.49219 5.03906,0.882812 C5.54427,0.273438 6.25,-0.135417 7.15625,-0.34375 M6.46875,-3.29688 C6.46875,-2.58854 6.69271,-2.03385 7.14062,-1.63281 C7.58854,-1.23177 8.21354,-1.03125 9.01562,-1.03125 C9.81771,-1.03125 10.4453,-1.23177 10.8984,-1.63281 C11.3516,-2.03385 11.5781,-2.58854 11.5781,-3.29688 C11.5781,-4.01562 11.3516,-4.57552 10.8984,-4.97656 C10.4453,-5.3776 9.81771,-5.57812 9.01562,-5.57812 C8.21354,-5.57812 7.58854,-5.3776 7.14062,-4.97656 C6.69271,-4.57552 6.46875,-4.01562 6.46875,-3.29688 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,364.508,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,438.503,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,449.992,465.007)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-12.6562,5.42188 L-9.59375,5.42188 L-9.59375,-5.10938 L-12.9219,-4.4375 L-12.9219,-6.14062 L-9.625,-6.8125 L-7.75,-6.8125 L-7.75,5.42188 L-4.70312,5.42188 L-4.70312,7 L-12.6562,7 L-12.6562,5.42188 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.01562,-5.57812 C8.05729,-5.57812 7.33594,-5.10417 6.85156,-4.15625 C6.36719,-3.20833 6.125,-1.78646 6.125,0.109375 C6.125,2.00521 6.36719,3.42448 6.85156,4.36719 C7.33594,5.3099 8.05729,5.78125 9.01562,5.78125 C9.98438,5.78125 10.7109,5.3099 11.1953,4.36719 C11.6797,3.42448 11.9219,2.00521 11.9219,0.109375 C11.9219,-1.78646 11.6797,-3.20833 11.1953,-4.15625 C10.7109,-5.10417 9.98438,-5.57812 9.01562,-5.57812 M9.01562,-7.0625 C10.5677,-7.0625 11.7526,-6.45052 12.5703,-5.22656 C13.388,-4.0026 13.7969,-2.22396 13.7969,0.109375 C13.7969,2.43229 13.388,4.20573 12.5703,5.42969 C11.7526,6.65365 10.5677,7.26562 9.01562,7.26562 C7.47396,7.26562 6.29427,6.65365 5.47656,5.42969 C4.65885,4.20573 4.25,2.43229 4.25,0.109375 C4.25,-2.22396 4.65885,-4.0026 5.47656,-5.22656 C6.29427,-6.45052 7.47396,-7.0625 9.01562,-7.0625 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,438.503,465.007)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,46.6514,431.824)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,60.4387,431.824)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-17.0781,1.04688 L-12.0938,1.04688 L-12.0938,2.57812 L-17.0781,2.57812 L-17.0781,1.04688 M-8.65625,5.42188 L-5.59375,5.42188 L-5.59375,-5.10938 L-8.92188,-4.4375 L-8.92188,-6.14062 L-5.625,-6.8125 L-3.75,-6.8125 L-3.75,5.42188 L-0.703125,5.42188 L-0.703125,7 L-8.65625,7 L-8.65625,5.42188 M3.03125,4.65625 L4.96875,4.65625 L4.96875,7 L3.03125,7 L3.03125,4.65625 M13.0156,-5.57812 C12.0573,-5.57812 11.3359,-5.10417 10.8516,-4.15625 C10.3672,-3.20833 10.125,-1.78646 10.125,0.109375 C10.125,2.00521 10.3672,3.42448 10.8516,4.36719 C11.3359,5.3099 12.0573,5.78125 13.0156,5.78125 C13.9844,5.78125 14.7109,5.3099 15.1953,4.36719 C15.6797,3.42448 15.9219,2.00521 15.9219,0.109375 C15.9219,-1.78646 15.6797,-3.20833 15.1953,-4.15625 C14.7109,-5.10417 13.9844,-5.57812 13.0156,-5.57812 M13.0156,-7.0625 C14.5677,-7.0625 15.7526,-6.45052 16.5703,-5.22656 C17.388,-4.0026 17.7969,-2.22396 17.7969,0.109375 C17.7969,2.43229 17.388,4.20573 16.5703,5.42969 C15.7526,6.65365 14.5677,7.26562 13.0156,7.26562 C11.474,7.26562 10.2943,6.65365 9.47656,5.42969 C8.65885,4.20573 8.25,2.43229 8.25,0.109375 C8.25,-2.22396 8.65885,-4.0026 9.47656,-5.22656 C10.2943,-6.45052 11.474,-7.0625 13.0156,-7.0625 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,46.6514,431.824)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,46.6514,340.902)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,60.4387,340.902)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-17.0781,1.04688 L-12.0938,1.04688 L-12.0938,2.57812 L-17.0781,2.57812 L-17.0781,1.04688 M-4.98438,-5.57812 C-5.94271,-5.57812 -6.66406,-5.10417 -7.14844,-4.15625 C-7.63281,-3.20833 -7.875,-1.78646 -7.875,0.109375 C-7.875,2.00521 -7.63281,3.42448 -7.14844,4.36719 C-6.66406,5.3099 -5.94271,5.78125 -4.98438,5.78125 C-4.01562,5.78125 -3.28906,5.3099 -2.80469,4.36719 C-2.32031,3.42448 -2.07812,2.00521 -2.07812,0.109375 C-2.07812,-1.78646 -2.32031,-3.20833 -2.80469,-4.15625 C-3.28906,-5.10417 -4.01562,-5.57812 -4.98438,-5.57812 M-4.98438,-7.0625 C-3.43229,-7.0625 -2.2474,-6.45052 -1.42969,-5.22656 C-0.611979,-4.0026 -0.203125,-2.22396 -0.203125,0.109375 C-0.203125,2.43229 -0.611979,4.20573 -1.42969,5.42969 C-2.2474,6.65365 -3.43229,7.26562 -4.98438,7.26562 C-6.52604,7.26562 -7.70573,6.65365 -8.52344,5.42969 C-9.34115,4.20573 -9.75,2.43229 -9.75,0.109375 C-9.75,-2.22396 -9.34115,-4.0026 -8.52344,-5.22656 C-7.70573,-6.45052 -6.52604,-7.0625 -4.98438,-7.0625 M3.03125,4.65625 L4.96875,4.65625 L4.96875,7 L3.03125,7 L3.03125,4.65625 M9.04688,-6.8125 L16.375,-6.8125 L16.375,-5.23438 L10.75,-5.23438 L10.75,-1.84375 C11.0208,-1.9375 11.2917,-2.00781 11.5625,-2.05469 C11.8333,-2.10156 12.1042,-2.125 12.375,-2.125 C13.9167,-2.125 15.138,-1.70312 16.0391,-0.859375 C16.9401,-0.015625 17.3906,1.13021 17.3906,2.57812 C17.3906,4.05729 16.9297,5.20833 16.0078,6.03125 C15.0859,6.85417 13.7812,7.26562 12.0938,7.26562 C11.5104,7.26562 10.9193,7.21615 10.3203,7.11719 C9.72135,7.01823 9.10417,6.86979 8.46875,6.67188 L8.46875,4.79688 C9.02083,5.09896 9.59115,5.32552 10.1797,5.47656 C10.7682,5.6276 11.3958,5.70312 12.0625,5.70312 C13.125,5.70312 13.9688,5.42188 14.5938,4.85938 C15.2188,4.29688 15.5312,3.53646 15.5312,2.57812 C15.5312,1.60938 15.2188,0.846354 14.5938,0.289062 C13.9688,-0.268229 13.125,-0.546875 12.0625,-0.546875 C11.5625,-0.546875 11.0625,-0.492188 10.5625,-0.382812 C10.0625,-0.273438 9.55729,-0.104167 9.04688,0.125 L9.04688,-6.8125"/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,46.6514,340.902)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,250)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,63.5025,250)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.01562,-5.57812 C8.05729,-5.57812 7.33594,-5.10417 6.85156,-4.15625 C6.36719,-3.20833 6.125,-1.78646 6.125,0.109375 C6.125,2.00521 6.36719,3.42448 6.85156,4.36719 C7.33594,5.3099 8.05729,5.78125 9.01562,5.78125 C9.98438,5.78125 10.7109,5.3099 11.1953,4.36719 C11.6797,3.42448 11.9219,2.00521 11.9219,0.109375 C11.9219,-1.78646 11.6797,-3.20833 11.1953,-4.15625 C10.7109,-5.10417 9.98438,-5.57812 9.01562,-5.57812 M9.01562,-7.0625 C10.5677,-7.0625 11.7526,-6.45052 12.5703,-5.22656 C13.388,-4.0026 13.7969,-2.22396 13.7969,0.109375 C13.7969,2.43229 13.388,4.20573 12.5703,5.42969 C11.7526,6.65365 10.5677,7.26562 9.01562,7.26562 C7.47396,7.26562 6.29427,6.65365 5.47656,5.42969 C4.65885,4.20573 4.25,2.43229 4.25,0.109375 C4.25,-2.22396 4.65885,-4.0026 5.47656,-5.22656 C6.29427,-6.45052 7.47396,-7.0625 9.01562,-7.0625 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,250)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,159.098)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,63.5025,159.098)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-8.98438,-5.57812 C-9.94271,-5.57812 -10.6641,-5.10417 -11.1484,-4.15625 C-11.6328,-3.20833 -11.875,-1.78646 -11.875,0.109375 C-11.875,2.00521 -11.6328,3.42448 -11.1484,4.36719 C-10.6641,5.3099 -9.94271,5.78125 -8.98438,5.78125 C-8.01562,5.78125 -7.28906,5.3099 -6.80469,4.36719 C-6.32031,3.42448 -6.07812,2.00521 -6.07812,0.109375 C-6.07812,-1.78646 -6.32031,-3.20833 -6.80469,-4.15625 C-7.28906,-5.10417 -8.01562,-5.57812 -8.98438,-5.57812 M-8.98438,-7.0625 C-7.43229,-7.0625 -6.2474,-6.45052 -5.42969,-5.22656 C-4.61198,-4.0026 -4.20312,-2.22396 -4.20312,0.109375 C-4.20312,2.43229 -4.61198,4.20573 -5.42969,5.42969 C-6.2474,6.65365 -7.43229,7.26562 -8.98438,7.26562 C-10.526,7.26562 -11.7057,6.65365 -12.5234,5.42969 C-13.3411,4.20573 -13.75,2.43229 -13.75,0.109375 C-13.75,-2.22396 -13.3411,-4.0026 -12.5234,-5.22656 C-11.7057,-6.45052 -10.526,-7.0625 -8.98438,-7.0625 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M5.04688,-6.8125 L12.375,-6.8125 L12.375,-5.23438 L6.75,-5.23438 L6.75,-1.84375 C7.02083,-1.9375 7.29167,-2.00781 7.5625,-2.05469 C7.83333,-2.10156 8.10417,-2.125 8.375,-2.125 C9.91667,-2.125 11.138,-1.70312 12.0391,-0.859375 C12.9401,-0.015625 13.3906,1.13021 13.3906,2.57812 C13.3906,4.05729 12.9297,5.20833 12.0078,6.03125 C11.0859,6.85417 9.78125,7.26562 8.09375,7.26562 C7.51042,7.26562 6.91927,7.21615 6.32031,7.11719 C5.72135,7.01823 5.10417,6.86979 4.46875,6.67188 L4.46875,4.79688 C5.02083,5.09896 5.59115,5.32552 6.17969,5.47656 C6.76823,5.6276 7.39583,5.70312 8.0625,5.70312 C9.125,5.70312 9.96875,5.42188 10.5938,4.85938 C11.2188,4.29688 11.5312,3.53646 11.5312,2.57812 C11.5312,1.60938 11.2188,0.846354 10.5938,0.289062 C9.96875,-0.268229 9.125,-0.546875 8.0625,-0.546875 C7.5625,-0.546875 7.0625,-0.492188 6.5625,-0.382812 C6.0625,-0.273438 5.55729,-0.104167 5.04688,0.125 L5.04688,-6.8125"/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,159.098)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,68.1763)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(0.765957,0,0,0.765957,63.5025,68.1763)"
+font-family="" font-size="14.5" font-weight="400" font-style="normal" 
+>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-12.6562,5.42188 L-9.59375,5.42188 L-9.59375,-5.10938 L-12.9219,-4.4375 L-12.9219,-6.14062 L-9.625,-6.8125 L-7.75,-6.8125 L-7.75,5.42188 L-4.70312,5.42188 L-4.70312,7 L-12.6562,7 L-12.6562,5.42188 M-0.96875,4.65625 L0.96875,4.65625 L0.96875,7 L-0.96875,7 L-0.96875,4.65625 M9.01562,-5.57812 C8.05729,-5.57812 7.33594,-5.10417 6.85156,-4.15625 C6.36719,-3.20833 6.125,-1.78646 6.125,0.109375 C6.125,2.00521 6.36719,3.42448 6.85156,4.36719 C7.33594,5.3099 8.05729,5.78125 9.01562,5.78125 C9.98438,5.78125 10.7109,5.3099 11.1953,4.36719 C11.6797,3.42448 11.9219,2.00521 11.9219,0.109375 C11.9219,-1.78646 11.6797,-3.20833 11.1953,-4.15625 C10.7109,-5.10417 9.98438,-5.57812 9.01562,-5.57812 M9.01562,-7.0625 C10.5677,-7.0625 11.7526,-6.45052 12.5703,-5.22656 C13.388,-4.0026 13.7969,-2.22396 13.7969,0.109375 C13.7969,2.43229 13.388,4.20573 12.5703,5.42969 C11.7526,6.65365 10.5677,7.26562 9.01562,7.26562 C7.47396,7.26562 6.29427,6.65365 5.47656,5.42969 C4.65885,4.20573 4.25,2.43229 4.25,0.109375 C4.25,-2.22396 4.65885,-4.0026 5.47656,-5.22656 C6.29427,-6.45052 7.47396,-7.0625 9.01562,-7.0625 "/>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,52.0131,68.1763)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Adventor" font-size="9" font-weight="400" font-style="normal" 
+>
+</g>
+</g>
+</svg>
