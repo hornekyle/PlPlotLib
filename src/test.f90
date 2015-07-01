@@ -9,6 +9,27 @@ module test_mod
 	
 contains
 
+	subroutine makeLogo
+		real(wp),dimension(:),allocatable::x,y1,y2,y3
+		
+		x  = linspace(0.0_wp,1.0_wp,100)
+		y1 = x**2-1.0_wp
+		y2 = 2.0_wp*x-1.0_wp
+		y3 = x
+		y3 = cos(2.0_wp*PI*x)
+		
+		call figure()
+		call subplot(1,1,1)
+		call xylim(mixval(x),mixval([y1,y2,y3])*1.1_wp)
+		
+		call plot(x,y1,lineColor='b',lineWidth=10.0_wp)
+		call plot(x,y2,lineColor='r',lineWidth=10.0_wp)
+		call plot(x,y3,lineColor='c',lineWidth=10.0_wp)
+		
+		call ticks(lineWidth=5.0_wp)
+		call labels('','','')
+	end subroutine makeLogo
+
 	subroutine runTests
 !~ 		call testPlot
 !~ 		call testScatter
@@ -18,6 +39,7 @@ contains
 !~ 		call testBar
 !~ 		call testFillBetween
 !~ 		call testHist
+		call testSurface
 	end subroutine runTests
 
 	subroutine testPlot
@@ -215,5 +237,29 @@ contains
 		call ticks()
 !~ 		call labels('x','y','f(x)=x#u2#d-1',color='r')
 	end subroutine testHist
+
+	subroutine testSurface
+		use plplot
+		
+		integer,parameter::N = 100
+		real(wp),dimension(N)::x,y
+		real(wp),dimension(N,N)::z
+		integer::i,j
+		
+		x = 20.0_wp*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-10.0_wp
+		y = 20.0_wp*[( real(j-1,wp)/real(N-1,wp) , j=1,N )]-10.0_wp
+		forall(i=1:N,j=1:N)
+			z(i,j) = sin( sqrt(x(i)**2+y(j)**2) )/sqrt(x(i)**2+y(j)**2)
+		end forall
+		
+		call figure()
+		
+		call subplot(1,1,1)
+		call xyzlim(mixval(x),mixval(y),mixval(z))
+		call surface(x,y,z,5)
+!~ 		call wireframe(x,y,z,lineColor='k')
+		call box('x','y','z')
+		
+	end subroutine testSurface
 
 end module test_mod

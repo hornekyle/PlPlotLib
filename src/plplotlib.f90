@@ -37,9 +37,9 @@ module plplotlib_mod
 	public::setup,show
 	public::figure
 	public::subplot
-	public::xylim,xlim,ylim
+	public::xylim,xlim,ylim,xyzlim
 	public::labels,xlabel,ylabel,title
-	public::ticks,xticks,yticks
+	public::ticks,xticks,yticks,box
 	public::legend
 	
 	public::mixval,linspace
@@ -51,6 +51,7 @@ module plplotlib_mod
 	public::hist
 	public::fillBetween,fillBetweenx
 	public::quiver
+	public::surface,wireframe
 	
 contains
 
@@ -86,8 +87,13 @@ contains
 	end function mixval_3
 
 	function linspace(l,h,N) result(o)
-		real(wp),intent(in)::l,h
+		!! Return an array of evenly-spaced values.
+		real(wp),intent(in)::l
+			!! Low-bound for values
+		real(wp),intent(in)::h
+			!! High-bound for values
 		integer,intent(in),optional::N
+			!! Number of values (default 20)
 		real(wp),dimension(:),allocatable::o
 		
 		integer::Nl,i
@@ -211,6 +217,33 @@ contains
 		call plwind(x1,x2,real(yl,plflt),real(yh,plflt))
 	end subroutine ylim
 
+	subroutine xyzlim(xb,yb,zb,altitude,azimuth)
+		!! Set the limits for a 3d plot
+		real(wp),dimension(2),intent(in)::xb
+			!! x-range of plot
+		real(wp),dimension(2),intent(in)::yb
+			!! y-range of plot
+		real(wp),dimension(2),intent(in)::zb
+			!! z-range of plot
+		real(wp),intent(in),optional::altitude
+			!! Altitude angle of plot in degrees
+		real(wp),intent(in),optional::azimuth
+			!! Azimuth angle of plot in degrees
+		
+		real(plflt)::al,az
+		
+		al = 45.0_plflt
+		if(present(altitude)) al = real(altitude,plflt)
+		az = 60.0_plflt
+		if(present(azimuth)) az = real(azimuth,plflt)
+		
+		call plwind(-1.0_plflt,1.0_plflt,-1.0_plflt,1.5_plflt)
+		call plw3d(1.0_plflt,1.0_plflt,1.2_plflt, &
+		& real(xb(1),plflt),real(xb(2),plflt), &
+		& real(yb(1),plflt),real(yb(2),plflt), &
+		& real(zb(1),plflt),real(zb(2),plflt),al,az)
+	end subroutine xyzlim
+
 	subroutine ticks(dx,dy,logx,logy,color,lineWidth)
 		!! Set the ticks for the axes
 		real(wp),intent(in),optional::dx
@@ -253,6 +286,22 @@ contains
 		call plbox(xopts,dxl,0,yopts,dyl,0)
 		call resetPen
 	end subroutine ticks
+
+	subroutine box(xLabel,yLabel,zLabel,color)
+		!! Set x,y and plot labels
+		character(*),intent(in)::xLabel
+			!! Label for x-axis
+		character(*),intent(in)::yLabel
+			!! Label for x-axis
+		character(*),intent(in)::zLabel
+			!! Label for z-axis
+		character(*),intent(in),optional::color
+			!! Color of labels
+		
+		if(present(color)) call setColor(color)
+		call plbox3('bnstu',xLabel,0.0_wp,0,'bnstu',yLabel,0.0_wp,0,'bnstu',zLabel,0.0_wp,0)
+		call resetPen
+	end subroutine box
 
 	subroutine xticks(d,logScale,primary,secondary,color,lineWidth)
 		!! Set the ticks for the x-axis
@@ -721,6 +770,62 @@ contains
 		call resetPen
 	end subroutine contour
 
+	subroutine surface(x,y,z,N)
+		!! Plot a 3d surface.
+		real(wp),dimension(:),intent(in)::x
+			!! x-coordinates of data
+		real(wp),dimension(:),intent(in)::y
+			!! y-coordinates of data
+		real(wp),dimension(:,:),intent(in)::z
+			!! Data for contouring
+		integer,intent(in),optional::N
+			!! Number of levels to use in surface colors
+		
+		real(plflt),dimension(:),allocatable::xl,yl
+		real(plflt),dimension(:,:),allocatable::zl
+		
+		real(plflt),dimension(:),allocatable::edge
+		integer::Nl
+		
+		xl = x
+		yl = y
+		zl = z
+		Nl = 20
+		if(present(N)) Nl = N
+		edge = linspace(minval(z),maxval(z),Nl)
+		
+		call plsurf3d(xl,yl,zl,MAG_COLOR,edge)
+		call resetPen
+	end subroutine surface
+
+	subroutine wireframe(x,y,z,lineColor)
+		!! Plot a 3d wireframe.
+		real(wp),dimension(:),intent(in)::x
+			!! x-coordinates of data
+		real(wp),dimension(:),intent(in)::y
+			!! y-coordinates of data
+		real(wp),dimension(:,:),intent(in)::z
+			!! Data for contouring
+		character(*),intent(in),optional::lineColor
+			!! Color of contour lines
+		
+		real(plflt),dimension(:),allocatable::xl,yl
+		real(plflt),dimension(:,:),allocatable::zl
+		
+		xl = x
+		yl = y
+		zl = z
+		
+		if(present(lineColor)) then
+			call setColor(lineColor)
+			call plot3d(xl,yl,zl,DRAW_LINEXY,.false.)
+		else
+			call plot3d(xl,yl,zl,ior(DRAW_LINEXY,MAG_COLOR),.false.)
+		end if
+		
+		call resetPen
+	end subroutine wireframe
+
 	subroutine contourf(x,y,z,N)
 		!! Plot filled contours.  
 		real(wp),dimension(:),intent(in)::x
@@ -741,7 +846,7 @@ contains
 		real(plflt)::fill_width
 		real(plflt)::cont_width
 		integer::cont_color
-		integer::Nl,k
+		integer::Nl
 		
 		xl = x
 		yl = y
@@ -749,7 +854,7 @@ contains
 		Nl = 20
 		if(present(N)) Nl = N
 		
-		edge = [( real(k-1,plflt)/real(Nl-1,plflt)*(maxval(zl)-minval(zl))+minval(zl) ,k=1,Nl)]
+		edge = linspace(minval(z),maxval(z),Nl)
 		
 		fill_width = -1.0_plflt
 		cont_width = -1.0_plflt
