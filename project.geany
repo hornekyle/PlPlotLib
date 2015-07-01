@@ -23,14 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=5
+current_page=4
 FILE_NAME_0=2;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FREADME.md;0;2
 FILE_NAME_1=223;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fproject.md;0;2
 FILE_NAME_2=266;Make;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FMakefile;0;2
 FILE_NAME_3=786;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fkinds.f90;0;2
-FILE_NAME_4=2212;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
-FILE_NAME_5=632;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Ftest.f90;0;2
-FILE_NAME_6=290;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
+FILE_NAME_4=21119;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
+FILE_NAME_5=6143;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
+FILE_NAME_6=117;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
 
 [VTE]
 last_dir=/home/kyle

@@ -1,11 +1,12 @@
-module test_mod
-	!! display: none
+module examples_mod
+	!! Examples of module use
 	use kinds_mod
 	use plplotlib_mod
 	implicit none
 	private
 	
-	public::runTests
+	public::makeLogo
+	public::doExamples
 	
 contains
 
@@ -30,24 +31,23 @@ contains
 		call labels('','','')
 	end subroutine makeLogo
 
-	subroutine runTests
-!~ 		call testPlot
-!~ 		call testScatter
-!~ 		call testContour
-!~ 		call testLegend
-!~ 		call testQuiver
-!~ 		call testBar
-!~ 		call testFillBetween
-!~ 		call testHist
-		call testSurface
-	end subroutine runTests
+	subroutine doExamples
+		call doPlot
+		call doScatter
+		call doContour
+		call doLegend
+		call doQuiver
+		call doBar
+		call doFillBetween
+		call doHist
+		call doSurface
+	end subroutine doExamples
 
-	subroutine testPlot
+	subroutine doPlot
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
-		integer::k
 		
-		x = [( real(k-1,wp)/real(N-1,wp) , k=1,N )]
+		x = linspace(0.0_wp,1.0_wp,N)
 		y = x**2-1.0_wp
 		
 		call figure()
@@ -67,9 +67,9 @@ contains
 		call xlabel('x')
 		call ylabel('y')
 		call title('f(x)=x#u2#d-1; g(x)=-x#u2#d')
-	end subroutine testPlot
+	end subroutine doPlot
 
-	subroutine testScatter
+	subroutine doScatter
 		integer,parameter::N = 100
 		real(wp),dimension(N)::x,y,z
 		
@@ -102,16 +102,16 @@ contains
 		call scatter(x,y,c=z,s=(4.0_wp*z+1.0_wp))
 		call ticks()
 		call labels('x','y','')
-	end subroutine testScatter
+	end subroutine doScatter
 
-	subroutine testContour
+	subroutine doContour
 		integer,parameter::N = 100
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::z
 		integer::i,j
 		
-		x = 20.0_wp*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-10.0_wp
-		y = 20.0_wp*[( real(j-1,wp)/real(N-1,wp) , j=1,N )]-10.0_wp
+		x = linspace(-10.0_wp,10.0_wp,N)
+		y = linspace(-10.0_wp,10.0_wp,N)
 		forall(i=1:N,j=1:N)
 			z(i,j) = sin( sqrt(x(i)**2+y(j)**2) )/sqrt(x(i)**2+y(j)**2)
 		end forall
@@ -125,15 +125,14 @@ contains
 		call colorbar(z,5)
 		call ticks()
 		call labels('x','y','')
-	end subroutine testContour
+	end subroutine doContour
 
-	subroutine testLegend
+	subroutine doLegend
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
 		character(32),dimension(3,7)::series
-		integer::k
 		
-		x = [( real(k-1,wp)/real(N-1,wp) , k=1,N )]
+		x = linspace(0.0_wp,1.0_wp,N)
 		y = x**2-1.0_wp
 		
 		call figure()
@@ -154,16 +153,16 @@ contains
 		call legend('center left',series)
 		call ticks()
 		call labels('x','y','')
-	end subroutine testLegend
+	end subroutine doLegend
 
-	subroutine testQuiver
+	subroutine doQuiver
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::u,v,m
 		integer::i,j
 		
-		x = 20.0_wp*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-10.0_wp
-		y = 20.0_wp*[( real(j-1,wp)/real(N-1,wp) , j=1,N )]-10.0_wp
+		x = linspace(-10.0_wp,10.0_wp,N)
+		y = linspace(-10.0_wp,10.0_wp,N)
 		forall(i=1:N,j=1:N)
 			u(i,j) = -y(j)
 			v(i,j) =  x(i)
@@ -178,14 +177,13 @@ contains
 		call colorbar(m,10)
 		call ticks()
 		call labels('x','y','')
-	end subroutine testQuiver
+	end subroutine doQuiver
 
-	subroutine testBar
+	subroutine doBar
 		integer,parameter::N = 21
 		real(wp),dimension(N)::x,y
-		integer::i
 		
-		x = 2.0_wp*PI*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-PI
+		x = linspace(-PI,PI,N)
 		y = exp(-x**2)
 		
 		call figure()
@@ -201,14 +199,13 @@ contains
 		call barh(x,y,fillColor='r',relWidth=1.0_wp)
 		call ticks()
 		call labels('x','y','')
-	end subroutine testBar
+	end subroutine doBar
 
-	subroutine testFillBetween
+	subroutine doFillBetween
 		integer,parameter::N = 51
 		real(wp),dimension(N)::x,y1,y2
-		integer::k
 		
-		x = 6.0_wp*[( real(k-1,wp)/real(N-1,wp) , k=1,N )]-3.0_wp
+		x = linspace(-3.0_wp,3.0_wp,N)
 		y1 = x**2-1.0_wp
 		y2 = x**3-1.0_wp
 		
@@ -220,34 +217,40 @@ contains
 		call plot(x,y2,lineColor='k',lineWidth=3.0_wp)
 		call ticks(color='b',lineWidth=3.0_wp)
 		call labels('x','y','f(x)=x#u2#d-1',color='r')
-	end subroutine testFillBetween
+	end subroutine doFillBetween
 
-	subroutine testHist
+	subroutine doHist
 		integer,parameter::N = 1000
 		real(wp),dimension(N,12)::r
 		real(wp),dimension(N)::x
+		real(wp),dimension(:,:),allocatable::h
 		
 		call random_number(r)
 		x = sum(r,2)-6.0_wp
-		
 		call figure()
-		call subplot(1,1,1)
-		call xylim(6.0_wp*[-1.0_wp,1.0_wp],[0.0_wp,real(N/20,wp)])
-		call hist(x)
+		
+		call subplot(1,2,1)
+		call xylim(mixval(x),[0.0_wp,1.05_wp])
+		call hist(x,100)
 		call ticks()
-!~ 		call labels('x','y','f(x)=x#u2#d-1',color='r')
-	end subroutine testHist
+		
+		h = binData(x,100,normalize=2)
+		call subplot(1,2,2)
+		call xylim(mixval(h(:,1)),[0.0_wp,1.05_wp*maxval(h(:,2))])
+		call bar(h(:,1),h(:,2),c=h(:,2),relWidth=1.0_wp)
+		call ticks()
+	end subroutine doHist
 
-	subroutine testSurface
+	subroutine doSurface
 		use plplot
 		
-		integer,parameter::N = 100
+		integer,parameter::N = 50
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::z
 		integer::i,j
 		
-		x = 20.0_wp*[( real(i-1,wp)/real(N-1,wp) , i=1,N )]-10.0_wp
-		y = 20.0_wp*[( real(j-1,wp)/real(N-1,wp) , j=1,N )]-10.0_wp
+		x = linspace(-10.0_wp,10.0_wp,N)
+		y = linspace(-10.0_wp,10.0_wp,N)
 		forall(i=1:N,j=1:N)
 			z(i,j) = sin( sqrt(x(i)**2+y(j)**2) )/sqrt(x(i)**2+y(j)**2)
 		end forall
@@ -256,10 +259,10 @@ contains
 		
 		call subplot(1,1,1)
 		call xyzlim(mixval(x),mixval(y),mixval(z))
-		call surface(x,y,z,5)
+		call surface(x,y,z,9)
 !~ 		call wireframe(x,y,z,lineColor='k')
 		call box('x','y','z')
 		
-	end subroutine testSurface
+	end subroutine doSurface
 
-end module test_mod
+end module examples_mod

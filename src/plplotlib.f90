@@ -1,7 +1,5 @@
 module plplotlib_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
-	!!
-	!! TODO: replace plhist with new binning and a call to bar
 
 	use kinds_mod
 	use plplot
@@ -42,7 +40,7 @@ module plplotlib_mod
 	public::ticks,xticks,yticks,box
 	public::legend
 	
-	public::mixval,linspace
+	public::mixval,linspace,binData
 	
 	public::plot
 	public::scatter
@@ -87,7 +85,7 @@ contains
 	end function mixval_3
 
 	function linspace(l,h,N) result(o)
-		!! Return an array of evenly-spaced values.
+		!! Return an array of evenly-spaced values
 		real(wp),intent(in)::l
 			!! Low-bound for values
 		real(wp),intent(in)::h
@@ -129,6 +127,51 @@ contains
 		k = len(text)
 		o = text(k-len(str)+1:k)==str
 	end function endsWith
+
+	function binData(d,N,db,normalize) result(o)
+		!! Count data in each bin
+		real(wp),dimension(:),intent(in)::d
+			!! Data for binning
+		integer,intent(in),optional::N
+			!! Number of bins
+		real(wp),dimension(2),intent(in),optional::db
+			!! Boundaries of bin range
+		integer,intent(in),optional::normalize
+			!! Normalization type (1=sum, 2=bin size, 3=maxval)
+		real(wp),dimension(:,:),allocatable::o
+		
+		real(wp),dimension(:),allocatable::b
+		integer::Nl,k
+		
+		Nl = 10
+		if(present(N)) Nl = N
+		
+		if(present(db)) then
+			b = linspace(db(1),db(2),Nl+1)
+		else
+			b = linspace(minval(d)-epsilon(1.0_wp),maxval(d)+epsilon(1.0_wp),Nl+1)
+		end if
+		
+		allocate(o(Nl,2))
+		o(:,1) = (b(1:Nl)+b(2:Nl+1))/2.0_wp
+		
+		do k=1,Nl
+			o(k,2) = real(count(d>=b(k) .and. d<=b(k+1)),wp)
+		end do
+		
+		if(present(normalize)) then
+			select case(normalize)
+			case(1)
+				o(:,2) = o(:,2)/sum(o(:,2))
+			case(2)
+				do k=1,Nl
+					o(k,2) = o(k,2)/(b(k+1)-b(k))
+				end do
+			case(3)
+				o(:,2) = o(:,2)/maxval(o(:,2))
+			end select
+		end if
+	end function binData
 
 	!============================!
 	!= Axes and Figure Routines =!
@@ -489,7 +532,7 @@ contains
 	end subroutine colorbar
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
-		!! Create legend for plot data.  
+		!! Create legend for plot data
 		!!
 		!! FIXME: Text sizing should be modifiable
 		character(*),intent(in)::corner
@@ -619,31 +662,90 @@ contains
 	!= Plotting Routines =!
 	!=====================!
 
-	subroutine hist(x,bins,xb)
-		!! Create a histogram of data in a vector
-		!! TODO: replace with new implementation
-		real(wp),dimension(:),intent(in)::x
-		integer,intent(in),optional::bins
-		real(wp),dimension(2),intent(in),optional::xb
+	subroutine hist(d,N,db,relWidth,fillColor,fillPattern,lineColor,lineWidth)
+		!! Create a histogram
+		real(wp),dimension(:),intent(in)::d
+			!! Data for binning
+		integer,intent(in),optional::N
+			!! Number of bins
+		real(wp),dimension(2),intent(in),optional::db
+			!! Boundaries of bin range
+		real(wp),intent(in),optional::relWidth
+			!! Relative width of bars (default 0.8)
+		character(*),intent(in),optional::fillColor
+			!! Color of bar fills
+		character(*),intent(in),optional::fillPattern
+			!! Pattern of bar fills
+		character(*),intent(in),optional::lineColor
+			!! Color of lines around bars
+		real(wp),optional::lineWidth
+			!! Width of lines around bars
 		
-		real(plflt),dimension(:),allocatable::xl
-		real(plflt),dimension(2)::xbl
-		integer::binsl
+		real(wp),dimension(:,:),allocatable::h
+		real(wp),dimension(2)::dbl
+		integer::Nl
 		
-		xl = x
+		real(wp)::relWidthl
+		real(wp)::lineWidthl
 		
-		binsl = size(x)/10
-		if(present(bins)) binsl = bins
+		Nl = 20
+		if(present(N)) Nl = N
 		
-		xbl = real(mixval(x),plflt)
-		if(present(xb)) xbl = real(xb,plflt)
+		if(present(db)) then
+			dbl = db
+		else
+			dbl = mixval(d)+[-1.0_wp,1.0_wp]*epsilon(1.0_wp)
+		end if
 		
-		call plhist(xl,xbl(1),xbl(2),binsl,ior(PL_HIST_NOSCALING,PL_HIST_NOEXPAND))
+		h = binData(d,Nl,dbl,normalize=3)
+		
+		relWidthl = 1.0_wp
+		if(present(relWidth)) relWidthl = relWidth
+		lineWidthl = 0.5_wp
+		if(present(lineWidth)) lineWidthl = lineWidth
+		
+		if(present(lineColor)) then
+			if(present(fillColor)) then
+				if(present(fillPattern)) then
+					call bar(h(:,1),h(:,2),relWidth=relWidthl,lineColor=lineColor,lineWidth=lineWidthl, &
+					& fillColor=fillColor,fillPattern=fillPattern)
+				else
+					call bar(h(:,1),h(:,2),relWidth=relWidthl,lineColor=lineColor,lineWidth=lineWidthl, &
+					& fillColor=fillColor)
+				end if
+			else
+				if(present(fillPattern)) then
+					call bar(h(:,1),h(:,2),h(:,2),relWidth=relWidthl,lineColor=lineColor,lineWidth=lineWidthl, &
+					& fillPattern=fillPattern)
+				else
+					call bar(h(:,1),h(:,2),h(:,2),relWidth=relWidthl,lineColor=lineColor,lineWidth=lineWidthl)
+				end if
+			end if
+		else
+			if(present(fillColor)) then
+				if(present(fillPattern)) then
+					call bar(h(:,1),h(:,2),relWidth=relWidthl,lineWidth=lineWidthl, &
+					& fillColor=fillColor,fillPattern=fillPattern)
+				else
+					call bar(h(:,1),h(:,2),relWidth=relWidthl,lineWidth=lineWidthl, &
+					& fillColor=fillColor)
+				end if
+			else
+				if(present(fillPattern)) then
+					call bar(h(:,1),h(:,2),h(:,2),relWidth=relWidthl,lineWidth=lineWidthl, &
+					& fillPattern=fillPattern)
+				else
+					call bar(h(:,1),h(:,2),h(:,2),relWidth=relWidthl,lineWidth=lineWidthl)
+				end if
+			end if
+		end if
+
+		
 		call resetPen
 	end subroutine hist
 
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
-		!! Create scatter plot of data.  
+		!! Create scatter plot of data
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -684,7 +786,7 @@ contains
 	end subroutine scatter
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
-		!! Plot data using lines and or markers.  
+		!! Plot data using lines and or markers
 		real(wp),dimension(:),intent(in)::x
 			!! x-data for plot
 		real(wp),dimension(:),intent(in)::y
@@ -733,7 +835,7 @@ contains
 	end subroutine plot
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
-		!! Plot contour lines.  
+		!! Plot contour lines
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -770,8 +872,8 @@ contains
 		call resetPen
 	end subroutine contour
 
-	subroutine surface(x,y,z,N)
-		!! Plot a 3d surface.
+	subroutine surface(x,y,z,N,lineStyle)
+		!! Plot a 3d surface
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -780,26 +882,42 @@ contains
 			!! Data for contouring
 		integer,intent(in),optional::N
 			!! Number of levels to use in surface colors
+		character(*),intent(in),optional::lineStyle
+			!! Style for xy lines ( '-' = on, '' = off )
 		
 		real(plflt),dimension(:),allocatable::xl,yl
 		real(plflt),dimension(:,:),allocatable::zl
 		
 		real(plflt),dimension(:),allocatable::edge
-		integer::Nl
+		integer::Nl,opt
+		
+		opt = MAG_COLOR
 		
 		xl = x
 		yl = y
 		zl = z
 		Nl = 20
-		if(present(N)) Nl = N
+		if(present(N)) then
+			Nl = N
+			opt = ior(opt,SURF_CONT)
+		end if
 		edge = linspace(minval(z),maxval(z),Nl)
 		
-		call plsurf3d(xl,yl,zl,MAG_COLOR,edge)
+		if(present(lineStyle)) then
+			select case(lineStyle)
+			case('')
+				opt = opt
+			case('-')
+				opt = ior(opt,FACETED)
+			end select
+		end if
+		
+		call plsurf3d(xl,yl,zl,opt,edge)
 		call resetPen
 	end subroutine surface
 
 	subroutine wireframe(x,y,z,lineColor)
-		!! Plot a 3d wireframe.
+		!! Plot a 3d wireframe
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -827,7 +945,7 @@ contains
 	end subroutine wireframe
 
 	subroutine contourf(x,y,z,N)
-		!! Plot filled contours.  
+		!! Plot filled contours
 		real(wp),dimension(:),intent(in)::x
 			!! x-coordinates of data
 		real(wp),dimension(:),intent(in)::y
@@ -866,7 +984,7 @@ contains
 	end subroutine contourf
 
 	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
-		!! Plot vectors.  
+		!! Plot vectors
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of vectors
 		real(wp),dimension(:),intent(in)::y
@@ -938,7 +1056,7 @@ contains
 	end subroutine quiver
 
 	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
-		!! Create a bar graph.  
+		!! Create a bar graph
 		real(wp),dimension(:),intent(in)::x
 			!! x-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::y
@@ -946,7 +1064,7 @@ contains
 		real(wp),dimension(:),intent(in),optional::c
 			!! Color scale for bars
 		real(wp),intent(in),optional::relWidth
-			!! Relative width of bars
+			!! Relative width of bars (default 0.8)
 		character(*),intent(in),optional::fillColor
 			!! Color of bar fills
 		character(*),intent(in),optional::fillPattern
@@ -988,7 +1106,7 @@ contains
 	end subroutine bar
 
 	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
-		!! Create a bar graph.  
+		!! Create a horizontal bar graph
 		real(wp),dimension(:),intent(in)::y
 			!! y-positions of the bars' centers
 		real(wp),dimension(:),intent(in)::x
@@ -1103,6 +1221,7 @@ contains
 		call setColor('')
 		call setLineStyle('')
 		call setLineWidth(0.5_wp)
+		call setFillPattern('')
 		call plschr(0.0_plflt,real(fontScale,plflt))
 		call plssym(0.0_plflt,real(fontScale,plflt))
 	end subroutine resetPen
@@ -1182,6 +1301,8 @@ contains
 		integer::code
 		
 		select case(style)
+		case('')
+			code = 0
 		case('-')
 			code = 1
 		case('/')
@@ -1334,7 +1455,7 @@ contains
 		rgb(getColorCode('b')+1,:) = [  0,  0,255] ! Blue
 		rgb(getColorCode('c')+1,:) = [  0,255,255] ! Cyan
 		rgb(getColorCode('m')+1,:) = [255,  0,255] ! Magenta
-		rgb(getColorCode('y')+1,:) = [255,255,255] ! Yellow
+		rgb(getColorCode('y')+1,:) = [255,255,  0] ! Yellow
 		
 		call plscmap0(rgb(:,1),rgb(:,2),rgb(:,3))
 	end subroutine setIndexedColors

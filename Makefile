@@ -12,9 +12,9 @@ EXE=main
 
 all: $(EXE)
 
-OBJS=main.o test.o plplotlib.o kinds.o
-main.o: test.o plplotlib.o kinds.o Makefile
-test.o: plplotlib.o kinds.o Makefile
+OBJS=main.o examples.o plplotlib.o kinds.o
+main.o: examples.o plplotlib.o kinds.o Makefile
+examples.o: plplotlib.o kinds.o Makefile
 plplotlib.o: kinds.o Makefile
 kinds.o: Makefile
 
