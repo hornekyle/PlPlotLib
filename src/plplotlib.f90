@@ -195,7 +195,7 @@ contains
 		call resetPen
 	end subroutine figure
 
-	subroutine subplot(ny,nx,i,aspect)
+	subroutine subplot(ny,nx,i,aspect,is3d)
 		!! Create a set of axes on a figure
 		integer,intent(in)::nx
 			!! Number of subplot columns
@@ -205,15 +205,25 @@ contains
 			!! Subplot to use
 		real(wp),intent(in),optional::aspect
 			!! Aspect ratio of the axes
+		logical,intent(in),optional::is3d
+		
+		logical::is3dl
 		
 		call plssub(nx,ny)
 		call pladv(i)
 		call resetPen
 		
-		if(present(aspect)) then
-			call plvasp(real(aspect,plflt))
+		is3dl = .false.
+		if(present(is3d)) is3dl = is3d
+		
+		if(is3dl) then
+			call plvpor(0.0_wp,1.0_wp,0.0_wp,1.0_wp)
 		else
-			call plvsta()
+			if(present(aspect)) then
+				call plvasp(real(aspect,plflt))
+			else
+				call plvsta()
+			end if
 		end if
 		
 		call defaultLim
@@ -260,7 +270,7 @@ contains
 		call plwind(x1,x2,real(yl,plflt),real(yh,plflt))
 	end subroutine ylim
 
-	subroutine xyzlim(xb,yb,zb,altitude,azimuth)
+	subroutine xyzlim(xb,yb,zb,altitude,azimuth,zoom)
 		!! Set the limits for a 3d plot
 		real(wp),dimension(2),intent(in)::xb
 			!! x-range of plot
@@ -272,16 +282,20 @@ contains
 			!! Altitude angle of plot in degrees
 		real(wp),intent(in),optional::azimuth
 			!! Azimuth angle of plot in degrees
+		real(wp),intent(in),optional::zoom
+			!! Zoom ratio (default 1.0)
 		
-		real(plflt)::al,az
+		real(plflt)::al,az,zm
 		
 		al = 45.0_plflt
 		if(present(altitude)) al = real(altitude,plflt)
 		az = 60.0_plflt
 		if(present(azimuth)) az = real(azimuth,plflt)
+		zm = 1.0_plflt
+		if(present(zoom)) zm = real(zoom,plflt)
 		
 		call plwind(-1.0_plflt,1.0_plflt,-1.0_plflt,1.5_plflt)
-		call plw3d(1.0_plflt,1.0_plflt,1.2_plflt, &
+		call plw3d(zm,zm,1.2_plflt*zm, &
 		& real(xb(1),plflt),real(xb(2),plflt), &
 		& real(yb(1),plflt),real(yb(2),plflt), &
 		& real(zb(1),plflt),real(zb(2),plflt),al,az)

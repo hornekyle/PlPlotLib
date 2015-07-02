@@ -244,7 +244,7 @@ contains
 	subroutine doSurface
 		use plplot
 		
-		integer,parameter::N = 50
+		integer,parameter::N = 150
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::z
 		integer::i,j
@@ -257,9 +257,9 @@ contains
 		
 		call figure()
 		
-		call subplot(1,1,1)
-		call xyzlim(mixval(x),mixval(y),mixval(z))
-		call surface(x,y,z,9)
+		call subplot(1,1,1,is3d=.true.)
+		call xyzlim(mixval(x),mixval(y),mixval(z),zoom=1.1_wp)
+		call surface(x,y,z,11)
 !~ 		call wireframe(x,y,z,lineColor='k')
 		call box('x','y','z')
 		
