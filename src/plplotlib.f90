@@ -51,8 +51,6 @@ module plplotlib_mod
 	public::quiver
 	public::surface,wireframe
 	
-	public::setColor
-	
 contains
 
 	!===================!
