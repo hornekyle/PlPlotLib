@@ -51,6 +51,8 @@ module plplotlib_mod
 	public::quiver
 	public::surface,wireframe
 	
+	public::setColor
+	
 contains
 
 	!===================!
@@ -1339,7 +1341,15 @@ contains
 		character(*),intent(in)::color
 			!! Name of color to set
 		
-		call plcol0(getColorCode(color))
+		integer::ios
+		real(plflt)::v
+		
+		read(color,*,iostat=ios) v
+		if(ios==0) then
+			call plcol1(v)
+		else
+			call plcol0(getColorCode(color))
+		end if
 	end subroutine setColor
 
 	function getColorCode(color) result(code)
