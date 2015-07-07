@@ -1,7 +1,7 @@
 title: README
 
-ReadMe
-======
+Introduction
+============
 
 PlPlotLib is a wrapper for PlPlot inspired by the interface of 
 matplotlib. It is intended to fill the need for rapid feedback while 

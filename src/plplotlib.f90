@@ -1457,9 +1457,14 @@ contains
 		!! Setup PlPlot library, optionally overriding defaults
 		character(*),intent(in),optional::device
 			!! Output device to use
+			!!
+			!! * qtwidget
+			!! * svgqt
+			!! * pngqt
 		character(*),intent(in),optional::fileName
 			!! Name of file(s) to write to
-			!! %n will be replaced with the figure number
+			!! 
+			!! The text `%n` will be replaced with the figure number
 		real(wp),intent(in),optional::fontScaling
 			!! Font scaling relative to default value
 		logical,intent(in),optional::whiteOnBlack

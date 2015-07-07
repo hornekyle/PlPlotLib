@@ -3,6 +3,7 @@ module examples_mod
 	use kinds_mod
 	use plplotlib_mod
 	implicit none
+	private
 	
 	public::makeLogo
 	public::doExamples
