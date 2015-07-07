@@ -42,7 +42,7 @@ module plplotlib_mod
 	
 	public::mixval,linspace,binData
 	
-	public::plot
+	public::plot,plot3
 	public::scatter
 	public::contour,contourf,colorbar
 	public::bar,barh
@@ -847,6 +847,65 @@ contains
 		end if
 		call resetPen
 	end subroutine plot
+
+	subroutine plot3(x,y,z,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
+		!! Plot data using lines and or markers
+		real(wp),dimension(:),intent(in)::x
+			!! x-data for plot
+		real(wp),dimension(:),intent(in)::y
+			!! y-data for plot
+		real(wp),dimension(:),intent(in)::z
+			!! z-data for plot
+		character(*),intent(in),optional::lineColor
+			!! Color of line
+		character(*),intent(in),optional::lineStyle
+			!! Style of line; '' for no line
+		real(wp),intent(in),optional::lineWidth
+			!! Width of line
+		character(*),intent(in),optional::markColor
+			!! Color of markers, if any
+		character(*),intent(in),optional::markStyle
+			!! Style of markers; '' or absent for none
+		real(wp),intent(in),optional::markSize
+			!! Size of markers, if any
+		
+		real(plflt),dimension(:),allocatable::xl,yl,zl
+		real(plflt)::dx,dy,dz,sx,sy,sz
+		character(32)::code
+		integer::k
+		
+		xl = x
+		yl = y
+		zl = z
+		
+		if(present(lineColor)) call setColor(lineColor)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		if(present(lineStyle)) then
+			call setLineStyle(lineStyle)
+			if(lineStyle/='') call plline(xl,yl)
+		else
+			call plline3(xl,yl,zl)
+		end if
+		call resetPen
+		
+		if(present(markColor)) call setColor(markColor)
+		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
+		if(present(markStyle)) then
+			code = getSymbolCode(markStyle)
+			if(markStyle/='') then
+				dx = 1.0_plflt
+				dy = 0.0_plflt
+				dz = 0.0_plflt
+				sx = 0.0_plflt
+				sy = 0.0_plflt
+				sz = 0.0_plflt
+				do k=1,size(x)
+					call plptex3(xl(k),yl(k),zl(k),dx,dy,dz,sx,sy,sz,0.5_plflt,code)
+				end do
+			end if
+		end if
+		call resetPen
+	end subroutine plot3
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
 		!! Plot contour lines

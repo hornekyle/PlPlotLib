@@ -33,6 +33,10 @@ clean:
 	@-touch $(BPATH)/empty
 
 ford: project.md
+	echo "title: Changelog" > pages/changelog.md
+	echo "~~~" >> pages/changelog.md
+	git log >> pages/changelog.md
+	echo "~~~" >> pages/changelog.md
 	ford project.md
  
 clean-ford:
