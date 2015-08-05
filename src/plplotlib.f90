@@ -1,10 +1,14 @@
 module plplotlib_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
-
+	!!
+	!! @todo
+	!! Add support for error plots
 	use kinds_mod
 	use plplot
 	implicit none
 	private
+	
+	integer,parameter::pp = plflt
 	
 	character(*),parameter::default_dev = 'qtwidget'
 		!! Default output device
@@ -17,7 +21,7 @@ module plplotlib_mod
 		!! Flag for library setup status
 	logical::didShow = .false.
 		!! Flag for library display status
-	real(plflt)::fontScale = 1.0_plflt
+	real(pp)::fontScale = 1.0_pp
 		!! Font scale factor to resetPen
 	logical::blackOnWhite = .true.
 	
@@ -31,6 +35,15 @@ module plplotlib_mod
 		module procedure mixval_2
 		module procedure mixval_3
 	end interface
+	
+	interface localize
+		module procedure localize_1
+		module procedure localize_2
+	end interface
+	
+	!===========!
+	!= Exports =!
+	!===========!
 	
 	public::setup,show
 	public::figure
@@ -173,6 +186,27 @@ contains
 		end if
 	end function binData
 
+	function localize_1(A) result(o)
+		real(wp),dimension(:),intent(in)::A
+		real(pp),dimension(:),allocatable::o
+		integer::N,k
+		
+		N = size(A)
+		allocate(o(N))
+		forall(k=1:N) o(k) = real(A(k),pp)
+	end function localize_1
+
+	function localize_2(A) result(o)
+		real(wp),dimension(:,:),intent(in)::A
+		real(pp),dimension(:,:),allocatable::o
+		integer::N,M,i,j
+		
+		N = size(A,1)
+		M = size(A,2)
+		allocate(o(N,M))
+		forall(i=1:N,j=1:M) o(i,j) = real(A(i,j),pp)
+	end function localize_2
+
 	!============================!
 	!= Axes and Figure Routines =!
 	!============================!
@@ -217,10 +251,10 @@ contains
 		if(present(is3d)) is3dl = is3d
 		
 		if(is3dl) then
-			call plvpor(0.0_wp,1.0_wp,0.0_wp,1.0_wp)
+			call plvpor(0.0_pp,1.0_pp,0.0_pp,1.0_pp)
 		else
 			if(present(aspect)) then
-				call plvasp(real(aspect,plflt))
+				call plvasp(real(aspect,pp))
 			else
 				call plvsta()
 			end if
@@ -230,7 +264,7 @@ contains
 	end subroutine subplot
 
 	subroutine defaultLim
-		real(plflt),parameter::eps = epsilon(1.0_plflt)
+		real(pp),parameter::eps = epsilon(1.0_pp)
 		
 		call plwind(-eps,eps,-eps,eps)
 	end subroutine defaultLim
@@ -242,10 +276,10 @@ contains
 		real(wp),dimension(2),intent(in)::yb
 			!! y-range of plot
 		
-		real(plflt),dimension(2)::xbl,ybl
+		real(pp),dimension(2)::xbl,ybl
 		
-		xbl = xb
-		ybl = yb
+		xbl = localize(xb)
+		ybl = localize(yb)
 		
 		call plwind(xbl(1),xbl(2),ybl(1),ybl(2))
 	end subroutine xylim
@@ -254,20 +288,20 @@ contains
 		!! Set the limits of the x-axis
 		real(wp),intent(in)::xl,xh
 		
-		real(plflt)::x1,x2,y1,y2
+		real(pp)::x1,x2,y1,y2
 		
 		call plgvpw(x1,x2,y1,y2)
-		call plwind(real(xl,plflt),real(xh,plflt),y1,y2)
+		call plwind(real(xl,pp),real(xh,pp),y1,y2)
 	end subroutine xlim
 
 	subroutine ylim(yl,yh)
 		!! Set the limits of the y-axis
 		real(wp),intent(in)::yl,yh
 		
-		real(plflt)::x1,x2,y1,y2
+		real(pp)::x1,x2,y1,y2
 		
 		call plgvpw(x1,x2,y1,y2)
-		call plwind(x1,x2,real(yl,plflt),real(yh,plflt))
+		call plwind(x1,x2,real(yl,pp),real(yh,pp))
 	end subroutine ylim
 
 	subroutine xyzlim(xb,yb,zb,altitude,azimuth,zoom)
@@ -285,20 +319,20 @@ contains
 		real(wp),intent(in),optional::zoom
 			!! Zoom ratio (default 1.0)
 		
-		real(plflt)::al,az,zm
+		real(pp)::al,az,zm
 		
-		al = 45.0_plflt
-		if(present(altitude)) al = real(altitude,plflt)
-		az = 60.0_plflt
-		if(present(azimuth)) az = real(azimuth,plflt)
-		zm = 1.0_plflt
-		if(present(zoom)) zm = real(zoom,plflt)
+		al = 45.0_pp
+		if(present(altitude)) al = real(altitude,pp)
+		az = 60.0_pp
+		if(present(azimuth)) az = real(azimuth,pp)
+		zm = 1.0_pp
+		if(present(zoom)) zm = real(zoom,pp)
 		
-		call plwind(-1.0_plflt,1.0_plflt,-1.0_plflt,1.5_plflt)
-		call plw3d(zm,zm,1.2_plflt*zm, &
-		& real(xb(1),plflt),real(xb(2),plflt), &
-		& real(yb(1),plflt),real(yb(2),plflt), &
-		& real(zb(1),plflt),real(zb(2),plflt),al,az)
+		call plwind(-1.0_pp,1.0_pp,-1.0_pp,1.5_pp)
+		call plw3d(zm,zm,1.2_pp*zm, &
+		& real(xb(1),pp),real(xb(2),pp), &
+		& real(yb(1),pp),real(yb(2),pp), &
+		& real(zb(1),pp),real(zb(2),pp),al,az)
 	end subroutine xyzlim
 
 	subroutine ticks(dx,dy,logx,logy,color,lineWidth)
@@ -316,14 +350,14 @@ contains
 		real(wp),optional::linewidth
 			!! Line width for ticks and box
 		
-		real(plflt)::dxl,dyl
+		real(pp)::dxl,dyl
 		character(10)::xopts,yopts
 		
-		dxl = 0.0_plflt
-		if(present(dx)) dxl = real(dx,plflt)
+		dxl = 0.0_pp
+		if(present(dx)) dxl = real(dx,pp)
 		
-		dyl = 0.0_plflt
-		if(present(dy)) dyl = real(dy,plflt)
+		dyl = 0.0_pp
+		if(present(dy)) dyl = real(dy,pp)
 		
 		xopts = 'bcnst'
 		if(present(logx)) then
@@ -356,7 +390,7 @@ contains
 			!! Color of labels
 		
 		if(present(color)) call setColor(color)
-		call plbox3('bnstu',xLabel,0.0_wp,0,'bnstu',yLabel,0.0_wp,0,'bnstu',zLabel,0.0_wp,0)
+		call plbox3('bnstu',xLabel,0.0_pp,0,'bnstu',yLabel,0.0_pp,0,'bnstu',zLabel,0.0_pp,0)
 		call resetPen
 	end subroutine box
 
@@ -374,12 +408,12 @@ contains
 			!! Color code for ticks, box, and labels
 		real(wp),optional::linewidth
 			!! Line width for ticks and box
-		real(plflt)::dxl,dyl
+		real(pp)::dxl,dyl
 		character(10)::xopts,yopts
 		
-		dxl = 0.0_plflt
-		dyl = 0.0_plflt
-		if(present(d)) dxl = real(d,plflt)
+		dxl = 0.0_pp
+		dyl = 0.0_pp
+		if(present(d)) dxl = real(d,pp)
 		
 		xopts = 'nst'
 		
@@ -420,12 +454,12 @@ contains
 			!! Color code for ticks, box, and labels
 		real(wp),optional::linewidth
 			!! Line width for ticks and box
-		real(plflt)::dxl,dyl
+		real(pp)::dxl,dyl
 		character(10)::xopts,yopts
 		
-		dxl = 0.0_plflt
-		dyl = 0.0_plflt
-		if(present(d)) dyl = real(d,plflt)
+		dxl = 0.0_pp
+		dyl = 0.0_pp
+		if(present(d)) dyl = real(d,pp)
 		
 		yopts = 'nst'
 		
@@ -476,7 +510,7 @@ contains
 			!! Color of labels
 		
 		if(present(color)) call setColor(color)
-		call plmtex('b',3.0_plflt,0.5_plflt,0.5_plflt,label)
+		call plmtex('b',3.0_pp,0.5_pp,0.5_pp,label)
 		call resetPen
 	end subroutine xlabel
 
@@ -488,7 +522,7 @@ contains
 			!! Color of labels
 		
 		if(present(color)) call setColor(color)
-		call plmtex('l',5.0_plflt,0.5_plflt,0.5_plflt,label)
+		call plmtex('l',5.0_pp,0.5_pp,0.5_pp,label)
 		call resetPen
 	end subroutine ylabel
 
@@ -500,7 +534,7 @@ contains
 			!! Color of labels
 		
 		if(present(color)) call setColor(color)
-		call plmtex('t',1.5_plflt,0.5_plflt,0.5_plflt,label)
+		call plmtex('t',1.5_pp,0.5_pp,0.5_pp,label)
 		call resetPen
 	end subroutine title
 
@@ -515,22 +549,22 @@ contains
 		character(*),intent(in),optional::rightLabel
 			!! Label for right side of colorbar
 		
-		real(plflt),dimension(:,:),allocatable::values
+		real(pp),dimension(:,:),allocatable::values
 		character(64),dimension(2)::labels
 		
-		real(plflt)::fill_width
-		real(plflt)::cont_width
+		real(pp)::fill_width
+		real(pp)::cont_width
 		integer::cont_color
-		real(plflt)::colorbar_width
-		real(plflt)::colorbar_height
+		real(pp)::colorbar_width
+		real(pp)::colorbar_height
 		integer::k
 		
 		values = reshape( &
-			& real([( real(k-1,wp)/real(N-1,wp)*(maxval(z)-minval(z))+minval(z) ,k=1,N)],plflt), &
+			& real([( real(k-1,wp)/real(N-1,wp)*(maxval(z)-minval(z))+minval(z) ,k=1,N)],pp), &
 			& [N,1])
 		
-		fill_width = 2.0_plflt
-		cont_width = 0.0_plflt
+		fill_width = 2.0_pp
+		cont_width = 0.0_pp
 		cont_color = 1
 		labels = ''
 		if(present(leftLabel )) labels(1) = leftLabel
@@ -538,11 +572,11 @@ contains
 		
 		call plcolorbar(colorbar_width,colorbar_height,&
 			& ior(PL_COLORBAR_GRADIENT,PL_COLORBAR_SHADE_LABEL),PL_POSITION_TOP,&
-			& 0.0_plflt,0.01_plflt,0.75_plflt,0.05_plflt,&
-			& 0,1,1,0.0_plflt,0.0_plflt, &
+			& 0.0_pp,0.01_pp,0.75_pp,0.05_pp,&
+			& 0,1,1,0.0_pp,0.0_pp, &
 			& cont_color,cont_width, &
 			& [PL_COLORBAR_LABEL_LEFT,PL_COLORBAR_LABEL_RIGHT],labels, &
-			& ['bcvmt'],[0.0_plflt],[0],[size(values)],values)
+			& ['bcvmt'],[0.0_pp],[0],[size(values)],values)
 	end subroutine colorbar
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
@@ -563,16 +597,16 @@ contains
 		integer,intent(in),optional::ncol
 			!! Number of columns
 		
-		real(plflt)::width,height,xoff,yoff
-		real(plflt)::plotWidth
+		real(pp)::width,height,xoff,yoff
+		real(pp)::plotWidth
 		integer::opt,cornerl
 		integer::bg_color,bb_color,bb_style,lncol,lnrow
 		integer,dimension(size(series,1))::opts
-		real(plflt),dimension(size(series,1))::lwidths,mscales
+		real(pp),dimension(size(series,1))::lwidths,mscales
 		integer,dimension(size(series,1))::mcounts,text_colors
-		real(plflt)::text_offset,text_scale,text_spacing,text_justification
+		real(pp)::text_offset,text_scale,text_spacing,text_justification
 		integer,dimension(size(series,1))::box_colors,box_patterns
-		real(plflt),dimension(size(series,1))::box_scales,box_line_widths
+		real(pp),dimension(size(series,1))::box_scales,box_line_widths
 		integer,dimension(size(series,1))::line_colors,line_styles
 		integer,dimension(size(series,1))::mark_colors
 		character(64),dimension(size(series,1))::mark_styles
@@ -605,9 +639,9 @@ contains
 		subroutine doLegendBox
 			opt = PL_LEGEND_BACKGROUND+PL_LEGEND_BOUNDING_BOX
 			cornerl = getCorner(corner)
-			xoff = 0.0_plflt
-			yoff = 0.0_plflt
-			plotWidth = 0.05_plflt
+			xoff = 0.0_pp
+			yoff = 0.0_pp
+			plotWidth = 0.05_pp
 			bg_color = 0
 			bb_color = 1
 			bb_style = getLineStyleCode('-')
@@ -618,10 +652,10 @@ contains
 		end subroutine doLegendBox
 	
 		subroutine doText
-			text_offset  = 0.3_plflt
+			text_offset  = 0.3_pp
 			text_scale   = fontScale
-			text_spacing = 3.0_plflt
-			text_justification = 0.0_plflt
+			text_spacing = 3.0_pp
+			text_justification = 0.0_pp
 			
 			do k=1,size(series,1)
 				text_colors = getColorCode(series(k,2))
@@ -633,13 +667,13 @@ contains
 				box_colors(k) = getColorCode(series(k,7))
 			end do
 			box_patterns = 0
-			box_scales = 0.5_plflt
-			box_line_widths = 0.0_plflt
+			box_scales = 0.5_pp
+			box_line_widths = 0.0_pp
 		end subroutine doBoxes
 	
 		subroutine doLines
-			lwidths = 1.0_plflt
-			if(present(lineWidths)) lwidths = real(lineWidths,plflt)
+			lwidths = 1.0_pp
+			if(present(lineWidths)) lwidths = real(lineWidths,pp)
 			
 			do k=1,size(series,1)
 				line_colors(k) = getColorCode(series(k,4))
@@ -650,8 +684,8 @@ contains
 		subroutine doMarkers
 			mcounts = 2
 			if(present(markCounts)) mcounts = markCounts
-			mscales = 1.0_plflt
-			if(present(markScales)) mscales = real(markScales,plflt)
+			mscales = 1.0_pp
+			if(present(markScales)) mscales = real(markScales,pp)
 			
 			do k=1,size(series,1)
 				mark_colors(k) = getColorCode(series(k,6))
@@ -775,26 +809,26 @@ contains
 		real(wp),intent(in),optional::markSize
 			!! Size of markers
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:),allocatable::cb
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:),allocatable::cb
 		character(32)::code
 		integer::k
 		
-		xl = x
-		yl = y
+		xl = localize(x)
+		yl = localize(y)
 		
 		if(present(markColor)) call setColor(markColor)
 		code = getSymbolCode('')
 		if(present(markStyle)) code = getSymbolCode(markStyle)
-		if(present(markSize)) call plschr(0.0_plflt,real(markSize,plflt))
-		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
+		if(present(markSize)) call plschr(0.0_pp,real(markSize,pp))
+		if(present(markSize)) call plssym(0.0_pp,real(markSize,pp))
 		
-		if(present(c)) cb = real(mixval(c),plflt)
+		if(present(c)) cb = real(mixval(c),pp)
 		do k=1,size(x)
-			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
-			if(present(s)) call plschr(0.0_plflt,real(s(k),plflt))
-			if(present(s)) call plssym(0.0_plflt,real(s(k),plflt))
-			call plptex(xl(k),yl(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,pp) )
+			if(present(s)) call plschr(0.0_pp,real(s(k),pp))
+			if(present(s)) call plssym(0.0_pp,real(s(k),pp))
+			call plptex(xl(k),yl(k),0.0_pp,0.0_pp,0.5_pp,code)
 		end do
 		call resetPen
 	end subroutine scatter
@@ -818,12 +852,12 @@ contains
 		real(wp),intent(in),optional::markSize
 			!! Size of markers, if any
 		
-		real(plflt),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:),allocatable::xl,yl
 		character(32)::code
 		integer::k
 		
-		xl = x
-		yl = y
+		xl = localize(x)
+		yl = localize(y)
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
@@ -836,12 +870,12 @@ contains
 		call resetPen
 		
 		if(present(markColor)) call setColor(markColor)
-		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
+		if(present(markSize)) call plssym(0.0_pp,real(markSize,pp))
 		if(present(markStyle)) then
 			code = getSymbolCode(markStyle)
 			if(markStyle/='') then
 				do k=1,size(x)
-					call plptex(xl(k),yl(k),0.0_plflt,0.0_plflt,0.5_plflt,code)
+					call plptex(xl(k),yl(k),0.0_pp,0.0_pp,0.5_pp,code)
 				end do
 			end if
 		end if
@@ -869,14 +903,14 @@ contains
 		real(wp),intent(in),optional::markSize
 			!! Size of markers, if any
 		
-		real(plflt),dimension(:),allocatable::xl,yl,zl
-		real(plflt)::dx,dy,dz,sx,sy,sz
+		real(pp),dimension(:),allocatable::xl,yl,zl
+		real(pp)::dx,dy,dz,sx,sy,sz
 		character(32)::code
 		integer::k
 		
-		xl = x
-		yl = y
-		zl = z
+		xl = localize(x)
+		yl = localize(y)
+		zl = localize(z)
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
@@ -889,18 +923,18 @@ contains
 		call resetPen
 		
 		if(present(markColor)) call setColor(markColor)
-		if(present(markSize)) call plssym(0.0_plflt,real(markSize,plflt))
+		if(present(markSize)) call plssym(0.0_pp,real(markSize,pp))
 		if(present(markStyle)) then
 			code = getSymbolCode(markStyle)
 			if(markStyle/='') then
-				dx = 1.0_plflt
-				dy = 0.0_plflt
-				dz = 0.0_plflt
-				sx = 0.0_plflt
-				sy = 0.0_plflt
-				sz = 0.0_plflt
+				dx = 1.0_pp
+				dy = 0.0_pp
+				dz = 0.0_pp
+				sx = 0.0_pp
+				sy = 0.0_pp
+				sz = 0.0_pp
 				do k=1,size(x)
-					call plptex3(xl(k),yl(k),zl(k),dx,dy,dz,sx,sy,sz,0.5_plflt,code)
+					call plptex3(xl(k),yl(k),zl(k),dx,dy,dz,sx,sy,sz,0.5_pp,code)
 				end do
 			end if
 		end if
@@ -924,18 +958,18 @@ contains
 		real(wp),optional::lineWidth
 			!! Width of contour lines
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::zl
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:,:),allocatable::zl
 		
-		real(plflt),dimension(:),allocatable::edge
+		real(pp),dimension(:),allocatable::edge
 		integer::Nl,k
 		
-		xl = x
-		yl = y
-		zl = z
+		xl = localize(x)
+		yl = localize(y)
+		zl = localize(z)
 		Nl = 20
 		if(present(N)) Nl = N
-		edge = [( real(k-1,plflt)/real(Nl-1,plflt)*(maxval(zl)-minval(zl))+minval(zl) ,k=1,Nl)]
+		edge = [( real(k-1,pp)/real(Nl-1,pp)*(maxval(zl)-minval(zl))+minval(zl) ,k=1,Nl)]
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
@@ -958,23 +992,23 @@ contains
 		character(*),intent(in),optional::lineStyle
 			!! Style for xy lines ( '-' = on, '' = off )
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::zl
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:,:),allocatable::zl
 		
-		real(plflt),dimension(:),allocatable::edge
+		real(pp),dimension(:),allocatable::edge
 		integer::Nl,opt
 		
 		opt = MAG_COLOR
 		
-		xl = x
-		yl = y
-		zl = z
+		xl = localize(x)
+		yl = localize(y)
+		zl = localize(z)
 		Nl = 20
 		if(present(N)) then
 			Nl = N
 			opt = ior(opt,SURF_CONT)
 		end if
-		edge = linspace(minval(z),maxval(z),Nl)
+		edge = localize(linspace(minval(z),maxval(z),Nl))
 		
 		if(present(lineStyle)) then
 			select case(lineStyle)
@@ -1000,12 +1034,12 @@ contains
 		character(*),intent(in),optional::lineColor
 			!! Color of contour lines
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::zl
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:,:),allocatable::zl
 		
-		xl = x
-		yl = y
-		zl = z
+		xl = localize(x)
+		yl = localize(y)
+		zl = localize(z)
 		
 		if(present(lineColor)) then
 			call setColor(lineColor)
@@ -1028,27 +1062,27 @@ contains
 		integer,intent(in),optional::N
 			!! Number of levels to use in contour
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::zl
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:,:),allocatable::zl
 		
-		real(plflt),dimension(:),allocatable::edge
+		real(pp),dimension(:),allocatable::edge
 		
 		character(1)::defined
-		real(plflt)::fill_width
-		real(plflt)::cont_width
+		real(pp)::fill_width
+		real(pp)::cont_width
 		integer::cont_color
 		integer::Nl
 		
-		xl = x
-		yl = y
-		zl = z
+		xl = localize(x)
+		yl = localize(y)
+		zl = localize(z)
 		Nl = 20
 		if(present(N)) Nl = N
 		
-		edge = linspace(minval(z),maxval(z),Nl)
+		edge = localize(linspace(minval(z),maxval(z),Nl))
 		
-		fill_width = -1.0_plflt
-		cont_width = -1.0_plflt
+		fill_width = -1.0_pp
+		cont_width = -1.0_pp
 		cont_color = -1
 		
 		call plshades(zl,defined,minval(xl),maxval(xl),minval(yl),maxval(yl), &
@@ -1082,34 +1116,34 @@ contains
 		real(wp),optional::lineWidth
 			!! Width of vectors' lines
 		
-		real(plflt),dimension(:),allocatable::xl,yl
-		real(plflt),dimension(:,:),allocatable::ul,vl,sl
-		real(plflt),dimension(2)::xb,yb,sb,cb,d
-		real(plflt)::scalingl,scl,mag
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:,:),allocatable::ul,vl,sl
+		real(pp),dimension(2)::xb,yb,sb,cb,d
+		real(pp)::scalingl,scl,mag
 		integer::i,j
 		
-		xl = x
-		yl = y
-		ul = u
-		vl = v
+		xl = localize(x)
+		yl = localize(y)
+		ul = localize(u)
+		vl = localize(v)
 		
-		d = real([x(2)-x(1),y(2)-y(1)],plflt)
+		d = real([x(2)-x(1),y(2)-y(1)],pp)
 		
-		xb = real(mixval(x),plflt)
-		yb = real(mixval(y),plflt)
+		xb = real(mixval(x),pp)
+		yb = real(mixval(y),pp)
 		if(present(s)) then
-			sl = s
+			sl = localize(s)
 			sl = sl/maxval(sl)
 		else
-			sl = u**2+v**2
+			sl = localize(u**2+v**2)
 			sl = sqrt(sl)
 			sl = sl/maxval(sl)
 		end if
 		sb = [minval(sl),maxval(sl)]
-		if(present(c)) cb = real([minval(c),maxval(c)],plflt)
+		if(present(c)) cb = real([minval(c),maxval(c)],pp)
 		
-		scalingl = 1.0_plflt
-		if(present(scaling)) scalingl = real(scaling,plflt)
+		scalingl = 1.0_pp
+		if(present(scaling)) scalingl = real(scaling,pp)
 		
 		if(present(lineColor)) call setColor(lineColor)
 		if(present(lineStyle)) call setLineStyle(lineStyle)
@@ -1120,7 +1154,7 @@ contains
 				mag = norm2([ul(i,j),vl(i,j)])
 				scl = scalingl*norm2(d)*sl(i,j)
 				if(abs(scl)<1.0E-5_wp) cycle
-				if(present(c)) call plcol1( real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,plflt) )
+				if(present(c)) call plcol1( real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,pp) )
 				call plvect(ul(i:i,j:j)/mag,vl(i:i,j:j)/mag,scl,xl(i:i),yl(j:j))
 			end do
 		end do
@@ -1147,16 +1181,16 @@ contains
 		real(wp),optional::lineWidth
 			!! Width of lines around bars
 		
-		real(plflt),dimension(4)::xl,yl
-		real(plflt),dimension(2)::cb
-		real(plflt)::dx,dxs
+		real(pp),dimension(4)::xl,yl
+		real(pp),dimension(2)::cb
+		real(pp)::dx,dxs
 		integer::k
 		
-		if(present(c)) cb = real(mixval(c),plflt)
-		dxs = 0.8_plflt
-		if(present(relWidth)) dxs = real(relWidth,plflt)
+		if(present(c)) cb = real(mixval(c),pp)
+		dxs = 0.8_pp
+		if(present(relWidth)) dxs = real(relWidth,pp)
 		if(size(x)>1) then
-			dx = dxs*real(x(2)-x(1),plflt)/2.0_plflt
+			dx = dxs*real(x(2)-x(1),pp)/2.0_pp
 		else
 			dx = dxs
 		end if
@@ -1164,12 +1198,12 @@ contains
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
-			xl = real([x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx],plflt)
-			yl = real([0.0_wp,y(k),y(k),0.0_wp],plflt)
+			xl = real([x(k)-dx,x(k)-dx,x(k)+dx,x(k)+dx],pp)
+			yl = real([0.0_wp,y(k),y(k),0.0_wp],pp)
 			
 			if(present(fillColor)) call setColor(fillColor)
 			if(present(fillPattern)) call setFillPattern(fillPattern)
-			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,pp) )
 			call plfill(xl,yl)
 			
 			if(present(lineColor)) call setColor(lineColor)
@@ -1197,25 +1231,25 @@ contains
 		real(wp),optional::lineWidth
 			!! Width of lines around bars
 		
-		real(plflt),dimension(4)::xl,yl
-		real(plflt),dimension(2)::cb
-		real(plflt)::dy,dys
+		real(pp),dimension(4)::xl,yl
+		real(pp),dimension(2)::cb
+		real(pp)::dy,dys
 		integer::k
 		
-		if(present(c)) cb = real(mixval(c),plflt)
-		dys = 0.8_plflt
-		if(present(relWidth)) dys = real(relWidth,plflt)
-		dy = dys*real(y(2)-y(1),plflt)/2.0_plflt
+		if(present(c)) cb = real(mixval(c),pp)
+		dys = 0.8_pp
+		if(present(relWidth)) dys = real(relWidth,pp)
+		dy = dys*real(y(2)-y(1),pp)/2.0_pp
 		
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		do k=1,size(x)
-			yl = real([y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy],plflt)
-			xl = real([0.0_wp,x(k),x(k),0.0_wp],plflt)
+			yl = real([y(k)-dy,y(k)-dy,y(k)+dy,y(k)+dy],pp)
+			xl = real([0.0_wp,x(k),x(k),0.0_wp],pp)
 			
 			if(present(fillColor)) call setColor(fillColor)
 			if(present(fillPattern)) call setFillPattern(fillPattern)
-			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,plflt) )
+			if(present(c)) call plcol1( real( (c(k)-cb(1))/(cb(2)-cb(1)) ,pp) )
 			call plfill(xl,yl)
 			
 			if(present(lineColor)) call setColor(lineColor)
@@ -1233,18 +1267,18 @@ contains
 		character(*),intent(in),optional::fillPattern
 		real(wp),intent(in),optional::lineWidth
 		
-		real(plflt),dimension(:),allocatable::xl,y1l,y0l
+		real(pp),dimension(:),allocatable::xl,y1l,y0l
 		integer::N
 		
 		N = size(x)
 		
-		xl  = x
-		y1l = y1
+		xl  = localize(x)
+		y1l = localize(y1)
 		if(present(y0)) then
-			y0l = y0
+			y0l = localize(y0)
 		else
 			allocate(y0l(N))
-			y0l = 0.0_plflt
+			y0l = 0.0_pp
 		end if
 		
 		if(present(fillColor)) call setColor(fillColor)
@@ -1263,18 +1297,18 @@ contains
 		character(*),intent(in),optional::fillPattern
 		real(wp),intent(in),optional::lineWidth
 		
-		real(plflt),dimension(:),allocatable::yl,x1l,x0l
+		real(pp),dimension(:),allocatable::yl,x1l,x0l
 		integer::N
 		
 		N = size(y)
 		
-		yl  = y
-		x1l = x1
+		yl  = localize(y)
+		x1l = localize(x1)
 		if(present(x0)) then
-			x0l = x0
+			x0l = localize(x0)
 		else
 			allocate(x0l(N))
-			x0l = 0.0_plflt
+			x0l = 0.0_pp
 		end if
 		
 		if(present(fillColor)) call setColor(fillColor)
@@ -1295,14 +1329,14 @@ contains
 		call setLineStyle('')
 		call setLineWidth(0.5_wp)
 		call setFillPattern('')
-		call plschr(0.0_plflt,real(fontScale,plflt))
-		call plssym(0.0_plflt,real(fontScale,plflt))
+		call plschr(0.0_pp,real(fontScale,pp))
+		call plssym(0.0_pp,real(fontScale,pp))
 	end subroutine resetPen
 
 	subroutine setLineWidth(lineWidth)
 		real(wp),intent(in)::lineWidth
 		
-		call plwidth(real(lineWidth,plflt))
+		call plwidth(real(lineWidth,pp))
 	end subroutine setLineWidth
 
 	subroutine setLineStyle(style)
@@ -1399,7 +1433,7 @@ contains
 			!! Name of color to set
 		
 		integer::ios
-		real(plflt)::v
+		real(pp)::v
 		
 		read(color,*,iostat=ios) v
 		if(ios==0) then
@@ -1503,7 +1537,7 @@ contains
 		end if
 		
 		call plfontld(0)
-		if(present(fontScaling)) fontScale = real(fontScaling,plflt)
+		if(present(fontScaling)) fontScale = real(fontScaling,pp)
 		
 		if(present(figSize)) then
 			write(bufx,*) figSize(1)
@@ -1551,7 +1585,7 @@ contains
 		character(*),intent(in)::colormap
 			!! Name of colormap to use
 		
-		real(plflt),dimension(:),allocatable::i,h,s,v
+		real(pp),dimension(:),allocatable::i,h,s,v
 		
 		select case(colormap)
 		case('CoolWarm')

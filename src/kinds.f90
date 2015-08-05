@@ -15,7 +15,7 @@ module kinds_mod
 		!! Extended precision
 	integer,parameter::qp = selected_real_kind(32)
 		!! Quad precision
-	integer,parameter::wp = dp
+	integer,parameter::wp = ep
 		!! Set working precision to double
 	
 	!==================!
