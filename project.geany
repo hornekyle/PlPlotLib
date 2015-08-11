@@ -16,23 +16,23 @@ indent_mode=2
 name=PlPlotLIb
 base_path=/home/kyle/Development/Fortran/PlPlotLib
 description=
-file_patterns=Makefile;*.f90;*.md;*.py;
+file_patterns=CMakeLists.txt;Makefile;*.f90;*.md;*.py;
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=4
-FILE_NAME_0=569;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fproject.md;0;2
+current_page=9
+FILE_NAME_0=159;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fproject.md;0;2
 FILE_NAME_1=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FREADME.md;0;2
-FILE_NAME_2=266;Make;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FMakefile;0;2
+FILE_NAME_2=74;Make;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FMakefile;0;2
 FILE_NAME_3=447;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fkinds.f90;0;2
 FILE_NAME_4=4165;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
 FILE_NAME_5=379;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
 FILE_NAME_6=337;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
 FILE_NAME_7=40;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Findex.md;0;2
-FILE_NAME_8=4473;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Farguments.md;0;2
+FILE_NAME_8=1256;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Farguments.md;0;2
 FILE_NAME_9=4153;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Fbasic.md;0;2
 
 [VTE]
