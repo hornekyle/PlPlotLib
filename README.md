@@ -12,4 +12,4 @@ as publication quality, no assertion is made along those lines. This
 software has been written in the hope that it will be useful, 
 especially for students in numerical analysis courses based on Fortran.
 
-Documentation can be found [here](http(s)://hornekyle.github.io/PlPlotLib).
+Documentation can be found [here](http://hornekyle.github.io/PlPlotLib).
