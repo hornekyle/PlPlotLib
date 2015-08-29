@@ -3,10 +3,6 @@ module examples_mod
 	use kinds_mod
 	use plplotlib_mod
 	implicit none
-	private
-	
-	public::makeLogo
-	public::doExamples
 	
 contains
 
@@ -32,18 +28,19 @@ contains
 	end subroutine makeLogo
 
 	subroutine doExamples
-		call doPlot
-		call doScatter
-		call doContour
-		call doLegend
-		call doQuiver
-		call doBar
-		call doFillBetween
-		call doHist
-		call doSurface
+		call doPlot()
+		call doScatter()
+		call doContour()
+		call doLegend()
+		call doQuiver()
+		call doBar()
+		call doFillBetween()
+		call doHist()
+		call doSurface()
 	end subroutine doExamples
 
 	subroutine doPlot
+		!! ![plot](|media|/example-1.svg)
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
 		
@@ -70,6 +67,7 @@ contains
 	end subroutine doPlot
 
 	subroutine doScatter
+		!! ![scatter](|media|/example-2.svg)
 		integer,parameter::N = 100
 		real(wp),dimension(N)::x,y,z
 		
@@ -105,7 +103,8 @@ contains
 	end subroutine doScatter
 
 	subroutine doContour
-		integer,parameter::N = 100
+		!! ![contour](|media|/example-3.svg)
+		integer,parameter::N = 50
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::z
 		integer::i,j
@@ -120,7 +119,7 @@ contains
 		
 		call subplot(1,1,1,aspect=1.0_wp)
 		call xylim(mixval(x),mixval(y))
-		call contourf(x,y,z,50)
+		call contourf(x,y,z,10)
 		call contour(x,y,z,10)
 		call colorbar(z,5)
 		call ticks()
@@ -128,6 +127,7 @@ contains
 	end subroutine doContour
 
 	subroutine doLegend
+		!! ![legend](|media|/example-4.svg)
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
 		character(32),dimension(3,7)::series
@@ -156,6 +156,7 @@ contains
 	end subroutine doLegend
 
 	subroutine doQuiver
+		!! ![quiver](|media|/example-5.svg)
 		integer,parameter::N = 20
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::u,v,m
@@ -180,6 +181,7 @@ contains
 	end subroutine doQuiver
 
 	subroutine doBar
+		!! ![bar](|media|/example-6.svg)
 		integer,parameter::N = 21
 		real(wp),dimension(N)::x,y
 		
@@ -202,6 +204,7 @@ contains
 	end subroutine doBar
 
 	subroutine doFillBetween
+		!! ![fillBetween](|media|/example-7.svg)
 		integer,parameter::N = 51
 		real(wp),dimension(N)::x,y1,y2
 		
@@ -220,7 +223,8 @@ contains
 	end subroutine doFillBetween
 
 	subroutine doHist
-		integer,parameter::N = 1000
+		!! ![hist](|media|/example-8.svg)
+		integer,parameter::N = 10000
 		real(wp),dimension(N,12)::r
 		real(wp),dimension(N)::x
 		real(wp),dimension(:,:),allocatable::h
@@ -231,10 +235,10 @@ contains
 		
 		call subplot(1,2,1)
 		call xylim(mixval(x),[0.0_wp,1.05_wp])
-		call hist(x,100)
+		call hist(x,20)
 		call ticks()
 		
-		h = binData(x,100,normalize=2)
+		h = binData(x,20,normalize=2)
 		call subplot(1,2,2)
 		call xylim(mixval(h(:,1)),[0.0_wp,1.05_wp*maxval(h(:,2))])
 		call bar(h(:,1),h(:,2),c=h(:,2),relWidth=1.0_wp)
@@ -242,9 +246,10 @@ contains
 	end subroutine doHist
 
 	subroutine doSurface
+		!! ![surface](|media|/example-9.svg)
 		use plplot
 		
-		integer,parameter::N = 150
+		integer,parameter::N = 24
 		real(wp),dimension(N)::x,y
 		real(wp),dimension(N,N)::z
 		integer::i,j

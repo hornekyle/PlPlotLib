@@ -3,19 +3,19 @@ project_dir: ./src
 project_github: http://github.com/hornekyle/PlPlotLib
 project_website: http://hornekyle.github.io/PlPlotLib/
 media_dir: ./examples
-favicon: logo.png
-
-source: true
-
+favicon: ./logo.png
 page_dir: ./pages
 output_dir: ./doc
-author: Dr. Kyle Horne
+author: Dr Kyle Horne
 author_description: Assistant Professor
-    Mechanical and Energy Engineering
-    University of North Texas
+	Mechanical and Energy Engineering
+	University of North Texas
 email: kyle.horne@unt.edu
 github: https://github.com/hornekyle/
 summary: PlPlot wrapper module
+graph: false
+source: false
+display: public
 
 PlPlotLib is a wrapper for PlPlot inspired by the interface of 
 matplotlib. It is intended to fill the need for rapid feedback while 

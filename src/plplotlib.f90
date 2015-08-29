@@ -24,6 +24,9 @@ module plplotlib_mod
 	real(pp)::fontScale = 1.0_pp
 		!! Font scale factor to resetPen
 	logical::blackOnWhite = .true.
+		!! Reverse black and white
+	logical::transparentBackground = .false.
+		!! Transparent background
 	
 	!==============!
 	!= Interfaces =!
@@ -1487,7 +1490,7 @@ contains
 	!= Library Status Routines =!
 	!===========================!
 
-	subroutine setup(device,fileName,fontScaling,whiteOnBlack,colormap,figSize)
+	subroutine setup(device,fileName,fontScaling,whiteOnBlack,transparent,colormap,figSize)
 		!! Setup PlPlot library, optionally overriding defaults
 		character(*),intent(in),optional::device
 			!! Output device to use
@@ -1503,6 +1506,8 @@ contains
 			!! Font scaling relative to default value
 		logical,intent(in),optional::whiteOnBlack
 			!! Default foreground and background colors
+		logical,intent(in),optional::transparent
+			!! Transparent background
 		character(*),intent(in),optional::colormap
 			!! Colormap to use
 		integer,dimension(2),intent(in),optional::figSize
@@ -1527,6 +1532,8 @@ contains
 		end if
 		
 		if(present(whiteOnBlack)) blackOnWhite = .not. whiteOnBlack
+		
+		if(present(transparent)) transparentBackground = transparent
 		
 		call setIndexedColors
 		
@@ -1567,6 +1574,7 @@ contains
 	subroutine setIndexedColors
 		!! Setup the indexed colors
 		integer,dimension(8,3)::rgb
+		real(plflt),dimension(8)::a
 		
 		rgb(getColorCode('w')+1,:) = [255,255,255] ! White
 		rgb(getColorCode('k')+1,:) = [  0,  0,  0] ! Black
@@ -1577,7 +1585,10 @@ contains
 		rgb(getColorCode('m')+1,:) = [255,  0,255] ! Magenta
 		rgb(getColorCode('y')+1,:) = [255,255,  0] ! Yellow
 		
-		call plscmap0(rgb(:,1),rgb(:,2),rgb(:,3))
+		a = 1.0_plflt
+		if(transparentBackground) a(1) = 0.0_wp
+		
+		call plscmap0a(rgb(:,1),rgb(:,2),rgb(:,3),a)
 	end subroutine setIndexedColors
 
 	subroutine setColormap(colormap)

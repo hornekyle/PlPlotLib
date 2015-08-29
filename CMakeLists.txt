@@ -2,11 +2,18 @@ cmake_minimum_required(VERSION 2.6)
 enable_language(Fortran)
 project("PlPlotLib")
 
-set(sources
-	"src/examples.f90"
+set(sources_common
 	"src/kinds.f90"
-	"src/main.f90"
 	"src/plplotlib.f90"
+	)
+
+set(sources_examples
+	"src/examples.f90"
+	"src/main.f90"
+	)
+
+set(sources_basic
+	"src/basic.f90"
 	)
 
 set(CMAKE_Fortran_FLAGS "-g -Wall -Wtabs")
@@ -18,8 +25,11 @@ pkg_search_module(PLPLOT REQUIRED plplot-f95 plplotd-f95)
 include_directories(${PLPLOT_INCLUDE_DIRS})
 link_directories(${PLPLOT_LIBRARY_DIRS})
 
-add_executable(main ${sources})
+add_executable(main ${sources_common} ${sources_examples})
 target_link_libraries(main ${PLPLOT_LIBRARIES})
+
+add_executable(basic ${sources_common} ${sources_basic})
+target_link_libraries(basic ${PLPLOT_LIBRARIES})
 
 set(FORD_EXECUTABLE "ford")
 add_custom_target(ford
