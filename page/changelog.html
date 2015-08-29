@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="PlPlot wrapper module">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Changelog &ndash; PlPlotLib</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">PlPlotLib </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li><a href='../page/index.html'>Module Usage</a></li>
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+				
+            <li><a href="../lists/programs.html">Programs</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  <div class="row">
+    <h1>Changelog</h1>
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="well well-sm" style="min-height: 40px;">
+      <ul class="list-inline" style="margin-bottom:0px; display:inline">
+         
+         
+<!--
+        
+-->
+      </ul>
+        <ol class="breadcrumb in-well">
+      
+         <li><a href='../page/index.html'>Module Usage</a></li>
+      
+         <li class="active">Changelog</li>
+      </ol>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-lg-3">
+        <div class="well toc">
+          <ul class="nav nav-stacked nav-pills">
+            <li role="presentation" class="title"><a href='../page/index.html'>Module Usage</a></li>
+          </ul>
+          <hr>
+          <ul class="nav nav-stacked nav-pills">
+            
+            <li role="presentation">
+            <a href='../page/./arguments.html'>Common Arguments</a>
+            
+            </li>
+            
+            <li role="presentation" class="disabled">
+            <a href='../page/./changelog.html'>Changelog</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./license.html'>License</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./escapeCodes.html'>Escape Codes</a>
+            
+            </li>
+            
+          </ul>
+        </div>
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+        <h2>Changelog</h2>
+<div class="codehilite"><pre>commit 76ac1d4e0f3699b326cdc88480fd8b00a8c7a092
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon Aug 10 22:27:26 2015 -0400
+
+    Added CMake support for building.
+
+    Still suffering from some problems in the FORD documentation.
+
+commit f005c631e19de55e7fb2c5e1624bf701c1f6400b
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Wed Aug 5 13:29:04 2015 -0500
+
+    Enforce kind-correctness through localize
+
+commit a2c0c0006f9d92e01b1972c4d3a6c37a50e26192
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Tue Jul 7 09:54:11 2015 -0500
+
+    Improved basic.md
+
+commit ae060f07c31b2eeba96f1b1d5c77498fc7a3bb67
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Tue Jul 7 08:43:32 2015 -0500
+
+    Add basic documentation
+
+commit 40f572887f6475138cb4a0e6225d861260c79263
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon Jul 6 00:46:54 2015 -0500
+
+    Remove public access to setColor
+
+commit b036d2ffa8bbc16ad37563aab047a6add0ac157d
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon Jul 6 00:43:21 2015 -0500
+
+    Added ascii-coded-float support to setColor
+
+commit 568914995c3e5221360c2e3c41be56a791b9d0e2
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Thu Jul 2 17:22:47 2015 -0500
+
+    Added is3d and zoom options for 3d plots
+
+commit e60d346864db88d5756634f89f2bb9d72aa7d835
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Wed Jul 1 07:40:59 2015 -0500
+
+    Fixed hist and added binData
+
+commit d5c9091cc367d9be347f718bdc66f922f9f69169
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Tue Jun 30 20:12:17 2015 -0500
+
+    Added support for 3d plots
+
+commit ac508c110d7f823d024aa3fd9fcd0e7c1e637a8a
+Author: Kyle Horne &lt;kyle@Gauss&gt;
+Date:   Mon Jun 29 13:19:24 2015 -0500
+
+    Improve documentation and create logo
+
+commit 706639bc71d923f985263c229191e92d9bf3f112
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Thu Jun 18 11:04:25 2015 -0500
+
+    Renamed module file and correct figure paging
+
+commit f823e47ad8b182764f1277010c4818e3f629da92
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 15:00:33 2015 -0500
+
+    First version with all basic features
+
+commit f8243e44051707a485aa404b493382a4ac7619e6
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 13:29:24 2015 -0500
+
+    Corrected kind agreement for wp/=dp
+
+commit fa9f6a253e0d3ef4e6ce01072caa3fcb58caa392
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 13:07:39 2015 -0500
+
+    Added basic access to histogram plots
+
+commit 671bbecf8c014299f3d8c921f3d1b750134513ad
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 10:46:15 2015 -0500
+
+    Test run
+
+commit 8dec9d583987c2c51499708b2442e904f1f262ae
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 10:44:59 2015 -0500
+
+    Added empty readme file and a placeholder for bin
+
+commit 83bab2304303155dc6b257632cf012d711539dab
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 10:43:34 2015 -0500
+
+    Added todos
+
+commit 15bca26653cea3510b0f553b8c185f3a57d6b447
+Author: Kyle Horne &lt;kyle@localhost.localdomain&gt;
+Date:   Wed May 13 08:43:01 2015 -0500
+
+    Bug fixes
+
+commit 1eccb0805a5dce0c71acec26ee3b06e5552be4c5
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 16:19:10 2015 -0500
+
+    Cleaning up
+
+commit 270b175c8b9fb36f48db67a1aa8f8e6e42508cfc
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 16:13:34 2015 -0500
+
+    Another doc update
+
+commit 0ead56fe70eee1056f15207e5a69d94155479442
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 16:10:08 2015 -0500
+
+    Add Geany project file
+
+commit 3e60eba9554f06efb3ce6d13eb58ce0ca286c962
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 16:09:35 2015 -0500
+
+    Add missing files
+
+commit f65e76206aba9c6e5eb4fec6f0ad0dab0ec00898
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 16:08:19 2015 -0500
+
+    Updated documentation
+
+    Also added some figure size initial work
+
+commit 3ee17bbc280ca040f24a8e897f06756f6ff3a7d3
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 14:35:53 2015 -0500
+
+    Added fillBetween and refactored lineWidth
+
+commit cd2f680b0895bbd474250a4deeb371a5c4799321
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 09:34:23 2015 -0500
+
+    Added barh
+
+commit 784426414bc4844e6d65b3a673b4f18ebfa42522
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Mon May 11 07:18:55 2015 -0500
+
+    Added bar plot capability
+
+commit 515a6590377f8ec6237c4e727334b02e03d75b0f
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Sun May 10 10:14:15 2015 -0500
+
+    Code cleanup and more features
+
+    Cleaned legend
+    Added scaling and coloring features to quiver
+    Added ability to set blackOnWhite or whiteOnBlack
+
+commit d1b42e3aa6eb22f3407f373e299850f0296b9917
+Author: Kyle Horne &lt;horne.kyle@gmail.com&gt;
+Date:   Sat May 9 10:06:56 2015 -0500
+
+    Initial revision
+
+    Most features work
+</pre></div>
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-6">&copy; 2015 PlPlotLib was written by Dr Kyle Horne. </div>
+        <div class="col-md-6"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a>.</span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
