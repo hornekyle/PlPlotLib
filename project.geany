@@ -23,13 +23,17 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=47;Make;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FMakefile;0;2
-FILE_NAME_1=809;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FCMakeLists.txt;0;2
-FILE_NAME_2=1627;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Fbasic.md;0;2
-FILE_NAME_3=201;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fproject.md;0;2
-FILE_NAME_4=0;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
-FILE_NAME_5=0;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
+current_page=8
+FILE_NAME_0=912;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FCMakeLists.txt;0;2
+FILE_NAME_1=306;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
+FILE_NAME_2=5683;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
+FILE_NAME_3=17;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fbasic.f90;0;2
+FILE_NAME_4=14;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Flicense.md;0;2
+FILE_NAME_5=630;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2FREADME.md;0;2
+FILE_NAME_6=46;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2Findex.md;0;2
+FILE_NAME_7=39720;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
+FILE_NAME_8=91;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fproject.md;0;2
+FILE_NAME_9=594;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fpages%2FescapeCodes.md;0;2
 
 [VTE]
 last_dir=/home/kyle

@@ -13,8 +13,8 @@ author_description: Assistant Professor
 email: kyle.horne@unt.edu
 github: https://github.com/hornekyle/
 summary: PlPlot wrapper module
-graph: false
-source: false
+graph: true
+source: true
 display: public
 
 PlPlotLib is a wrapper for PlPlot inspired by the interface of 

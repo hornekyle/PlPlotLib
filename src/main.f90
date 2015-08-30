@@ -6,7 +6,6 @@ program main_prg
 	
 !~ 	call setup(whiteOnBlack=.false.)
 
-!~ 	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[640,480])
 	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[320,240],transparent=.true.)
 !~ 	call setup(device='svgqt',fileName='examples/logo-%n.svg',figSize=[500,500])
 	

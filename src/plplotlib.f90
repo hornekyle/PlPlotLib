@@ -1,8 +1,5 @@
 module plplotlib_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
-	!!
-	!! @todo
-	!! Add support for error plots
 	use kinds_mod
 	use plplot
 	implicit none
@@ -59,7 +56,7 @@ module plplotlib_mod
 	public::mixval,linspace,binData
 	
 	public::plot,plot3
-	public::scatter
+	public::scatter,errorbar
 	public::contour,contourf,colorbar
 	public::bar,barh
 	public::hist
@@ -1320,6 +1317,49 @@ contains
 		call plfill([x1l(1:N:1),x0l(N:1:-1)],[yl(1:N:1),yl(N:1:-1)])
 		call resetPen
 	end subroutine fillBetweenx
+
+	subroutine errorbar(x,y,xerr,yerr,lineColor,lineStyle,lineWidth)
+		!! Plot error bars for a set of data points
+		real(wp),dimension(:),intent(in)::x
+			!! x-data for plot
+		real(wp),dimension(:),intent(in)::y
+			!! y-data for plot
+		real(wp),dimension(:),intent(in),optional::xerr
+			!! x-data error for plot
+		real(wp),dimension(:),intent(in),optional::yerr
+			!! y-data error for plot
+		character(*),intent(in),optional::lineColor
+			!! Color of line
+		character(*),intent(in),optional::lineStyle
+			!! Style of line; '' for no line
+		real(wp),intent(in),optional::lineWidth
+			!! Width of line
+		
+		real(pp),dimension(:),allocatable::xl,yl
+		real(pp),dimension(:),allocatable::xll,xlh
+		real(pp),dimension(:),allocatable::yll,ylh
+		
+		xl = localize(x)
+		yl = localize(y)
+		
+		if(present(lineColor)) call setColor(lineColor)
+		if(present(lineWidth)) call setLineWidth(lineWidth)
+		if(present(lineStyle)) call setLineStyle(lineStyle)
+		
+		if(present(xerr)) then
+			xll = localize(x-xerr)
+			xlh = localize(x+xerr)
+			call plerrx(xll,xlh,yl)
+		end if
+		
+		if(present(yerr)) then
+			yll = localize(y-yerr)
+			ylh = localize(y+yerr)
+			call plerry(xl,yll,ylh)
+		end if
+		
+		call resetPen
+	end subroutine
 
 	!========================!
 	!= Drawing Pen Routines =!
