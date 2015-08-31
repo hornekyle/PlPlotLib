@@ -111,6 +111,8 @@ All Procedures &ndash; PlPlotLib
 			 
 			   <tr><td><a href='../proc/docontour.html'>doContour</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td><p><img alt="contour" src="../media/example-3.svg"></p></td></tr>
 			 
+			   <tr><td><a href='../proc/doerror.html'>doError</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td><p><img alt="error" src="../media/example-10.svg"></p></td></tr>
+			 
 			   <tr><td><a href='../proc/doexamples.html'>doExamples</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td></td></tr>
 			 
 			   <tr><td><a href='../proc/dofillbetween.html'>doFillBetween</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td><p><img alt="fillBetween" src="../media/example-7.svg"></p></td></tr>
@@ -126,6 +128,8 @@ All Procedures &ndash; PlPlotLib
 			   <tr><td><a href='../proc/doscatter.html'>doScatter</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td><p><img alt="scatter" src="../media/example-2.svg"></p></td></tr>
 			 
 			   <tr><td><a href='../proc/dosurface.html'>doSurface</a></td><td><a href='../module/examples_mod.html'>examples_mod</a></td><td>Subroutine</td><td><p><img alt="surface" src="../media/example-9.svg"></p></td></tr>
+			 
+			   <tr><td><a href='../proc/errorbar.html'>errorbar</a></td><td><a href='../module/plplotlib_mod.html'>plplotlib_mod</a></td><td>Subroutine</td><td><p>Plot error bars for a set of data points</p></td></tr>
 			 
 			   <tr><td><a href='../proc/figure.html'>figure</a></td><td><a href='../module/plplotlib_mod.html'>plplotlib_mod</a></td><td>Subroutine</td><td><p>Create a new figure</p></td></tr>
 			 
@@ -187,6 +191,150 @@ All Procedures &ndash; PlPlotLib
 			 
 			 </tbody></table>
              
+            <img class="depgraph" alt="dependency graph" src=../graphs/call%7E%7Egraph%7E%7ECallGraph.svg usemap="#call~~graph~~CallGraph">
+            <map id="call~~graph~~CallGraph" name="call~~graph~~CallGraph">
+<area shape="rect" id="node1" href="../proc/scatter.html" title="scatter" alt="" coords="563,611,635,643"/>
+<area shape="rect" id="node11" href="../interface/mixval.html" title="mixval" alt="" coords="697,2035,769,2067"/>
+<area shape="rect" id="node2" href="../proc/doscatter.html" title="doScatter" alt="" coords="414,1468,491,1500"/>
+<area shape="rect" id="node22" href="../proc/figure.html" title="figure" alt="" coords="563,1195,635,1227"/>
+<area shape="rect" id="node28" href="../proc/ticks.html" title="ticks" alt="" coords="563,1779,635,1811"/>
+<area shape="rect" id="node36" href="../proc/subplot.html" title="subplot" alt="" coords="563,1251,635,1283"/>
+<area shape="rect" id="node46" href="../proc/xylim.html" title="xylim" alt="" coords="563,1667,635,1699"/>
+<area shape="rect" id="node47" href="../proc/labels.html" title="labels" alt="" coords="563,1723,635,1755"/>
+<area shape="rect" id="node3" href="../proc/contour.html" title="contour" alt="" coords="563,2845,635,2877"/>
+<area shape="rect" id="node4" href="../proc/hist.html" title="hist" alt="" coords="417,2267,489,2299"/>
+<area shape="rect" id="node25" href="../proc/bar.html" title="bar" alt="" coords="563,2403,635,2435"/>
+<area shape="rect" id="node42" href="../proc/bindata.html" title="binData" alt="" coords="563,2240,635,2272"/>
+<area shape="rect" id="node5" href="../proc/doquiver.html" title="doQuiver" alt="" coords="415,1779,490,1811"/>
+<area shape="rect" id="node15" href="../proc/linspace.html" title="linspace" alt="" coords="697,1475,769,1507"/>
+<area shape="rect" id="node23" href="../proc/colorbar.html" title="colorbar" alt="" coords="563,2621,635,2653"/>
+<area shape="rect" id="node27" href="../proc/quiver.html" title="quiver" alt="" coords="563,2509,635,2541"/>
+<area shape="rect" id="node6" href="../proc/box.html" title="box" alt="" coords="563,285,635,317"/>
+<area shape="rect" id="node7" href="../proc/xyzlim.html" title="xyzlim" alt="" coords="563,768,635,800"/>
+<area shape="rect" id="node8" href="../proc/show.html" title="show" alt="" coords="563,875,635,907"/>
+<area shape="rect" id="node9" href="../proc/barh.html" title="barh" alt="" coords="563,2347,635,2379"/>
+<area shape="rect" id="node10" href="../proc/docontour.html" title="doContour" alt="" coords="411,1885,495,1917"/>
+<area shape="rect" id="node44" href="../proc/contourf.html" title="contourf" alt="" coords="563,2677,635,2709"/>
+<area shape="rect" id="node12" href="../proc/printtypes.html" title="printTypes" alt="" coords="5,636,89,668"/>
+<area shape="rect" id="node13" href="../proc/dobar.html" title="doBar" alt="" coords="417,1723,489,1755"/>
+<area shape="rect" id="node14" href="../proc/fillbetweenx.html" title="fillBetweenx" alt="" coords="553,2565,645,2597"/>
+<area shape="rect" id="node16" href="../proc/doerror.html" title="doError" alt="" coords="417,1408,489,1440"/>
+<area shape="rect" id="node32" href="../proc/plot.html" title="plot" alt="" coords="563,931,635,963"/>
+<area shape="rect" id="node34" href="../proc/errorbar.html" title="errorbar" alt="" coords="563,987,635,1019"/>
+<area shape="rect" id="node17" href="../proc/xticks.html" title="xticks" alt="" coords="563,5,635,37"/>
+<area shape="rect" id="node18" href="../proc/fillbetween.html" title="fillBetween" alt="" coords="557,1611,642,1643"/>
+<area shape="rect" id="node19" href="../proc/plot3.html" title="plot3" alt="" coords="563,397,635,429"/>
+<area shape="rect" id="node20" href="../proc/ylim.html" title="ylim" alt="" coords="563,2789,635,2821"/>
+<area shape="rect" id="node21" href="../proc/dofillbetween.html" title="doFillBetween" alt="" coords="400,1532,505,1564"/>
+<area shape="rect" id="node29" href="../proc/setup.html" title="setup" alt="" coords="697,1027,769,1059"/>
+<area shape="rect" id="node24" href="../proc/doexamples.html" title="doExamples" alt="" coords="137,1468,232,1500"/>
+<area shape="rect" id="node26" href="../proc/doplot.html" title="doPlot" alt="" coords="417,609,489,641"/>
+<area shape="rect" id="node30" href="../proc/dohist.html" title="doHist" alt="" coords="280,1832,352,1864"/>
+<area shape="rect" id="node38" href="../proc/dosurface.html" title="doSurface" alt="" coords="412,795,493,827"/>
+<area shape="rect" id="node41" href="../proc/dolegend.html" title="doLegend" alt="" coords="412,1175,493,1207"/>
+<area shape="rect" id="node31" href="../proc/title.html" title="title" alt="" coords="563,117,635,149"/>
+<area shape="rect" id="node35" href="../proc/ylabel.html" title="ylabel" alt="" coords="563,173,635,205"/>
+<area shape="rect" id="node39" href="../proc/xlabel.html" title="xlabel" alt="" coords="563,229,635,261"/>
+<area shape="rect" id="node43" href="../proc/yticks.html" title="yticks" alt="" coords="563,61,635,93"/>
+<area shape="rect" id="node33" href="../proc/makelogo.html" title="makeLogo" alt="" coords="411,1667,495,1699"/>
+<area shape="rect" id="node37" href="../proc/legend.html" title="legend" alt="" coords="563,341,635,373"/>
+<area shape="rect" id="node40" href="../proc/surface.html" title="surface" alt="" coords="563,555,635,587"/>
+<area shape="rect" id="node45" href="../proc/wireframe.html" title="wireframe" alt="" coords="7,397,87,429"/>
+<area shape="rect" id="node48" href="../proc/xlim.html" title="xlim" alt="" coords="563,2733,635,2765"/>
+<area shape="rect" id="node49" href="../program/basic_prg.html" title="basic_prg" alt="" coords="413,1332,492,1364"/>
+<area shape="rect" id="node50" href="../program/main_prg.html" title="main_prg" alt="" coords="9,875,86,907"/>
+</map>
+
+            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
         </div>
       </div>
 

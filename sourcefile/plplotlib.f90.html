@@ -180,9 +180,6 @@
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span class="k">module </span><span class="n">plplotlib_mod</span>
 	<span class="c">!! Wrapper module for plplot to give it a more matplotlib like personality</span>
-	<span class="c">!!</span>
-	<span class="c">!! @todo</span>
-	<span class="c">!! Add support for error plots</span>
 	<span class="k">use </span><span class="n">kinds_mod</span>
 	<span class="k">use </span><span class="n">plplot</span>
 	<span class="k">implicit none</span>
@@ -239,7 +236,7 @@
 	<span class="k">public</span><span class="kd">::</span><span class="n">mixval</span><span class="p">,</span><span class="n">linspace</span><span class="p">,</span><span class="n">binData</span>
 	
 	<span class="k">public</span><span class="kd">::</span><span class="n">plot</span><span class="p">,</span><span class="n">plot3</span>
-	<span class="k">public</span><span class="kd">::</span><span class="n">scatter</span>
+	<span class="k">public</span><span class="kd">::</span><span class="n">scatter</span><span class="p">,</span><span class="n">errorbar</span>
 	<span class="k">public</span><span class="kd">::</span><span class="n">contour</span><span class="p">,</span><span class="n">contourf</span><span class="p">,</span><span class="n">colorbar</span>
 	<span class="k">public</span><span class="kd">::</span><span class="n">bar</span><span class="p">,</span><span class="n">barh</span>
 	<span class="k">public</span><span class="kd">::</span><span class="n">hist</span>
@@ -1500,6 +1497,49 @@
 		<span class="k">call </span><span class="n">plfill</span><span class="p">([</span><span class="n">x1l</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">:</span><span class="mi">1</span><span class="p">),</span><span class="n">x0l</span><span class="p">(</span><span class="n">N</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">)],[</span><span class="n">yl</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">:</span><span class="mi">1</span><span class="p">),</span><span class="n">yl</span><span class="p">(</span><span class="n">N</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
 		<span class="k">call </span><span class="n">resetPen</span>
 	<span class="k">end subroutine </span><span class="n">fillBetweenx</span>
+
+	<span class="k">subroutine </span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xerr</span><span class="p">,</span><span class="n">yerr</span><span class="p">,</span><span class="n">lineColor</span><span class="p">,</span><span class="n">lineStyle</span><span class="p">,</span><span class="n">lineWidth</span><span class="p">)</span>
+		<span class="c">!! Plot error bars for a set of data points</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+			<span class="c">!! x-data for plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="n">y</span>
+			<span class="c">!! y-data for plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">xerr</span>
+			<span class="c">!! x-data error for plot</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">yerr</span>
+			<span class="c">!! y-data error for plot</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineColor</span>
+			<span class="c">!! Color of line</span>
+		<span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineStyle</span>
+			<span class="c">!! Style of line; &#39;&#39; for no line</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="kd">::</span><span class="n">lineWidth</span>
+			<span class="c">!! Width of line</span>
+		
+		<span class="kt">real</span><span class="p">(</span><span class="n">pp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">pp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">xll</span><span class="p">,</span><span class="n">xlh</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">pp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">yll</span><span class="p">,</span><span class="n">ylh</span>
+		
+		<span class="n">xl</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">lineColor</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">))</span> <span class="k">call </span><span class="n">setLineWidth</span><span class="p">(</span><span class="n">lineWidth</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">))</span> <span class="k">call </span><span class="n">setLineStyle</span><span class="p">(</span><span class="n">lineStyle</span><span class="p">)</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xerr</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			</span><span class="n">xll</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xerr</span><span class="p">)</span>
+			<span class="n">xlh</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">xerr</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plerrx</span><span class="p">(</span><span class="n">xll</span><span class="p">,</span><span class="n">xlh</span><span class="p">,</span><span class="n">yl</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yerr</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">			</span><span class="n">yll</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">yerr</span><span class="p">)</span>
+			<span class="n">ylh</span> <span class="o">=</span> <span class="n">localize</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">yerr</span><span class="p">)</span>
+			<span class="k">call </span><span class="n">plerry</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span><span class="n">yll</span><span class="p">,</span><span class="n">ylh</span><span class="p">)</span>
+		<span class="k">end if</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">resetPen</span>
+	<span class="k">end subroutine</span>
 
 	<span class="c">!========================!</span>
 	<span class="c">!= Drawing Pen Routines =!</span>

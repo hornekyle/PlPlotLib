@@ -140,6 +140,14 @@
   
   
   
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/doexamples.html#src">doExamples</a>
+    </div>
+  </div>
+  
+  <hr>
   
   <div class="panel panel-default">
     <div class="panel-heading text-left"><h3 class="panel-title">All Procedures</h3></div>
@@ -163,6 +171,8 @@
       
       <a class="list-group-item" href="../proc/docontour.html">doContour</a>
       
+      <a class="list-group-item" href="../proc/doerror.html">doError</a>
+      
       <a class="list-group-item" href="../proc/doexamples.html">doExamples</a>
       
       <a class="list-group-item" href="../proc/dofillbetween.html">doFillBetween</a>
@@ -178,6 +188,8 @@
       <a class="list-group-item" href="../proc/doscatter.html">doScatter</a>
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
+      
+      <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
       
@@ -262,6 +274,240 @@ public subroutine doExamples()
     
     
     
+     <h3>Calls</h3>
+     
+            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edoexamples%7E%7ECallsGraph.svg usemap="#proc~~doexamples~~CallsGraph">
+            <map id="proc~~doexamples~~CallsGraph" name="proc~~doexamples~~CallsGraph">
+<area shape="rect" id="node2" href="../proc/dosurface.html" title="doSurface" alt="" coords="280,196,361,228"/>
+<area shape="rect" id="node3" href="../proc/docontour.html" title="doContour" alt="" coords="279,976,363,1008"/>
+<area shape="rect" id="node4" href="../proc/dobar.html" title="doBar" alt="" coords="285,920,357,952"/>
+<area shape="rect" id="node5" href="../proc/dohist.html" title="doHist" alt="" coords="148,867,220,899"/>
+<area shape="rect" id="node6" href="../proc/dolegend.html" title="doLegend" alt="" coords="280,1352,361,1384"/>
+<area shape="rect" id="node7" href="../proc/dofillbetween.html" title="doFillBetween" alt="" coords="268,1296,373,1328"/>
+<area shape="rect" id="node8" href="../proc/doquiver.html" title="doQuiver" alt="" coords="283,1032,358,1064"/>
+<area shape="rect" id="node9" href="../proc/doplot.html" title="doPlot" alt="" coords="285,1821,357,1853"/>
+<area shape="rect" id="node10" href="../proc/doscatter.html" title="doScatter" alt="" coords="282,1189,359,1221"/>
+<area shape="rect" id="node11" href="../proc/doerror.html" title="doError" alt="" coords="285,1408,357,1440"/>
+<area shape="rect" id="node12" href="../proc/figure.html" title="figure" alt="" coords="428,1072,500,1104"/>
+<area shape="rect" id="node13" href="../interface/mixval.html" title="mixval" alt="" coords="559,792,631,824"/>
+<area shape="rect" id="node14" href="../proc/box.html" title="box" alt="" coords="428,5,500,37"/>
+<area shape="rect" id="node15" href="../proc/surface.html" title="surface" alt="" coords="428,117,500,149"/>
+<area shape="rect" id="node16" href="../proc/xyzlim.html" title="xyzlim" alt="" coords="428,61,500,93"/>
+<area shape="rect" id="node17" href="../proc/linspace.html" title="linspace" alt="" coords="559,549,631,581"/>
+<area shape="rect" id="node18" href="../proc/subplot.html" title="subplot" alt="" coords="428,1128,500,1160"/>
+<area shape="rect" id="node37" href="../proc/labels.html" title="labels" alt="" coords="428,1240,500,1272"/>
+<area shape="rect" id="node38" href="../proc/ticks.html" title="ticks" alt="" coords="428,1184,500,1216"/>
+<area shape="rect" id="node39" href="../proc/contour.html" title="contour" alt="" coords="428,600,500,632"/>
+<area shape="rect" id="node40" href="../proc/colorbar.html" title="colorbar" alt="" coords="428,965,500,997"/>
+<area shape="rect" id="node41" href="../proc/xylim.html" title="xylim" alt="" coords="428,1296,500,1328"/>
+<area shape="rect" id="node42" href="../proc/contourf.html" title="contourf" alt="" coords="428,493,500,525"/>
+<area shape="rect" id="node48" href="../proc/bar.html" title="bar" alt="" coords="428,331,500,363"/>
+<area shape="rect" id="node49" href="../proc/barh.html" title="barh" alt="" coords="428,437,500,469"/>
+<area shape="rect" id="node53" href="../proc/hist.html" title="hist" alt="" coords="285,491,357,523"/>
+<area shape="rect" id="node54" href="../proc/bindata.html" title="binData" alt="" coords="428,275,500,307"/>
+<area shape="rect" id="node55" href="../proc/plot.html" title="plot" alt="" coords="428,1667,500,1699"/>
+<area shape="rect" id="node56" href="../proc/legend.html" title="legend" alt="" coords="428,1611,500,1643"/>
+<area shape="rect" id="node60" href="../proc/fillbetween.html" title="fillBetween" alt="" coords="421,1352,507,1384"/>
+<area shape="rect" id="node61" href="../proc/quiver.html" title="quiver" alt="" coords="428,909,500,941"/>
+<area shape="rect" id="node63" href="../proc/yticks.html" title="yticks" alt="" coords="428,2093,500,2125"/>
+<area shape="rect" id="node64" href="../proc/title.html" title="title" alt="" coords="428,2261,500,2293"/>
+<area shape="rect" id="node65" href="../proc/xticks.html" title="xticks" alt="" coords="428,2037,500,2069"/>
+<area shape="rect" id="node66" href="../proc/ylabel.html" title="ylabel" alt="" coords="428,2149,500,2181"/>
+<area shape="rect" id="node67" href="../proc/xlabel.html" title="xlabel" alt="" coords="428,2205,500,2237"/>
+<area shape="rect" id="node69" href="../proc/scatter.html" title="scatter" alt="" coords="428,1925,500,1957"/>
+<area shape="rect" id="node71" href="../proc/errorbar.html" title="errorbar" alt="" coords="428,1981,500,2013"/>
+<area shape="rect" id="node22" href="../proc/setup.html" title="setup" alt="" coords="559,1016,631,1048"/>
+</map>
+
+            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+     
+     
+     <h3>Called By</h3>
+     
+            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edoexamples%7E%7ECalledByGraph.svg usemap="#proc~~doexamples~~CalledByGraph">
+            <map id="proc~~doexamples~~CalledByGraph" name="proc~~doexamples~~CalledByGraph">
+<area shape="rect" id="node2" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
+</map>
+
+            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
      
     <br>
     
@@ -277,6 +523,25 @@ public subroutine doExamples()
 
     
     
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre>	<span class="k">subroutine </span><span class="n">doExamples</span>
+		<span class="k">call </span><span class="n">doPlot</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doScatter</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doContour</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doLegend</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doQuiver</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doBar</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doFillBetween</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doHist</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doSurface</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doError</span><span class="p">()</span>
+	<span class="k">end subroutine </span><span class="n">doExamples</span>
+</pre></div>
+
+    </section>
+    <br>
     
     
     </div>

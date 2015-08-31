@@ -1,0 +1,18 @@
+digraph "module~~kinds_mod~~UsedByGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"module~kinds_mod" [label=kinds_mod]
+		"module~examples_mod" [label=examples_mod URL="../module/examples_mod.html" color="#337AB7" fontcolor=white style=filled]
+		"program~main_prg" [label=main_prg URL="../program/main_prg.html" color="#f0ad4e" fontcolor=white style=filled]
+		"module~plplotlib_mod" [label=plplotlib_mod URL="../module/plplotlib_mod.html" color="#337AB7" fontcolor=white style=filled]
+		"program~basic_prg" [label=basic_prg URL="../program/basic_prg.html" color="#f0ad4e" fontcolor=white style=filled]
+			"module~examples_mod" -> "program~main_prg" [style=dashed]
+			"module~plplotlib_mod" -> "module~examples_mod" [style=dashed]
+			"module~plplotlib_mod" -> "program~main_prg" [style=dashed]
+			"module~plplotlib_mod" -> "program~basic_prg" [style=dashed]
+			"module~kinds_mod" -> "module~examples_mod" [style=dashed]
+			"module~kinds_mod" -> "program~main_prg" [style=dashed]
+			"module~kinds_mod" -> "module~plplotlib_mod" [style=dashed]
+			"module~kinds_mod" -> "program~basic_prg" [style=dashed]
+}

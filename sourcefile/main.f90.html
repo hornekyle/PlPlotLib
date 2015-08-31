@@ -183,11 +183,10 @@
 	<span class="k">use </span><span class="n">plplotlib_mod</span>
 	<span class="k">use </span><span class="n">examples_mod</span>
 	<span class="k">implicit none</span>
-	
-<span class="c">!~ 	call setup(whiteOnBlack=.false.)</span>
+<span class="k">	</span>
+<span class="k">	call </span><span class="n">setup</span><span class="p">(</span><span class="n">whiteOnBlack</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.)</span>
 
-<span class="c">!~ 	call setup(device=&#39;svgqt&#39;,fileName=&#39;examples/example-%n.svg&#39;,figSize=[640,480])</span>
-	<span class="k">call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;examples/example-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">320</span><span class="p">,</span><span class="mi">240</span><span class="p">],</span><span class="n">transparent</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+<span class="c">!~ 	call setup(device=&#39;svgqt&#39;,fileName=&#39;examples/example-%n.svg&#39;,figSize=[320,240],transparent=.true.)</span>
 <span class="c">!~ 	call setup(device=&#39;svgqt&#39;,fileName=&#39;examples/logo-%n.svg&#39;,figSize=[500,500])</span>
 	
 	<span class="k">call </span><span class="n">doExamples</span><span class="p">()</span>

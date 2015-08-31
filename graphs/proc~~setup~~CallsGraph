@@ -1,0 +1,33 @@
+digraph "proc~~setup~~CallsGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~setup" [label=setup]
+		graph [concentrate=false]
+		figsize [label=figsize color="#777777" fontcolor=white style=filled]
+		plsdev [label=plsdev color="#777777" fontcolor=white style=filled]
+		plfontld [label=plfontld color="#777777" fontcolor=white style=filled]
+		plsfnam [label=plsfnam color="#777777" fontcolor=white style=filled]
+		plsfam [label=plsfam color="#777777" fontcolor=white style=filled]
+		plsetopt [label=plsetopt color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~setup" -> figsize
+			"proc~setup" -> plsdev
+			"proc~setup" -> plfontld
+			"proc~setup" -> plsfnam
+			"proc~setup" -> plsfam
+			"proc~setup" -> plsetopt
+		graph [concentrate=false]
+}

@@ -1,0 +1,21 @@
+digraph "proc~~quiver~~CallsGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~quiver" [label=quiver]
+		graph [concentrate=false]
+		plvect [label=plvect color="#777777" fontcolor=white style=filled]
+		"interface~mixval" [label=mixval URL="../interface/mixval.html" color="#A7506F" fontcolor=white style=filled]
+		plcol1 [label=plcol1 color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~quiver" -> plvect
+			"proc~quiver" -> "interface~mixval"
+			"proc~quiver" -> plcol1
+		graph [concentrate=false]
+}

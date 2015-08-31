@@ -1,0 +1,382 @@
+digraph "proc~~doexamples~~CallsGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~doexamples" [label=doExamples]
+		graph [concentrate=false]
+		"proc~dosurface" [label=doSurface URL="../proc/dosurface.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~docontour" [label=doContour URL="../proc/docontour.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dobar" [label=doBar URL="../proc/dobar.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dohist" [label=doHist URL="../proc/dohist.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dolegend" [label=doLegend URL="../proc/dolegend.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dofillbetween" [label=doFillBetween URL="../proc/dofillbetween.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doquiver" [label=doQuiver URL="../proc/doquiver.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doplot" [label=doPlot URL="../proc/doplot.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doscatter" [label=doScatter URL="../proc/doscatter.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doerror" [label=doError URL="../proc/doerror.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		"proc~figure" [label=figure URL="../proc/figure.html" color="#d9534f" fontcolor=white style=filled]
+		"interface~mixval" [label=mixval URL="../interface/mixval.html" color="#A7506F" fontcolor=white style=filled]
+		"proc~box" [label=box URL="../proc/box.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~surface" [label=surface URL="../proc/surface.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~xyzlim" [label=xyzlim URL="../proc/xyzlim.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~linspace" [label=linspace URL="../proc/linspace.html" color="#d94e8f" fontcolor=white style=filled]
+		"proc~subplot" [label=subplot URL="../proc/subplot.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		pladv [label=pladv color="#777777" fontcolor=white style=filled]
+		pleop [label=pleop color="#777777" fontcolor=white style=filled]
+		plssub [label=plssub color="#777777" fontcolor=white style=filled]
+		"proc~setup" [label=setup URL="../proc/setup.html" color="#d9534f" fontcolor=white style=filled]
+		plbop [label=plbop color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		figsize [label=figsize color="#777777" fontcolor=white style=filled]
+		plsdev [label=plsdev color="#777777" fontcolor=white style=filled]
+		plfontld [label=plfontld color="#777777" fontcolor=white style=filled]
+		plsfnam [label=plsfnam color="#777777" fontcolor=white style=filled]
+		plsfam [label=plsfam color="#777777" fontcolor=white style=filled]
+		plsetopt [label=plsetopt color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~setup" -> figsize
+			"proc~setup" -> plsdev
+			"proc~setup" -> plfontld
+			"proc~setup" -> plsfnam
+			"proc~setup" -> plsfam
+			"proc~setup" -> plsetopt
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~figure" -> pladv
+			"proc~figure" -> pleop
+			"proc~figure" -> plssub
+			"proc~figure" -> "proc~setup"
+			"proc~figure" -> plbop
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		plbox3 [label=plbox3 color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~box" -> plbox3
+		graph [concentrate=false]
+		plsurf3d [label=plsurf3d color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~surface" -> "proc~linspace"
+			"proc~surface" -> plsurf3d
+		graph [concentrate=false]
+		plwind [label=plwind color="#777777" fontcolor=white style=filled]
+		plw3d [label=plw3d color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~xyzlim" -> plwind
+			"proc~xyzlim" -> plw3d
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		plvasp [label=plvasp color="#777777" fontcolor=white style=filled]
+		plvpor [label=plvpor color="#777777" fontcolor=white style=filled]
+		plvsta [label=plvsta color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~subplot" -> plvasp
+			"proc~subplot" -> plvpor
+			"proc~subplot" -> plssub
+			"proc~subplot" -> plvsta
+			"proc~subplot" -> pladv
+		graph [concentrate=false]
+			"proc~dosurface" -> "proc~figure"
+			"proc~dosurface" -> "interface~mixval"
+			"proc~dosurface" -> "proc~box"
+			"proc~dosurface" -> "proc~surface"
+			"proc~dosurface" -> "proc~xyzlim"
+			"proc~dosurface" -> "proc~linspace"
+			"proc~dosurface" -> "proc~subplot"
+		graph [concentrate=false]
+		"proc~labels" [label=labels URL="../proc/labels.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~ticks" [label=ticks URL="../proc/ticks.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~contour" [label=contour URL="../proc/contour.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~colorbar" [label=colorbar URL="../proc/colorbar.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~xylim" [label=xylim URL="../proc/xylim.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~contourf" [label=contourf URL="../proc/contourf.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		pllab [label=pllab color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~labels" -> pllab
+		graph [concentrate=false]
+		plbox [label=plbox color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~ticks" -> plbox
+		graph [concentrate=false]
+		plcont [label=plcont color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~contour" -> plcont
+		graph [concentrate=false]
+		plcolorbar [label=plcolorbar color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~colorbar" -> plcolorbar
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~xylim" -> plwind
+		graph [concentrate=false]
+		plshades [label=plshades color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~contourf" -> "proc~linspace"
+			"proc~contourf" -> plshades
+		graph [concentrate=false]
+			"proc~docontour" -> "proc~labels"
+			"proc~docontour" -> "proc~ticks"
+			"proc~docontour" -> "proc~figure"
+			"proc~docontour" -> "proc~contour"
+			"proc~docontour" -> "interface~mixval"
+			"proc~docontour" -> "proc~colorbar"
+			"proc~docontour" -> "proc~xylim"
+			"proc~docontour" -> "proc~contourf"
+			"proc~docontour" -> "proc~linspace"
+			"proc~docontour" -> "proc~subplot"
+		graph [concentrate=false]
+		"proc~bar" [label=bar URL="../proc/bar.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~barh" [label=barh URL="../proc/barh.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		plline [label=plline color="#777777" fontcolor=white style=filled]
+		plfill [label=plfill color="#777777" fontcolor=white style=filled]
+		plcol1 [label=plcol1 color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~bar" -> plline
+			"proc~bar" -> plfill
+			"proc~bar" -> "interface~mixval"
+			"proc~bar" -> plcol1
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~barh" -> plline
+			"proc~barh" -> plfill
+			"proc~barh" -> "interface~mixval"
+			"proc~barh" -> plcol1
+		graph [concentrate=false]
+			"proc~dobar" -> "proc~labels"
+			"proc~dobar" -> "proc~ticks"
+			"proc~dobar" -> "proc~bar"
+			"proc~dobar" -> "proc~barh"
+			"proc~dobar" -> "interface~mixval"
+			"proc~dobar" -> "proc~xylim"
+			"proc~dobar" -> "proc~linspace"
+			"proc~dobar" -> "proc~subplot"
+			"proc~dobar" -> "proc~figure"
+		graph [concentrate=false]
+		"proc~hist" [label=hist URL="../proc/hist.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~bindata" [label=binData URL="../proc/bindata.html" color="#d94e8f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~hist" -> "proc~bindata"
+			"proc~hist" -> "interface~mixval"
+			"proc~hist" -> "proc~bar"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~bindata" -> "proc~linspace"
+		graph [concentrate=false]
+			"proc~dohist" -> "proc~hist"
+			"proc~dohist" -> "proc~ticks"
+			"proc~dohist" -> "interface~mixval"
+			"proc~dohist" -> "proc~bar"
+			"proc~dohist" -> "proc~xylim"
+			"proc~dohist" -> "proc~bindata"
+			"proc~dohist" -> "proc~subplot"
+			"proc~dohist" -> "proc~figure"
+		graph [concentrate=false]
+		"proc~plot" [label=plot URL="../proc/plot.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~legend" [label=legend URL="../proc/legend.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		plssym [label=plssym color="#777777" fontcolor=white style=filled]
+		plptex [label=plptex color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~plot" -> plssym
+			"proc~plot" -> plline
+			"proc~plot" -> plptex
+		graph [concentrate=false]
+		pllegend [label=pllegend color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~legend" -> pllegend
+		graph [concentrate=false]
+			"proc~dolegend" -> "proc~labels"
+			"proc~dolegend" -> "proc~ticks"
+			"proc~dolegend" -> "proc~figure"
+			"proc~dolegend" -> "proc~plot"
+			"proc~dolegend" -> "interface~mixval"
+			"proc~dolegend" -> "proc~legend"
+			"proc~dolegend" -> "proc~xylim"
+			"proc~dolegend" -> "proc~linspace"
+			"proc~dolegend" -> "proc~subplot"
+		graph [concentrate=false]
+		"proc~fillbetween" [label=fillBetween URL="../proc/fillbetween.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~fillbetween" -> plfill
+		graph [concentrate=false]
+			"proc~dofillbetween" -> "proc~labels"
+			"proc~dofillbetween" -> "proc~ticks"
+			"proc~dofillbetween" -> "proc~figure"
+			"proc~dofillbetween" -> "proc~plot"
+			"proc~dofillbetween" -> "interface~mixval"
+			"proc~dofillbetween" -> "proc~fillbetween"
+			"proc~dofillbetween" -> "proc~xylim"
+			"proc~dofillbetween" -> "proc~linspace"
+			"proc~dofillbetween" -> "proc~subplot"
+		graph [concentrate=false]
+		"proc~quiver" [label=quiver URL="../proc/quiver.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		plvect [label=plvect color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~quiver" -> plvect
+			"proc~quiver" -> "interface~mixval"
+			"proc~quiver" -> plcol1
+		graph [concentrate=false]
+			"proc~doquiver" -> "proc~labels"
+			"proc~doquiver" -> "proc~ticks"
+			"proc~doquiver" -> "proc~quiver"
+			"proc~doquiver" -> "interface~mixval"
+			"proc~doquiver" -> "proc~colorbar"
+			"proc~doquiver" -> "proc~xylim"
+			"proc~doquiver" -> "proc~linspace"
+			"proc~doquiver" -> "proc~subplot"
+			"proc~doquiver" -> "proc~figure"
+		graph [concentrate=false]
+		"proc~yticks" [label=yticks URL="../proc/yticks.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~title" [label=title URL="../proc/title.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~xticks" [label=xticks URL="../proc/xticks.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~ylabel" [label=ylabel URL="../proc/ylabel.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~xlabel" [label=xlabel URL="../proc/xlabel.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~yticks" -> plbox
+		graph [concentrate=false]
+		plmtex [label=plmtex color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~title" -> plmtex
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~xticks" -> plbox
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~ylabel" -> plmtex
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~xlabel" -> plmtex
+		graph [concentrate=false]
+			"proc~doplot" -> "proc~yticks"
+			"proc~doplot" -> "proc~figure"
+			"proc~doplot" -> "proc~title"
+			"proc~doplot" -> "proc~plot"
+			"proc~doplot" -> "interface~mixval"
+			"proc~doplot" -> "proc~xticks"
+			"proc~doplot" -> "proc~ylabel"
+			"proc~doplot" -> "proc~xylim"
+			"proc~doplot" -> "proc~linspace"
+			"proc~doplot" -> "proc~xlabel"
+			"proc~doplot" -> "proc~subplot"
+		graph [concentrate=false]
+		"proc~scatter" [label=scatter URL="../proc/scatter.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		plschr [label=plschr color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~scatter" -> plptex
+			"proc~scatter" -> plssym
+			"proc~scatter" -> plschr
+			"proc~scatter" -> plcol1
+			"proc~scatter" -> "interface~mixval"
+		graph [concentrate=false]
+			"proc~doscatter" -> "proc~figure"
+			"proc~doscatter" -> "proc~ticks"
+			"proc~doscatter" -> "proc~scatter"
+			"proc~doscatter" -> "proc~xylim"
+			"proc~doscatter" -> "proc~subplot"
+			"proc~doscatter" -> "proc~labels"
+		graph [concentrate=false]
+		"proc~errorbar" [label=errorbar URL="../proc/errorbar.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		plerrx [label=plerrx color="#777777" fontcolor=white style=filled]
+		plerry [label=plerry color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~errorbar" -> plerrx
+			"proc~errorbar" -> plerry
+		graph [concentrate=false]
+			"proc~doerror" -> "proc~labels"
+			"proc~doerror" -> "proc~ticks"
+			"proc~doerror" -> "proc~figure"
+			"proc~doerror" -> "proc~plot"
+			"proc~doerror" -> "interface~mixval"
+			"proc~doerror" -> "proc~errorbar"
+			"proc~doerror" -> "proc~xylim"
+			"proc~doerror" -> "proc~linspace"
+			"proc~doerror" -> "proc~subplot"
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dosurface"
+			"proc~doexamples" -> "proc~docontour"
+			"proc~doexamples" -> "proc~dobar"
+			"proc~doexamples" -> "proc~dohist"
+			"proc~doexamples" -> "proc~dolegend"
+			"proc~doexamples" -> "proc~dofillbetween"
+			"proc~doexamples" -> "proc~doquiver"
+			"proc~doexamples" -> "proc~doplot"
+			"proc~doexamples" -> "proc~doscatter"
+			"proc~doexamples" -> "proc~doerror"
+		graph [concentrate=false]
+}

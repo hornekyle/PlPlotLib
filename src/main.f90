@@ -4,10 +4,9 @@ program main_prg
 	use examples_mod
 	implicit none
 	
-!~ 	call setup(whiteOnBlack=.false.)
+	call setup(whiteOnBlack=.false.)
 
-!~ 	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[640,480])
-	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[320,240],transparent=.true.)
+!~ 	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[320,240],transparent=.true.)
 !~ 	call setup(device='svgqt',fileName='examples/logo-%n.svg',figSize=[500,500])
 	
 	call doExamples()

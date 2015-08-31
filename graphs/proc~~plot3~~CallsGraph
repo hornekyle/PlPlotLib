@@ -1,0 +1,25 @@
+digraph "proc~~plot3~~CallsGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~plot3" [label=plot3]
+		graph [concentrate=false]
+		plline3 [label=plline3 color="#777777" fontcolor=white style=filled]
+		plptex3 [label=plptex3 color="#777777" fontcolor=white style=filled]
+		plline [label=plline color="#777777" fontcolor=white style=filled]
+		plssym [label=plssym color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~plot3" -> plline3
+			"proc~plot3" -> plptex3
+			"proc~plot3" -> plline
+			"proc~plot3" -> plssym
+		graph [concentrate=false]
+}

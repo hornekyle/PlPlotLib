@@ -1,0 +1,76 @@
+digraph "proc~~setup~~CalledByGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~setup" [label=setup]
+		graph [concentrate=false]
+		"program~basic_prg" [label=basic_prg URL="../program/basic_prg.html" color="#f0ad4e" fontcolor=white style=filled]
+		"proc~figure" [label=figure URL="../proc/figure.html" color="#d9534f" fontcolor=white style=filled]
+		"program~main_prg" [label=main_prg URL="../program/main_prg.html" color="#f0ad4e" fontcolor=white style=filled]
+		graph [concentrate=false]
+		"proc~dosurface" [label=doSurface URL="../proc/dosurface.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dobar" [label=doBar URL="../proc/dobar.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~makelogo" [label=makeLogo URL="../proc/makelogo.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dohist" [label=doHist URL="../proc/dohist.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dolegend" [label=doLegend URL="../proc/dolegend.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~dofillbetween" [label=doFillBetween URL="../proc/dofillbetween.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doplot" [label=doPlot URL="../proc/doplot.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~docontour" [label=doContour URL="../proc/docontour.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doquiver" [label=doQuiver URL="../proc/doquiver.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doscatter" [label=doScatter URL="../proc/doscatter.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~doerror" [label=doError URL="../proc/doerror.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		"proc~doexamples" [label=doExamples URL="../proc/doexamples.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"program~main_prg" -> "proc~doexamples"
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dosurface"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dobar"
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dohist"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dolegend"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~dofillbetween"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~doplot"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~docontour"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~doquiver"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~doscatter"
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~doexamples" -> "proc~doerror"
+		graph [concentrate=false]
+			"proc~dosurface" -> "proc~figure"
+			"proc~dobar" -> "proc~figure"
+			"proc~makelogo" -> "proc~figure"
+			"program~basic_prg" -> "proc~figure"
+			"proc~dohist" -> "proc~figure"
+			"proc~dolegend" -> "proc~figure"
+			"proc~dofillbetween" -> "proc~figure"
+			"proc~doplot" -> "proc~figure"
+			"proc~docontour" -> "proc~figure"
+			"proc~doquiver" -> "proc~figure"
+			"proc~doscatter" -> "proc~figure"
+			"proc~doerror" -> "proc~figure"
+		graph [concentrate=false]
+			"program~basic_prg" -> "proc~setup"
+			"proc~figure" -> "proc~setup"
+			"program~main_prg" -> "proc~setup"
+		graph [concentrate=false]
+}

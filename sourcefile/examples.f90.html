@@ -217,6 +217,7 @@
 		<span class="k">call </span><span class="n">doFillBetween</span><span class="p">()</span>
 		<span class="k">call </span><span class="n">doHist</span><span class="p">()</span>
 		<span class="k">call </span><span class="n">doSurface</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">doError</span><span class="p">()</span>
 	<span class="k">end subroutine </span><span class="n">doExamples</span>
 
 	<span class="k">subroutine </span><span class="n">doPlot</span>
@@ -427,7 +428,6 @@
 
 <span class="s1">	subroutine doSurface</span>
 <span class="s1">		!! ![surface](|media|/example-9.svg)</span>
-<span class="s1">		use plplot</span>
 <span class="s1">		</span>
 <span class="s1">		integer,parameter::N = 24</span>
 <span class="s1">		real(wp),dimension(N)::x,y</span>
@@ -446,9 +446,46 @@
 <span class="s1">		call xyzlim(mixval(x),mixval(y),mixval(z),zoom=1.1_wp)</span>
 <span class="s1">		call surface(x,y,z,11)</span>
 <span class="s1">!~ 		call wireframe(x,y,z,lineColor=&#39;</span><span class="n">k</span><span class="s1">&#39;)</span>
-<span class="s1">		call box(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="n">z</span><span class="err">&#39;</span><span class="p">)</span>
-		
-	<span class="k">end subroutine </span><span class="n">doSurface</span>
+<span class="s1">		call box(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="n">z</span><span class="s1">&#39;)</span>
+<span class="s1">		</span>
+<span class="s1">	end subroutine doSurface</span>
+
+<span class="s1">	subroutine doError</span>
+<span class="s1">		!! ![error](|media|/example-10.svg)</span>
+<span class="s1">		</span>
+<span class="s1">		integer,parameter::N = 25</span>
+<span class="s1">		real(wp),dimension(N)::x,y,xe,ye</span>
+<span class="s1">		real(wp),dimension(12)::r</span>
+<span class="s1">		real(wp)::m,s</span>
+<span class="s1">		integer::k</span>
+<span class="s1">		</span>
+<span class="s1">		x = linspace(0.0_wp,5.0_wp,N)</span>
+<span class="s1">		y = 1.0_wp/(x**2+1.0_wp)</span>
+<span class="s1">		</span>
+<span class="s1">		do k=1,N</span>
+<span class="s1">			call random_number(r)</span>
+<span class="s1">			r = 0.25_wp*(2.0_wp*r-1.0_wp)</span>
+<span class="s1">			m = sum(r)/real(size(r))</span>
+<span class="s1">			s = sqrt(sum((r-m)**2)/real(size(r)-1))</span>
+<span class="s1">			x(k) = x(k)+m</span>
+<span class="s1">			xe(k) = s</span>
+<span class="s1">			</span>
+<span class="s1">			call random_number(r)</span>
+<span class="s1">			r = 0.15_wp*(2.0_wp*r-1.0_wp)</span>
+<span class="s1">			m = sum(r)/real(size(r))</span>
+<span class="s1">			s = sqrt(sum((r-m)**2)/real(size(r)-1))</span>
+<span class="s1">			y(k) = y(k)+m</span>
+<span class="s1">			ye(k) = s</span>
+<span class="s1">		end do</span>
+<span class="s1">		</span>
+<span class="s1">		call figure()</span>
+<span class="s1">		call subplot(1,1,1)</span>
+<span class="s1">		call xylim(mixval([x-xe,x+xe])+[-0.5_wp,0.5_wp],mixval([y-ye,y+ye])+[-0.2_wp,0.2_wp])</span>
+<span class="s1">		call errorbar(x,y,xerr=xe,yerr=ye,lineColor=&#39;</span><span class="n">b</span><span class="s1">&#39;,lineWidth=1.0_wp)</span>
+<span class="s1">		call plot(x,y,lineStyle=&#39;&#39;,markStyle=&#39;</span><span class="n">s</span><span class="s1">&#39;,markColor=&#39;</span><span class="n">r</span><span class="s1">&#39;,markSize=1.5_wp)</span>
+<span class="s1">		call ticks()</span>
+<span class="s1">		call labels(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="err">&#39;</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">doError</span>
 
 <span class="k">end module </span><span class="n">examples_mod</span>
 </pre></div>

@@ -1,0 +1,38 @@
+digraph "proc~~hist~~CallsGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"proc~hist" [label=hist]
+		graph [concentrate=false]
+		"proc~bindata" [label=binData URL="../proc/bindata.html" color="#d94e8f" fontcolor=white style=filled]
+		"interface~mixval" [label=mixval URL="../interface/mixval.html" color="#A7506F" fontcolor=white style=filled]
+		"proc~bar" [label=bar URL="../proc/bar.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		"proc~linspace" [label=linspace URL="../proc/linspace.html" color="#d94e8f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~bindata" -> "proc~linspace"
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		plline [label=plline color="#777777" fontcolor=white style=filled]
+		plfill [label=plfill color="#777777" fontcolor=white style=filled]
+		plcol1 [label=plcol1 color="#777777" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+		graph [concentrate=false]
+			"proc~bar" -> plline
+			"proc~bar" -> plfill
+			"proc~bar" -> "interface~mixval"
+			"proc~bar" -> plcol1
+		graph [concentrate=false]
+			"proc~hist" -> "proc~bindata"
+			"proc~hist" -> "interface~mixval"
+			"proc~hist" -> "proc~bar"
+		graph [concentrate=false]
+}

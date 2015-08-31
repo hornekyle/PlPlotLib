@@ -140,6 +140,14 @@
   
   
   
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/printtypes.html#src">printTypes</a>
+    </div>
+  </div>
+  
+  <hr>
   
   <div class="panel panel-default">
     <div class="panel-heading text-left"><h3 class="panel-title">All Procedures</h3></div>
@@ -163,6 +171,8 @@
       
       <a class="list-group-item" href="../proc/docontour.html">doContour</a>
       
+      <a class="list-group-item" href="../proc/doerror.html">doError</a>
+      
       <a class="list-group-item" href="../proc/doexamples.html">doExamples</a>
       
       <a class="list-group-item" href="../proc/dofillbetween.html">doFillBetween</a>
@@ -178,6 +188,8 @@
       <a class="list-group-item" href="../proc/doscatter.html">doScatter</a>
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
+      
+      <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
       
@@ -280,6 +292,21 @@ public subroutine printTypes()
 
     
     
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre>	<span class="k">subroutine </span><span class="n">printTypes</span>
+		<span class="c">!! Print the integer kinds for each real type</span>
+		<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;sp: &#39;</span><span class="p">,</span><span class="n">sp</span>
+		<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;dp: &#39;</span><span class="p">,</span><span class="n">dp</span>
+		<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;ep: &#39;</span><span class="p">,</span><span class="n">ep</span>
+		<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;qp: &#39;</span><span class="p">,</span><span class="n">qp</span>
+		<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;wp: &#39;</span><span class="p">,</span><span class="n">wp</span>
+	<span class="k">end subroutine </span><span class="n">printTypes</span>
+</pre></div>
+
+    </section>
+    <br>
     
     
     </div>

@@ -1,0 +1,8 @@
+digraph "module~~examples_mod~~UsedByGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"module~examples_mod" [label=examples_mod]
+		"program~main_prg" [label=main_prg URL="../program/main_prg.html" color="#f0ad4e" fontcolor=white style=filled]
+			"module~examples_mod" -> "program~main_prg" [style=dashed]
+}

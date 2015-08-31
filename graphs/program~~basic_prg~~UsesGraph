@@ -1,0 +1,13 @@
+digraph "program~~basic_prg~~UsesGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"program~basic_prg" [label=basic_prg]
+		"module~kinds_mod" [label=kinds_mod URL="../module/kinds_mod.html" color="#337AB7" fontcolor=white style=filled]
+		"module~plplotlib_mod" [label=plplotlib_mod URL="../module/plplotlib_mod.html" color="#337AB7" fontcolor=white style=filled]
+		plplot [label=plplot color="#337AB7" fontcolor=white style=filled]
+			plplot -> "module~plplotlib_mod" [style=dashed]
+			"module~kinds_mod" -> "module~plplotlib_mod" [style=dashed]
+			"module~kinds_mod" -> "program~basic_prg" [style=dashed]
+			"module~plplotlib_mod" -> "program~basic_prg" [style=dashed]
+}
