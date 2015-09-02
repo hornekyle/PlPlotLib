@@ -1115,7 +1115,7 @@ contains
 		real(pp),dimension(:),allocatable::xl,yl
 		real(pp),dimension(:,:),allocatable::ul,vl,sl
 		real(pp),dimension(2)::xb,yb,sb,cb,d
-		real(pp)::scalingl,scl,mag
+		real(pp)::scalingl,scl,mag,clr
 		integer::i,j
 		
 		xl = localize(x)
@@ -1150,7 +1150,12 @@ contains
 				mag = norm2([ul(i,j),vl(i,j)])
 				scl = scalingl*norm2(d)*sl(i,j)
 				if(abs(scl)<1.0E-5_wp) cycle
-				if(present(c)) call plcol1( real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,pp) )
+				if(present(c)) then
+					clr = real( (c(i,j)-cb(1))/(cb(2)-cb(1)) ,pp)
+					clr = max(clr,0.0_pp)
+					clr = min(clr,1.0_pp)
+					call plcol1( clr )
+				end if
 				call plvect(ul(i:i,j:j)/mag,vl(i:i,j:j)/mag,scl,xl(i:i),yl(j:j))
 			end do
 		end do
