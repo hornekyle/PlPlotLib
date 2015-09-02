@@ -21,7 +21,7 @@ kinds.o: Makefile
 $(EXE): $(OBJS) Makefile
 	@echo 'Linking [$(EXE)] from [$(OBJS)] using [$(LINK)]'
 	@$(LINK) $(FLAGS) -o $(BPATH)/$(EXE) $(addprefix $(BPATH)/,$(OBJS)) $(LIBS)
-	@$(LN) -sf $(BPATH)/$(EXE) $(EXE)
+#	@$(LN) -sf $(BPATH)/$(EXE) $(EXE)
 
 %.o: %.f90 Makefile
 	@echo 'Compiling [$@] from [$<] using [$(F90)]'

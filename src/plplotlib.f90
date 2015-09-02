@@ -14,8 +14,6 @@ module plplotlib_mod
 	!= Library State =!
 	!=================!
 	
-	logical::isSetup = .false.
-		!! Flag for library setup status
 	logical::didShow = .false.
 		!! Flag for library display status
 	real(pp)::fontScale = 1.0_pp
@@ -215,8 +213,6 @@ contains
 		!! Create a new figure
 		logical,save::isFirst = .true.
 		
-		if(.not.isSetup) call setup()
-		
 		if(.not.isFirst) then
 			call pleop()
 		else
@@ -226,7 +222,7 @@ contains
 		call plbop()
 		call plssub(1,1)
 		call pladv(1)
-		call resetPen
+		call resetPen()
 	end subroutine figure
 
 	subroutine subplot(ny,nx,i,aspect,is3d)
@@ -245,7 +241,7 @@ contains
 		
 		call plssub(nx,ny)
 		call pladv(i)
-		call resetPen
+		call resetPen()
 		
 		is3dl = .false.
 		if(present(is3d)) is3dl = is3d
@@ -260,7 +256,7 @@ contains
 			end if
 		end if
 		
-		call defaultLim
+		call defaultLim()
 	end subroutine subplot
 
 	subroutine defaultLim
@@ -369,13 +365,13 @@ contains
 			if(logy) yopts = 'bcnstvl'
 		end if
 		
-		call resetPen
+		call resetPen()
 		
 		if(present(color)) call setColor(color)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		call plbox(xopts,dxl,0,yopts,dyl,0)
-		call resetPen
+		call resetPen()
 	end subroutine ticks
 
 	subroutine box(xLabel,yLabel,zLabel,color)
@@ -391,7 +387,7 @@ contains
 		
 		if(present(color)) call setColor(color)
 		call plbox3('bnstu',xLabel,0.0_pp,0,'bnstu',yLabel,0.0_pp,0,'bnstu',zLabel,0.0_pp,0)
-		call resetPen
+		call resetPen()
 	end subroutine box
 
 	subroutine xticks(d,logScale,primary,secondary,color,lineWidth)
@@ -437,7 +433,7 @@ contains
 		if(present(color)) call setColor(color)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		call plbox(xopts,dxl,0,yopts,dyl,0)
-		call resetPen
+		call resetPen()
 	end subroutine xticks
 
 	subroutine yticks(d,logScale,primary,secondary,color,lineWidth)
@@ -483,7 +479,7 @@ contains
 		if(present(color)) call setColor(color)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		call plbox(xopts,dxl,0,yopts,dyl,0)
-		call resetPen
+		call resetPen()
 	end subroutine yticks
 
 	subroutine labels(xLabel,yLabel,plotLabel,color)
@@ -499,7 +495,7 @@ contains
 		
 		if(present(color)) call setColor(color)
 		call pllab(xLabel,yLabel,plotLabel)
-		call resetPen
+		call resetPen()
 	end subroutine labels
 
 	subroutine xlabel(label,color)
@@ -511,7 +507,7 @@ contains
 		
 		if(present(color)) call setColor(color)
 		call plmtex('b',3.0_pp,0.5_pp,0.5_pp,label)
-		call resetPen
+		call resetPen()
 	end subroutine xlabel
 
 	subroutine ylabel(label,color)
@@ -523,7 +519,7 @@ contains
 		
 		if(present(color)) call setColor(color)
 		call plmtex('l',5.0_pp,0.5_pp,0.5_pp,label)
-		call resetPen
+		call resetPen()
 	end subroutine ylabel
 
 	subroutine title(label,color)
@@ -535,7 +531,7 @@ contains
 		
 		if(present(color)) call setColor(color)
 		call plmtex('t',1.5_pp,0.5_pp,0.5_pp,label)
-		call resetPen
+		call resetPen()
 	end subroutine title
 
 	subroutine colorbar(z,N,leftLabel,rightLabel)
@@ -612,7 +608,7 @@ contains
 		character(64),dimension(size(series,1))::mark_styles
 		integer::k
 		
-		call doLegendBox
+		call doLegendBox()
 		
 		opts = 0
 		do k=1,size(series,1)
@@ -621,10 +617,10 @@ contains
 			if(series(k,7)/='') opts(k) = ior(opts(k),PL_LEGEND_COLOR_BOX)
 		end do
 		
-		call doText
-		call doBoxes
-		call doLines
-		call doMarkers
+		call doText()
+		call doBoxes()
+		call doLines()
+		call doMarkers()
 		
 		call pllegend(width,height,opt,cornerl,xoff,yoff,plotWidth, &
 			& bg_color,bb_color,bb_style, &
@@ -789,7 +785,7 @@ contains
 		end if
 
 		
-		call resetPen
+		call resetPen()
 	end subroutine hist
 
 	subroutine scatter(x,y,c,s,markColor,markStyle,markSize)
@@ -830,7 +826,7 @@ contains
 			if(present(s)) call plssym(0.0_pp,real(s(k),pp))
 			call plptex(xl(k),yl(k),0.0_pp,0.0_pp,0.5_pp,code)
 		end do
-		call resetPen
+		call resetPen()
 	end subroutine scatter
 
 	subroutine plot(x,y,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
@@ -867,7 +863,7 @@ contains
 		else
 			call plline(xl,yl)
 		end if
-		call resetPen
+		call resetPen()
 		
 		if(present(markColor)) call setColor(markColor)
 		if(present(markSize)) call plssym(0.0_pp,real(markSize,pp))
@@ -879,7 +875,7 @@ contains
 				end do
 			end if
 		end if
-		call resetPen
+		call resetPen()
 	end subroutine plot
 
 	subroutine plot3(x,y,z,lineColor,lineStyle,lineWidth,markColor,markStyle,markSize)
@@ -920,7 +916,7 @@ contains
 		else
 			call plline3(xl,yl,zl)
 		end if
-		call resetPen
+		call resetPen()
 		
 		if(present(markColor)) call setColor(markColor)
 		if(present(markSize)) call plssym(0.0_pp,real(markSize,pp))
@@ -938,7 +934,7 @@ contains
 				end do
 			end if
 		end if
-		call resetPen
+		call resetPen()
 	end subroutine plot3
 
 	subroutine contour(x,y,z,N,lineColor,lineStyle,lineWidth)
@@ -976,7 +972,7 @@ contains
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		
 		call plcont(zl,edge,xl,yl)
-		call resetPen
+		call resetPen()
 	end subroutine contour
 
 	subroutine surface(x,y,z,N,lineStyle)
@@ -1020,7 +1016,7 @@ contains
 		end if
 		
 		call plsurf3d(xl,yl,zl,opt,edge)
-		call resetPen
+		call resetPen()
 	end subroutine surface
 
 	subroutine wireframe(x,y,z,lineColor)
@@ -1048,7 +1044,7 @@ contains
 			call plot3d(xl,yl,zl,ior(DRAW_LINEXY,MAG_COLOR),.false.)
 		end if
 		
-		call resetPen
+		call resetPen()
 	end subroutine wireframe
 
 	subroutine contourf(x,y,z,N)
@@ -1087,7 +1083,7 @@ contains
 		
 		call plshades(zl,defined,minval(xl),maxval(xl),minval(yl),maxval(yl), &
 			& edge,fill_width,cont_color,cont_width)
-		call resetPen
+		call resetPen()
 	end subroutine contourf
 
 	subroutine quiver(x,y,u,v,s,c,scaling,lineColor,lineStyle,lineWidth)
@@ -1159,7 +1155,7 @@ contains
 			end do
 		end do
 		
-		call resetPen
+		call resetPen()
 	end subroutine quiver
 
 	subroutine bar(x,y,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
@@ -1209,7 +1205,7 @@ contains
 			if(present(lineColor)) call setColor(lineColor)
 			call plline(xl,yl)
 		end do
-		call resetPen
+		call resetPen()
 	end subroutine bar
 
 	subroutine barh(y,x,c,relWidth,fillColor,fillPattern,lineColor,lineWidth)
@@ -1255,7 +1251,7 @@ contains
 			if(present(lineColor)) call setColor(lineColor)
 			call plline(xl,yl)
 		end do
-		call resetPen
+		call resetPen()
 	end subroutine barh
 
 	subroutine fillBetween(x,y1,y0,fillColor,fillPattern,lineWidth)
@@ -1285,7 +1281,7 @@ contains
 		if(present(fillPattern)) call setFillPattern(fillPattern)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		call plfill([xl(1:N:1),xl(N:1:-1)],[y1l(1:N:1),y0l(N:1:-1)])
-		call resetPen
+		call resetPen()
 	end subroutine fillBetween
 
 	subroutine fillBetweenx(y,x1,x0,fillColor,fillPattern,lineWidth)
@@ -1315,7 +1311,7 @@ contains
 		if(present(fillPattern)) call setFillPattern(fillPattern)
 		if(present(lineWidth)) call setLineWidth(lineWidth)
 		call plfill([x1l(1:N:1),x0l(N:1:-1)],[yl(1:N:1),yl(N:1:-1)])
-		call resetPen
+		call resetPen()
 	end subroutine fillBetweenx
 
 	subroutine errorbar(x,y,xerr,yerr,lineColor,lineStyle,lineWidth)
@@ -1358,7 +1354,7 @@ contains
 			call plerry(xl,yll,ylh)
 		end if
 		
-		call resetPen
+		call resetPen()
 	end subroutine
 
 	!========================!
@@ -1555,9 +1551,6 @@ contains
 		
 		character(64)::bufx,bufy
 		
-		if(isSetup) return
-		isSetup = .true.
-		
 		if(present(device)) then
 			call plsdev(device)
 		else
@@ -1575,7 +1568,7 @@ contains
 		
 		if(present(transparent)) transparentBackground = transparent
 		
-		call setIndexedColors
+		call setIndexedColors()
 		
 		if(present(colormap)) then
 			call setColormap(colormap)
@@ -1594,15 +1587,15 @@ contains
 			call plsetopt('geometry','640x480')
 		end if
 		
-		call plinit
+		call plinit()
 		
-		call resetPen
+		call resetPen()
 	end subroutine setup
 
 	subroutine show
 		!! Show the plots end finialize the PlPlot library
 		if(.not.didShow) then
-			call plend
+			call plend()
 			didShow = .true.
 		end if
 	end subroutine show
