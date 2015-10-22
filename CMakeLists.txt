@@ -5,6 +5,7 @@ project("PlPlotLib")
 set(sources_common
 	"src/kinds.f90"
 	"src/plplotlib.f90"
+	"src/utilities.f90"
 	)
 
 set(sources_examples

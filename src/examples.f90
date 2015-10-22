@@ -2,6 +2,7 @@ module examples_mod
 	!! Examples of module use
 	use kinds_mod
 	use plplotlib_mod
+	use utilities_mod
 	implicit none
 	
 contains
