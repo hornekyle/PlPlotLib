@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -132,16 +133,17 @@
       
       <a class="list-group-item" href="../proc/barh.html#variable-yl%7E11">yl</a>
       
-      <a class="list-group-item" href="../proc/barh.html#variable-cb%7E4">cb</a>
+      <a class="list-group-item" href="../proc/barh.html#variable-cb%7E5">cb</a>
       
       <a class="list-group-item" href="../proc/barh.html#variable-dy%7E3">dy</a>
       
       <a class="list-group-item" href="../proc/barh.html#variable-dys">dys</a>
       
-      <a class="list-group-item" href="../proc/barh.html#variable-k%7E10">k</a>
+      <a class="list-group-item" href="../proc/barh.html#variable-k%7E14">k</a>
       
     </div>
   </div>
+  
   
   
   
@@ -183,6 +185,10 @@
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
       
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
+      
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
       <a class="list-group-item" href="../proc/contourf.html">contourf</a>
@@ -209,6 +215,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -217,7 +225,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -226,6 +238,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -237,11 +255,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -305,7 +337,7 @@ public subroutine barh(y, x, c, relWidth, fillColor, fillPattern, lineColor, lin
   
 <tr>
   
-  <td><span class="anchor" id="variable-y%7E18"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-y%7E20"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -320,7 +352,7 @@ public subroutine barh(y, x, c, relWidth, fillColor, fillPattern, lineColor, lin
   
 <tr>
   
-  <td><span class="anchor" id="variable-x%7E21"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x%7E24"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -335,7 +367,7 @@ public subroutine barh(y, x, c, relWidth, fillColor, fillPattern, lineColor, lin
   
 <tr>
   
-  <td><span class="anchor" id="variable-c%7E4"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-c%7E5"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -431,21 +463,78 @@ public subroutine barh(y, x, c, relWidth, fillColor, fillPattern, lineColor, lin
     
      <h3>Calls</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Ebarh%7E%7ECallsGraph.svg usemap="#proc~~barh~~CallsGraph">
-            <map id="proc~~barh~~CallsGraph" name="proc~~barh~~CallsGraph">
-<area shape="rect" id="node4" href="../interface/mixval.html" title="mixval" alt="" coords="125,117,197,149"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~barh~~CallsGraph Pages: 1 -->
+<svg id="procbarhCallsGraph" width="152pt" height="158pt"
+ viewBox="0.00 0.00 152.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~barh~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~barh~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-154 148,-154 148,4 -4,4"/>
+<!-- proc~barh -->
+<g id="proc~~barh~~CallsGraph_node1" class="node"><title>proc~barh</title>
+<polygon fill="none" stroke="black" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
+<text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">barh</text>
+</g>
+<!-- plline -->
+<g id="proc~~barh~~CallsGraph_node2" class="node"><title>plline</title>
+<polygon fill="#777777" stroke="#777777" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
+<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plline</text>
+</g>
+<!-- proc~barh&#45;&gt;plline -->
+<g id="proc~~barh~~CallsGraph_edge1" class="edge"><title>proc~barh&#45;&gt;plline</title>
+<path fill="none" stroke="black" d="M44.9673,-87.147C57.9935,-96.4726 76.1808,-109.493 90.8908,-120.024"/>
+<polygon fill="black" stroke="black" points="88.9163,-122.915 99.0848,-125.89 92.9911,-117.223 88.9163,-122.915"/>
+</g>
+<!-- plfill -->
+<g id="proc~~barh~~CallsGraph_node3" class="node"><title>plfill</title>
+<polygon fill="#777777" stroke="#777777" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
+<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plfill</text>
+</g>
+<!-- proc~barh&#45;&gt;plfill -->
+<g id="proc~~barh~~CallsGraph_edge2" class="edge"><title>proc~barh&#45;&gt;plfill</title>
+<path fill="none" stroke="black" d="M54.4029,-81.3007C62.481,-83.2284 71.5067,-85.3823 80.1046,-87.4341"/>
+<polygon fill="black" stroke="black" points="79.3797,-90.8593 89.919,-89.7761 81.0046,-84.0505 79.3797,-90.8593"/>
+</g>
+<!-- interface~mixval -->
+<g id="proc~~barh~~CallsGraph_node4" class="node"><title>interface~mixval</title>
+<g id="a_proc~~barh~~CallsGraph_node4"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
+<polygon fill="#a7506f" stroke="#a7506f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
+</a>
+</g>
+</g>
+<!-- proc~barh&#45;&gt;interface~mixval -->
+<g id="proc~~barh~~CallsGraph_edge3" class="edge"><title>proc~barh&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M54.4029,-68.6993C62.481,-66.7716 71.5067,-64.6177 80.1046,-62.5659"/>
+<polygon fill="black" stroke="black" points="81.0046,-65.9495 89.919,-60.2239 79.3797,-59.1407 81.0046,-65.9495"/>
+</g>
+<!-- plcol1 -->
+<g id="proc~~barh~~CallsGraph_node5" class="node"><title>plcol1</title>
+<polygon fill="#777777" stroke="#777777" points="144,-24 90,-24 90,-0 144,-0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
+</g>
+<!-- proc~barh&#45;&gt;plcol1 -->
+<g id="proc~~barh~~CallsGraph_edge4" class="edge"><title>proc~barh&#45;&gt;plcol1</title>
+<path fill="none" stroke="black" d="M44.9673,-62.853C57.9935,-53.5274 76.1808,-40.5069 90.8908,-29.9759"/>
+<polygon fill="black" stroke="black" points="92.9911,-32.7768 99.0848,-24.1097 88.9163,-27.085 92.9911,-32.7768"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -521,32 +610,83 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Ebarh%7E%7ECalledByGraph.svg usemap="#proc~~barh~~CalledByGraph">
-            <map id="proc~~barh~~CalledByGraph" name="proc~~barh~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/dobar.html" title="doBar" alt="" coords="273,5,345,37"/>
-<area shape="rect" id="node3" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,5,225,37"/>
-<area shape="rect" id="node4" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~barh~~CalledByGraph Pages: 1 -->
+<svg id="procbarhCalledByGraph" width="353pt" height="32pt"
+ viewBox="0.00 0.00 353.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~barh~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~barh~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 349,-28 349,4 -4,4"/>
+<!-- proc~barh -->
+<g id="proc~~barh~~CalledByGraph_node1" class="node"><title>proc~barh</title>
+<polygon fill="none" stroke="black" points="345,-24 291,-24 291,-0 345,-0 345,-24"/>
+<text text-anchor="middle" x="318" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">barh</text>
+</g>
+<!-- proc~dobar -->
+<g id="proc~~barh~~CalledByGraph_node2" class="node"><title>proc~dobar</title>
+<g id="a_proc~~barh~~CalledByGraph_node2"><a xlink:href="../proc/dobar.html" xlink:title="doBar">
+<polygon fill="#d9534f" stroke="#d9534f" points="255,-24 201,-24 201,-0 255,-0 255,-24"/>
+<text text-anchor="middle" x="228" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doBar</text>
+</a>
+</g>
+</g>
+<!-- proc~dobar&#45;&gt;proc~barh -->
+<g id="proc~~barh~~CalledByGraph_edge3" class="edge"><title>proc~dobar&#45;&gt;proc~barh</title>
+<path fill="none" stroke="black" d="M255.403,-12C263.393,-12 272.311,-12 280.824,-12"/>
+<polygon fill="black" stroke="black" points="280.919,-15.5001 290.919,-12 280.919,-8.5001 280.919,-15.5001"/>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~barh~~CalledByGraph_node3" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~barh~~CalledByGraph_node3"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-24 94,-24 94,-0 165,-0 165,-24"/>
+<text text-anchor="middle" x="129.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dobar -->
+<g id="proc~~barh~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~dobar</title>
+<path fill="none" stroke="black" d="M165.066,-12C173.356,-12 182.233,-12 190.603,-12"/>
+<polygon fill="black" stroke="black" points="190.851,-15.5001 200.851,-12 190.851,-8.5001 190.851,-15.5001"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~barh~~CalledByGraph_node4" class="node"><title>program~main_prg</title>
+<g id="a_proc~~barh~~CalledByGraph_node4"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-24 3.55271e-15,-24 3.55271e-15,-0 58,-0 58,-24"/>
+<text text-anchor="middle" x="29" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~barh~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-12C66.2347,-12 75.1563,-12 83.8823,-12"/>
+<polygon fill="black" stroke="black" points="83.9695,-15.5001 93.9695,-12 83.9695,-8.5001 83.9695,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -622,11 +762,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -676,7 +816,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-cb%7E4"></span>real(kind=pp),</td>
+  <td><span class="anchor" id="variable-cb%7E5"></span>real(kind=pp),</td>
   
   <td>public,</td>
   <td>dimension(2)</td><td>::</td>
@@ -718,7 +858,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-k%7E10"></span>integer,</td>
+  <td><span class="anchor" id="variable-k%7E14"></span>integer,</td>
   
   <td>public</td>
   <td></td><td>::</td>
@@ -731,6 +871,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     
@@ -771,6 +913,7 @@ implementation in a submodule of an interface in a parent module.</p>
 		<span class="kt">real</span><span class="p">(</span><span class="n">pp</span><span class="p">)</span><span class="kd">::</span><span class="n">dy</span><span class="p">,</span><span class="n">dys</span>
 		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
 		
+		<span class="n">cb</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
 		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="n">cb</span> <span class="o">=</span> <span class="kt">real</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="n">pp</span><span class="p">)</span>
 		<span class="n">dys</span> <span class="o">=</span> <span class="mf">0.8_pp</span>
 		<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">relWidth</span><span class="p">))</span> <span class="n">dys</span> <span class="o">=</span> <span class="kt">real</span><span class="p">(</span><span class="n">relWidth</span><span class="p">,</span><span class="n">pp</span><span class="p">)</span>
@@ -790,7 +933,7 @@ implementation in a submodule of an interface in a parent module.</p>
 			<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">lineColor</span><span class="p">))</span> <span class="k">call </span><span class="n">setColor</span><span class="p">(</span><span class="n">lineColor</span><span class="p">)</span>
 			<span class="k">call </span><span class="n">plline</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span><span class="n">yl</span><span class="p">)</span>
 		<span class="k">end do</span>
-<span class="k">		call </span><span class="n">resetPen</span>
+<span class="k">		call </span><span class="n">resetPen</span><span class="p">()</span>
 	<span class="k">end subroutine </span><span class="n">barh</span>
 </pre></div>
 

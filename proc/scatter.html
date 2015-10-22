@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -132,14 +133,15 @@
       
       <a class="list-group-item" href="../proc/scatter.html#variable-yl%7E2">yl</a>
       
-      <a class="list-group-item" href="../proc/scatter.html#variable-cb">cb</a>
+      <a class="list-group-item" href="../proc/scatter.html#variable-cb%7E2">cb</a>
       
       <a class="list-group-item" href="../proc/scatter.html#variable-code">code</a>
       
-      <a class="list-group-item" href="../proc/scatter.html#variable-k%7E5">k</a>
+      <a class="list-group-item" href="../proc/scatter.html#variable-k%7E9">k</a>
       
     </div>
   </div>
+  
   
   
   
@@ -181,6 +183,10 @@
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
       
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
+      
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
       <a class="list-group-item" href="../proc/contourf.html">contourf</a>
@@ -207,6 +213,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -215,7 +223,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -224,6 +236,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -235,11 +253,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -303,7 +335,7 @@ public subroutine scatter(x, y, c, s, markColor, markStyle, markSize)
   
 <tr>
   
-  <td><span class="anchor" id="variable-x%7E12"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x%7E15"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -318,7 +350,7 @@ public subroutine scatter(x, y, c, s, markColor, markStyle, markSize)
   
 <tr>
   
-  <td><span class="anchor" id="variable-y%7E9"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-y%7E11"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -333,7 +365,7 @@ public subroutine scatter(x, y, c, s, markColor, markStyle, markSize)
   
 <tr>
   
-  <td><span class="anchor" id="variable-c"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-c%7E2"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -348,7 +380,7 @@ public subroutine scatter(x, y, c, s, markColor, markStyle, markSize)
   
 <tr>
   
-  <td><span class="anchor" id="variable-s%7E2"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-s%7E3"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -414,21 +446,88 @@ public subroutine scatter(x, y, c, s, markColor, markStyle, markSize)
     
      <h3>Calls</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Escatter%7E%7ECallsGraph.svg usemap="#proc~~scatter~~CallsGraph">
-            <map id="proc~~scatter~~CallsGraph" name="proc~~scatter~~CallsGraph">
-<area shape="rect" id="node6" href="../interface/mixval.html" title="mixval" alt="" coords="125,229,197,261"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~scatter~~CallsGraph Pages: 1 -->
+<svg id="procscatterCallsGraph" width="152pt" height="200pt"
+ viewBox="0.00 0.00 152.00 200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~scatter~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 196)">
+<title>proc~~scatter~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-196 148,-196 148,4 -4,4"/>
+<!-- proc~scatter -->
+<g id="proc~~scatter~~CallsGraph_node1" class="node"><title>proc~scatter</title>
+<polygon fill="none" stroke="black" points="54,-108 0,-108 0,-84 54,-84 54,-108"/>
+<text text-anchor="middle" x="27" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">scatter</text>
+</g>
+<!-- plschr -->
+<g id="proc~~scatter~~CallsGraph_node2" class="node"><title>plschr</title>
+<polygon fill="#777777" stroke="#777777" points="144,-192 90,-192 90,-168 144,-168 144,-192"/>
+<text text-anchor="middle" x="117" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plschr</text>
+</g>
+<!-- proc~scatter&#45;&gt;plschr -->
+<g id="proc~~scatter~~CallsGraph_edge1" class="edge"><title>proc~scatter&#45;&gt;plschr</title>
+<path fill="none" stroke="black" d="M39.0423,-108.012C51.1535,-120.996 71.3541,-142.097 90,-159 90.8168,-159.74 91.6556,-160.487 92.5085,-161.234"/>
+<polygon fill="black" stroke="black" points="90.4563,-164.081 100.36,-167.846 94.9658,-158.727 90.4563,-164.081"/>
+</g>
+<!-- plcol1 -->
+<g id="proc~~scatter~~CallsGraph_node3" class="node"><title>plcol1</title>
+<polygon fill="#777777" stroke="#777777" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
+<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
+</g>
+<!-- proc~scatter&#45;&gt;plcol1 -->
+<g id="proc~~scatter~~CallsGraph_edge2" class="edge"><title>proc~scatter&#45;&gt;plcol1</title>
+<path fill="none" stroke="black" d="M53.4532,-108.148C62.2096,-112.327 72.1654,-117.079 81.5185,-121.543"/>
+<polygon fill="black" stroke="black" points="80.0716,-124.73 90.604,-125.879 83.0867,-118.413 80.0716,-124.73"/>
+</g>
+<!-- plssym -->
+<g id="proc~~scatter~~CallsGraph_node4" class="node"><title>plssym</title>
+<polygon fill="#777777" stroke="#777777" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
+<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plssym</text>
+</g>
+<!-- proc~scatter&#45;&gt;plssym -->
+<g id="proc~~scatter~~CallsGraph_edge3" class="edge"><title>proc~scatter&#45;&gt;plssym</title>
+<path fill="none" stroke="black" d="M54.4029,-96C62.3932,-96 71.3106,-96 79.8241,-96"/>
+<polygon fill="black" stroke="black" points="79.919,-99.5001 89.919,-96 79.919,-92.5001 79.919,-99.5001"/>
+</g>
+<!-- plptex -->
+<g id="proc~~scatter~~CallsGraph_node5" class="node"><title>plptex</title>
+<polygon fill="#777777" stroke="#777777" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plptex</text>
+</g>
+<!-- proc~scatter&#45;&gt;plptex -->
+<g id="proc~~scatter~~CallsGraph_edge4" class="edge"><title>proc~scatter&#45;&gt;plptex</title>
+<path fill="none" stroke="black" d="M53.4532,-83.8519C62.2096,-79.6727 72.1654,-74.9211 81.5185,-70.4571"/>
+<polygon fill="black" stroke="black" points="83.0867,-73.5869 90.604,-66.1208 80.0716,-67.2695 83.0867,-73.5869"/>
+</g>
+<!-- interface~mixval -->
+<g id="proc~~scatter~~CallsGraph_node6" class="node"><title>interface~mixval</title>
+<g id="a_proc~~scatter~~CallsGraph_node6"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
+<polygon fill="#a7506f" stroke="#a7506f" points="144,-24 90,-24 90,-0 144,-0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
+</a>
+</g>
+</g>
+<!-- proc~scatter&#45;&gt;interface~mixval -->
+<g id="proc~~scatter~~CallsGraph_edge5" class="edge"><title>proc~scatter&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M39.0423,-83.9877C51.1535,-71.0041 71.3541,-49.9029 90,-33 90.8168,-32.2596 91.6556,-31.5134 92.5085,-30.7663"/>
+<polygon fill="black" stroke="black" points="94.9658,-33.2728 100.36,-24.1537 90.4563,-27.9188 94.9658,-33.2728"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -504,32 +603,83 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Escatter%7E%7ECalledByGraph.svg usemap="#proc~~scatter~~CalledByGraph">
-            <map id="proc~~scatter~~CalledByGraph" name="proc~~scatter~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/doscatter.html" title="doScatter" alt="" coords="273,5,351,37"/>
-<area shape="rect" id="node3" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,5,225,37"/>
-<area shape="rect" id="node4" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~scatter~~CalledByGraph Pages: 1 -->
+<svg id="procscatterCalledByGraph" width="357pt" height="32pt"
+ viewBox="0.00 0.00 357.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~scatter~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~scatter~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 353,-28 353,4 -4,4"/>
+<!-- proc~scatter -->
+<g id="proc~~scatter~~CalledByGraph_node1" class="node"><title>proc~scatter</title>
+<polygon fill="none" stroke="black" points="349,-24 295,-24 295,-0 349,-0 349,-24"/>
+<text text-anchor="middle" x="322" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">scatter</text>
+</g>
+<!-- proc~doscatter -->
+<g id="proc~~scatter~~CalledByGraph_node2" class="node"><title>proc~doscatter</title>
+<g id="a_proc~~scatter~~CalledByGraph_node2"><a xlink:href="../proc/doscatter.html" xlink:title="doScatter">
+<polygon fill="#d9534f" stroke="#d9534f" points="259,-24 201,-24 201,-0 259,-0 259,-24"/>
+<text text-anchor="middle" x="230" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doScatter</text>
+</a>
+</g>
+</g>
+<!-- proc~doscatter&#45;&gt;proc~scatter -->
+<g id="proc~~scatter~~CalledByGraph_edge3" class="edge"><title>proc~doscatter&#45;&gt;proc~scatter</title>
+<path fill="none" stroke="black" d="M259.477,-12C267.443,-12 276.211,-12 284.57,-12"/>
+<polygon fill="black" stroke="black" points="284.847,-15.5001 294.847,-12 284.847,-8.5001 284.847,-15.5001"/>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~scatter~~CalledByGraph_node3" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~scatter~~CalledByGraph_node3"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-24 94,-24 94,-0 165,-0 165,-24"/>
+<text text-anchor="middle" x="129.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~doscatter -->
+<g id="proc~~scatter~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~doscatter</title>
+<path fill="none" stroke="black" d="M165.227,-12C173.406,-12 182.171,-12 190.504,-12"/>
+<polygon fill="black" stroke="black" points="190.752,-15.5001 200.752,-12 190.752,-8.5001 190.752,-15.5001"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~scatter~~CalledByGraph_node4" class="node"><title>program~main_prg</title>
+<g id="a_proc~~scatter~~CalledByGraph_node4"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-24 3.55271e-15,-24 3.55271e-15,-0 58,-0 58,-24"/>
+<text text-anchor="middle" x="29" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~scatter~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-12C66.2347,-12 75.1563,-12 83.8823,-12"/>
+<polygon fill="black" stroke="black" points="83.9695,-15.5001 93.9695,-12 83.9695,-8.5001 83.9695,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -605,11 +755,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -659,7 +809,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-cb"></span>real(kind=pp),</td>
+  <td><span class="anchor" id="variable-cb%7E2"></span>real(kind=pp),</td>
   
   <td>public,</td>
   <td>dimension(:), allocatable</td><td>::</td>
@@ -687,7 +837,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-k%7E5"></span>integer,</td>
+  <td><span class="anchor" id="variable-k%7E9"></span>integer,</td>
   
   <td>public</td>
   <td></td><td>::</td>
@@ -700,6 +850,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     
@@ -754,7 +906,7 @@ implementation in a submodule of an interface in a parent module.</p>
 			<span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">call </span><span class="n">plssym</span><span class="p">(</span><span class="mf">0.0_pp</span><span class="p">,</span><span class="kt">real</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">pp</span><span class="p">))</span>
 			<span class="k">call </span><span class="n">plptex</span><span class="p">(</span><span class="n">xl</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="n">yl</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="mf">0.0_pp</span><span class="p">,</span><span class="mf">0.0_pp</span><span class="p">,</span><span class="mf">0.5_pp</span><span class="p">,</span><span class="n">code</span><span class="p">)</span>
 		<span class="k">end do</span>
-<span class="k">		call </span><span class="n">resetPen</span>
+<span class="k">		call </span><span class="n">resetPen</span><span class="p">()</span>
 	<span class="k">end subroutine </span><span class="n">scatter</span>
 </pre></div>
 

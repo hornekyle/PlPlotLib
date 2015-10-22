@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -101,14 +102,14 @@
      
     
     
-    <li><i class="fa fa-code"></i><a href="../src/plplotlib.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/utilities.f90"> Source File</a></li>
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
-     <li><a href='../sourcefile/plplotlib.f90.html'>plplotlib.f90</a></li>
+     <li><a href='../sourcefile/utilities.f90.html'>utilities.f90</a></li>
   
-     <li><a href='../module/plplotlib_mod.html'>plplotlib_mod</a></li>
+     <li><a href='../module/utilities_mod.html'>utilities_mod</a></li>
   
      <li class="active">linspace</li>
   </ol>
@@ -152,6 +153,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
     <div class="list-group">
@@ -174,6 +176,10 @@
       <a class="list-group-item" href="../proc/box.html">box</a>
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
+      
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
       
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
@@ -201,6 +207,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -209,7 +217,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -218,6 +230,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -229,11 +247,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -358,37 +390,311 @@ public function linspace(l, h, N) result(o)
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Elinspace%7E%7ECalledByGraph.svg usemap="#proc~~linspace~~CalledByGraph">
-            <map id="proc~~linspace~~CalledByGraph" name="proc~~linspace~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/dosurface.html" title="doSurface" alt="" coords="428,34,509,66"/>
-<area shape="rect" id="node14" href="../proc/surface.html" title="surface" alt="" coords="565,34,637,66"/>
-<area shape="rect" id="node3" href="../proc/docontour.html" title="doContour" alt="" coords="427,130,511,162"/>
-<area shape="rect" id="node12" href="../proc/contourf.html" title="contourf" alt="" coords="565,140,637,172"/>
-<area shape="rect" id="node4" href="../proc/dobar.html" title="doBar" alt="" coords="433,186,505,218"/>
-<area shape="rect" id="node5" href="../proc/bindata.html" title="binData" alt="" coords="565,500,637,532"/>
-<area shape="rect" id="node6" href="../proc/makelogo.html" title="makeLogo" alt="" coords="559,556,643,588"/>
-<area shape="rect" id="node7" href="../program/basic_prg.html" title="basic_prg" alt="" coords="561,612,640,644"/>
-<area shape="rect" id="node8" href="../proc/dolegend.html" title="doLegend" alt="" coords="428,242,509,274"/>
-<area shape="rect" id="node9" href="../proc/doerror.html" title="doError" alt="" coords="290,288,362,320"/>
-<area shape="rect" id="node10" href="../proc/dofillbetween.html" title="doFillBetween" alt="" coords="273,344,379,376"/>
-<area shape="rect" id="node11" href="../proc/doplot.html" title="doPlot" alt="" coords="290,400,362,432"/>
-<area shape="rect" id="node13" href="../proc/doquiver.html" title="doQuiver" alt="" coords="289,456,363,488"/>
-<area shape="rect" id="node15" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,288,225,320"/>
-<area shape="rect" id="node18" href="../proc/dohist.html" title="doHist" alt="" coords="290,512,362,544"/>
-<area shape="rect" id="node16" href="../program/main_prg.html" title="main_prg" alt="" coords="5,288,83,320"/>
-<area shape="rect" id="node17" href="../proc/hist.html" title="hist" alt="" coords="433,552,505,584"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~linspace~~CalledByGraph Pages: 1 -->
+<svg id="proclinspaceCalledByGraph" width="576pt" height="510pt"
+ viewBox="0.00 0.00 576.00 510.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~linspace~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 506)">
+<title>proc~~linspace~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-506 572,-506 572,4 -4,4"/>
+<!-- proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_node1" class="node"><title>proc~linspace</title>
+<polygon fill="none" stroke="black" points="568,-264 514,-264 514,-240 568,-240 568,-264"/>
+<text text-anchor="middle" x="541" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50">linspace</text>
+</g>
+<!-- proc~doerror -->
+<g id="proc~~linspace~~CalledByGraph_node2" class="node"><title>proc~doerror</title>
+<g id="a_proc~~linspace~~CalledByGraph_node2"><a xlink:href="../proc/doerror.html" xlink:title="doError">
+<polygon fill="#d9534f" stroke="#d9534f" points="374.5,-502 320.5,-502 320.5,-478 374.5,-478 374.5,-502"/>
+<text text-anchor="middle" x="347.5" y="-487.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doError</text>
+</a>
+</g>
+</g>
+<!-- proc~doerror&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge16" class="edge"><title>proc~doerror&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M374.74,-488.89C403.812,-486.254 450.243,-477.65 478,-450 526.753,-401.436 537.269,-315.09 539.467,-274.396"/>
+<polygon fill="black" stroke="black" points="542.973,-274.335 539.891,-264.199 535.979,-274.045 542.973,-274.335"/>
+</g>
+<!-- proc~doplot -->
+<g id="proc~~linspace~~CalledByGraph_node3" class="node"><title>proc~doplot</title>
+<g id="a_proc~~linspace~~CalledByGraph_node3"><a xlink:href="../proc/doplot.html" xlink:title="doPlot">
+<polygon fill="#d9534f" stroke="#d9534f" points="374.5,-460 320.5,-460 320.5,-436 374.5,-436 374.5,-460"/>
+<text text-anchor="middle" x="347.5" y="-445.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doPlot</text>
+</a>
+</g>
+</g>
+<!-- proc~doplot&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge17" class="edge"><title>proc~doplot&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M374.535,-450.297C403.206,-451.367 449.068,-448.569 478,-424 523.169,-385.642 535.431,-311.759 538.76,-274.563"/>
+<polygon fill="black" stroke="black" points="542.273,-274.511 539.532,-264.277 535.293,-273.987 542.273,-274.511"/>
+</g>
+<!-- program~basic_prg -->
+<g id="proc~~linspace~~CalledByGraph_node4" class="node"><title>program~basic_prg</title>
+<g id="a_proc~~linspace~~CalledByGraph_node4"><a xlink:href="../program/basic_prg.html" xlink:title="basic_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="476,-66 417,-66 417,-42 476,-42 476,-66"/>
+<text text-anchor="middle" x="446.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">basic_prg</text>
+</a>
+</g>
+</g>
+<!-- program~basic_prg&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge18" class="edge"><title>program~basic_prg&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M469.019,-66.2014C472.347,-68.7831 475.502,-71.7304 478,-75 514.543,-122.834 530.64,-193.89 536.764,-229.681"/>
+<polygon fill="black" stroke="black" points="533.314,-230.273 538.356,-239.591 540.226,-229.163 533.314,-230.273"/>
+</g>
+<!-- proc~dofillbetween -->
+<g id="proc~~linspace~~CalledByGraph_node5" class="node"><title>proc~dofillbetween</title>
+<g id="a_proc~~linspace~~CalledByGraph_node5"><a xlink:href="../proc/dofillbetween.html" xlink:title="doFillBetween">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-400 201,-400 201,-376 280,-376 280,-400"/>
+<text text-anchor="middle" x="240.5" y="-385.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doFillBetween</text>
+</a>
+</g>
+</g>
+<!-- proc~dofillbetween&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge19" class="edge"><title>proc~dofillbetween&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M280.322,-395.988C330.389,-404.043 418.131,-410.32 478,-371 511.864,-348.759 528.331,-301.816 535.409,-273.999"/>
+<polygon fill="black" stroke="black" points="538.871,-274.57 537.751,-264.034 532.056,-272.969 538.871,-274.57"/>
+</g>
+<!-- proc~dosurface -->
+<g id="proc~~linspace~~CalledByGraph_node6" class="node"><title>proc~dosurface</title>
+<g id="a_proc~~linspace~~CalledByGraph_node6"><a xlink:href="../proc/dosurface.html" xlink:title="doSurface">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-344 317,-344 317,-320 378,-320 378,-344"/>
+<text text-anchor="middle" x="347.5" y="-329.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doSurface</text>
+</a>
+</g>
+</g>
+<!-- proc~dosurface&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge20" class="edge"><title>proc~dosurface&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M371.565,-344.14C398.731,-356.623 444.409,-371.795 478,-353 508.03,-336.197 525.285,-298.24 533.64,-273.942"/>
+<polygon fill="black" stroke="black" points="537.054,-274.756 536.776,-264.165 530.389,-272.617 537.054,-274.756"/>
+</g>
+<!-- proc~surface -->
+<g id="proc~~linspace~~CalledByGraph_node9" class="node"><title>proc~surface</title>
+<g id="a_proc~~linspace~~CalledByGraph_node9"><a xlink:href="../proc/surface.html" xlink:title="surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="473.5,-344 419.5,-344 419.5,-320 473.5,-320 473.5,-344"/>
+<text text-anchor="middle" x="446.5" y="-329.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">surface</text>
+</a>
+</g>
+</g>
+<!-- proc~dosurface&#45;&gt;proc~surface -->
+<g id="proc~~linspace~~CalledByGraph_edge7" class="edge"><title>proc~dosurface&#45;&gt;proc~surface</title>
+<path fill="none" stroke="black" d="M378.13,-332C387.889,-332 398.855,-332 409.061,-332"/>
+<polygon fill="black" stroke="black" points="409.338,-335.5 419.338,-332 409.338,-328.5 409.338,-335.5"/>
+</g>
+<!-- proc~makelogo -->
+<g id="proc~~linspace~~CalledByGraph_node7" class="node"><title>proc~makelogo</title>
+<g id="a_proc~~linspace~~CalledByGraph_node7"><a xlink:href="../proc/makelogo.html" xlink:title="makeLogo">
+<polygon fill="#d9534f" stroke="#d9534f" points="478,-24 415,-24 415,-0 478,-0 478,-24"/>
+<text text-anchor="middle" x="446.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">makeLogo</text>
+</a>
+</g>
+</g>
+<!-- proc~makelogo&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge21" class="edge"><title>proc~makelogo&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M469.19,-24.0753C472.498,-26.6711 475.603,-29.6557 478,-33 522.375,-94.9149 535.076,-187.765 538.643,-229.853"/>
+<polygon fill="black" stroke="black" points="535.155,-230.152 539.396,-239.861 542.136,-229.627 535.155,-230.152"/>
+</g>
+<!-- proc~docontour -->
+<g id="proc~~linspace~~CalledByGraph_node8" class="node"><title>proc~docontour</title>
+<g id="a_proc~~linspace~~CalledByGraph_node8"><a xlink:href="../proc/docontour.html" xlink:title="doContour">
+<polygon fill="#d9534f" stroke="#d9534f" points="379,-300 316,-300 316,-276 379,-276 379,-300"/>
+<text text-anchor="middle" x="347.5" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doContour</text>
+</a>
+</g>
+</g>
+<!-- proc~docontour&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge22" class="edge"><title>proc~docontour&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M379.157,-286.28C405.592,-284.363 444.655,-280.49 478,-273 486.607,-271.067 495.695,-268.375 504.181,-265.563"/>
+<polygon fill="black" stroke="black" points="505.489,-268.814 513.801,-262.244 503.206,-262.196 505.489,-268.814"/>
+</g>
+<!-- proc~contourf -->
+<g id="proc~~linspace~~CalledByGraph_node12" class="node"><title>proc~contourf</title>
+<g id="a_proc~~linspace~~CalledByGraph_node12"><a xlink:href="../proc/contourf.html" xlink:title="contourf">
+<polygon fill="#d9534f" stroke="#d9534f" points="473.5,-264 419.5,-264 419.5,-240 473.5,-240 473.5,-264"/>
+<text text-anchor="middle" x="446.5" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">contourf</text>
+</a>
+</g>
+</g>
+<!-- proc~docontour&#45;&gt;proc~contourf -->
+<g id="proc~~linspace~~CalledByGraph_edge10" class="edge"><title>proc~docontour&#45;&gt;proc~contourf</title>
+<path fill="none" stroke="black" d="M379.191,-276.609C388.849,-273.025 399.601,-269.035 409.588,-265.328"/>
+<polygon fill="black" stroke="black" points="411.093,-268.503 419.25,-261.742 408.657,-261.94 411.093,-268.503"/>
+</g>
+<!-- proc~surface&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge23" class="edge"><title>proc~surface&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M461.802,-319.862C466.922,-315.503 472.729,-310.542 478,-306 491.53,-294.341 506.646,-281.179 518.565,-270.768"/>
+<polygon fill="black" stroke="black" points="521.021,-273.269 526.246,-264.053 516.414,-267.999 521.021,-273.269"/>
+</g>
+<!-- proc~dobar -->
+<g id="proc~~linspace~~CalledByGraph_node10" class="node"><title>proc~dobar</title>
+<g id="a_proc~~linspace~~CalledByGraph_node10"><a xlink:href="../proc/dobar.html" xlink:title="doBar">
+<polygon fill="#d9534f" stroke="#d9534f" points="267.5,-258 213.5,-258 213.5,-234 267.5,-234 267.5,-258"/>
+<text text-anchor="middle" x="240.5" y="-243.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doBar</text>
+</a>
+</g>
+</g>
+<!-- proc~dobar&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge24" class="edge"><title>proc~dobar&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M267.588,-240.526C311.374,-232.188 402.292,-218.526 478,-231 486.704,-232.434 495.831,-234.929 504.322,-237.71"/>
+<polygon fill="black" stroke="black" points="503.342,-241.075 513.936,-241.06 505.645,-234.465 503.342,-241.075"/>
+</g>
+<!-- proc~doquiver -->
+<g id="proc~~linspace~~CalledByGraph_node11" class="node"><title>proc~doquiver</title>
+<g id="a_proc~~linspace~~CalledByGraph_node11"><a xlink:href="../proc/doquiver.html" xlink:title="doQuiver">
+<polygon fill="#d9534f" stroke="#d9534f" points="268.5,-213 212.5,-213 212.5,-189 268.5,-189 268.5,-213"/>
+<text text-anchor="middle" x="240.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doQuiver</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge25" class="edge"><title>proc~doquiver&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M268.661,-200.267C313.23,-199.756 404.298,-201.633 478,-222 489.093,-225.065 500.608,-230.066 510.66,-235.113"/>
+<polygon fill="black" stroke="black" points="509.306,-238.356 519.787,-239.906 512.56,-232.158 509.306,-238.356"/>
+</g>
+<!-- proc~contourf&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge26" class="edge"><title>proc~contourf&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M473.759,-252C483.115,-252 493.822,-252 503.86,-252"/>
+<polygon fill="black" stroke="black" points="503.995,-255.5 513.995,-252 503.995,-248.5 503.995,-255.5"/>
+</g>
+<!-- proc~dolegend -->
+<g id="proc~~linspace~~CalledByGraph_node13" class="node"><title>proc~dolegend</title>
+<g id="a_proc~~linspace~~CalledByGraph_node13"><a xlink:href="../proc/dolegend.html" xlink:title="doLegend">
+<polygon fill="#d9534f" stroke="#d9534f" points="271,-165 210,-165 210,-141 271,-141 271,-165"/>
+<text text-anchor="middle" x="240.5" y="-150.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doLegend</text>
+</a>
+</g>
+</g>
+<!-- proc~dolegend&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge27" class="edge"><title>proc~dolegend&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M271.186,-155.407C317.313,-160.036 408.152,-172.752 478,-205 493.197,-212.016 508.209,-223.253 519.654,-232.98"/>
+<polygon fill="black" stroke="black" points="517.49,-235.737 527.31,-239.714 522.113,-230.481 517.49,-235.737"/>
+</g>
+<!-- proc~bindata -->
+<g id="proc~~linspace~~CalledByGraph_node14" class="node"><title>proc~bindata</title>
+<g id="a_proc~~linspace~~CalledByGraph_node14"><a xlink:href="../proc/bindata.html" xlink:title="binData">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="473.5,-108 419.5,-108 419.5,-84 473.5,-84 473.5,-108"/>
+<text text-anchor="middle" x="446.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">binData</text>
+</a>
+</g>
+</g>
+<!-- proc~bindata&#45;&gt;proc~linspace -->
+<g id="proc~~linspace~~CalledByGraph_edge28" class="edge"><title>proc~bindata&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M464.213,-108.089C469.065,-112.137 474.101,-116.923 478,-122 504.22,-156.138 523.212,-203.149 532.841,-230.283"/>
+<polygon fill="black" stroke="black" points="529.609,-231.647 536.176,-239.961 536.227,-229.366 529.609,-231.647"/>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~linspace~~CalledByGraph_node15" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~linspace~~CalledByGraph_node15"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-300 94,-300 94,-276 165,-276 165,-300"/>
+<text text-anchor="middle" x="129.5" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~doerror -->
+<g id="proc~~linspace~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~doerror</title>
+<path fill="none" stroke="black" d="M132.803,-300.087C138.825,-328.441 157.668,-399.785 201,-439 231.624,-466.714 278.19,-479.547 310.356,-485.37"/>
+<polygon fill="black" stroke="black" points="309.814,-488.828 320.255,-487.024 310.968,-481.924 309.814,-488.828"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~doplot -->
+<g id="proc~~linspace~~CalledByGraph_edge3" class="edge"><title>proc~doexamples&#45;&gt;proc~doplot</title>
+<path fill="none" stroke="black" d="M134.063,-300.056C141.927,-324.508 163.139,-380.064 201,-409 232.736,-433.254 278.395,-442.45 310.067,-445.922"/>
+<polygon fill="black" stroke="black" points="309.943,-449.426 320.231,-446.893 310.609,-442.457 309.943,-449.426"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dofillbetween -->
+<g id="proc~~linspace~~CalledByGraph_edge4" class="edge"><title>proc~doexamples&#45;&gt;proc~dofillbetween</title>
+<path fill="none" stroke="black" d="M143.866,-300.262C162.599,-317.448 196.834,-348.857 218.856,-369.061"/>
+<polygon fill="black" stroke="black" points="216.631,-371.769 226.366,-375.95 221.363,-366.611 216.631,-371.769"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dosurface -->
+<g id="proc~~linspace~~CalledByGraph_edge5" class="edge"><title>proc~doexamples&#45;&gt;proc~dosurface</title>
+<path fill="none" stroke="black" d="M165.204,-295.069C203.902,-302.952 266.372,-315.678 306.936,-323.941"/>
+<polygon fill="black" stroke="black" points="306.252,-327.373 316.749,-325.94 307.649,-320.514 306.252,-327.373"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~docontour -->
+<g id="proc~~linspace~~CalledByGraph_edge6" class="edge"><title>proc~doexamples&#45;&gt;proc~docontour</title>
+<path fill="none" stroke="black" d="M165.204,-288C203.491,-288 265.047,-288 305.636,-288"/>
+<polygon fill="black" stroke="black" points="305.73,-291.5 315.73,-288 305.73,-284.5 305.73,-291.5"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dobar -->
+<g id="proc~~linspace~~CalledByGraph_edge8" class="edge"><title>proc~doexamples&#45;&gt;proc~dobar</title>
+<path fill="none" stroke="black" d="M161.735,-275.964C174.897,-270.893 190.287,-264.963 203.887,-259.723"/>
+<polygon fill="black" stroke="black" points="205.343,-262.912 213.416,-256.051 202.826,-256.381 205.343,-262.912"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~doquiver -->
+<g id="proc~~linspace~~CalledByGraph_edge9" class="edge"><title>proc~doexamples&#45;&gt;proc~doquiver</title>
+<path fill="none" stroke="black" d="M142.926,-275.696C156.586,-262.462 179.462,-241.149 201,-225 203.859,-222.856 206.915,-220.718 210.007,-218.651"/>
+<polygon fill="black" stroke="black" points="212.168,-221.423 218.685,-213.07 208.381,-215.536 212.168,-221.423"/>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dolegend -->
+<g id="proc~~linspace~~CalledByGraph_edge11" class="edge"><title>proc~doexamples&#45;&gt;proc~dolegend</title>
+<path fill="none" stroke="black" d="M136.413,-275.93C147.172,-254.788 171.578,-210.418 201,-180 204.001,-176.897 207.405,-173.924 210.917,-171.16"/>
+<polygon fill="black" stroke="black" points="213.164,-173.854 219.17,-165.126 209.032,-168.203 213.164,-173.854"/>
+</g>
+<!-- proc~dohist -->
+<g id="proc~~linspace~~CalledByGraph_node17" class="node"><title>proc~dohist</title>
+<g id="a_proc~~linspace~~CalledByGraph_node17"><a xlink:href="../proc/dohist.html" xlink:title="doHist">
+<polygon fill="#d9534f" stroke="#d9534f" points="267.5,-110 213.5,-110 213.5,-86 267.5,-86 267.5,-110"/>
+<text text-anchor="middle" x="240.5" y="-95.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doHist</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dohist -->
+<g id="proc~~linspace~~CalledByGraph_edge12" class="edge"><title>proc~doexamples&#45;&gt;proc~dohist</title>
+<path fill="none" stroke="black" d="M134.077,-275.736C142.525,-248.137 165.697,-179.822 201,-132 204.962,-126.633 209.897,-121.499 214.897,-116.92"/>
+<polygon fill="black" stroke="black" points="217.378,-119.403 222.677,-110.229 212.813,-114.096 217.378,-119.403"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~linspace~~CalledByGraph_node16" class="node"><title>program~main_prg</title>
+<g id="a_proc~~linspace~~CalledByGraph_node16"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-300 3.55271e-15,-300 3.55271e-15,-276 58,-276 58,-300"/>
+<text text-anchor="middle" x="29" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~linspace~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-288C66.2347,-288 75.1563,-288 83.8823,-288"/>
+<polygon fill="black" stroke="black" points="83.9695,-291.5 93.9695,-288 83.9695,-284.5 83.9695,-291.5"/>
+</g>
+<!-- proc~dohist&#45;&gt;proc~bindata -->
+<g id="proc~~linspace~~CalledByGraph_edge14" class="edge"><title>proc~dohist&#45;&gt;proc~bindata</title>
+<path fill="none" stroke="black" d="M267.752,-97.7426C303.786,-97.3894 368.714,-96.7528 409.33,-96.3546"/>
+<polygon fill="black" stroke="black" points="409.384,-99.8543 419.349,-96.2564 409.315,-92.8547 409.384,-99.8543"/>
+</g>
+<!-- proc~hist -->
+<g id="proc~~linspace~~CalledByGraph_node18" class="node"><title>proc~hist</title>
+<g id="a_proc~~linspace~~CalledByGraph_node18"><a xlink:href="../proc/hist.html" xlink:title="hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="374.5,-70 320.5,-70 320.5,-46 374.5,-46 374.5,-70"/>
+<text text-anchor="middle" x="347.5" y="-55.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hist</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~hist -->
+<g id="proc~~linspace~~CalledByGraph_edge13" class="edge"><title>proc~dohist&#45;&gt;proc~hist</title>
+<path fill="none" stroke="black" d="M267.725,-88.0095C280.754,-83.0459 296.693,-76.9742 310.816,-71.594"/>
+<polygon fill="black" stroke="black" points="312.146,-74.8325 320.245,-68.0018 309.654,-68.2911 312.146,-74.8325"/>
+</g>
+<!-- proc~hist&#45;&gt;proc~bindata -->
+<g id="proc~~linspace~~CalledByGraph_edge15" class="edge"><title>proc~hist&#45;&gt;proc~bindata</title>
+<path fill="none" stroke="black" d="M374.75,-68.2833C385.533,-72.5077 398.189,-77.4659 409.794,-82.0119"/>
+<polygon fill="black" stroke="black" points="408.642,-85.3196 419.229,-85.7084 411.195,-78.8019 408.642,-85.3196"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -464,11 +770,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -517,6 +823,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     

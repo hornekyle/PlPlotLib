@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -138,16 +139,17 @@
       
       <a class="list-group-item" href="../proc/contourf.html#variable-defined">defined</a>
       
-      <a class="list-group-item" href="../proc/contourf.html#variable-fill_width%7E2">fill_width</a>
+      <a class="list-group-item" href="../proc/contourf.html#variable-fill_width%7E3">fill_width</a>
       
-      <a class="list-group-item" href="../proc/contourf.html#variable-cont_width%7E2">cont_width</a>
+      <a class="list-group-item" href="../proc/contourf.html#variable-cont_width%7E3">cont_width</a>
       
-      <a class="list-group-item" href="../proc/contourf.html#variable-cont_color%7E2">cont_color</a>
+      <a class="list-group-item" href="../proc/contourf.html#variable-cont_color%7E3">cont_color</a>
       
       <a class="list-group-item" href="../proc/contourf.html#variable-nl%7E6">Nl</a>
       
     </div>
   </div>
+  
   
   
   
@@ -189,6 +191,10 @@
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
       
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
+      
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
       <a class="list-group-item" href="../proc/contourf.html">contourf</a>
@@ -215,6 +221,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -223,7 +231,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -232,6 +244,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -243,11 +261,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -311,7 +343,7 @@ public subroutine contourf(x, y, z, N)
   
 <tr>
   
-  <td><span class="anchor" id="variable-x%7E18"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x%7E21"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -326,7 +358,7 @@ public subroutine contourf(x, y, z, N)
   
 <tr>
   
-  <td><span class="anchor" id="variable-y%7E15"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-y%7E17"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -341,7 +373,7 @@ public subroutine contourf(x, y, z, N)
   
 <tr>
   
-  <td><span class="anchor" id="variable-z%7E9"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-z%7E10"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -356,7 +388,7 @@ public subroutine contourf(x, y, z, N)
   
 <tr>
   
-  <td><span class="anchor" id="variable-n%7E17"></span>integer,</td>
+  <td><span class="anchor" id="variable-n%7E19"></span>integer,</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -377,21 +409,58 @@ public subroutine contourf(x, y, z, N)
     
      <h3>Calls</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Econtourf%7E%7ECallsGraph.svg usemap="#proc~~contourf~~CallsGraph">
-            <map id="proc~~contourf~~CallsGraph" name="proc~~contourf~~CallsGraph">
-<area shape="rect" id="node2" href="../proc/linspace.html" title="linspace" alt="" coords="126,5,198,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~contourf~~CallsGraph Pages: 1 -->
+<svg id="proccontourfCallsGraph" width="153pt" height="74pt"
+ viewBox="0.00 0.00 153.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~contourf~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~contourf~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-70 149,-70 149,4 -4,4"/>
+<!-- proc~contourf -->
+<g id="proc~~contourf~~CallsGraph_node1" class="node"><title>proc~contourf</title>
+<polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
+<text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">contourf</text>
+</g>
+<!-- proc~linspace -->
+<g id="proc~~contourf~~CallsGraph_node2" class="node"><title>proc~linspace</title>
+<g id="a_proc~~contourf~~CallsGraph_node2"><a xlink:href="../proc/linspace.html" xlink:title="linspace">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-66 90.5,-66 90.5,-42 144.5,-42 144.5,-66"/>
+<text text-anchor="middle" x="117.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linspace</text>
+</a>
+</g>
+</g>
+<!-- proc~contourf&#45;&gt;proc~linspace -->
+<g id="proc~~contourf~~CallsGraph_edge1" class="edge"><title>proc~contourf&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M54.0743,-39.1871C62.3724,-41.1562 71.7027,-43.3701 80.5705,-45.4743"/>
+<polygon fill="black" stroke="black" points="79.7684,-48.8811 90.3063,-47.7845 81.3846,-42.0703 79.7684,-48.8811"/>
+</g>
+<!-- plshades -->
+<g id="proc~~contourf~~CallsGraph_node3" class="node"><title>plshades</title>
+<polygon fill="#777777" stroke="#777777" points="145,-24 90,-24 90,-0 145,-0 145,-24"/>
+<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plshades</text>
+</g>
+<!-- proc~contourf&#45;&gt;plshades -->
+<g id="proc~~contourf~~CallsGraph_edge2" class="edge"><title>proc~contourf&#45;&gt;plshades</title>
+<path fill="none" stroke="black" d="M54.0743,-26.8129C62.2099,-24.8824 71.3376,-22.7165 80.0489,-20.6494"/>
+<polygon fill="black" stroke="black" points="81.0778,-24.0025 89.9995,-18.2882 79.4616,-17.1917 81.0778,-24.0025"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -467,32 +536,83 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Econtourf%7E%7ECalledByGraph.svg usemap="#proc~~contourf~~CalledByGraph">
-            <map id="proc~~contourf~~CalledByGraph" name="proc~~contourf~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/docontour.html" title="doContour" alt="" coords="273,5,357,37"/>
-<area shape="rect" id="node3" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,5,225,37"/>
-<area shape="rect" id="node4" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~contourf~~CalledByGraph Pages: 1 -->
+<svg id="proccontourfCalledByGraph" width="362pt" height="32pt"
+ viewBox="0.00 0.00 362.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~contourf~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~contourf~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 358,-28 358,4 -4,4"/>
+<!-- proc~contourf -->
+<g id="proc~~contourf~~CalledByGraph_node1" class="node"><title>proc~contourf</title>
+<polygon fill="none" stroke="black" points="354,-24 300,-24 300,-0 354,-0 354,-24"/>
+<text text-anchor="middle" x="327" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">contourf</text>
+</g>
+<!-- proc~docontour -->
+<g id="proc~~contourf~~CalledByGraph_node2" class="node"><title>proc~docontour</title>
+<g id="a_proc~~contourf~~CalledByGraph_node2"><a xlink:href="../proc/docontour.html" xlink:title="doContour">
+<polygon fill="#d9534f" stroke="#d9534f" points="264,-24 201,-24 201,-0 264,-0 264,-24"/>
+<text text-anchor="middle" x="232.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doContour</text>
+</a>
+</g>
+</g>
+<!-- proc~docontour&#45;&gt;proc~contourf -->
+<g id="proc~~contourf~~CalledByGraph_edge3" class="edge"><title>proc~docontour&#45;&gt;proc~contourf</title>
+<path fill="none" stroke="black" d="M264.044,-12C272.275,-12 281.259,-12 289.767,-12"/>
+<polygon fill="black" stroke="black" points="289.828,-15.5001 299.827,-12 289.827,-8.5001 289.828,-15.5001"/>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~contourf~~CalledByGraph_node3" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~contourf~~CalledByGraph_node3"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-24 94,-24 94,-0 165,-0 165,-24"/>
+<text text-anchor="middle" x="129.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~docontour -->
+<g id="proc~~contourf~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~docontour</title>
+<path fill="none" stroke="black" d="M165.258,-12C173.453,-12 182.262,-12 190.696,-12"/>
+<polygon fill="black" stroke="black" points="190.732,-15.5001 200.732,-12 190.732,-8.5001 190.732,-15.5001"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~contourf~~CalledByGraph_node4" class="node"><title>program~main_prg</title>
+<g id="a_proc~~contourf~~CalledByGraph_node4"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-24 3.55271e-15,-24 3.55271e-15,-0 58,-0 58,-24"/>
+<text text-anchor="middle" x="29" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~contourf~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-12C66.2347,-12 75.1563,-12 83.8823,-12"/>
+<polygon fill="black" stroke="black" points="83.9695,-15.5001 93.9695,-12 83.9695,-8.5001 83.9695,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -568,11 +688,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -664,7 +784,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-fill_width%7E2"></span>real(kind=pp),</td>
+  <td><span class="anchor" id="variable-fill_width%7E3"></span>real(kind=pp),</td>
   
   <td>public</td>
   <td></td><td>::</td>
@@ -678,7 +798,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-cont_width%7E2"></span>real(kind=pp),</td>
+  <td><span class="anchor" id="variable-cont_width%7E3"></span>real(kind=pp),</td>
   
   <td>public</td>
   <td></td><td>::</td>
@@ -692,7 +812,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-cont_color%7E2"></span>integer,</td>
+  <td><span class="anchor" id="variable-cont_color%7E3"></span>integer,</td>
   
   <td>public</td>
   <td></td><td>::</td>
@@ -719,6 +839,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     
@@ -771,7 +893,7 @@ implementation in a submodule of an interface in a parent module.</p>
 		
 		<span class="k">call </span><span class="n">plshades</span><span class="p">(</span><span class="n">zl</span><span class="p">,</span><span class="n">defined</span><span class="p">,</span><span class="nb">minval</span><span class="p">(</span><span class="n">xl</span><span class="p">),</span><span class="nb">maxval</span><span class="p">(</span><span class="n">xl</span><span class="p">),</span><span class="nb">minval</span><span class="p">(</span><span class="n">yl</span><span class="p">),</span><span class="nb">maxval</span><span class="p">(</span><span class="n">yl</span><span class="p">),</span> <span class="p">&amp;</span>
 			<span class="p">&amp;</span> <span class="n">edge</span><span class="p">,</span><span class="n">fill_width</span><span class="p">,</span><span class="n">cont_color</span><span class="p">,</span><span class="n">cont_width</span><span class="p">)</span>
-		<span class="k">call </span><span class="n">resetPen</span>
+		<span class="k">call </span><span class="n">resetPen</span><span class="p">()</span>
 	<span class="k">end subroutine </span><span class="n">contourf</span>
 </pre></div>
 

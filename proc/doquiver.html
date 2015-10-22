@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -164,6 +165,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
     <div class="list-group">
@@ -186,6 +188,10 @@
       <a class="list-group-item" href="../proc/box.html">box</a>
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
+      
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
       
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
@@ -213,6 +219,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -221,7 +229,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -230,6 +242,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -241,11 +259,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -303,30 +335,297 @@ public subroutine doQuiver()
     
      <h3>Calls</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edoquiver%7E%7ECallsGraph.svg usemap="#proc~~doquiver~~CallsGraph">
-            <map id="proc~~doquiver~~CallsGraph" name="proc~~doquiver~~CallsGraph">
-<area shape="rect" id="node2" href="../proc/labels.html" title="labels" alt="" coords="128,8,200,40"/>
-<area shape="rect" id="node3" href="../proc/ticks.html" title="ticks" alt="" coords="128,68,200,100"/>
-<area shape="rect" id="node4" href="../proc/quiver.html" title="quiver" alt="" coords="128,199,200,231"/>
-<area shape="rect" id="node5" href="../interface/mixval.html" title="mixval" alt="" coords="252,117,324,149"/>
-<area shape="rect" id="node6" href="../proc/colorbar.html" title="colorbar" alt="" coords="128,283,200,315"/>
-<area shape="rect" id="node7" href="../proc/xylim.html" title="xylim" alt="" coords="128,339,200,371"/>
-<area shape="rect" id="node8" href="../proc/linspace.html" title="linspace" alt="" coords="128,395,200,427"/>
-<area shape="rect" id="node9" href="../proc/subplot.html" title="subplot" alt="" coords="128,481,200,513"/>
-<area shape="rect" id="node10" href="../proc/figure.html" title="figure" alt="" coords="128,649,200,681"/>
-<area shape="rect" id="node23" href="../proc/setup.html" title="setup" alt="" coords="252,733,324,765"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~doquiver~~CallsGraph Pages: 1 -->
+<svg id="procdoquiverCallsGraph" width="250pt" height="578pt"
+ viewBox="0.00 0.00 250.00 578.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~doquiver~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 574)">
+<title>proc~~doquiver~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-574 246,-574 246,4 -4,4"/>
+<!-- proc~doquiver -->
+<g id="proc~~doquiver~~CallsGraph_node1" class="node"><title>proc~doquiver</title>
+<polygon fill="none" stroke="black" points="56,-402 0,-402 0,-378 56,-378 56,-402"/>
+<text text-anchor="middle" x="28" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50">doQuiver</text>
+</g>
+<!-- proc~linspace -->
+<g id="proc~~doquiver~~CallsGraph_node2" class="node"><title>proc~linspace</title>
+<g id="a_proc~~doquiver~~CallsGraph_node2"><a xlink:href="../proc/linspace.html" xlink:title="linspace">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-566 92,-566 92,-542 146,-542 146,-566"/>
+<text text-anchor="middle" x="119" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linspace</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~linspace -->
+<g id="proc~~doquiver~~CallsGraph_edge17" class="edge"><title>proc~doquiver&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M32.9088,-402.2C41.2718,-427.23 62.5627,-485.596 92,-528 93.4971,-530.157 95.1842,-532.291 96.9615,-534.355"/>
+<polygon fill="black" stroke="black" points="94.6422,-536.997 104.053,-541.864 99.7313,-532.191 94.6422,-536.997"/>
+</g>
+<!-- interface~mixval -->
+<g id="proc~~doquiver~~CallsGraph_node3" class="node"><title>interface~mixval</title>
+<g id="a_proc~~doquiver~~CallsGraph_node3"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
+<polygon fill="#a7506f" stroke="#a7506f" points="239,-570 185,-570 185,-546 239,-546 239,-570"/>
+<text text-anchor="middle" x="212" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;interface~mixval -->
+<g id="proc~~doquiver~~CallsGraph_edge18" class="edge"><title>proc~doquiver&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M33.6948,-402.132C42.3974,-423.301 62.8392,-467.36 92,-495 116.07,-517.815 150.01,-534.692 175.488,-545.205"/>
+<polygon fill="black" stroke="black" points="174.215,-548.465 184.8,-548.921 176.81,-541.964 174.215,-548.465"/>
+</g>
+<!-- proc~xylim -->
+<g id="proc~~doquiver~~CallsGraph_node4" class="node"><title>proc~xylim</title>
+<g id="a_proc~~doquiver~~CallsGraph_node4"><a xlink:href="../proc/xylim.html" xlink:title="xylim">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-444 92,-444 92,-420 146,-420 146,-444"/>
+<text text-anchor="middle" x="119" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">xylim</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~xylim -->
+<g id="proc~~doquiver~~CallsGraph_edge19" class="edge"><title>proc~doquiver&#45;&gt;proc~xylim</title>
+<path fill="none" stroke="black" d="M54.7425,-402.148C63.5983,-406.327 73.6672,-411.079 83.1267,-415.543"/>
+<polygon fill="black" stroke="black" points="81.778,-418.777 92.3154,-419.879 84.7655,-412.446 81.778,-418.777"/>
+</g>
+<!-- proc~quiver -->
+<g id="proc~~doquiver~~CallsGraph_node5" class="node"><title>proc~quiver</title>
+<g id="a_proc~~doquiver~~CallsGraph_node5"><a xlink:href="../proc/quiver.html" xlink:title="quiver">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-486 92,-486 92,-462 146,-462 146,-486"/>
+<text text-anchor="middle" x="119" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">quiver</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~quiver -->
+<g id="proc~~doquiver~~CallsGraph_edge20" class="edge"><title>proc~doquiver&#45;&gt;proc~quiver</title>
+<path fill="none" stroke="black" d="M40.708,-402.467C53.0884,-415.467 73.3676,-436.245 92,-453 92.8197,-453.737 93.661,-454.481 94.5161,-455.225"/>
+<polygon fill="black" stroke="black" points="92.4684,-458.076 102.377,-461.827 96.9701,-452.716 92.4684,-458.076"/>
+</g>
+<!-- proc~labels -->
+<g id="proc~~doquiver~~CallsGraph_node6" class="node"><title>proc~labels</title>
+<g id="a_proc~~doquiver~~CallsGraph_node6"><a xlink:href="../proc/labels.html" xlink:title="labels">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-402 92,-402 92,-378 146,-378 146,-402"/>
+<text text-anchor="middle" x="119" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">labels</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~labels -->
+<g id="proc~~doquiver~~CallsGraph_edge21" class="edge"><title>proc~doquiver&#45;&gt;proc~labels</title>
+<path fill="none" stroke="black" d="M56.1865,-390C64.2547,-390 73.2224,-390 81.7684,-390"/>
+<polygon fill="black" stroke="black" points="81.8947,-393.5 91.8947,-390 81.8946,-386.5 81.8947,-393.5"/>
+</g>
+<!-- proc~colorbar -->
+<g id="proc~~doquiver~~CallsGraph_node7" class="node"><title>proc~colorbar</title>
+<g id="a_proc~~doquiver~~CallsGraph_node7"><a xlink:href="../proc/colorbar.html" xlink:title="colorbar">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-360 92,-360 92,-336 146,-336 146,-360"/>
+<text text-anchor="middle" x="119" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">colorbar</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~colorbar -->
+<g id="proc~~doquiver~~CallsGraph_edge22" class="edge"><title>proc~doquiver&#45;&gt;proc~colorbar</title>
+<path fill="none" stroke="black" d="M54.7425,-377.852C63.5983,-373.673 73.6672,-368.921 83.1267,-364.457"/>
+<polygon fill="black" stroke="black" points="84.7655,-367.554 92.3154,-360.121 81.778,-361.223 84.7655,-367.554"/>
+</g>
+<!-- proc~subplot -->
+<g id="proc~~doquiver~~CallsGraph_node8" class="node"><title>proc~subplot</title>
+<g id="a_proc~~doquiver~~CallsGraph_node8"><a xlink:href="../proc/subplot.html" xlink:title="subplot">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-255 92,-255 92,-231 146,-231 146,-255"/>
+<text text-anchor="middle" x="119" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subplot</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~subplot -->
+<g id="proc~~doquiver~~CallsGraph_edge23" class="edge"><title>proc~doquiver&#45;&gt;proc~subplot</title>
+<path fill="none" stroke="black" d="M36.2832,-377.97C51.4078,-352.989 86.3819,-295.223 105.3,-263.976"/>
+<polygon fill="black" stroke="black" points="108.431,-265.563 110.616,-255.196 102.443,-261.937 108.431,-265.563"/>
+</g>
+<!-- proc~figure -->
+<g id="proc~~doquiver~~CallsGraph_node9" class="node"><title>proc~figure</title>
+<g id="a_proc~~doquiver~~CallsGraph_node9"><a xlink:href="../proc/figure.html" xlink:title="figure">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-150 92,-150 92,-126 146,-126 146,-150"/>
+<text text-anchor="middle" x="119" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">figure</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~figure -->
+<g id="proc~~doquiver~~CallsGraph_edge24" class="edge"><title>proc~doquiver&#45;&gt;proc~figure</title>
+<path fill="none" stroke="black" d="M33.2927,-377.846C47.3616,-338.01 92.2121,-211.017 110.314,-159.762"/>
+<polygon fill="black" stroke="black" points="113.72,-160.627 113.75,-150.033 107.12,-158.296 113.72,-160.627"/>
+</g>
+<!-- proc~ticks -->
+<g id="proc~~doquiver~~CallsGraph_node10" class="node"><title>proc~ticks</title>
+<g id="a_proc~~doquiver~~CallsGraph_node10"><a xlink:href="../proc/ticks.html" xlink:title="ticks">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 92,-66 92,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="119" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ticks</text>
+</a>
+</g>
+</g>
+<!-- proc~doquiver&#45;&gt;proc~ticks -->
+<g id="proc~~doquiver~~CallsGraph_edge25" class="edge"><title>proc~doquiver&#45;&gt;proc~ticks</title>
+<path fill="none" stroke="black" d="M31.0676,-377.834C37.7987,-339.147 60.4826,-215.696 92,-117 96.4993,-102.911 102.804,-87.56 108.078,-75.539"/>
+<polygon fill="black" stroke="black" points="111.311,-76.8825 112.203,-66.3253 104.922,-74.0218 111.311,-76.8825"/>
+</g>
+<!-- plwind -->
+<g id="proc~~doquiver~~CallsGraph_node11" class="node"><title>plwind</title>
+<polygon fill="#777777" stroke="#777777" points="239,-444 185,-444 185,-420 239,-420 239,-444"/>
+<text text-anchor="middle" x="212" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plwind</text>
+</g>
+<!-- proc~xylim&#45;&gt;plwind -->
+<g id="proc~~doquiver~~CallsGraph_edge1" class="edge"><title>proc~xylim&#45;&gt;plwind</title>
+<path fill="none" stroke="black" d="M146.321,-432C155.187,-432 165.243,-432 174.738,-432"/>
+<polygon fill="black" stroke="black" points="174.738,-435.5 184.738,-432 174.738,-428.5 174.738,-435.5"/>
+</g>
+<!-- proc~quiver&#45;&gt;interface~mixval -->
+<g id="proc~~doquiver~~CallsGraph_edge3" class="edge"><title>proc~quiver&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M132.204,-486.135C136.569,-490.494 141.517,-495.455 146,-500 162.112,-516.334 164.644,-521.994 182,-537 182.979,-537.846 183.99,-538.694 185.022,-539.536"/>
+<polygon fill="black" stroke="black" points="183.091,-542.468 193.145,-545.812 187.371,-536.928 183.091,-542.468"/>
+</g>
+<!-- plvect -->
+<g id="proc~~doquiver~~CallsGraph_node12" class="node"><title>plvect</title>
+<polygon fill="#777777" stroke="#777777" points="239,-528 185,-528 185,-504 239,-504 239,-528"/>
+<text text-anchor="middle" x="212" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvect</text>
+</g>
+<!-- proc~quiver&#45;&gt;plvect -->
+<g id="proc~~doquiver~~CallsGraph_edge2" class="edge"><title>proc~quiver&#45;&gt;plvect</title>
+<path fill="none" stroke="black" d="M146.321,-486.148C155.47,-490.371 165.886,-495.178 175.645,-499.682"/>
+<polygon fill="black" stroke="black" points="174.192,-502.866 184.738,-503.879 177.125,-496.511 174.192,-502.866"/>
+</g>
+<!-- plcol1 -->
+<g id="proc~~doquiver~~CallsGraph_node13" class="node"><title>plcol1</title>
+<polygon fill="#777777" stroke="#777777" points="239,-486 185,-486 185,-462 239,-462 239,-486"/>
+<text text-anchor="middle" x="212" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
+</g>
+<!-- proc~quiver&#45;&gt;plcol1 -->
+<g id="proc~~doquiver~~CallsGraph_edge4" class="edge"><title>proc~quiver&#45;&gt;plcol1</title>
+<path fill="none" stroke="black" d="M146.321,-474C155.187,-474 165.243,-474 174.738,-474"/>
+<polygon fill="black" stroke="black" points="174.738,-477.5 184.738,-474 174.738,-470.5 174.738,-477.5"/>
+</g>
+<!-- pllab -->
+<g id="proc~~doquiver~~CallsGraph_node14" class="node"><title>pllab</title>
+<polygon fill="#777777" stroke="#777777" points="239,-402 185,-402 185,-378 239,-378 239,-402"/>
+<text text-anchor="middle" x="212" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pllab</text>
+</g>
+<!-- proc~labels&#45;&gt;pllab -->
+<g id="proc~~doquiver~~CallsGraph_edge5" class="edge"><title>proc~labels&#45;&gt;pllab</title>
+<path fill="none" stroke="black" d="M146.321,-390C155.187,-390 165.243,-390 174.738,-390"/>
+<polygon fill="black" stroke="black" points="174.738,-393.5 184.738,-390 174.738,-386.5 174.738,-393.5"/>
+</g>
+<!-- plcolorbar -->
+<g id="proc~~doquiver~~CallsGraph_node15" class="node"><title>plcolorbar</title>
+<polygon fill="#777777" stroke="#777777" points="242,-360 182,-360 182,-336 242,-336 242,-360"/>
+<text text-anchor="middle" x="212" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcolorbar</text>
+</g>
+<!-- proc~colorbar&#45;&gt;plcolorbar -->
+<g id="proc~~doquiver~~CallsGraph_edge6" class="edge"><title>proc~colorbar&#45;&gt;plcolorbar</title>
+<path fill="none" stroke="black" d="M146.321,-348C154.232,-348 163.091,-348 171.653,-348"/>
+<polygon fill="black" stroke="black" points="171.867,-351.5 181.867,-348 171.867,-344.5 171.867,-351.5"/>
+</g>
+<!-- plvpor -->
+<g id="proc~~doquiver~~CallsGraph_node16" class="node"><title>plvpor</title>
+<polygon fill="#777777" stroke="#777777" points="239,-318 185,-318 185,-294 239,-294 239,-318"/>
+<text text-anchor="middle" x="212" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvpor</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvpor -->
+<g id="proc~~doquiver~~CallsGraph_edge7" class="edge"><title>proc~subplot&#45;&gt;plvpor</title>
+<path fill="none" stroke="black" d="M137.546,-255.147C151.016,-264.473 169.823,-277.493 185.035,-288.024"/>
+<polygon fill="black" stroke="black" points="183.294,-291.076 193.508,-293.89 187.278,-285.32 183.294,-291.076"/>
+</g>
+<!-- plvsta -->
+<g id="proc~~doquiver~~CallsGraph_node17" class="node"><title>plvsta</title>
+<polygon fill="#777777" stroke="#777777" points="239,-276 185,-276 185,-252 239,-252 239,-276"/>
+<text text-anchor="middle" x="212" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvsta</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvsta -->
+<g id="proc~~doquiver~~CallsGraph_edge8" class="edge"><title>proc~subplot&#45;&gt;plvsta</title>
+<path fill="none" stroke="black" d="M146.321,-249.074C155.187,-251.12 165.243,-253.441 174.738,-255.632"/>
+<polygon fill="black" stroke="black" points="174.207,-259.101 184.738,-257.94 175.781,-252.281 174.207,-259.101"/>
+</g>
+<!-- plvasp -->
+<g id="proc~~doquiver~~CallsGraph_node18" class="node"><title>plvasp</title>
+<polygon fill="#777777" stroke="#777777" points="239,-234 185,-234 185,-210 239,-210 239,-234"/>
+<text text-anchor="middle" x="212" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvasp</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvasp -->
+<g id="proc~~doquiver~~CallsGraph_edge9" class="edge"><title>proc~subplot&#45;&gt;plvasp</title>
+<path fill="none" stroke="black" d="M146.321,-236.926C155.187,-234.88 165.243,-232.559 174.738,-230.368"/>
+<polygon fill="black" stroke="black" points="175.781,-233.719 184.738,-228.06 174.207,-226.899 175.781,-233.719"/>
+</g>
+<!-- plssub -->
+<g id="proc~~doquiver~~CallsGraph_node19" class="node"><title>plssub</title>
+<polygon fill="#777777" stroke="#777777" points="239,-192 185,-192 185,-168 239,-168 239,-192"/>
+<text text-anchor="middle" x="212" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plssub</text>
+</g>
+<!-- proc~subplot&#45;&gt;plssub -->
+<g id="proc~~doquiver~~CallsGraph_edge10" class="edge"><title>proc~subplot&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M137.546,-230.853C151.016,-221.527 169.823,-208.507 185.035,-197.976"/>
+<polygon fill="black" stroke="black" points="187.278,-200.68 193.508,-192.11 183.294,-194.924 187.278,-200.68"/>
+</g>
+<!-- pladv -->
+<g id="proc~~doquiver~~CallsGraph_node20" class="node"><title>pladv</title>
+<polygon fill="#777777" stroke="#777777" points="239,-150 185,-150 185,-126 239,-126 239,-150"/>
+<text text-anchor="middle" x="212" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pladv</text>
+</g>
+<!-- proc~subplot&#45;&gt;pladv -->
+<g id="proc~~doquiver~~CallsGraph_edge11" class="edge"><title>proc~subplot&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M127.198,-230.971C137.824,-213.806 158.954,-181.837 182,-159 182.795,-158.212 183.621,-157.432 184.471,-156.661"/>
+<polygon fill="black" stroke="black" points="187.001,-159.113 192.518,-150.069 182.565,-153.698 187.001,-159.113"/>
+</g>
+<!-- proc~figure&#45;&gt;plssub -->
+<g id="proc~~doquiver~~CallsGraph_edge14" class="edge"><title>proc~figure&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M146.321,-150.148C155.47,-154.371 165.886,-159.178 175.645,-163.682"/>
+<polygon fill="black" stroke="black" points="174.192,-166.866 184.738,-167.879 177.125,-160.511 174.192,-166.866"/>
+</g>
+<!-- proc~figure&#45;&gt;pladv -->
+<g id="proc~~doquiver~~CallsGraph_edge12" class="edge"><title>proc~figure&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M146.321,-138C155.187,-138 165.243,-138 174.738,-138"/>
+<polygon fill="black" stroke="black" points="174.738,-141.5 184.738,-138 174.738,-134.5 174.738,-141.5"/>
+</g>
+<!-- pleop -->
+<g id="proc~~doquiver~~CallsGraph_node21" class="node"><title>pleop</title>
+<polygon fill="#777777" stroke="#777777" points="239,-108 185,-108 185,-84 239,-84 239,-108"/>
+<text text-anchor="middle" x="212" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pleop</text>
+</g>
+<!-- proc~figure&#45;&gt;pleop -->
+<g id="proc~~doquiver~~CallsGraph_edge13" class="edge"><title>proc~figure&#45;&gt;pleop</title>
+<path fill="none" stroke="black" d="M146.321,-125.852C155.47,-121.629 165.886,-116.822 175.645,-112.318"/>
+<polygon fill="black" stroke="black" points="177.125,-115.489 184.738,-108.121 174.192,-109.134 177.125,-115.489"/>
+</g>
+<!-- plbop -->
+<g id="proc~~doquiver~~CallsGraph_node22" class="node"><title>plbop</title>
+<polygon fill="#777777" stroke="#777777" points="239,-66 185,-66 185,-42 239,-42 239,-66"/>
+<text text-anchor="middle" x="212" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbop</text>
+</g>
+<!-- proc~figure&#45;&gt;plbop -->
+<g id="proc~~doquiver~~CallsGraph_edge15" class="edge"><title>proc~figure&#45;&gt;plbop</title>
+<path fill="none" stroke="black" d="M130.872,-125.795C142.838,-112.647 162.916,-91.406 182,-75 182.981,-74.1566 183.994,-73.3116 185.028,-72.4707"/>
+<polygon fill="black" stroke="black" points="187.375,-75.0809 193.158,-66.2035 183.101,-69.537 187.375,-75.0809"/>
+</g>
+<!-- plbox -->
+<g id="proc~~doquiver~~CallsGraph_node23" class="node"><title>plbox</title>
+<polygon fill="#777777" stroke="#777777" points="239,-24 185,-24 185,-0 239,-0 239,-24"/>
+<text text-anchor="middle" x="212" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbox</text>
+</g>
+<!-- proc~ticks&#45;&gt;plbox -->
+<g id="proc~~doquiver~~CallsGraph_edge16" class="edge"><title>proc~ticks&#45;&gt;plbox</title>
+<path fill="none" stroke="black" d="M146.321,-41.8519C155.47,-37.6292 165.886,-32.822 175.645,-28.3177"/>
+<polygon fill="black" stroke="black" points="177.125,-31.4893 184.738,-24.1208 174.192,-25.1336 177.125,-31.4893"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -402,31 +701,70 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edoquiver%7E%7ECalledByGraph.svg usemap="#proc~~doquiver~~CalledByGraph">
-            <map id="proc~~doquiver~~CalledByGraph" name="proc~~doquiver~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,5,225,37"/>
-<area shape="rect" id="node3" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~doquiver~~CalledByGraph Pages: 1 -->
+<svg id="procdoquiverCalledByGraph" width="265pt" height="32pt"
+ viewBox="0.00 0.00 265.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~doquiver~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~doquiver~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 261,-28 261,4 -4,4"/>
+<!-- proc~doquiver -->
+<g id="proc~~doquiver~~CalledByGraph_node1" class="node"><title>proc~doquiver</title>
+<polygon fill="none" stroke="black" points="257,-24 201,-24 201,-0 257,-0 257,-24"/>
+<text text-anchor="middle" x="229" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">doQuiver</text>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~doquiver~~CalledByGraph_node2" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~doquiver~~CalledByGraph_node2"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-24 94,-24 94,-0 165,-0 165,-24"/>
+<text text-anchor="middle" x="129.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~doquiver -->
+<g id="proc~~doquiver~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~doquiver</title>
+<path fill="none" stroke="black" d="M165.149,-12C173.385,-12 182.209,-12 190.563,-12"/>
+<polygon fill="black" stroke="black" points="190.815,-15.5001 200.814,-12 190.814,-8.5001 190.815,-15.5001"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~doquiver~~CalledByGraph_node3" class="node"><title>program~main_prg</title>
+<g id="a_proc~~doquiver~~CalledByGraph_node3"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-24 3.55271e-15,-24 3.55271e-15,-0 58,-0 58,-24"/>
+<text text-anchor="middle" x="29" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~doquiver~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-12C66.2347,-12 75.1563,-12 83.8823,-12"/>
+<polygon fill="black" stroke="black" points="83.9695,-15.5001 93.9695,-12 83.9695,-8.5001 83.9695,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -502,11 +840,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -639,6 +977,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     

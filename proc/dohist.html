@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -156,6 +157,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
     <div class="list-group">
@@ -178,6 +180,10 @@
       <a class="list-group-item" href="../proc/box.html">box</a>
       
       <a class="list-group-item" href="../proc/colorbar.html">colorbar</a>
+      
+      <a class="list-group-item" href="../proc/colorbar2.html">colorbar2</a>
+      
+      <a class="list-group-item" href="../proc/colorize.html">colorize</a>
       
       <a class="list-group-item" href="../proc/contour.html">contour</a>
       
@@ -205,6 +211,8 @@
       
       <a class="list-group-item" href="../proc/dosurface.html">doSurface</a>
       
+      <a class="list-group-item" href="../proc/endswith.html">endsWith</a>
+      
       <a class="list-group-item" href="../proc/errorbar.html">errorbar</a>
       
       <a class="list-group-item" href="../proc/figure.html">figure</a>
@@ -213,7 +221,11 @@
       
       <a class="list-group-item" href="../proc/fillbetweenx.html">fillBetweenx</a>
       
+      <a class="list-group-item" href="../interface/flatten.html">flatten</a>
+      
       <a class="list-group-item" href="../proc/hist.html">hist</a>
+      
+      <a class="list-group-item" href="../proc/int2char.html">int2char</a>
       
       <a class="list-group-item" href="../proc/labels.html">labels</a>
       
@@ -222,6 +234,12 @@
       <a class="list-group-item" href="../proc/linspace.html">linspace</a>
       
       <a class="list-group-item" href="../proc/makelogo.html">makeLogo</a>
+      
+      <a class="list-group-item" href="../proc/mean.html">mean</a>
+      
+      <a class="list-group-item" href="../proc/meshgridx.html">meshGridX</a>
+      
+      <a class="list-group-item" href="../proc/meshgridy.html">meshGridY</a>
       
       <a class="list-group-item" href="../interface/mixval.html">mixval</a>
       
@@ -233,11 +251,25 @@
       
       <a class="list-group-item" href="../proc/quiver.html">quiver</a>
       
+      <a class="list-group-item" href="../proc/randomnormal.html">randomNormal</a>
+      
+      <a class="list-group-item" href="../proc/randomuniform.html">randomUniform</a>
+      
+      <a class="list-group-item" href="../proc/real2char.html">real2char</a>
+      
       <a class="list-group-item" href="../proc/scatter.html">scatter</a>
       
       <a class="list-group-item" href="../proc/setup.html">setup</a>
       
       <a class="list-group-item" href="../proc/show.html">show</a>
+      
+      <a class="list-group-item" href="../proc/showprogress.html">showProgress</a>
+      
+      <a class="list-group-item" href="../interface/span.html">span</a>
+      
+      <a class="list-group-item" href="../proc/startswith.html">startsWith</a>
+      
+      <a class="list-group-item" href="../proc/stdev.html">stdev</a>
       
       <a class="list-group-item" href="../proc/subplot.html">subplot</a>
       
@@ -295,30 +327,302 @@ public subroutine doHist()
     
      <h3>Calls</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edohist%7E%7ECallsGraph.svg usemap="#proc~~dohist~~CallsGraph">
-            <map id="proc~~dohist~~CallsGraph" name="proc~~dohist~~CallsGraph">
-<area shape="rect" id="node2" href="../proc/hist.html" title="hist" alt="" coords="125,64,197,96"/>
-<area shape="rect" id="node3" href="../proc/ticks.html" title="ticks" alt="" coords="125,221,197,253"/>
-<area shape="rect" id="node4" href="../interface/mixval.html" title="mixval" alt="" coords="365,5,437,37"/>
-<area shape="rect" id="node5" href="../proc/bar.html" title="bar" alt="" coords="245,109,317,141"/>
-<area shape="rect" id="node6" href="../proc/xylim.html" title="xylim" alt="" coords="125,277,197,309"/>
-<area shape="rect" id="node7" href="../proc/bindata.html" title="binData" alt="" coords="245,165,317,197"/>
-<area shape="rect" id="node8" href="../proc/subplot.html" title="subplot" alt="" coords="125,417,197,449"/>
-<area shape="rect" id="node9" href="../proc/figure.html" title="figure" alt="" coords="125,585,197,617"/>
-<area shape="rect" id="node15" href="../proc/linspace.html" title="linspace" alt="" coords="365,229,437,261"/>
-<area shape="rect" id="node22" href="../proc/setup.html" title="setup" alt="" coords="245,669,317,701"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~dohist~~CallsGraph Pages: 1 -->
+<svg id="procdohistCallsGraph" width="332pt" height="528pt"
+ viewBox="0.00 0.00 332.00 528.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dohist~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 524)">
+<title>proc~~dohist~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-524 328,-524 328,4 -4,4"/>
+<!-- proc~dohist -->
+<g id="proc~~dohist~~CallsGraph_node1" class="node"><title>proc~dohist</title>
+<polygon fill="none" stroke="black" points="54,-327 0,-327 0,-303 54,-303 54,-327"/>
+<text text-anchor="middle" x="27" y="-312.6" font-family="Helvetica,sans-Serif" font-size="10.50">doHist</text>
+</g>
+<!-- proc~bindata -->
+<g id="proc~~dohist~~CallsGraph_node2" class="node"><title>proc~bindata</title>
+<g id="a_proc~~dohist~~CallsGraph_node2"><a xlink:href="../proc/bindata.html" xlink:title="binData">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234,-520 180,-520 180,-496 234,-496 234,-520"/>
+<text text-anchor="middle" x="207" y="-505.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">binData</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~bindata -->
+<g id="proc~~dohist~~CallsGraph_edge20" class="edge"><title>proc~dohist&#45;&gt;proc~bindata</title>
+<path fill="none" stroke="black" d="M28.716,-327.277C31.2163,-358.294 42.2482,-440.295 90,-482 111.763,-501.007 144.415,-507.001 169.537,-508.53"/>
+<polygon fill="black" stroke="black" points="169.659,-512.038 179.79,-508.937 169.936,-505.043 169.659,-512.038"/>
+</g>
+<!-- interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_node3" class="node"><title>interface~mixval</title>
+<g id="a_proc~~dohist~~CallsGraph_node3"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
+<polygon fill="#a7506f" stroke="#a7506f" points="324,-461 270,-461 270,-437 324,-437 324,-461"/>
+<text text-anchor="middle" x="297" y="-446.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge21" class="edge"><title>proc~dohist&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M30.7075,-327.161C36.7486,-351.202 53.7444,-404.666 90,-430 140.422,-465.233 215.581,-461.827 259.809,-455.713"/>
+<polygon fill="black" stroke="black" points="260.452,-459.155 269.821,-454.208 259.412,-452.233 260.452,-459.155"/>
+</g>
+<!-- proc~figure -->
+<g id="proc~~dohist~~CallsGraph_node4" class="node"><title>proc~figure</title>
+<g id="a_proc~~dohist~~CallsGraph_node4"><a xlink:href="../proc/figure.html" xlink:title="figure">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-192 90,-192 90,-168 144,-168 144,-192"/>
+<text text-anchor="middle" x="117" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">figure</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~figure -->
+<g id="proc~~dohist~~CallsGraph_edge22" class="edge"><title>proc~dohist&#45;&gt;proc~figure</title>
+<path fill="none" stroke="black" d="M36.1211,-302.542C51.2593,-279.318 83.9296,-229.199 102.457,-200.777"/>
+<polygon fill="black" stroke="black" points="105.623,-202.328 108.152,-192.04 99.759,-198.506 105.623,-202.328"/>
+</g>
+<!-- proc~hist -->
+<g id="proc~~dohist~~CallsGraph_node5" class="node"><title>proc~hist</title>
+<g id="a_proc~~dohist~~CallsGraph_node5"><a xlink:href="../proc/hist.html" xlink:title="hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-421 90,-421 90,-397 144,-397 144,-421"/>
+<text text-anchor="middle" x="117" y="-406.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hist</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~hist -->
+<g id="proc~~dohist~~CallsGraph_edge23" class="edge"><title>proc~dohist&#45;&gt;proc~hist</title>
+<path fill="none" stroke="black" d="M39.5045,-327.289C54.2615,-343.052 80.0367,-370.585 97.5494,-389.291"/>
+<polygon fill="black" stroke="black" points="95.1034,-391.8 104.493,-396.708 100.214,-387.016 95.1034,-391.8"/>
+</g>
+<!-- proc~xylim -->
+<g id="proc~~dohist~~CallsGraph_node6" class="node"><title>proc~xylim</title>
+<g id="a_proc~~dohist~~CallsGraph_node6"><a xlink:href="../proc/xylim.html" xlink:title="xylim">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-129 90,-129 90,-105 144,-105 144,-129"/>
+<text text-anchor="middle" x="117" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">xylim</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~xylim -->
+<g id="proc~~dohist~~CallsGraph_edge24" class="edge"><title>proc~dohist&#45;&gt;proc~xylim</title>
+<path fill="none" stroke="black" d="M31.9744,-302.947C40.9245,-276.334 63.9257,-210.805 90,-159 93.6049,-151.838 98.0449,-144.305 102.229,-137.627"/>
+<polygon fill="black" stroke="black" points="105.205,-139.47 107.674,-129.167 99.3187,-135.682 105.205,-139.47"/>
+</g>
+<!-- proc~subplot -->
+<g id="proc~~dohist~~CallsGraph_node7" class="node"><title>proc~subplot</title>
+<g id="a_proc~~dohist~~CallsGraph_node7"><a xlink:href="../proc/subplot.html" xlink:title="subplot">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-297 90,-297 90,-273 144,-273 144,-297"/>
+<text text-anchor="middle" x="117" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subplot</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~subplot -->
+<g id="proc~~dohist~~CallsGraph_edge25" class="edge"><title>proc~dohist&#45;&gt;proc~subplot</title>
+<path fill="none" stroke="black" d="M54.4029,-305.999C62.5689,-303.215 71.703,-300.101 80.3848,-297.142"/>
+<polygon fill="black" stroke="black" points="81.5833,-300.431 89.919,-293.891 79.3245,-293.805 81.5833,-300.431"/>
+</g>
+<!-- proc~ticks -->
+<g id="proc~~dohist~~CallsGraph_node8" class="node"><title>proc~ticks</title>
+<g id="a_proc~~dohist~~CallsGraph_node8"><a xlink:href="../proc/ticks.html" xlink:title="ticks">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-45 90,-45 90,-21 144,-21 144,-45"/>
+<text text-anchor="middle" x="117" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ticks</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~ticks -->
+<g id="proc~~dohist~~CallsGraph_edge26" class="edge"><title>proc~dohist&#45;&gt;proc~ticks</title>
+<path fill="none" stroke="black" d="M30.8828,-302.98C38.9765,-269.696 63.0832,-173.659 90,-96 94.8437,-82.0252 101.156,-66.6773 106.348,-54.6291"/>
+<polygon fill="black" stroke="black" points="109.59,-55.9518 110.389,-45.3872 103.176,-53.1475 109.59,-55.9518"/>
+</g>
+<!-- proc~bar -->
+<g id="proc~~dohist~~CallsGraph_node9" class="node"><title>proc~bar</title>
+<g id="a_proc~~dohist~~CallsGraph_node9"><a xlink:href="../proc/bar.html" xlink:title="bar">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-402 180,-402 180,-378 234,-378 234,-402"/>
+<text text-anchor="middle" x="207" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bar</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~bar -->
+<g id="proc~~dohist~~CallsGraph_edge27" class="edge"><title>proc~dohist&#45;&gt;proc~bar</title>
+<path fill="none" stroke="black" d="M54.2645,-326.067C84.9828,-339.01 135.988,-360.501 170.285,-374.952"/>
+<polygon fill="black" stroke="black" points="169.343,-378.353 179.918,-379.01 172.061,-371.902 169.343,-378.353"/>
+</g>
+<!-- proc~linspace -->
+<g id="proc~~dohist~~CallsGraph_node10" class="node"><title>proc~linspace</title>
+<g id="a_proc~~dohist~~CallsGraph_node10"><a xlink:href="../proc/linspace.html" xlink:title="linspace">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="324,-520 270,-520 270,-496 324,-496 324,-520"/>
+<text text-anchor="middle" x="297" y="-505.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linspace</text>
+</a>
+</g>
+</g>
+<!-- proc~bindata&#45;&gt;proc~linspace -->
+<g id="proc~~dohist~~CallsGraph_edge1" class="edge"><title>proc~bindata&#45;&gt;proc~linspace</title>
+<path fill="none" stroke="black" d="M234.403,-508C242.393,-508 251.311,-508 259.824,-508"/>
+<polygon fill="black" stroke="black" points="259.919,-511.5 269.919,-508 259.919,-504.5 259.919,-511.5"/>
+</g>
+<!-- pladv -->
+<g id="proc~~dohist~~CallsGraph_node11" class="node"><title>pladv</title>
+<polygon fill="#777777" stroke="#777777" points="234,-192 180,-192 180,-168 234,-168 234,-192"/>
+<text text-anchor="middle" x="207" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pladv</text>
+</g>
+<!-- proc~figure&#45;&gt;pladv -->
+<g id="proc~~dohist~~CallsGraph_edge2" class="edge"><title>proc~figure&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M144.403,-180C152.393,-180 161.311,-180 169.824,-180"/>
+<polygon fill="black" stroke="black" points="169.919,-183.5 179.919,-180 169.919,-176.5 169.919,-183.5"/>
+</g>
+<!-- pleop -->
+<g id="proc~~dohist~~CallsGraph_node12" class="node"><title>pleop</title>
+<polygon fill="#777777" stroke="#777777" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
+<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pleop</text>
+</g>
+<!-- proc~figure&#45;&gt;pleop -->
+<g id="proc~~dohist~~CallsGraph_edge3" class="edge"><title>proc~figure&#45;&gt;pleop</title>
+<path fill="none" stroke="black" d="M129.042,-167.988C141.153,-155.004 161.354,-133.903 180,-117 180.817,-116.26 181.656,-115.513 182.509,-114.766"/>
+<polygon fill="black" stroke="black" points="184.966,-117.273 190.36,-108.154 180.456,-111.919 184.966,-117.273"/>
+</g>
+<!-- plssub -->
+<g id="proc~~dohist~~CallsGraph_node13" class="node"><title>plssub</title>
+<polygon fill="#777777" stroke="#777777" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
+<text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plssub</text>
+</g>
+<!-- proc~figure&#45;&gt;plssub -->
+<g id="proc~~dohist~~CallsGraph_edge4" class="edge"><title>proc~figure&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M143.453,-192.148C152.21,-196.327 162.165,-201.079 171.518,-205.543"/>
+<polygon fill="black" stroke="black" points="170.072,-208.73 180.604,-209.879 173.087,-202.413 170.072,-208.73"/>
+</g>
+<!-- plbop -->
+<g id="proc~~dohist~~CallsGraph_node14" class="node"><title>plbop</title>
+<polygon fill="#777777" stroke="#777777" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
+<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbop</text>
+</g>
+<!-- proc~figure&#45;&gt;plbop -->
+<g id="proc~~dohist~~CallsGraph_edge5" class="edge"><title>proc~figure&#45;&gt;plbop</title>
+<path fill="none" stroke="black" d="M143.453,-167.852C152.21,-163.673 162.165,-158.921 171.518,-154.457"/>
+<polygon fill="black" stroke="black" points="173.087,-157.587 180.604,-150.121 170.072,-151.27 173.087,-157.587"/>
+</g>
+<!-- proc~hist&#45;&gt;proc~bindata -->
+<g id="proc~~dohist~~CallsGraph_edge8" class="edge"><title>proc~hist&#45;&gt;proc~bindata</title>
+<path fill="none" stroke="black" d="M128.791,-421.139C143.635,-437.839 170.536,-468.103 188.337,-488.129"/>
+<polygon fill="black" stroke="black" points="185.862,-490.613 195.121,-495.761 191.093,-485.962 185.862,-490.613"/>
+</g>
+<!-- proc~hist&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge6" class="edge"><title>proc~hist&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M144.265,-414.902C174.851,-421.775 225.551,-433.169 259.843,-440.875"/>
+<polygon fill="black" stroke="black" points="259.394,-444.361 269.918,-443.139 260.928,-437.531 259.394,-444.361"/>
+</g>
+<!-- proc~hist&#45;&gt;proc~bar -->
+<g id="proc~~dohist~~CallsGraph_edge7" class="edge"><title>proc~hist&#45;&gt;proc~bar</title>
+<path fill="none" stroke="black" d="M144.403,-403.299C152.481,-401.555 161.507,-399.607 170.105,-397.75"/>
+<polygon fill="black" stroke="black" points="170.883,-401.163 179.919,-395.631 169.406,-394.32 170.883,-401.163"/>
+</g>
+<!-- plwind -->
+<g id="proc~~dohist~~CallsGraph_node15" class="node"><title>plwind</title>
+<polygon fill="#777777" stroke="#777777" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plwind</text>
+</g>
+<!-- proc~xylim&#45;&gt;plwind -->
+<g id="proc~~dohist~~CallsGraph_edge9" class="edge"><title>proc~xylim&#45;&gt;plwind</title>
+<path fill="none" stroke="black" d="M134.967,-104.853C147.994,-95.5274 166.181,-82.5069 180.891,-71.9759"/>
+<polygon fill="black" stroke="black" points="182.991,-74.7768 189.085,-66.1097 178.916,-69.085 182.991,-74.7768"/>
+</g>
+<!-- proc~subplot&#45;&gt;pladv -->
+<g id="proc~~dohist~~CallsGraph_edge14" class="edge"><title>proc~subplot&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M125.546,-272.848C136.43,-255.812 157.689,-224.305 180,-201 180.65,-200.322 181.321,-199.645 182.009,-198.973"/>
+<polygon fill="black" stroke="black" points="184.636,-201.319 189.764,-192.047 179.974,-196.098 184.636,-201.319"/>
+</g>
+<!-- proc~subplot&#45;&gt;plssub -->
+<g id="proc~~dohist~~CallsGraph_edge13" class="edge"><title>proc~subplot&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M134.967,-272.853C147.994,-263.527 166.181,-250.507 180.891,-239.976"/>
+<polygon fill="black" stroke="black" points="182.991,-242.777 189.085,-234.11 178.916,-237.085 182.991,-242.777"/>
+</g>
+<!-- plvpor -->
+<g id="proc~~dohist~~CallsGraph_node16" class="node"><title>plvpor</title>
+<polygon fill="#777777" stroke="#777777" points="234,-360 180,-360 180,-336 234,-336 234,-360"/>
+<text text-anchor="middle" x="207" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvpor</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvpor -->
+<g id="proc~~dohist~~CallsGraph_edge10" class="edge"><title>proc~subplot&#45;&gt;plvpor</title>
+<path fill="none" stroke="black" d="M134.967,-297.147C147.994,-306.473 166.181,-319.493 180.891,-330.024"/>
+<polygon fill="black" stroke="black" points="178.916,-332.915 189.085,-335.89 182.991,-327.223 178.916,-332.915"/>
+</g>
+<!-- plvsta -->
+<g id="proc~~dohist~~CallsGraph_node17" class="node"><title>plvsta</title>
+<polygon fill="#777777" stroke="#777777" points="234,-318 180,-318 180,-294 234,-294 234,-318"/>
+<text text-anchor="middle" x="207" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvsta</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvsta -->
+<g id="proc~~dohist~~CallsGraph_edge11" class="edge"><title>proc~subplot&#45;&gt;plvsta</title>
+<path fill="none" stroke="black" d="M144.403,-291.301C152.481,-293.228 161.507,-295.382 170.105,-297.434"/>
+<polygon fill="black" stroke="black" points="169.38,-300.859 179.919,-299.776 171.005,-294.05 169.38,-300.859"/>
+</g>
+<!-- plvasp -->
+<g id="proc~~dohist~~CallsGraph_node18" class="node"><title>plvasp</title>
+<polygon fill="#777777" stroke="#777777" points="234,-276 180,-276 180,-252 234,-252 234,-276"/>
+<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvasp</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvasp -->
+<g id="proc~~dohist~~CallsGraph_edge12" class="edge"><title>proc~subplot&#45;&gt;plvasp</title>
+<path fill="none" stroke="black" d="M144.403,-278.699C152.481,-276.772 161.507,-274.618 170.105,-272.566"/>
+<polygon fill="black" stroke="black" points="171.005,-275.95 179.919,-270.224 169.38,-269.141 171.005,-275.95"/>
+</g>
+<!-- plbox -->
+<g id="proc~~dohist~~CallsGraph_node19" class="node"><title>plbox</title>
+<polygon fill="#777777" stroke="#777777" points="234,-24 180,-24 180,-0 234,-0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbox</text>
+</g>
+<!-- proc~ticks&#45;&gt;plbox -->
+<g id="proc~~dohist~~CallsGraph_edge15" class="edge"><title>proc~ticks&#45;&gt;plbox</title>
+<path fill="none" stroke="black" d="M144.403,-26.6993C152.481,-24.7716 161.507,-22.6177 170.105,-20.5659"/>
+<polygon fill="black" stroke="black" points="171.005,-23.9495 179.919,-18.2239 169.38,-17.1407 171.005,-23.9495"/>
+</g>
+<!-- proc~bar&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge18" class="edge"><title>proc~bar&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M226.234,-402.225C238.705,-410.587 255.442,-421.807 269.396,-431.163"/>
+<polygon fill="black" stroke="black" points="267.836,-434.331 278.091,-436.993 271.734,-428.517 267.836,-434.331"/>
+</g>
+<!-- plline -->
+<g id="proc~~dohist~~CallsGraph_node20" class="node"><title>plline</title>
+<polygon fill="#777777" stroke="#777777" points="324,-419 270,-419 270,-395 324,-395 324,-419"/>
+<text text-anchor="middle" x="297" y="-404.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plline</text>
+</g>
+<!-- proc~bar&#45;&gt;plline -->
+<g id="proc~~dohist~~CallsGraph_edge16" class="edge"><title>proc~bar&#45;&gt;plline</title>
+<path fill="none" stroke="black" d="M234.403,-395.101C242.393,-396.644 251.311,-398.367 259.824,-400.011"/>
+<polygon fill="black" stroke="black" points="259.437,-403.501 269.919,-401.962 260.764,-396.628 259.437,-403.501"/>
+</g>
+<!-- plfill -->
+<g id="proc~~dohist~~CallsGraph_node21" class="node"><title>plfill</title>
+<polygon fill="#777777" stroke="#777777" points="324,-377 270,-377 270,-353 324,-353 324,-377"/>
+<text text-anchor="middle" x="297" y="-362.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plfill</text>
+</g>
+<!-- proc~bar&#45;&gt;plfill -->
+<g id="proc~~dohist~~CallsGraph_edge17" class="edge"><title>proc~bar&#45;&gt;plfill</title>
+<path fill="none" stroke="black" d="M234.403,-382.499C242.481,-380.204 251.507,-377.64 260.105,-375.198"/>
+<polygon fill="black" stroke="black" points="261.256,-378.509 269.919,-372.409 259.343,-371.775 261.256,-378.509"/>
+</g>
+<!-- plcol1 -->
+<g id="proc~~dohist~~CallsGraph_node22" class="node"><title>plcol1</title>
+<polygon fill="#777777" stroke="#777777" points="324,-335 270,-335 270,-311 324,-311 324,-335"/>
+<text text-anchor="middle" x="297" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
+</g>
+<!-- proc~bar&#45;&gt;plcol1 -->
+<g id="proc~~dohist~~CallsGraph_edge19" class="edge"><title>proc~bar&#45;&gt;plcol1</title>
+<path fill="none" stroke="black" d="M224.141,-377.711C237.538,-367.511 256.788,-352.854 271.994,-341.278"/>
+<polygon fill="black" stroke="black" points="274.126,-344.053 279.962,-335.211 269.885,-338.484 274.126,-344.053"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -394,31 +698,70 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
      
      <h3>Called By</h3>
      
-            <img class="depgraph" alt="dependency graph" src=../graphs/proc%7E%7Edohist%7E%7ECalledByGraph.svg usemap="#proc~~dohist~~CalledByGraph">
-            <map id="proc~~dohist~~CalledByGraph" name="proc~~dohist~~CalledByGraph">
-<area shape="rect" id="node2" href="../proc/doexamples.html" title="doExamples" alt="" coords="131,5,225,37"/>
-<area shape="rect" id="node3" href="../program/main_prg.html" title="main_prg" alt="" coords="5,5,83,37"/>
-</map>
-
-            <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-            <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  </div>
-                  <div class="modal-body">
-                    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~dohist~~CalledByGraph Pages: 1 -->
+<svg id="procdohistCalledByGraph" width="263pt" height="32pt"
+ viewBox="0.00 0.00 263.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dohist~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~dohist~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 259,-28 259,4 -4,4"/>
+<!-- proc~dohist -->
+<g id="proc~~dohist~~CalledByGraph_node1" class="node"><title>proc~dohist</title>
+<polygon fill="none" stroke="black" points="255,-24 201,-24 201,-0 255,-0 255,-24"/>
+<text text-anchor="middle" x="228" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">doHist</text>
+</g>
+<!-- proc~doexamples -->
+<g id="proc~~dohist~~CalledByGraph_node2" class="node"><title>proc~doexamples</title>
+<g id="a_proc~~dohist~~CalledByGraph_node2"><a xlink:href="../proc/doexamples.html" xlink:title="doExamples">
+<polygon fill="#d9534f" stroke="#d9534f" points="165,-24 94,-24 94,-0 165,-0 165,-24"/>
+<text text-anchor="middle" x="129.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doExamples</text>
+</a>
+</g>
+</g>
+<!-- proc~doexamples&#45;&gt;proc~dohist -->
+<g id="proc~~dohist~~CalledByGraph_edge2" class="edge"><title>proc~doexamples&#45;&gt;proc~dohist</title>
+<path fill="none" stroke="black" d="M165.066,-12C173.356,-12 182.233,-12 190.603,-12"/>
+<polygon fill="black" stroke="black" points="190.851,-15.5001 200.851,-12 190.851,-8.5001 190.851,-15.5001"/>
+</g>
+<!-- program~main_prg -->
+<g id="proc~~dohist~~CalledByGraph_node3" class="node"><title>program~main_prg</title>
+<g id="a_proc~~dohist~~CalledByGraph_node3"><a xlink:href="../program/main_prg.html" xlink:title="main_prg">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="58,-24 3.55271e-15,-24 3.55271e-15,-0 58,-0 58,-24"/>
+<text text-anchor="middle" x="29" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main_prg</text>
+</a>
+</g>
+</g>
+<!-- program~main_prg&#45;&gt;proc~doexamples -->
+<g id="proc~~dohist~~CalledByGraph_edge1" class="edge"><title>program~main_prg&#45;&gt;proc~doexamples</title>
+<path fill="none" stroke="black" d="M58.2261,-12C66.2347,-12 75.1563,-12 83.8823,-12"/>
+<polygon fill="black" stroke="black" points="83.9695,-15.5001 93.9695,-12 83.9695,-8.5001 83.9695,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
 Nodes of different colours represent the following:
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -494,11 +837,11 @@ arrows point from an interface to procedures which implement that interface.
 This could include the module procedures in a generic interface or the
 implementation in a submodule of an interface in a parent module.</p>
 
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+                
      
     <br>
     
@@ -575,6 +918,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     </section>
     <br>
+    
+    
     
     
     

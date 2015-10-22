@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -121,6 +122,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Programs</h3></div>
     <div class="list-group">
@@ -168,6 +170,8 @@
       
       <a class="list-group-item" href="../sourcefile/plplotlib.f90.html">plplotlib.f90</a>
       
+      <a class="list-group-item" href="../sourcefile/utilities.f90.html">utilities.f90</a>
+      
     </div>
   </div>
   
@@ -185,9 +189,9 @@
 	<span class="k">implicit none</span>
 <span class="k">	</span>
 <span class="k">	call </span><span class="n">setup</span><span class="p">(</span><span class="n">whiteOnBlack</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.)</span>
-
 <span class="c">!~ 	call setup(device=&#39;svgqt&#39;,fileName=&#39;examples/example-%n.svg&#39;,figSize=[320,240],transparent=.true.)</span>
 <span class="c">!~ 	call setup(device=&#39;svgqt&#39;,fileName=&#39;examples/logo-%n.svg&#39;,figSize=[500,500])</span>
+<span class="c">!~ 	call setup(device=&#39;svgqt&#39;,filename=&#39;examples/example-%n.svg&#39;,transparent=.true.)</span>
 	
 	<span class="k">call </span><span class="n">doExamples</span><span class="p">()</span>
 <span class="c">!~ 	call makeLogo</span>
