@@ -23,10 +23,11 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=41552;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
-FILE_NAME_1=19;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
-FILE_NAME_2=99;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
+current_page=1
+FILE_NAME_0=0;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fkinds.f90;0;2
+FILE_NAME_1=223;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fplplotlib.f90;0;2
+FILE_NAME_2=19;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fexamples.f90;0;2
+FILE_NAME_3=464;Fortran;0;EUTF-8;1;1;0;%2Fhome%2Fkyle%2FDevelopment%2FFortran%2FPlPlotLib%2Fsrc%2Fmain.f90;0;2
 
 [VTE]
 last_dir=/home/kyle

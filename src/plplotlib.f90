@@ -1,11 +1,13 @@
 module plplotlib_mod
 	!! Wrapper module for plplot to give it a more matplotlib like personality
-	use kinds_mod
+	use kinds_mod, only: wp
 	use plplot
+	use utilities_mod
 	implicit none
 	private
 	
 	integer,parameter::pp = plflt
+	integer,parameter::pi = kind(1)
 	
 	character(*),parameter::default_dev = 'qtwidget'
 		!! Default output device
@@ -26,13 +28,6 @@ module plplotlib_mod
 	!==============!
 	!= Interfaces =!
 	!==============!
-	
-	interface mixval
-		!! Return a 2-vector comprising the minimum and maximum values of an array
-		module procedure mixval_1
-		module procedure mixval_2
-		module procedure mixval_3
-	end interface
 	
 	interface localize
 		module procedure localize_1
@@ -55,7 +50,8 @@ module plplotlib_mod
 	
 	public::plot,plot3
 	public::scatter,errorbar
-	public::contour,contourf,colorbar
+	public::contour,contourf
+	public::colorbar,colorbar2
 	public::bar,barh
 	public::hist
 	public::fillBetween,fillBetweenx
@@ -67,77 +63,6 @@ contains
 	!===================!
 	!= Helper Routines =!
 	!===================!
-
-	function mixval_1(x) result(b)
-		!! Return [hi,low] for an array
-		real(wp),dimension(:),intent(in)::x
-			!! Array to find extrema in
-		real(wp),dimension(2)::b
-		
-		b = [minval(x),maxval(x)]
-	end function mixval_1
-
-	function mixval_2(x) result(b)
-		!! Return [hi,low] for an array
-		real(wp),dimension(:,:),intent(in)::x
-			!! Array to find extrema in
-		real(wp),dimension(2)::b
-		
-		b = [minval(x),maxval(x)]
-	end function mixval_2
-
-	function mixval_3(x) result(b)
-		!! Return [hi,low] for an array
-		real(wp),dimension(:,:,:),intent(in)::x
-			!! Array to find extrema in
-		real(wp),dimension(2)::b
-		
-		b = [minval(x),maxval(x)]
-	end function mixval_3
-
-	function linspace(l,h,N) result(o)
-		!! Return an array of evenly-spaced values
-		real(wp),intent(in)::l
-			!! Low-bound for values
-		real(wp),intent(in)::h
-			!! High-bound for values
-		integer,intent(in),optional::N
-			!! Number of values (default 20)
-		real(wp),dimension(:),allocatable::o
-		
-		integer::Nl,i
-		
-		Nl = 20
-		if(present(N)) Nl = N
-		
-		o = [( (h-l)*real(i-1,wp)/real(Nl-1,wp)+l , i=1 , Nl )]
-	end function linspace
-
-	function startsWith(text,str) result(o)
-		!! Test if text starts with str
-		character(*),intent(in)::text
-			!! Text to search
-		character(*),intent(in)::str
-			!! String to look for
-		logical::o
-		integer::k
-		
-		k = len(str)
-		o = text(1:k)==str
-	end function startsWith
-
-	function endsWith(text,str) result(o)
-		!! Test if text ends with str
-		character(*),intent(in)::text
-			!! Text to search
-		character(*),intent(in)::str
-			!! String to look for
-		logical::o
-		integer::k
-		
-		k = len(text)
-		o = text(k-len(str)+1:k)==str
-	end function endsWith
 
 	function binData(d,N,db,normalize) result(o)
 		!! Count data in each bin
@@ -574,6 +499,47 @@ contains
 			& [PL_COLORBAR_LABEL_LEFT,PL_COLORBAR_LABEL_RIGHT],labels, &
 			& ['bcvmt'],[0.0_pp],[0],[size(values)],values)
 	end subroutine colorbar
+
+	subroutine colorbar2(z,N,leftLabel,rightLabel)
+		!! Add a colorbar to the top of the plot
+		real(wp),dimension(:,:),intent(in)::z
+			!! Data used for levels computation
+		integer,intent(in)::N
+			!! Number of levels to compute
+		character(*),intent(in),optional::leftLabel
+			!! Label for left side of colorbar
+		character(*),intent(in),optional::rightLabel
+			!! Label for right side of colorbar
+		
+		real(pp),dimension(:,:),allocatable::values
+		character(64),dimension(2)::labels
+		
+		real(pp)::fill_width
+		real(pp)::cont_width
+		integer::cont_color
+		real(pp)::colorbar_width
+		real(pp)::colorbar_height
+		integer::k
+		
+		values = reshape( &
+			& real([( real(k-1,wp)/real(N-1,wp)*(maxval(z)-minval(z))+minval(z) ,k=1,N)],pp), &
+			& [N,1])
+		
+		fill_width = 2.0_pp
+		cont_width = 0.0_pp
+		cont_color = 1
+		labels = ''
+		if(present(leftLabel )) labels(1) = leftLabel
+		if(present(rightLabel)) labels(2) = rightLabel
+		
+		call plcolorbar(colorbar_width,colorbar_height,&
+			& ior(PL_COLORBAR_GRADIENT,PL_COLORBAR_SHADE_LABEL),PL_POSITION_RIGHT,&
+			& 0.01_pp,0.0_pp,0.05_pp,0.75_pp,&
+			& 0,1,1,0.0_pp,0.0_pp, &
+			& cont_color,cont_width, &
+			& [PL_COLORBAR_LABEL_BOTTOM,PL_COLORBAR_LABEL_TOP],labels, &
+			& ['bcvmt'],[0.0_pp],[0],[size(values)],values)
+	end subroutine colorbar2
 
 	subroutine legend(corner,series,lineWidths,markScales,markCounts,ncol)
 		!! Create legend for plot data
@@ -1136,6 +1102,7 @@ contains
 			sl = sl/maxval(sl)
 		end if
 		sb = [minval(sl),maxval(sl)]
+		cb = 0.0_wp
 		if(present(c)) cb = real([minval(c),maxval(c)],pp)
 		
 		scalingl = 1.0_pp
@@ -1187,6 +1154,7 @@ contains
 		real(pp)::dx,dxs
 		integer::k
 		
+		cb = 0.0_wp
 		if(present(c)) cb = real(mixval(c),pp)
 		dxs = 0.8_pp
 		if(present(relWidth)) dxs = real(relWidth,pp)
@@ -1237,6 +1205,7 @@ contains
 		real(pp)::dy,dys
 		integer::k
 		
+		cb = 0.0_wp
 		if(present(c)) cb = real(mixval(c),pp)
 		dys = 0.8_pp
 		if(present(relWidth)) dys = real(relWidth,pp)
