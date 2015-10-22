@@ -45,7 +45,7 @@ module utilities_mod
 	public::randomNormal
 	public::randomUniform
 	public::mean
-	public::standardDeviation
+	public::stdev
 	
 	public::flatten
 	
@@ -85,21 +85,27 @@ contains
 	end function mixval_3
 
 	function span_1(x) result(o)
+		!! Return hi-low for an array
 		real(wp),dimension(:),intent(in)::x
+			!! Array to find span in
 		real(wp)::o
 		
 		o = maxval(x)-minval(x)
 	end function span_1
 
 	function span_2(x) result(o)
+		!! Return hi-low for an array
 		real(wp),dimension(:,:),intent(in)::x
+			!! Array to find span in
 		real(wp)::o
 		
 		o = maxval(x)-minval(x)
 	end function span_2
 
 	function span_3(x) result(o)
+		!! Return hi-low for an array
 		real(wp),dimension(:,:,:),intent(in)::x
+			!! Array to find span in
 		real(wp)::o
 		
 		o = maxval(x)-minval(x)
@@ -170,21 +176,29 @@ contains
 	end function randomUniform
 
 	function flatten_2(A) result(o)
+		!! Convert a 2d array to 1d
 		real(wp),dimension(:,:),intent(in)::A
+			!! Array to convert
 		real(wp),dimension(:),allocatable::o
 		
 		o = reshape(A,[size(A)])
 	end function flatten_2
 
 	function flatten_3(A) result(o)
+		!! Convert a 3d array to 1d
 		real(wp),dimension(:,:,:),intent(in)::A
+			!! Array to convert
 		real(wp),dimension(:),allocatable::o
 		
 		o = reshape(A,[size(A)])
 	end function flatten_3
 
 	function meshGridX(x,y) result(o)
-		real(wp),dimension(:),intent(in)::x,y
+		!! Construct a 2d array of X values from a structured grid
+		real(wp),dimension(:),intent(in)::x
+			!! x-positions in grid
+		real(wp),dimension(:),intent(in)::y
+			!! y-positions in grid
 		real(wp),dimension(:,:),allocatable::o
 		
 		integer::Nx,Ny
@@ -199,7 +213,11 @@ contains
 	end function meshGridX
 
 	function meshGridY(x,y) result(o)
-		real(wp),dimension(:),intent(in)::x,y
+		!! Construct a 2d array of Y values from a structured grid
+		real(wp),dimension(:),intent(in)::x
+			!! x-positions in grid
+		real(wp),dimension(:),intent(in)::y
+			!! y-positions in grid
 		real(wp),dimension(:,:),allocatable::o
 		
 		integer::Nx,Ny
@@ -214,8 +232,11 @@ contains
 	end function meshGridY
 
 	function colorize(s,c) result(o)
+		!! Add terminal format codes to coloize a string
 		character(*),intent(in)::s
+			!! String to colorize
 		integer,dimension(3)::c ! c in [0,5]
+			!! Color code in [r,g,b] where \(r,g,b\in[0,5]\)
 		character(:),allocatable::o
 		
 		character(1),parameter::CR  = achar(13)
@@ -230,9 +251,13 @@ contains
 	end function colorize
 
 	elemental function real2char(a,f,l) result(o)
+		!! Convert a real to a character
 		real(wp),intent(in)::a
+			!! Real value to convert
 		character(*),optional,intent(in)::f
+			!! Format of result
 		integer,optional,intent(in)::l
+			!! Length of result
 		character(:),allocatable::o
 		
 		character(128)::buf
@@ -255,9 +280,13 @@ contains
 	end function real2char
 
 	elemental function int2char(a,f,l) result(o)
+		!! Convert an integer to a character
 		integer,intent(in)::a
+			!! Integer value to convert
 		character(*),optional,intent(in)::f
+			!! Format of result
 		integer,optional,intent(in)::l
+			!! Length of result
 		character(:),allocatable::o
 		
 		character(128)::buf
@@ -280,8 +309,11 @@ contains
 	end function int2char
 
 	subroutine showProgress(m,p)
+		!! Show a progress bar with a message
 		character(*),intent(in)::m
+			!! Message to show
 		real(wp),intent(in)::p
+			!! Progress level \(p\in[0,1]\)
 		
 		real(wp)::r
 		real(wp),save::po
@@ -290,7 +322,6 @@ contains
 		N = 40
 		
 		if(p<=0.0_wp) then
-!~ 			write(stdout,'(1A)') ''
 			po = p
 		end if
 		if(p-po<0.05 .and. p<1.0_wp) then
@@ -316,8 +347,11 @@ contains
 	end subroutine showProgress
 
 	function cmap(v,r) result(c)
+		!! Sample a color from a cool-warm colormap for colorize
 		real(wp),intent(in)::v
+			!! Value to sample
 		real(wp),dimension(2),intent(in)::r
+			!! Range to sample from
 		integer,dimension(3)::c
 		
 		integer::s
@@ -332,17 +366,19 @@ contains
 	end function cmap
 
 	function mean(d) result(o)
+		!! Compute the arithmetic mean of an array
 		real(wp),dimension(:),intent(in)::d
 		real(wp)::o
 		
 		o = sum(d)/real(size(d),wp)
 	end function mean
 
-	function standardDeviation(d) result(o)
+	function stdev(d) result(o)
+		!! Compute the standard deviation of an array
 		real(wp),dimension(:),intent(in)::d
 		real(wp)::o
 		
 		o = sqrt(sum((d-mean(d))**2)/real(size(d)-1,wp))
-	end function standardDeviation
+	end function stdev
 
 end module utilities_mod
