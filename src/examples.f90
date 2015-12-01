@@ -1,45 +1,26 @@
-module examples_mod
-	!! Examples of module use
+program examples_prg
+	!! A collection of example plots
 	use kinds_mod
 	use plplotlib_mod
-	use utilities_mod
 	implicit none
 	
+	call setup(device='svgqt',fileName='examples/example-%n.svg',figSize=[320,240],transparent=.true.)
+	
+	call doPlot()
+	call doScatter()
+	call doContour()
+	call doLegend()
+	call doQuiver()
+	call doBar()
+	call doFillBetween()
+	call doHist()
+	call doSurface()
+	call doError()
+	call doLogPlot()
+	
+	call show()
+	
 contains
-
-	subroutine makeLogo
-		real(wp),dimension(:),allocatable::x,y1,y2,y3
-		
-		x  = linspace(0.0_wp,1.0_wp,100)
-		y1 = x**2-1.0_wp
-		y2 = 2.0_wp*x-1.0_wp
-		y3 = x
-		y3 = cos(2.0_wp*PI*x)
-		
-		call figure()
-		call subplot(1,1,1)
-		call xylim(mixval(x),mixval([y1,y2,y3])*1.1_wp)
-		
-		call plot(x,y1,lineColor='b',lineWidth=10.0_wp)
-		call plot(x,y2,lineColor='r',lineWidth=10.0_wp)
-		call plot(x,y3,lineColor='c',lineWidth=10.0_wp)
-		
-		call ticks(lineWidth=5.0_wp)
-		call labels('','','')
-	end subroutine makeLogo
-
-	subroutine doExamples
-		call doPlot()
-		call doScatter()
-		call doContour()
-		call doLegend()
-		call doQuiver()
-		call doBar()
-		call doFillBetween()
-		call doHist()
-		call doSurface()
-		call doError()
-	end subroutine doExamples
 
 	subroutine doPlot
 		!! ![plot](|media|/example-1.svg)
@@ -217,7 +198,7 @@ contains
 		call figure()
 		call subplot(1,1,1)
 		call xylim(mixval(x),mixval([y1,y2]))
-		call fillBetween(x,y1,y2,fillColor='c',fillPattern='\',lineWidth=2.0_wp)
+		call fillBetween(x,y1,y2,fillColor='c',fillPattern='#',lineWidth=2.0_wp)
 		call plot(x,y1,lineColor='k',lineWidth=3.0_wp)
 		call plot(x,y2,lineColor='k',lineWidth=3.0_wp)
 		call ticks(color='b',lineWidth=3.0_wp)
@@ -308,4 +289,22 @@ contains
 		call labels('x','y','')
 	end subroutine doError
 
-end module examples_mod
+	subroutine doLogPlot
+		!! ![logPlot](|media|/example-11.svg)
+		
+		integer,parameter::N = 25
+		real(wp),dimension(N)::x,y,yl
+		
+		x = linspace(0.0_wp,5.0_wp,N)
+		y = exp(-x**2)
+		yl = log10(y)
+		
+		call figure()
+		call subplot(1,1,1)
+		call xylim(mixval(x),mixval(yl))
+		call plot(x,yl,lineColor='r',lineWidth=2.0_wp)
+		call ticks(logy=.true.)
+		call labels('x [linear]','y [log]','exp(-x#u2#d)')
+	end subroutine doLogPlot
+
+end program examples_prg

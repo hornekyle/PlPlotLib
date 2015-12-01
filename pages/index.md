@@ -25,7 +25,7 @@ the creation of a legend to distinguish between plots.
 {!src/basic.f90!}
 ~~~
 
-![plot-1.svg](|media|/plot-1.svg)
+![basic-1.svg](|media|/basic-1.svg)
 
 Step Details
 ------------
