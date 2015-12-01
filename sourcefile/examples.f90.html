@@ -117,7 +117,7 @@
   <div class="row">
     <div class="col-lg-3">
     
-  
+<div id="sidebar">
   
   
   
@@ -125,13 +125,16 @@
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Modules</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/examples_mod.html">examples_mod</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#progs">Programs</a></h3></div>
+    <div id="progs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../program/examples_prg.html">examples_prg</a>
+          
+        </div>
     </div>
   </div>
+  
   
   
   
@@ -157,75 +160,61 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Source Files</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/basic.f90.html">basic.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/examples.f90.html">examples.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/kinds.f90.html">kinds.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/main.f90.html">main.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/plplotlib.f90.html">plplotlib.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/utilities.f90.html">utilities.f90</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles">All Source Files</a></h3></div>
+    <div id="allfiles" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../sourcefile/animate.f90.html">animate.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/basic.f90.html">basic.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/examples.f90.html">examples.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/kinds.f90.html">kinds.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/logo.f90.html">logo.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/plplotlib.f90.html">plplotlib.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/utilities.f90.html">utilities.f90</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     <div class="col-lg-9" id='text'>
     
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span class="k">module </span><span class="n">examples_mod</span>
-	<span class="c">!! Examples of module use</span>
+    <div class="highlight"><pre><span class="k">program </span><span class="n">examples_prg</span>
+	<span class="c">!! A collection of example plots</span>
 	<span class="k">use </span><span class="n">kinds_mod</span>
 	<span class="k">use </span><span class="n">plplotlib_mod</span>
-	<span class="k">use </span><span class="n">utilities_mod</span>
 	<span class="k">implicit none</span>
 <span class="k">	</span>
+<span class="k">	call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;examples/example-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">320</span><span class="p">,</span><span class="mi">240</span><span class="p">],</span><span class="n">transparent</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+	
+	<span class="k">call </span><span class="n">doPlot</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doScatter</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doContour</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doLegend</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doQuiver</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doBar</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doFillBetween</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doHist</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doSurface</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doError</span><span class="p">()</span>
+	<span class="k">call </span><span class="n">doLogPlot</span><span class="p">()</span>
+	
+	<span class="k">call </span><span class="n">show</span><span class="p">()</span>
+	
 <span class="k">contains</span>
 
-<span class="k">	subroutine </span><span class="n">makeLogo</span>
-		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">y3</span>
-		
-		<span class="n">x</span>  <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-		<span class="n">y1</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">1.0_wp</span>
-		<span class="n">y2</span> <span class="o">=</span> <span class="mf">2.0_wp</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mf">1.0_wp</span>
-		<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span>
-		<span class="n">y3</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="mf">2.0_wp</span><span class="o">*</span><span class="n">PI</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
-		
-		<span class="k">call </span><span class="n">figure</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">([</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">y3</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1_wp</span><span class="p">)</span>
-		
-		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">)</span>
-		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">)</span>
-		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">)</span>
-		
-		<span class="k">call </span><span class="n">ticks</span><span class="p">(</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">5.0_wp</span><span class="p">)</span>
-		<span class="k">call </span><span class="n">labels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-	<span class="k">end subroutine </span><span class="n">makeLogo</span>
-
-	<span class="k">subroutine </span><span class="n">doExamples</span>
-		<span class="k">call </span><span class="n">doPlot</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doScatter</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doContour</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doLegend</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doQuiver</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doBar</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doFillBetween</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doHist</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doSurface</span><span class="p">()</span>
-		<span class="k">call </span><span class="n">doError</span><span class="p">()</span>
-	<span class="k">end subroutine </span><span class="n">doExamples</span>
-
-	<span class="k">subroutine </span><span class="n">doPlot</span>
+<span class="k">	subroutine </span><span class="n">doPlot</span>
 		<span class="c">!! ![plot](|media|/example-1.svg)</span>
 		<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="kd">::</span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
 		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span><span class="p">,</span><span class="n">y</span>
@@ -401,98 +390,116 @@
 		<span class="k">call </span><span class="n">figure</span><span class="p">()</span>
 		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">([</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">]))</span>
-		<span class="k">call </span><span class="n">fillBetween</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">fillColor</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">fillPattern</span><span class="o">=</span><span class="s1">&#39;\&#39;,lineWidth=2.0_wp)</span>
-<span class="s1">		call plot(x,y1,lineColor=&#39;</span><span class="n">k</span><span class="s1">&#39;,lineWidth=3.0_wp)</span>
-<span class="s1">		call plot(x,y2,lineColor=&#39;</span><span class="n">k</span><span class="s1">&#39;,lineWidth=3.0_wp)</span>
-<span class="s1">		call ticks(color=&#39;</span><span class="n">b</span><span class="s1">&#39;,lineWidth=3.0_wp)</span>
-<span class="s1">		call labels(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">x</span><span class="err">#</span><span class="n">u2</span><span class="err">#</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="s1">&#39;,color=&#39;</span><span class="n">r</span><span class="s1">&#39;)</span>
-<span class="s1">	end subroutine doFillBetween</span>
+		<span class="k">call </span><span class="n">fillBetween</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">fillColor</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">fillPattern</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">2.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">3.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">3.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">3.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">labels</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;f(x)=x#u2#d-1&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">doFillBetween</span>
 
-<span class="s1">	subroutine doHist</span>
-<span class="s1">		!! ![hist](|media|/example-8.svg)</span>
-<span class="s1">		integer,parameter::N = 10000</span>
-<span class="s1">		real(wp),dimension(N,12)::r</span>
-<span class="s1">		real(wp),dimension(N)::x</span>
-<span class="s1">		real(wp),dimension(:,:),allocatable::h</span>
-<span class="s1">		</span>
-<span class="s1">		call random_number(r)</span>
-<span class="s1">		x = sum(r,2)-6.0_wp</span>
-<span class="s1">		call figure()</span>
-<span class="s1">		</span>
-<span class="s1">		call subplot(1,2,1)</span>
-<span class="s1">		call xylim(mixval(x),[0.0_wp,1.05_wp])</span>
-<span class="s1">		call hist(x,20)</span>
-<span class="s1">		call ticks()</span>
-<span class="s1">		</span>
-<span class="s1">		h = binData(x,20,normalize=2)</span>
-<span class="s1">		call subplot(1,2,2)</span>
-<span class="s1">		call xylim(mixval(h(:,1)),[0.0_wp,1.05_wp*maxval(h(:,2))])</span>
-<span class="s1">		call bar(h(:,1),h(:,2),c=h(:,2),relWidth=1.0_wp)</span>
-<span class="s1">		call ticks()</span>
-<span class="s1">	end subroutine doHist</span>
+	<span class="k">subroutine </span><span class="n">doHist</span>
+		<span class="c">!! ![hist](|media|/example-8.svg)</span>
+		<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="kd">::</span><span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span><span class="kd">::</span><span class="n">r</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="kd">::</span><span class="n">h</span>
+		
+		<span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mf">6.0_wp</span>
+		<span class="k">call </span><span class="n">figure</span><span class="p">()</span>
+		
+		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">1.05_wp</span><span class="p">])</span>
+		<span class="k">call </span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">ticks</span><span class="p">()</span>
+		
+		<span class="n">h</span> <span class="o">=</span> <span class="n">binData</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">h</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)),[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">1.05_wp</span><span class="o">*</span><span class="nb">maxval</span><span class="p">(</span><span class="n">h</span><span class="p">(:,</span><span class="mi">2</span><span class="p">))])</span>
+		<span class="k">call </span><span class="n">bar</span><span class="p">(</span><span class="n">h</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">h</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">h</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">relWidth</span><span class="o">=</span><span class="mf">1.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">ticks</span><span class="p">()</span>
+	<span class="k">end subroutine </span><span class="n">doHist</span>
 
-<span class="s1">	subroutine doSurface</span>
-<span class="s1">		!! ![surface](|media|/example-9.svg)</span>
-<span class="s1">		</span>
-<span class="s1">		integer,parameter::N = 24</span>
-<span class="s1">		real(wp),dimension(N)::x,y</span>
-<span class="s1">		real(wp),dimension(N,N)::z</span>
-<span class="s1">		integer::i,j</span>
-<span class="s1">		</span>
-<span class="s1">		x = linspace(-10.0_wp,10.0_wp,N)</span>
-<span class="s1">		y = linspace(-10.0_wp,10.0_wp,N)</span>
-<span class="s1">		forall(i=1:N,j=1:N)</span>
-<span class="s1">			z(i,j) = sin( sqrt(x(i)**2+y(j)**2) )/sqrt(x(i)**2+y(j)**2)</span>
-<span class="s1">		end forall</span>
-<span class="s1">		</span>
-<span class="s1">		call figure()</span>
-<span class="s1">		</span>
-<span class="s1">		call subplot(1,1,1,is3d=.true.)</span>
-<span class="s1">		call xyzlim(mixval(x),mixval(y),mixval(z),zoom=1.1_wp)</span>
-<span class="s1">		call surface(x,y,z,11)</span>
-<span class="s1">!~ 		call wireframe(x,y,z,lineColor=&#39;</span><span class="n">k</span><span class="s1">&#39;)</span>
-<span class="s1">		call box(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="n">z</span><span class="s1">&#39;)</span>
-<span class="s1">		</span>
-<span class="s1">	end subroutine doSurface</span>
+	<span class="k">subroutine </span><span class="n">doSurface</span>
+		<span class="c">!! ![surface](|media|/example-9.svg)</span>
+		
+		<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="kd">::</span><span class="n">N</span> <span class="o">=</span> <span class="mi">24</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span><span class="p">,</span><span class="n">y</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">z</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">i</span><span class="p">,</span><span class="n">j</span>
+		
+		<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="n">y</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="k">forall</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">)</span>
+			<span class="n">z</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+		<span class="k">end forall</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">figure</span><span class="p">()</span>
+		
+		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">is3d</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+		<span class="k">call </span><span class="n">xyzlim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">mixval</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="n">zoom</span><span class="o">=</span><span class="mf">1.1_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">surface</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="c">!~ 		call wireframe(x,y,z,lineColor=&#39;k&#39;)</span>
+		<span class="k">call </span><span class="n">box</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+		
+	<span class="k">end subroutine </span><span class="n">doSurface</span>
 
-<span class="s1">	subroutine doError</span>
-<span class="s1">		!! ![error](|media|/example-10.svg)</span>
-<span class="s1">		</span>
-<span class="s1">		integer,parameter::N = 25</span>
-<span class="s1">		real(wp),dimension(N)::x,y,xe,ye</span>
-<span class="s1">		real(wp),dimension(12)::r</span>
-<span class="s1">		real(wp)::m,s</span>
-<span class="s1">		integer::k</span>
-<span class="s1">		</span>
-<span class="s1">		x = linspace(0.0_wp,5.0_wp,N)</span>
-<span class="s1">		y = 1.0_wp/(x**2+1.0_wp)</span>
-<span class="s1">		</span>
-<span class="s1">		do k=1,N</span>
-<span class="s1">			call random_number(r)</span>
-<span class="s1">			r = 0.25_wp*(2.0_wp*r-1.0_wp)</span>
-<span class="s1">			m = sum(r)/real(size(r))</span>
-<span class="s1">			s = sqrt(sum((r-m)**2)/real(size(r)-1))</span>
-<span class="s1">			x(k) = x(k)+m</span>
-<span class="s1">			xe(k) = s</span>
-<span class="s1">			</span>
-<span class="s1">			call random_number(r)</span>
-<span class="s1">			r = 0.15_wp*(2.0_wp*r-1.0_wp)</span>
-<span class="s1">			m = sum(r)/real(size(r))</span>
-<span class="s1">			s = sqrt(sum((r-m)**2)/real(size(r)-1))</span>
-<span class="s1">			y(k) = y(k)+m</span>
-<span class="s1">			ye(k) = s</span>
-<span class="s1">		end do</span>
-<span class="s1">		</span>
-<span class="s1">		call figure()</span>
-<span class="s1">		call subplot(1,1,1)</span>
-<span class="s1">		call xylim(mixval([x-xe,x+xe])+[-0.5_wp,0.5_wp],mixval([y-ye,y+ye])+[-0.2_wp,0.2_wp])</span>
-<span class="s1">		call errorbar(x,y,xerr=xe,yerr=ye,lineColor=&#39;</span><span class="n">b</span><span class="s1">&#39;,lineWidth=1.0_wp)</span>
-<span class="s1">		call plot(x,y,lineStyle=&#39;&#39;,markStyle=&#39;</span><span class="n">s</span><span class="s1">&#39;,markColor=&#39;</span><span class="n">r</span><span class="s1">&#39;,markSize=1.5_wp)</span>
-<span class="s1">		call ticks()</span>
-<span class="s1">		call labels(&#39;</span><span class="n">x</span><span class="s1">&#39;,&#39;</span><span class="n">y</span><span class="s1">&#39;,&#39;</span><span class="err">&#39;</span><span class="p">)</span>
+	<span class="k">subroutine </span><span class="n">doError</span>
+		<span class="c">!! ![error](|media|/example-10.svg)</span>
+		
+		<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="kd">::</span><span class="n">N</span> <span class="o">=</span> <span class="mi">25</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xe</span><span class="p">,</span><span class="n">ye</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="kd">::</span><span class="n">r</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="kd">::</span><span class="n">m</span><span class="p">,</span><span class="n">s</span>
+		<span class="kt">integer</span><span class="kd">::</span><span class="n">k</span>
+		
+		<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="n">y</span> <span class="o">=</span> <span class="mf">1.0_wp</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mf">1.0_wp</span><span class="p">)</span>
+		
+		<span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+			<span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+			<span class="n">r</span> <span class="o">=</span> <span class="mf">0.25_wp</span><span class="o">*</span><span class="p">(</span><span class="mf">2.0_wp</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mf">1.0_wp</span><span class="p">)</span>
+			<span class="n">m</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+			<span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">m</span>
+			<span class="n">xe</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span>
+			
+			<span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+			<span class="n">r</span> <span class="o">=</span> <span class="mf">0.15_wp</span><span class="o">*</span><span class="p">(</span><span class="mf">2.0_wp</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mf">1.0_wp</span><span class="p">)</span>
+			<span class="n">m</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+			<span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">m</span>
+			<span class="n">ye</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span>
+		<span class="k">end do</span>
+<span class="k">		</span>
+<span class="k">		call </span><span class="n">figure</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">([</span><span class="n">x</span><span class="o">-</span><span class="n">xe</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">xe</span><span class="p">])</span><span class="o">+</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5_wp</span><span class="p">,</span><span class="mf">0.5_wp</span><span class="p">],</span><span class="n">mixval</span><span class="p">([</span><span class="n">y</span><span class="o">-</span><span class="n">ye</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">ye</span><span class="p">])</span><span class="o">+</span><span class="p">[</span><span class="o">-</span><span class="mf">0.2_wp</span><span class="p">,</span><span class="mf">0.2_wp</span><span class="p">])</span>
+		<span class="k">call </span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xerr</span><span class="o">=</span><span class="n">xe</span><span class="p">,</span><span class="n">yerr</span><span class="o">=</span><span class="n">ye</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">1.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lineStyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">markStyle</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">markColor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">markSize</span><span class="o">=</span><span class="mf">1.5_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">ticks</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">labels</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 	<span class="k">end subroutine </span><span class="n">doError</span>
 
-<span class="k">end module </span><span class="n">examples_mod</span>
+	<span class="k">subroutine </span><span class="n">doLogPlot</span>
+		<span class="c">!! ![logPlot](|media|/example-11.svg)</span>
+		
+		<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="kd">::</span><span class="n">N</span> <span class="o">=</span> <span class="mi">25</span>
+		<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="kd">::</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">yl</span>
+		
+		<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="n">y</span> <span class="o">=</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+		<span class="n">yl</span> <span class="o">=</span> <span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+		
+		<span class="k">call </span><span class="n">figure</span><span class="p">()</span>
+		<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">(</span><span class="n">yl</span><span class="p">))</span>
+		<span class="k">call </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">yl</span><span class="p">,</span><span class="n">lineColor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">lineWidth</span><span class="o">=</span><span class="mf">2.0_wp</span><span class="p">)</span>
+		<span class="k">call </span><span class="n">ticks</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+		<span class="k">call </span><span class="n">labels</span><span class="p">(</span><span class="s1">&#39;x [linear]&#39;</span><span class="p">,</span><span class="s1">&#39;y [log]&#39;</span><span class="p">,</span><span class="s1">&#39;exp(-x#u2#d)&#39;</span><span class="p">)</span>
+	<span class="k">end subroutine </span><span class="n">doLogPlot</span>
+
+<span class="k">end program </span><span class="n">examples_prg</span>
 </pre></div>
 
     </section>

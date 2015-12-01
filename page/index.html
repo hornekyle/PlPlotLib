@@ -97,11 +97,11 @@
         
         <li><i class="fa fa-sitemap"></i> Subsections:</li>
         
+        <li><a href='../page/./arguments.html'>Common Arguments</a></li>
+        
         <li><a href='../page/./license.html'>License</a></li>
         
         <li><a href='../page/./escapeCodes.html'>Escape Codes</a></li>
-        
-        <li><a href='../page/./arguments.html'>Common Arguments</a></li>
         
         
 -->
@@ -126,17 +126,17 @@
           <ul class="nav nav-stacked nav-pills">
             
             <li role="presentation">
+            <a href='../page/./arguments.html'>Common Arguments</a>
+            
+            </li>
+            
+            <li role="presentation">
             <a href='../page/./license.html'>License</a>
             
             </li>
             
             <li role="presentation">
             <a href='../page/./escapeCodes.html'>Escape Codes</a>
-            
-            </li>
-            
-            <li role="presentation">
-            <a href='../page/./arguments.html'>Common Arguments</a>
             
             </li>
             
@@ -164,7 +164,11 @@ variations from these step are the inclusion of more than one plot and
 the creation of a legend to distinguish between plots.</p>
 <p><em>Example</em></p>
 <div class="codehilite"><pre><span class="k">program </span><span class="n">basic_prg</span>
+    <span class="c">!! Create a basic plot</span>
+    <span class="c">!!</span>
+    <span class="c">!! ![plot](../media/basic-1.svg)</span>
     <span class="k">use </span><span class="n">kinds_mod</span>
+    <span class="k">use </span><span class="n">utilities_mod</span>
     <span class="k">use </span><span class="n">plplotlib_mod</span>
     <span class="k">implicit none</span>
 
@@ -173,7 +177,7 @@ the creation of a legend to distinguish between plots.</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">1.0_wp</span>
 
-    <span class="k">call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;plot-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+    <span class="k">call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;examples/basic-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
     <span class="k">call </span><span class="n">figure</span><span class="p">()</span>
     <span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
@@ -185,7 +189,7 @@ the creation of a legend to distinguish between plots.</p>
 </pre></div>
 
 
-<p><img alt="plot-1.svg" src="../media/plot-1.svg"></p>
+<p><img alt="basic-1.svg" src="../media/basic-1.svg"></p>
 <h2>Step Details</h2>
 <p>Details about each step of the process are found below:</p>
 <h3><code>setup</code></h3>

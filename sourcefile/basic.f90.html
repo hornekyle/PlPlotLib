@@ -117,6 +117,7 @@
   <div class="row">
     <div class="col-lg-3">
     
+<div id="sidebar">
   
   
   
@@ -124,11 +125,13 @@
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Programs</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../program/basic_prg.html">basic_prg</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#progs">Programs</a></h3></div>
+    <div id="progs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../program/basic_prg.html">basic_prg</a>
+          
+        </div>
     </div>
   </div>
   
@@ -157,25 +160,30 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Source Files</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/basic.f90.html">basic.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/examples.f90.html">examples.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/kinds.f90.html">kinds.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/main.f90.html">main.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/plplotlib.f90.html">plplotlib.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/utilities.f90.html">utilities.f90</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles">All Source Files</a></h3></div>
+    <div id="allfiles" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../sourcefile/animate.f90.html">animate.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/basic.f90.html">basic.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/examples.f90.html">examples.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/kinds.f90.html">kinds.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/logo.f90.html">logo.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/plplotlib.f90.html">plplotlib.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/utilities.f90.html">utilities.f90</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     <div class="col-lg-9" id='text'>
     
@@ -183,7 +191,11 @@
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span class="k">program </span><span class="n">basic_prg</span>
+	<span class="c">!! Create a basic plot</span>
+	<span class="c">!!</span>
+	<span class="c">!! ![plot](|media|/basic-1.svg)</span>
 	<span class="k">use </span><span class="n">kinds_mod</span>
+	<span class="k">use </span><span class="n">utilities_mod</span>
 	<span class="k">use </span><span class="n">plplotlib_mod</span>
 	<span class="k">implicit none</span>
 <span class="k">	</span>
@@ -192,7 +204,7 @@
 	<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 	<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">1.0_wp</span>
 	
-	<span class="k">call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;plot-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+	<span class="k">call </span><span class="n">setup</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;svgqt&#39;</span><span class="p">,</span><span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;examples/basic-%n.svg&#39;</span><span class="p">,</span><span class="n">figSize</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
 	<span class="k">call </span><span class="n">figure</span><span class="p">()</span>
 	<span class="k">call </span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 	<span class="k">call </span><span class="n">xylim</span><span class="p">(</span><span class="n">mixval</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mixval</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
