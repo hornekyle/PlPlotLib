@@ -36,6 +36,9 @@ add_custom_command(TARGET examples_prg PRE_BUILD
 
 set(FORD_EXECUTABLE "ford")
 add_custom_target(ford
+	COMMAND logo_prg
+	COMMAND basic_prg
+	COMMAND examples_prg
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/pages" "${CMAKE_BINARY_DIR}/pages"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/src" "${CMAKE_BINARY_DIR}/src"
 	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/project.md" "${CMAKE_BINARY_DIR}"
