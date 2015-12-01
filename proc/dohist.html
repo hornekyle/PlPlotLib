@@ -131,13 +131,13 @@
     <div id="vars" class="panel-collapse collapse">
       <div class="list-group">
         
-        <a class="list-group-item" href="../proc/dohist.html#variable-n%7E19">N</a>
+        <a class="list-group-item" href="../proc/dohist.html#variable-n%7E8">N</a>
         
-        <a class="list-group-item" href="../proc/dohist.html#variable-r%7E2">r</a>
+        <a class="list-group-item" href="../proc/dohist.html#variable-r">r</a>
         
-        <a class="list-group-item" href="../proc/dohist.html#variable-x%7E24">x</a>
+        <a class="list-group-item" href="../proc/dohist.html#variable-x%7E8">x</a>
         
-        <a class="list-group-item" href="../proc/dohist.html#variable-h%7E3">h</a>
+        <a class="list-group-item" href="../proc/dohist.html#variable-h">h</a>
         
       </div>
     </div>
@@ -351,18 +351,18 @@ subroutine doHist()
 <polygon fill="none" stroke="black" points="54,-380 0,-380 0,-356 54,-356 54,-380"/>
 <text text-anchor="middle" x="27" y="-365.6" font-family="Helvetica,sans-Serif" font-size="10.50">doHist</text>
 </g>
-<!-- interface~mixval -->
-<g id="proc~~dohist~~CallsGraph_node2" class="node"><title>interface~mixval</title>
-<g id="a_proc~~dohist~~CallsGraph_node2"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
-<polygon fill="#a7506f" stroke="#a7506f" points="324,-522 270,-522 270,-498 324,-498 324,-522"/>
-<text text-anchor="middle" x="297" y="-507.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
+<!-- proc~hist -->
+<g id="proc~~dohist~~CallsGraph_node2" class="node"><title>proc~hist</title>
+<g id="a_proc~~dohist~~CallsGraph_node2"><a xlink:href="../proc/hist.html" xlink:title="hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-478 90,-478 90,-454 144,-454 144,-478"/>
+<text text-anchor="middle" x="117" y="-463.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hist</text>
 </a>
 </g>
 </g>
-<!-- proc~dohist&#45;&gt;interface~mixval -->
-<g id="proc~~dohist~~CallsGraph_edge20" class="edge"><title>proc~dohist&#45;&gt;interface~mixval</title>
-<path fill="none" stroke="black" d="M32.1021,-380.154C39.8648,-401.197 58.7803,-444.246 90,-466 141.142,-501.636 215.502,-509.324 259.492,-510.482"/>
-<polygon fill="black" stroke="black" points="259.668,-513.985 269.723,-510.647 259.781,-506.986 259.668,-513.985"/>
+<!-- proc~dohist&#45;&gt;proc~hist -->
+<g id="proc~~dohist~~CallsGraph_edge20" class="edge"><title>proc~dohist&#45;&gt;proc~hist</title>
+<path fill="none" stroke="black" d="M38.0439,-380.215C50.0898,-394.734 71.035,-419.567 90,-440 91.9949,-442.149 94.1111,-444.365 96.2407,-446.553"/>
+<polygon fill="black" stroke="black" points="93.8516,-449.114 103.377,-453.753 98.8236,-444.187 93.8516,-449.114"/>
 </g>
 <!-- proc~ticks -->
 <g id="proc~~dohist~~CallsGraph_node3" class="node"><title>proc~ticks</title>
@@ -377,83 +377,98 @@ subroutine doHist()
 <path fill="none" stroke="black" d="M54.4029,-361.999C62.481,-360.163 71.5067,-358.112 80.1046,-356.158"/>
 <polygon fill="black" stroke="black" points="80.9434,-359.557 89.919,-353.928 79.392,-352.731 80.9434,-359.557"/>
 </g>
-<!-- proc~bar -->
-<g id="proc~~dohist~~CallsGraph_node4" class="node"><title>proc~bar</title>
-<g id="a_proc~~dohist~~CallsGraph_node4"><a xlink:href="../proc/bar.html" xlink:title="bar">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-444 180,-444 180,-420 234,-420 234,-444"/>
-<text text-anchor="middle" x="207" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bar</text>
-</a>
-</g>
-</g>
-<!-- proc~dohist&#45;&gt;proc~bar -->
-<g id="proc~~dohist~~CallsGraph_edge22" class="edge"><title>proc~dohist&#45;&gt;proc~bar</title>
-<path fill="none" stroke="black" d="M33.0212,-380.193C41.5368,-399.039 60.7841,-434.571 90,-449 115.182,-461.437 146.92,-455.528 170.829,-447.436"/>
-<polygon fill="black" stroke="black" points="172.032,-450.723 180.228,-444.01 169.634,-444.146 172.032,-450.723"/>
-</g>
 <!-- proc~xylim -->
-<g id="proc~~dohist~~CallsGraph_node5" class="node"><title>proc~xylim</title>
-<g id="a_proc~~dohist~~CallsGraph_node5"><a xlink:href="../proc/xylim.html" xlink:title="xylim">
+<g id="proc~~dohist~~CallsGraph_node4" class="node"><title>proc~xylim</title>
+<g id="a_proc~~dohist~~CallsGraph_node4"><a xlink:href="../proc/xylim.html" xlink:title="xylim">
 <polygon fill="#d9534f" stroke="#d9534f" points="144,-318 90,-318 90,-294 144,-294 144,-318"/>
 <text text-anchor="middle" x="117" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">xylim</text>
 </a>
 </g>
 </g>
 <!-- proc~dohist&#45;&gt;proc~xylim -->
-<g id="proc~~dohist~~CallsGraph_edge23" class="edge"><title>proc~dohist&#45;&gt;proc~xylim</title>
+<g id="proc~~dohist~~CallsGraph_edge22" class="edge"><title>proc~dohist&#45;&gt;proc~xylim</title>
 <path fill="none" stroke="black" d="M45.386,-355.751C58.2449,-346.691 75.9616,-334.209 90.4318,-324.014"/>
 <polygon fill="black" stroke="black" points="92.7906,-326.634 98.9496,-318.013 88.7589,-320.911 92.7906,-326.634"/>
 </g>
-<!-- proc~subplot -->
-<g id="proc~~dohist~~CallsGraph_node6" class="node"><title>proc~subplot</title>
-<g id="a_proc~~dohist~~CallsGraph_node6"><a xlink:href="../proc/subplot.html" xlink:title="subplot">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-213 90,-213 90,-189 144,-189 144,-213"/>
-<text text-anchor="middle" x="117" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subplot</text>
+<!-- proc~bar -->
+<g id="proc~~dohist~~CallsGraph_node5" class="node"><title>proc~bar</title>
+<g id="a_proc~~dohist~~CallsGraph_node5"><a xlink:href="../proc/bar.html" xlink:title="bar">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-444 180,-444 180,-420 234,-420 234,-444"/>
+<text text-anchor="middle" x="207" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bar</text>
 </a>
 </g>
 </g>
-<!-- proc~dohist&#45;&gt;proc~subplot -->
-<g id="proc~~dohist~~CallsGraph_edge24" class="edge"><title>proc~dohist&#45;&gt;proc~subplot</title>
-<path fill="none" stroke="black" d="M34.3287,-355.99C49.098,-327.962 86.0033,-257.926 104.726,-222.395"/>
-<polygon fill="black" stroke="black" points="107.926,-223.831 109.491,-213.352 101.733,-220.567 107.926,-223.831"/>
+<!-- proc~dohist&#45;&gt;proc~bar -->
+<g id="proc~~dohist~~CallsGraph_edge23" class="edge"><title>proc~dohist&#45;&gt;proc~bar</title>
+<path fill="none" stroke="black" d="M54.1131,-378.927C65.1316,-383.434 78.133,-388.617 90,-393 116.563,-402.811 146.908,-412.977 169.898,-420.469"/>
+<polygon fill="black" stroke="black" points="168.993,-423.855 179.585,-423.61 171.152,-417.196 168.993,-423.855"/>
 </g>
-<!-- proc~figure -->
-<g id="proc~~dohist~~CallsGraph_node7" class="node"><title>proc~figure</title>
-<g id="a_proc~~dohist~~CallsGraph_node7"><a xlink:href="../proc/figure.html" xlink:title="figure">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
-<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">figure</text>
+<!-- interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_node6" class="node"><title>interface~mixval</title>
+<g id="a_proc~~dohist~~CallsGraph_node6"><a xlink:href="../interface/mixval.html" xlink:title="mixval">
+<polygon fill="#a7506f" stroke="#a7506f" points="324,-522 270,-522 270,-498 324,-498 324,-522"/>
+<text text-anchor="middle" x="297" y="-507.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mixval</text>
 </a>
 </g>
 </g>
-<!-- proc~dohist&#45;&gt;proc~figure -->
-<g id="proc~~dohist~~CallsGraph_edge25" class="edge"><title>proc~dohist&#45;&gt;proc~figure</title>
-<path fill="none" stroke="black" d="M31.8948,-355.962C45.5222,-313.84 91.1914,-172.681 108.899,-117.947"/>
-<polygon fill="black" stroke="black" points="112.302,-118.8 112.05,-108.208 105.642,-116.645 112.302,-118.8"/>
+<!-- proc~dohist&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge24" class="edge"><title>proc~dohist&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M30.4142,-380.293C36.0023,-405.145 52.3373,-461.187 90,-487 140.839,-521.843 215.857,-520.359 259.946,-515.56"/>
+<polygon fill="black" stroke="black" points="260.415,-519.029 269.925,-514.359 259.578,-512.079 260.415,-519.029"/>
 </g>
 <!-- proc~bindata -->
-<g id="proc~~dohist~~CallsGraph_node8" class="node"><title>proc~bindata</title>
-<g id="a_proc~~dohist~~CallsGraph_node8"><a xlink:href="../proc/bindata.html" xlink:title="binData">
+<g id="proc~~dohist~~CallsGraph_node7" class="node"><title>proc~bindata</title>
+<g id="a_proc~~dohist~~CallsGraph_node7"><a xlink:href="../proc/bindata.html" xlink:title="binData">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="234,-402 180,-402 180,-378 234,-378 234,-402"/>
 <text text-anchor="middle" x="207" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">binData</text>
 </a>
 </g>
 </g>
 <!-- proc~dohist&#45;&gt;proc~bindata -->
-<g id="proc~~dohist~~CallsGraph_edge26" class="edge"><title>proc~dohist&#45;&gt;proc~bindata</title>
+<g id="proc~~dohist~~CallsGraph_edge25" class="edge"><title>proc~dohist&#45;&gt;proc~bindata</title>
 <path fill="none" stroke="black" d="M54.2645,-371.246C84.8509,-375.027 135.551,-381.293 169.843,-385.531"/>
 <polygon fill="black" stroke="black" points="169.564,-389.023 179.918,-386.776 170.423,-382.076 169.564,-389.023"/>
 </g>
-<!-- proc~hist -->
-<g id="proc~~dohist~~CallsGraph_node9" class="node"><title>proc~hist</title>
-<g id="a_proc~~dohist~~CallsGraph_node9"><a xlink:href="../proc/hist.html" xlink:title="hist">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-440 90,-440 90,-416 144,-416 144,-440"/>
-<text text-anchor="middle" x="117" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hist</text>
+<!-- proc~figure -->
+<g id="proc~~dohist~~CallsGraph_node8" class="node"><title>proc~figure</title>
+<g id="a_proc~~dohist~~CallsGraph_node8"><a xlink:href="../proc/figure.html" xlink:title="figure">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-234 90,-234 90,-210 144,-210 144,-234"/>
+<text text-anchor="middle" x="117" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">figure</text>
 </a>
 </g>
 </g>
-<!-- proc~dohist&#45;&gt;proc~hist -->
-<g id="proc~~dohist~~CallsGraph_edge27" class="edge"><title>proc~dohist&#45;&gt;proc~hist</title>
-<path fill="none" stroke="black" d="M45.8081,-380.142C58.4516,-388.762 75.6317,-400.476 89.8302,-410.157"/>
-<polygon fill="black" stroke="black" points="87.9844,-413.135 98.2184,-415.876 91.9278,-407.351 87.9844,-413.135"/>
+<!-- proc~dohist&#45;&gt;proc~figure -->
+<g id="proc~~dohist~~CallsGraph_edge26" class="edge"><title>proc~dohist&#45;&gt;proc~figure</title>
+<path fill="none" stroke="black" d="M35.3515,-355.803C50.4006,-330.835 84.8658,-273.655 103.497,-242.744"/>
+<polygon fill="black" stroke="black" points="106.567,-244.431 108.731,-234.059 100.571,-240.817 106.567,-244.431"/>
+</g>
+<!-- proc~subplot -->
+<g id="proc~~dohist~~CallsGraph_node9" class="node"><title>proc~subplot</title>
+<g id="a_proc~~dohist~~CallsGraph_node9"><a xlink:href="../proc/subplot.html" xlink:title="subplot">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-129 90,-129 90,-105 144,-105 144,-129"/>
+<text text-anchor="middle" x="117" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subplot</text>
+</a>
+</g>
+</g>
+<!-- proc~dohist&#45;&gt;proc~subplot -->
+<g id="proc~~dohist~~CallsGraph_edge27" class="edge"><title>proc~dohist&#45;&gt;proc~subplot</title>
+<path fill="none" stroke="black" d="M32.2444,-355.894C46.1233,-316.307 90.2976,-190.31 108.277,-139.03"/>
+<polygon fill="black" stroke="black" points="111.689,-139.874 111.695,-129.279 105.084,-137.558 111.689,-139.874"/>
+</g>
+<!-- proc~hist&#45;&gt;proc~bar -->
+<g id="proc~~dohist~~CallsGraph_edge3" class="edge"><title>proc~hist&#45;&gt;proc~bar</title>
+<path fill="none" stroke="black" d="M144.403,-455.799C152.569,-452.644 161.703,-449.115 170.385,-445.76"/>
+<polygon fill="black" stroke="black" points="171.852,-448.946 179.919,-442.077 169.33,-442.416 171.852,-448.946"/>
+</g>
+<!-- proc~hist&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge2" class="edge"><title>proc~hist&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M144.265,-472.492C174.851,-480.053 225.551,-492.586 259.843,-501.062"/>
+<polygon fill="black" stroke="black" points="259.37,-504.551 269.918,-503.553 261.05,-497.755 259.37,-504.551"/>
+</g>
+<!-- proc~hist&#45;&gt;proc~bindata -->
+<g id="proc~~dohist~~CallsGraph_edge1" class="edge"><title>proc~hist&#45;&gt;proc~bindata</title>
+<path fill="none" stroke="black" d="M131.63,-453.583C144.087,-442.313 163.088,-425.318 180,-411 180.971,-410.178 181.967,-409.342 182.976,-408.501"/>
+<polygon fill="black" stroke="black" points="185.27,-411.147 190.78,-402.098 180.829,-405.736 185.27,-411.147"/>
 </g>
 <!-- plbox -->
 <g id="proc~~dohist~~CallsGraph_node10" class="node"><title>plbox</title>
@@ -461,162 +476,147 @@ subroutine doHist()
 <text text-anchor="middle" x="207" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbox</text>
 </g>
 <!-- proc~ticks&#45;&gt;plbox -->
-<g id="proc~~dohist~~CallsGraph_edge1" class="edge"><title>proc~ticks&#45;&gt;plbox</title>
+<g id="proc~~dohist~~CallsGraph_edge4" class="edge"><title>proc~ticks&#45;&gt;plbox</title>
 <path fill="none" stroke="black" d="M144.403,-348C152.393,-348 161.311,-348 169.824,-348"/>
 <polygon fill="black" stroke="black" points="169.919,-351.5 179.919,-348 169.919,-344.5 169.919,-351.5"/>
 </g>
-<!-- proc~bar&#45;&gt;interface~mixval -->
-<g id="proc~~dohist~~CallsGraph_edge2" class="edge"><title>proc~bar&#45;&gt;interface~mixval</title>
-<path fill="none" stroke="black" d="M220.608,-444.033C232.986,-455.739 252.502,-473.917 270,-489 270.964,-489.831 271.954,-490.674 272.958,-491.52"/>
-<polygon fill="black" stroke="black" points="270.802,-494.279 280.742,-497.946 275.259,-488.881 270.802,-494.279"/>
-</g>
-<!-- plline -->
-<g id="proc~~dohist~~CallsGraph_node11" class="node"><title>plline</title>
-<polygon fill="#777777" stroke="#777777" points="324,-480 270,-480 270,-456 324,-456 324,-480"/>
-<text text-anchor="middle" x="297" y="-465.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plline</text>
-</g>
-<!-- proc~bar&#45;&gt;plline -->
-<g id="proc~~dohist~~CallsGraph_edge3" class="edge"><title>proc~bar&#45;&gt;plline</title>
-<path fill="none" stroke="black" d="M234.403,-442.801C242.569,-446.142 251.703,-449.878 260.385,-453.43"/>
-<polygon fill="black" stroke="black" points="259.338,-456.784 269.919,-457.33 261.989,-450.305 259.338,-456.784"/>
-</g>
-<!-- plfill -->
-<g id="proc~~dohist~~CallsGraph_node12" class="node"><title>plfill</title>
-<polygon fill="#777777" stroke="#777777" points="324,-438 270,-438 270,-414 324,-414 324,-438"/>
-<text text-anchor="middle" x="297" y="-423.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plfill</text>
-</g>
-<!-- proc~bar&#45;&gt;plfill -->
-<g id="proc~~dohist~~CallsGraph_edge4" class="edge"><title>proc~bar&#45;&gt;plfill</title>
-<path fill="none" stroke="black" d="M234.403,-430.2C242.393,-429.655 251.311,-429.047 259.824,-428.467"/>
-<polygon fill="black" stroke="black" points="260.18,-431.95 269.919,-427.778 259.704,-424.967 260.18,-431.95"/>
-</g>
-<!-- plcol1 -->
-<g id="proc~~dohist~~CallsGraph_node13" class="node"><title>plcol1</title>
-<polygon fill="#777777" stroke="#777777" points="324,-396 270,-396 270,-372 324,-372 324,-396"/>
-<text text-anchor="middle" x="297" y="-381.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
-</g>
-<!-- proc~bar&#45;&gt;plcol1 -->
-<g id="proc~~dohist~~CallsGraph_edge5" class="edge"><title>proc~bar&#45;&gt;plcol1</title>
-<path fill="none" stroke="black" d="M230.206,-419.888C240.732,-414.146 253.485,-407.19 264.95,-400.937"/>
-<polygon fill="black" stroke="black" points="266.698,-403.97 273.801,-396.109 263.346,-397.824 266.698,-403.97"/>
-</g>
 <!-- plwind -->
-<g id="proc~~dohist~~CallsGraph_node14" class="node"><title>plwind</title>
+<g id="proc~~dohist~~CallsGraph_node11" class="node"><title>plwind</title>
 <polygon fill="#777777" stroke="#777777" points="234,-318 180,-318 180,-294 234,-294 234,-318"/>
 <text text-anchor="middle" x="207" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plwind</text>
 </g>
 <!-- proc~xylim&#45;&gt;plwind -->
-<g id="proc~~dohist~~CallsGraph_edge6" class="edge"><title>proc~xylim&#45;&gt;plwind</title>
+<g id="proc~~dohist~~CallsGraph_edge5" class="edge"><title>proc~xylim&#45;&gt;plwind</title>
 <path fill="none" stroke="black" d="M144.403,-306C152.393,-306 161.311,-306 169.824,-306"/>
 <polygon fill="black" stroke="black" points="169.919,-309.5 179.919,-306 169.919,-302.5 169.919,-309.5"/>
 </g>
-<!-- plvsta -->
-<g id="proc~~dohist~~CallsGraph_node15" class="node"><title>plvsta</title>
-<polygon fill="#777777" stroke="#777777" points="234,-276 180,-276 180,-252 234,-252 234,-276"/>
-<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvsta</text>
+<!-- proc~bar&#45;&gt;interface~mixval -->
+<g id="proc~~dohist~~CallsGraph_edge8" class="edge"><title>proc~bar&#45;&gt;interface~mixval</title>
+<path fill="none" stroke="black" d="M220.608,-444.033C232.986,-455.739 252.502,-473.917 270,-489 270.964,-489.831 271.954,-490.674 272.958,-491.52"/>
+<polygon fill="black" stroke="black" points="270.802,-494.279 280.742,-497.946 275.259,-488.881 270.802,-494.279"/>
 </g>
-<!-- proc~subplot&#45;&gt;plvsta -->
-<g id="proc~~dohist~~CallsGraph_edge7" class="edge"><title>proc~subplot&#45;&gt;plvsta</title>
-<path fill="none" stroke="black" d="M134.967,-213.147C147.994,-222.473 166.181,-235.493 180.891,-246.024"/>
-<polygon fill="black" stroke="black" points="178.916,-248.915 189.085,-251.89 182.991,-243.223 178.916,-248.915"/>
+<!-- plline -->
+<g id="proc~~dohist~~CallsGraph_node12" class="node"><title>plline</title>
+<polygon fill="#777777" stroke="#777777" points="324,-480 270,-480 270,-456 324,-456 324,-480"/>
+<text text-anchor="middle" x="297" y="-465.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plline</text>
 </g>
-<!-- plssub -->
-<g id="proc~~dohist~~CallsGraph_node16" class="node"><title>plssub</title>
-<polygon fill="#777777" stroke="#777777" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
-<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plssub</text>
+<!-- proc~bar&#45;&gt;plline -->
+<g id="proc~~dohist~~CallsGraph_edge6" class="edge"><title>proc~bar&#45;&gt;plline</title>
+<path fill="none" stroke="black" d="M234.403,-442.801C242.569,-446.142 251.703,-449.878 260.385,-453.43"/>
+<polygon fill="black" stroke="black" points="259.338,-456.784 269.919,-457.33 261.989,-450.305 259.338,-456.784"/>
 </g>
-<!-- proc~subplot&#45;&gt;plssub -->
-<g id="proc~~dohist~~CallsGraph_edge8" class="edge"><title>proc~subplot&#45;&gt;plssub</title>
-<path fill="none" stroke="black" d="M134.967,-188.853C147.994,-179.527 166.181,-166.507 180.891,-155.976"/>
-<polygon fill="black" stroke="black" points="182.991,-158.777 189.085,-150.11 178.916,-153.085 182.991,-158.777"/>
+<!-- plcol1 -->
+<g id="proc~~dohist~~CallsGraph_node13" class="node"><title>plcol1</title>
+<polygon fill="#777777" stroke="#777777" points="324,-438 270,-438 270,-414 324,-414 324,-438"/>
+<text text-anchor="middle" x="297" y="-423.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plcol1</text>
 </g>
-<!-- plvasp -->
-<g id="proc~~dohist~~CallsGraph_node17" class="node"><title>plvasp</title>
-<polygon fill="#777777" stroke="#777777" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
-<text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvasp</text>
+<!-- proc~bar&#45;&gt;plcol1 -->
+<g id="proc~~dohist~~CallsGraph_edge7" class="edge"><title>proc~bar&#45;&gt;plcol1</title>
+<path fill="none" stroke="black" d="M234.403,-430.2C242.393,-429.655 251.311,-429.047 259.824,-428.467"/>
+<polygon fill="black" stroke="black" points="260.18,-431.95 269.919,-427.778 259.704,-424.967 260.18,-431.95"/>
 </g>
-<!-- proc~subplot&#45;&gt;plvasp -->
-<g id="proc~~dohist~~CallsGraph_edge9" class="edge"><title>proc~subplot&#45;&gt;plvasp</title>
-<path fill="none" stroke="black" d="M144.403,-207.301C152.481,-209.228 161.507,-211.382 170.105,-213.434"/>
-<polygon fill="black" stroke="black" points="169.38,-216.859 179.919,-215.776 171.005,-210.05 169.38,-216.859"/>
+<!-- plfill -->
+<g id="proc~~dohist~~CallsGraph_node14" class="node"><title>plfill</title>
+<polygon fill="#777777" stroke="#777777" points="324,-396 270,-396 270,-372 324,-372 324,-396"/>
+<text text-anchor="middle" x="297" y="-381.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plfill</text>
 </g>
-<!-- plvpor -->
-<g id="proc~~dohist~~CallsGraph_node18" class="node"><title>plvpor</title>
-<polygon fill="#777777" stroke="#777777" points="234,-192 180,-192 180,-168 234,-168 234,-192"/>
-<text text-anchor="middle" x="207" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvpor</text>
-</g>
-<!-- proc~subplot&#45;&gt;plvpor -->
-<g id="proc~~dohist~~CallsGraph_edge10" class="edge"><title>proc~subplot&#45;&gt;plvpor</title>
-<path fill="none" stroke="black" d="M144.403,-194.699C152.481,-192.772 161.507,-190.618 170.105,-188.566"/>
-<polygon fill="black" stroke="black" points="171.005,-191.95 179.919,-186.224 169.38,-185.141 171.005,-191.95"/>
-</g>
-<!-- pladv -->
-<g id="proc~~dohist~~CallsGraph_node19" class="node"><title>pladv</title>
-<polygon fill="#777777" stroke="#777777" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
-<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pladv</text>
-</g>
-<!-- proc~subplot&#45;&gt;pladv -->
-<g id="proc~~dohist~~CallsGraph_edge11" class="edge"><title>proc~subplot&#45;&gt;pladv</title>
-<path fill="none" stroke="black" d="M125.546,-188.848C136.43,-171.812 157.689,-140.305 180,-117 180.65,-116.322 181.321,-115.645 182.009,-114.973"/>
-<polygon fill="black" stroke="black" points="184.636,-117.319 189.764,-108.047 179.974,-112.098 184.636,-117.319"/>
-</g>
-<!-- proc~figure&#45;&gt;plssub -->
-<g id="proc~~dohist~~CallsGraph_edge13" class="edge"><title>proc~figure&#45;&gt;plssub</title>
-<path fill="none" stroke="black" d="M143.453,-108.148C152.21,-112.327 162.165,-117.079 171.518,-121.543"/>
-<polygon fill="black" stroke="black" points="170.072,-124.73 180.604,-125.879 173.087,-118.413 170.072,-124.73"/>
-</g>
-<!-- proc~figure&#45;&gt;pladv -->
-<g id="proc~~dohist~~CallsGraph_edge12" class="edge"><title>proc~figure&#45;&gt;pladv</title>
-<path fill="none" stroke="black" d="M144.403,-96C152.393,-96 161.311,-96 169.824,-96"/>
-<polygon fill="black" stroke="black" points="169.919,-99.5001 179.919,-96 169.919,-92.5001 169.919,-99.5001"/>
-</g>
-<!-- pleop -->
-<g id="proc~~dohist~~CallsGraph_node20" class="node"><title>pleop</title>
-<polygon fill="#777777" stroke="#777777" points="234,-24 180,-24 180,-0 234,-0 234,-24"/>
-<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pleop</text>
-</g>
-<!-- proc~figure&#45;&gt;pleop -->
-<g id="proc~~dohist~~CallsGraph_edge14" class="edge"><title>proc~figure&#45;&gt;pleop</title>
-<path fill="none" stroke="black" d="M129.042,-83.9877C141.153,-71.0041 161.354,-49.9029 180,-33 180.817,-32.2596 181.656,-31.5134 182.509,-30.7663"/>
-<polygon fill="black" stroke="black" points="184.966,-33.2728 190.36,-24.1537 180.456,-27.9188 184.966,-33.2728"/>
-</g>
-<!-- plbop -->
-<g id="proc~~dohist~~CallsGraph_node21" class="node"><title>plbop</title>
-<polygon fill="#777777" stroke="#777777" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
-<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbop</text>
-</g>
-<!-- proc~figure&#45;&gt;plbop -->
-<g id="proc~~dohist~~CallsGraph_edge15" class="edge"><title>proc~figure&#45;&gt;plbop</title>
-<path fill="none" stroke="black" d="M143.453,-83.8519C152.21,-79.6727 162.165,-74.9211 171.518,-70.4571"/>
-<polygon fill="black" stroke="black" points="173.087,-73.5869 180.604,-66.1208 170.072,-67.2695 173.087,-73.5869"/>
+<!-- proc~bar&#45;&gt;plfill -->
+<g id="proc~~dohist~~CallsGraph_edge9" class="edge"><title>proc~bar&#45;&gt;plfill</title>
+<path fill="none" stroke="black" d="M230.206,-419.888C240.732,-414.146 253.485,-407.19 264.95,-400.937"/>
+<polygon fill="black" stroke="black" points="266.698,-403.97 273.801,-396.109 263.346,-397.824 266.698,-403.97"/>
 </g>
 <!-- proc~linspace -->
-<g id="proc~~dohist~~CallsGraph_node22" class="node"><title>proc~linspace</title>
-<g id="a_proc~~dohist~~CallsGraph_node22"><a xlink:href="../proc/linspace.html" xlink:title="linspace">
+<g id="proc~~dohist~~CallsGraph_node15" class="node"><title>proc~linspace</title>
+<g id="a_proc~~dohist~~CallsGraph_node15"><a xlink:href="../proc/linspace.html" xlink:title="linspace">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="324,-354 270,-354 270,-330 324,-330 324,-354"/>
 <text text-anchor="middle" x="297" y="-339.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linspace</text>
 </a>
 </g>
 </g>
 <!-- proc~bindata&#45;&gt;proc~linspace -->
-<g id="proc~~dohist~~CallsGraph_edge16" class="edge"><title>proc~bindata&#45;&gt;proc~linspace</title>
+<g id="proc~~dohist~~CallsGraph_edge10" class="edge"><title>proc~bindata&#45;&gt;proc~linspace</title>
 <path fill="none" stroke="black" d="M230.206,-377.888C240.732,-372.146 253.485,-365.19 264.95,-358.937"/>
 <polygon fill="black" stroke="black" points="266.698,-361.97 273.801,-354.109 263.346,-355.824 266.698,-361.97"/>
 </g>
-<!-- proc~hist&#45;&gt;interface~mixval -->
-<g id="proc~~dohist~~CallsGraph_edge17" class="edge"><title>proc~hist&#45;&gt;interface~mixval</title>
-<path fill="none" stroke="black" d="M144.265,-440.099C175.115,-454.311 226.426,-477.949 260.726,-493.75"/>
-<polygon fill="black" stroke="black" points="259.371,-496.979 269.918,-497.985 262.3,-490.621 259.371,-496.979"/>
+<!-- pleop -->
+<g id="proc~~dohist~~CallsGraph_node16" class="node"><title>pleop</title>
+<polygon fill="#777777" stroke="#777777" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
+<text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pleop</text>
 </g>
-<!-- proc~hist&#45;&gt;proc~bar -->
-<g id="proc~~dohist~~CallsGraph_edge18" class="edge"><title>proc~hist&#45;&gt;proc~bar</title>
-<path fill="none" stroke="black" d="M144.403,-429.2C152.393,-429.563 161.311,-429.969 169.824,-430.356"/>
-<polygon fill="black" stroke="black" points="169.77,-433.857 179.919,-430.814 170.088,-426.864 169.77,-433.857"/>
+<!-- proc~figure&#45;&gt;pleop -->
+<g id="proc~~dohist~~CallsGraph_edge11" class="edge"><title>proc~figure&#45;&gt;pleop</title>
+<path fill="none" stroke="black" d="M144.403,-222C152.393,-222 161.311,-222 169.824,-222"/>
+<polygon fill="black" stroke="black" points="169.919,-225.5 179.919,-222 169.919,-218.5 169.919,-225.5"/>
 </g>
-<!-- proc~hist&#45;&gt;proc~bindata -->
-<g id="proc~~dohist~~CallsGraph_edge19" class="edge"><title>proc~hist&#45;&gt;proc~bindata</title>
-<path fill="none" stroke="black" d="M144.403,-416.599C152.657,-413.035 161.9,-409.043 170.665,-405.258"/>
-<polygon fill="black" stroke="black" points="172.126,-408.44 179.919,-401.262 169.351,-402.013 172.126,-408.44"/>
+<!-- plbop -->
+<g id="proc~~dohist~~CallsGraph_node17" class="node"><title>plbop</title>
+<polygon fill="#777777" stroke="#777777" points="234,-276 180,-276 180,-252 234,-252 234,-276"/>
+<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plbop</text>
+</g>
+<!-- proc~figure&#45;&gt;plbop -->
+<g id="proc~~dohist~~CallsGraph_edge12" class="edge"><title>proc~figure&#45;&gt;plbop</title>
+<path fill="none" stroke="black" d="M143.453,-234.148C152.21,-238.327 162.165,-243.079 171.518,-247.543"/>
+<polygon fill="black" stroke="black" points="170.072,-250.73 180.604,-251.879 173.087,-244.413 170.072,-250.73"/>
+</g>
+<!-- pladv -->
+<g id="proc~~dohist~~CallsGraph_node18" class="node"><title>pladv</title>
+<polygon fill="#777777" stroke="#777777" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
+<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pladv</text>
+</g>
+<!-- proc~figure&#45;&gt;pladv -->
+<g id="proc~~dohist~~CallsGraph_edge13" class="edge"><title>proc~figure&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M129.042,-209.988C141.153,-197.004 161.354,-175.903 180,-159 180.817,-158.26 181.656,-157.513 182.509,-156.766"/>
+<polygon fill="black" stroke="black" points="184.966,-159.273 190.36,-150.154 180.456,-153.919 184.966,-159.273"/>
+</g>
+<!-- plssub -->
+<g id="proc~~dohist~~CallsGraph_node19" class="node"><title>plssub</title>
+<polygon fill="#777777" stroke="#777777" points="234,-192 180,-192 180,-168 234,-168 234,-192"/>
+<text text-anchor="middle" x="207" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plssub</text>
+</g>
+<!-- proc~figure&#45;&gt;plssub -->
+<g id="proc~~dohist~~CallsGraph_edge14" class="edge"><title>proc~figure&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M143.453,-209.852C152.21,-205.673 162.165,-200.921 171.518,-196.457"/>
+<polygon fill="black" stroke="black" points="173.087,-199.587 180.604,-192.121 170.072,-193.27 173.087,-199.587"/>
+</g>
+<!-- proc~subplot&#45;&gt;pladv -->
+<g id="proc~~dohist~~CallsGraph_edge16" class="edge"><title>proc~subplot&#45;&gt;pladv</title>
+<path fill="none" stroke="black" d="M144.403,-123.301C152.481,-125.228 161.507,-127.382 170.105,-129.434"/>
+<polygon fill="black" stroke="black" points="169.38,-132.859 179.919,-131.776 171.005,-126.05 169.38,-132.859"/>
+</g>
+<!-- proc~subplot&#45;&gt;plssub -->
+<g id="proc~~dohist~~CallsGraph_edge18" class="edge"><title>proc~subplot&#45;&gt;plssub</title>
+<path fill="none" stroke="black" d="M134.967,-129.147C147.994,-138.473 166.181,-151.493 180.891,-162.024"/>
+<polygon fill="black" stroke="black" points="178.916,-164.915 189.085,-167.89 182.991,-159.223 178.916,-164.915"/>
+</g>
+<!-- plvasp -->
+<g id="proc~~dohist~~CallsGraph_node20" class="node"><title>plvasp</title>
+<polygon fill="#777777" stroke="#777777" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
+<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvasp</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvasp -->
+<g id="proc~~dohist~~CallsGraph_edge15" class="edge"><title>proc~subplot&#45;&gt;plvasp</title>
+<path fill="none" stroke="black" d="M144.403,-110.699C152.481,-108.772 161.507,-106.618 170.105,-104.566"/>
+<polygon fill="black" stroke="black" points="171.005,-107.95 179.919,-102.224 169.38,-101.141 171.005,-107.95"/>
+</g>
+<!-- plvsta -->
+<g id="proc~~dohist~~CallsGraph_node21" class="node"><title>plvsta</title>
+<polygon fill="#777777" stroke="#777777" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvsta</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvsta -->
+<g id="proc~~dohist~~CallsGraph_edge17" class="edge"><title>proc~subplot&#45;&gt;plvsta</title>
+<path fill="none" stroke="black" d="M134.967,-104.853C147.994,-95.5274 166.181,-82.5069 180.891,-71.9759"/>
+<polygon fill="black" stroke="black" points="182.991,-74.7768 189.085,-66.1097 178.916,-69.085 182.991,-74.7768"/>
+</g>
+<!-- plvpor -->
+<g id="proc~~dohist~~CallsGraph_node22" class="node"><title>plvpor</title>
+<polygon fill="#777777" stroke="#777777" points="234,-24 180,-24 180,-0 234,-0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plvpor</text>
+</g>
+<!-- proc~subplot&#45;&gt;plvpor -->
+<g id="proc~~dohist~~CallsGraph_edge19" class="edge"><title>proc~subplot&#45;&gt;plvpor</title>
+<path fill="none" stroke="black" d="M125.546,-104.848C136.43,-87.8123 157.689,-56.3053 180,-33 180.65,-32.3215 181.321,-31.6449 182.009,-30.9726"/>
+<polygon fill="black" stroke="black" points="184.636,-33.3188 189.764,-24.0475 179.974,-28.0975 184.636,-33.3188"/>
 </g>
 </g>
 </svg>
@@ -858,7 +858,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-n%7E19"></span>integer,</td>
+  <td><span class="anchor" id="variable-n%7E8"></span>integer,</td>
   
   <td>public,</td>
   <td>parameter</td><td>::</td>
@@ -872,7 +872,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-r%7E2"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-r"></span>real(kind=wp),</td>
   
   <td>public,</td>
   <td>dimension(N,12)</td><td>::</td>
@@ -886,7 +886,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-x%7E24"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x%7E8"></span>real(kind=wp),</td>
   
   <td>public,</td>
   <td>dimension(N)</td><td>::</td>
@@ -900,7 +900,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-h%7E3"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-h"></span>real(kind=wp),</td>
   
   <td>public,</td>
   <td>dimension(:,:), allocatable</td><td>::</td>
